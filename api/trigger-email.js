@@ -40,7 +40,11 @@ export default async function handler(req, res) {
             target_emails = emailArray.slice(0, 10).join(','); // Limit to 10 recipients for safety
         }
 
-        if (rawRecipients && !target_emails) {
+        if (!rawRecipients) {
+            return res.status(400).json({ error: 'At least one email recipient is required' });
+        }
+
+        if (!target_emails) {
             return res.status(400).json({ error: 'No valid email recipients found in the provided list' });
         }
 
@@ -53,7 +57,7 @@ export default async function handler(req, res) {
                     body: JSON.stringify({
                         ref: 'main',
                         inputs: {
-                            target_emails: target_emails || '',
+                            target_emails,
                             mode: mode || 'standard',
                             filters: JSON.stringify(filters || {})
                         }

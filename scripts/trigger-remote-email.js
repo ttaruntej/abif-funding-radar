@@ -9,7 +9,7 @@ const REPO_NAME = process.env.GH_REPO_NAME || 'abif-funding-radar';
 const WORKFLOW_ID = 'send-email.yml';
 
 async function triggerEmailWorkflow() {
-    const { GH_PAT, ABIF_TEAM_EMAIL, TARGET_EMAILS } = process.env;
+    const { GH_PAT, TARGET_EMAILS } = process.env;
 
     if (!GH_PAT) {
         console.error('  ✗ Error: GH_PAT (GitHub Personal Access Token) not found in .env');
@@ -17,7 +17,12 @@ async function triggerEmailWorkflow() {
         process.exit(1);
     }
 
-    const recipients = TARGET_EMAILS && TARGET_EMAILS.trim() !== '' ? TARGET_EMAILS : ABIF_TEAM_EMAIL;
+    const recipients = TARGET_EMAILS && TARGET_EMAILS.trim() !== '' ? TARGET_EMAILS : '';
+
+    if (!recipients) {
+        console.error('  × Error: TARGET_EMAILS is required. Provide one or more comma-separated recipients.');
+        process.exit(1);
+    }
 
     console.log(`📡 [GitHub Relay] Triggering Remote Email Dispatch...`);
     console.log(`🔗 Target: ${REPO_OWNER}/${REPO_NAME} -> ${WORKFLOW_ID}`);

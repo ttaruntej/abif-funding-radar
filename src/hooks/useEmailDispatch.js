@@ -12,6 +12,7 @@ export const useEmailDispatch = (addLog) => {
     });
 
     const [emailCooldown, setEmailCooldown] = useState(0);
+    const hasRecipientInput = (target_emails) => typeof target_emails === 'string' && target_emails.trim() !== '';
 
     const loadDispatchMeta = async (isRefresh = false) => {
         try {
@@ -114,6 +115,11 @@ export const useEmailDispatch = (addLog) => {
 
     const openGitHubEmailWorkflow = async (target_emails, mode = 'standard', filters = {}) => {
         if (dispatching || emailCooldown > 0) return;
+        if (!hasRecipientInput(target_emails)) {
+            setEmailNotification({ type: 'error', message: 'At least one recipient email is required.' });
+            addLog('Recipient email required before opening GitHub workflow', 'error');
+            return;
+        }
         const workflowWindow = typeof window !== 'undefined'
             ? window.open(EMAIL_WORKFLOW_URL, '_blank', 'noopener,noreferrer')
             : null;
@@ -141,8 +147,6 @@ export const useEmailDispatch = (addLog) => {
 
             if (mode === 'filtered') {
                 addLog('Paste the prepared filters JSON into the GitHub workflow inputs.', 'info');
-            } else if (!target_emails || target_emails.trim() === '') {
-                addLog('Leave recipients blank in GitHub to use the default stakeholder list.', 'info');
             }
 
             monitorDispatch(baselineRunId, 'github');
@@ -159,6 +163,11 @@ export const useEmailDispatch = (addLog) => {
     const handleEmailTrigger = async (target_emails, mode = 'standard', filters = {}) => {
         const canSwitchFromGitHub = dispatching && launchMode === 'github' && emailCooldown === 0;
         if ((dispatching && !canSwitchFromGitHub) || emailCooldown > 0) return;
+        if (!hasRecipientInput(target_emails)) {
+            setEmailNotification({ type: 'error', message: 'At least one recipient email is required.' });
+            addLog('Recipient email required before direct dispatch', 'error');
+            return;
+        }
         try {
             setDispatching(true);
             setLaunchMode('relay');

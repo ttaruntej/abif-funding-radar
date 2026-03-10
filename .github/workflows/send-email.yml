@@ -4,9 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       target_emails:
-        description: 'Target email addresses (comma separated). Leave blank to use default.'
-        required: false
-        default: ''
+        description: 'Target email addresses (comma separated).'
+        required: true
       mode:
         description: 'Briefing mode (standard | filtered)'
         required: false
@@ -48,7 +47,6 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          ABIF_TEAM_EMAIL: ${{ secrets.ABIF_TEAM_EMAIL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Commit Email History

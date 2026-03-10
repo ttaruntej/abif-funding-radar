@@ -149,7 +149,7 @@ const App = () => {
         ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
         : {};
     const currentEmailFiltersJson = JSON.stringify(currentEmailFilters);
-    const recipientWorkflowHint = dispatchRecipients.trim() || 'Leave blank in GitHub to use the default stakeholder list';
+    const recipientWorkflowHint = dispatchRecipients.trim() || 'Enter recipient emails to continue';
 
     const copyWorkflowValue = async (field, value) => {
         try {
@@ -164,10 +164,20 @@ const App = () => {
     };
 
     const handleGitHubEmailLaunch = () => {
+        if (!dispatchRecipients.trim()) {
+            setEmailNotification({ type: 'error', message: 'Add at least one recipient email.' });
+            addLog('Recipient email required before opening GitHub workflow', 'error');
+            return;
+        }
         openGitHubEmailWorkflow(dispatchRecipients, briefingMode, currentEmailFilters);
     };
 
     const handleDirectEmailRelay = () => {
+        if (!dispatchRecipients.trim()) {
+            setEmailNotification({ type: 'error', message: 'Add at least one recipient email.' });
+            addLog('Recipient email required before direct dispatch', 'error');
+            return;
+        }
         handleEmailTrigger(dispatchRecipients, briefingMode, currentEmailFilters);
         setDispatchRecipients('');
         setIsEmailModalOpen(false);
@@ -615,20 +625,11 @@ const App = () => {
                                     onChange={(e) => setDispatchRecipients(e.target.value)}
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
-                                            handleEmailTrigger(
-                                                dispatchRecipients,
-                                                briefingMode,
-                                                briefingMode === 'filtered' ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery } : {}
-                                            );
-                                            setDispatchRecipients('');
-                                            setIsEmailModalOpen(false);
+                                            handleDirectEmailRelay();
                                         }
                                     }}
                                 />
                             </div>
-                            <p className="text-[9px] text-slate-400 font-bold uppercase italic px-1">
-                                * Leave recipients blank to use the default stakeholder list from the secure email workflow.
-                            </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <button
                                     onClick={handleGitHubEmailLaunch}

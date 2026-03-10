@@ -16,15 +16,14 @@ const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github
 async function sendEmail() {
     const {
         SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM,
-        ABIF_TEAM_EMAIL, TARGET_EMAILS, GEMINI_API_KEY,
+        TARGET_EMAILS, GEMINI_API_KEY,
         DISPATCH_MODE, DISPATCH_FILTERS
     } = process.env;
 
     const mode = DISPATCH_MODE || 'standard';
     const filters = DISPATCH_FILTERS ? JSON.parse(DISPATCH_FILTERS) : {};
 
-    // Determine recipients
-    let finalRecipients = TARGET_EMAILS && TARGET_EMAILS.trim() !== '' ? TARGET_EMAILS : ABIF_TEAM_EMAIL;
+    const finalRecipients = TARGET_EMAILS && TARGET_EMAILS.trim() !== '' ? TARGET_EMAILS : '';
 
     // Require config to send email
     if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !finalRecipients) {
