@@ -534,23 +534,6 @@ const App = () => {
                         )}
 
                         <div className="space-y-4">
-                            <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
-                                <p className="text-[9px] font-black uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
-                                    GitHub-First Flow
-                                </p>
-                                <p className="mt-2 text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
-                                    Campus networks sometimes block the API host. Open the GitHub workflow first, then use the prepared values below.
-                                </p>
-                                <a
-                                    href={EMAIL_WORKFLOW_URL}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex mt-3 text-[10px] font-black uppercase tracking-[0.18em] text-blue-500 hover:text-blue-600"
-                                >
-                                    Open GitHub Email Workflow
-                                </a>
-                            </div>
-
                             <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-white/5 p-4 space-y-3">
                                 <div className="flex items-center justify-between gap-3">
                                     <p className="text-[9px] font-black uppercase tracking-[0.18em] text-slate-500">
