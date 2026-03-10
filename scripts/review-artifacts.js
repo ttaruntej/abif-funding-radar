@@ -210,7 +210,7 @@ async function analyzeArtifact(item, pageSnippet, artifact) {
     const parts = [
         {
             text:
-                `You are reviewing an official opportunity artifact for ABIF Funding Tracker.\n` +
+                `You are reviewing an official opportunity artifact for ABIF Funding Radar.\n` +
                 `Return strict JSON with keys: summary, deadline, targetAudience, criticalEligibility, applicationLink, publicationDecision, confidence, notes.\n` +
                 `criticalEligibility must be an array of short strings. confidence must be a number from 0 to 1.\n` +
                 `Use null when information is unavailable.`,

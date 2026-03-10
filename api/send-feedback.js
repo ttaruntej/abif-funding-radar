@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         await transporter.sendMail({
             from: `"ABIF Feedback Radar" <${process.env.SMTP_FROM}>`,
             to: "tbimanager@abif.iitkgp.ac.in",
-            subject: `[Suggestion] Funding Tracker Ecosystem Insight - ${new Date().toLocaleDateString()}`,
+            subject: `[Suggestion] Funding Radar Ecosystem Insight - ${new Date().toLocaleDateString()}`,
             html: `
                 <div style="font-family: 'Inter', sans-serif; background-color: #f8fafc; padding: 40px; border-radius: 20px;">
                     <h1 style="font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.05em; color: #0f172a; margin-bottom: 24px;">Strategic Feedback Identified</h1>

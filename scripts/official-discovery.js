@@ -1,5 +1,5 @@
 ﻿/**
- * ABIF Funding Tracker — Automated Scraper
+ * ABIF Funding Radar - Automated Scraper
  *
  * Tiers:
  *   A — Real live scrapers (BIRAC, DST)
@@ -967,7 +967,7 @@ async function generateStrategicReport(data) {
 
 async function runScrapers() {
     console.log('-----------------------------------------------');
-    console.log('  ABIF Funding Tracker — Automated Scraper');
+    console.log('  ABIF Funding Radar - Automated Scraper');
     console.log(`  ${new Date().toISOString()}`);
     console.log('-----------------------------------------------');
 
