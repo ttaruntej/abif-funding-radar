@@ -62,7 +62,16 @@ const App = () => {
         syncProgress,
         cooldown,
         handleRefresh,
-        getScraperMessage
+        syncSteps,
+        syncSummary,
+        syncRunId,
+        syncUpdatedAt,
+        syncFinishedAt,
+        syncStartTime,
+        syncError,
+        isSyncPanelVisible,
+        dismissSyncPanel,
+        formatSyncDuration
     } = useScraperSync(addLog, loadData);
 
     // 4. Email Dispatch Engine (via Custom Hook)
@@ -123,6 +132,12 @@ const App = () => {
     };
 
     const isFiltered = searchQuery !== '' || activeCategory !== 'all' || activeSector !== 'All Sectors' || activeStatus !== 'all';
+    const shouldShowSyncPanel = isSyncPanelVisible && (isRefreshing || refreshSuccess || syncError);
+
+    const formatSyncStamp = (value) => {
+        if (!value) return 'Waiting';
+        return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    };
 
     if (loading) return (
         <div className={`flex flex-col items-center justify-center min-h-screen ${theme === 'dark' ? 'bg-slate-950 text-blue-500' : 'bg-slate-50 text-blue-600'} font-black tracking-[0.5em] uppercase text-center px-4 transition-colors duration-500`}>
@@ -140,30 +155,152 @@ const App = () => {
     return (
         <div className={`min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 ${currentView === 'archive' ? 'bg-slate-100 dark:bg-slate-900 arclight-gradient' : 'bg-slate-50 dark:bg-slate-950'}`}>
 
-            {isRefreshing && (
-                <div className="fixed top-24 right-8 z-[110] animate-in scale-95 origin-right">
-                    <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border border-blue-500/20 shadow-2xl rounded-[24px] p-5 w-[300px] overflow-hidden relative">
-                        {/* Progress Background Pulse */}
-                        {!refreshSuccess && (
-                            <div className="absolute bottom-0 left-0 h-1 bg-blue-500/30 w-full" />
-                        )}
+            {shouldShowSyncPanel && (
+                <div className="fixed top-24 right-4 sm:right-8 z-[110] animate-in scale-95 origin-right">
+                    <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
+                            ? 'border-emerald-500/30'
+                            : syncSummary.tone === 'error'
+                                ? 'border-red-500/30'
+                                : 'border-blue-500/20'
+                        }`}>
+                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                        <div className="absolute bottom-0 left-0 h-1 bg-slate-200/60 dark:bg-white/5 w-full" />
                         <div
-                            className={`absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-1000 ease-out`}
+                            className={`absolute bottom-0 left-0 h-1 transition-all duration-1000 ease-out ${syncSummary.tone === 'success'
+                                    ? 'bg-emerald-500'
+                                    : syncSummary.tone === 'error'
+                                        ? 'bg-red-500'
+                                        : 'bg-blue-500'
+                                }`}
                             style={{ width: `${syncProgress}%` }}
                         />
 
-                        <div className="flex items-center gap-4 mb-3">
-                            <div className={`w-8 h-8 rounded-full border-2 border-slate-700/50 flex items-center justify-center transition-all ${refreshSuccess ? 'bg-emerald-500 border-emerald-500 scale-110' : 'border-t-blue-500 animate-spin'}`}>
-                                {refreshSuccess ? <CheckCircle2 size={16} className="text-white" /> : <Activity size={12} className="text-blue-500" />}
+                        <button
+                            onClick={dismissSyncPanel}
+                            className="absolute top-3 right-3 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                            aria-label="Close sync panel"
+                        >
+                            <X size={14} />
+                        </button>
+
+                        <div className="flex items-start gap-4 mb-5 pr-6">
+                            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
+                                    ? 'bg-emerald-500 border-emerald-500'
+                                    : syncSummary.tone === 'error'
+                                        ? 'bg-red-500 border-red-500'
+                                        : 'border-blue-500/40 bg-blue-500/10'
+                                }`}>
+                                {syncSummary.tone === 'success' ? (
+                                    <CheckCircle2 size={18} className="text-white" />
+                                ) : syncSummary.tone === 'error' ? (
+                                    <X size={18} className="text-white" />
+                                ) : (
+                                    <Activity size={16} className="text-blue-500 animate-pulse" />
+                                )}
                             </div>
-                            <div className="flex-1">
-                                <div className="flex justify-between items-center">
-                                    <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest">{refreshSuccess ? 'Sync Complete' : 'Researching...'}</h3>
-                                    {!refreshSuccess && <span className="text-[9px] font-mono font-bold text-blue-500">{syncProgress}%</span>}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between gap-3">
+                                    <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.22em]">
+                                        {syncSummary.title}
+                                    </h3>
+                                    <span className={`text-[9px] font-mono font-black px-2 py-1 rounded-full uppercase ${syncSummary.tone === 'success'
+                                            ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                                            : syncSummary.tone === 'error'
+                                                ? 'bg-red-500/10 text-red-600 dark:text-red-400'
+                                                : 'bg-blue-500/10 text-blue-600 dark:text-blue-400'
+                                        }`}>
+                                        {Math.round(syncProgress)}%
+                                    </span>
                                 </div>
-                                <p className="text-[8px] text-slate-500 font-bold uppercase mt-1 truncate">{refreshSuccess ? 'Ecosystem Updated' : getScraperMessage()}</p>
+                                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase mt-2 leading-relaxed">
+                                    {syncSummary.subtitle}
+                                </p>
                             </div>
                         </div>
+
+                        <div className="grid grid-cols-2 gap-3 mb-5">
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
+                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                    {formatSyncDuration(elapsedTime)}
+                                </span>
+                            </div>
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Cooldown</span>
+                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                    {cooldown > 0 ? `${cooldown}s` : 'Ready'}
+                                </span>
+                            </div>
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Run</span>
+                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                    {syncRunId ? `#${String(syncRunId).slice(-6)}` : 'Starting'}
+                                </span>
+                            </div>
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                    {refreshSuccess || syncError ? 'Finished' : 'Updated'}
+                                </span>
+                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                    {formatSyncStamp(syncFinishedAt || syncUpdatedAt || syncStartTime)}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="mb-4">
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.24em]">
+                                    Live Cycle
+                                </span>
+                                <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                    Estimated stages + workflow status
+                                </span>
+                            </div>
+
+                            <div className="space-y-2.5">
+                                {syncSteps.map((step) => (
+                                    <div
+                                        key={step.key}
+                                        className={`flex items-start gap-3 rounded-2xl border px-3 py-3 transition-all ${step.status === 'complete'
+                                                ? 'border-emerald-500/20 bg-emerald-500/5'
+                                                : step.status === 'active'
+                                                    ? 'border-blue-500/20 bg-blue-500/5'
+                                                    : step.status === 'error'
+                                                        ? 'border-red-500/20 bg-red-500/5'
+                                                        : 'border-slate-100 dark:border-white/5 bg-slate-50/80 dark:bg-slate-800/40'
+                                            }`}
+                                    >
+                                        <div className={`mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0 ${step.status === 'complete'
+                                                ? 'bg-emerald-500'
+                                                : step.status === 'active'
+                                                    ? 'bg-blue-500 animate-pulse'
+                                                    : step.status === 'error'
+                                                        ? 'bg-red-500'
+                                                        : 'bg-slate-300 dark:bg-slate-700'
+                                            }`} />
+                                        <div className="min-w-0">
+                                            <p className={`text-[10px] font-black uppercase tracking-[0.18em] ${step.status === 'pending'
+                                                    ? 'text-slate-500 dark:text-slate-400'
+                                                    : 'text-slate-900 dark:text-white'
+                                                }`}>
+                                                {step.label}
+                                            </p>
+                                            <p className="text-[9px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                                                {step.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.18em]">
+                            {refreshSuccess
+                                ? 'This panel stays open until you close it.'
+                                : syncError
+                                    ? 'You can close this panel or try synchronizing again after cooldown.'
+                                    : 'Leave this open to follow the sync until the dashboard reloads.'}
+                        </p>
                     </div>
                 </div>
             )}
