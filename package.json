@@ -1,5 +1,5 @@
 {
-    "name": "abif-funding-tracker",
+    "name": "abif-funding-radar",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -11,9 +11,9 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
         "discover:official": "node scripts/official-discovery.js",
-        "curate:datasets": "node scripts/build-datasets-v2.js",
+        "curate:datasets": "node scripts/build-datasets.js",
         "review:artifacts": "node scripts/review-artifacts.js",
-        "sync:v2": "node scripts/official-discovery.js && node scripts/build-datasets-v2.js",
+        "sync": "node scripts/official-discovery.js && node scripts/build-datasets.js",
         "scrape:integrity": "node scripts/integrity-guard.js"
     },
     "dependencies": {

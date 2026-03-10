@@ -1,17 +1,17 @@
 # Handover Documentation: ABIF Funding Intelligence Radar
-**Status:** Operational (v2.9.0-Stable) | **Revision Date:** March 9, 2026
+**Status:** Operational | **Revision Date:** March 9, 2026
 
 ## 🚨 The Brutal Truth (Read This First)
 This codebase is a highly customized, "lean-and-mean" automation machine designed for **Agri Business Incubation Foundation IIT Kharagpur**. It is NOT a standard enterprise CRUD app.
 
-### 1. Scrapers are Fragile
-The heart of the data collection is `scripts/scraper.js`. It depends on **cheerio** and **puppeteer** to crawl government and institutional portals. 
-- **The Problem:** These websites change their HTML structure frequently. If a scraper fails, it's almost certainly because a CSS selector in the script is now obsolete. 
-- **Task:** You will periodically need to update selectors in `scripts/scraper.js`.
+### 1. Collectors are Fragile
+The heart of the data collection is `scripts/official-discovery.js`. It depends on **cheerio** and **puppeteer** to crawl government and institutional portals.
+- **The Problem:** These websites change their HTML structure frequently. If a collector fails, it's almost certainly because a selector in the script is now obsolete.
+- **Task:** You will periodically need to update selectors and source adapters in `scripts/official-discovery.js`.
 
 ### 2. GitHub Actions "Backend"
 There is no traditional database. The "database" is a static JSON file at `public/data/opportunities.json`.
-- **The Workflow:** The system uses GitHub Actions (`.github/workflows/scraper-sync.yml`) as a worker to run the scraper and *commit* the results back to the repo. This triggers the GitHub Pages deployment.
+- **The Workflow:** The system uses GitHub Actions (`.github/workflows/source-sync.yml`) as a worker to run discovery and *commit* the results back to the repo. This triggers the GitHub Pages deployment.
 
 ### 3. Vercel + GitHub "CORS Hack"
 Because GitHub Pages is static, the frontend cannot safely store a GitHub Token or SMTP password. 
@@ -48,7 +48,7 @@ Users can toggle "Low-Perf Mode" via the **Zap** icon in the `TacticalSpear` men
 ---
 
 ## 🛠️ Key Files & their Secrets
-- `scripts/scraper.js`: Data extraction logic.
+- `scripts/official-discovery.js`: Data extraction logic.
 - `scripts/send-email.js`: AI-enhanced email dispatch.
 - `src/App.jsx`: Main UI logic, theme management, and performance toggles.
 - `src/utils/aiBriefing.js`: Reactive AI synthesis generator.
@@ -63,9 +63,9 @@ Users can toggle "Low-Perf Mode" via the **Zap** icon in the `TacticalSpear` men
 ## 🚀 Common Maintenance Tasks
 
 ### Adding a New Funding Source
-1. Go to `scripts/scraper.js`.
-2. Map the new portal's HTML to the scheme object structure.
-3. Update the `main()` function to include your new scraper.
+1. Go to `scripts/official-discovery.js`.
+2. Map the new portal's HTML to the normalized opportunity structure.
+3. Update the collector flow to include the new source and rerun `npm run sync`.
 
 ### Branding Updates
 The official name is **Agri Business Incubation Foundation IIT Kharagpur**. 

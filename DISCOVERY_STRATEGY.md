@@ -1,6 +1,6 @@
-# Version 2 Direction
+# Discovery Strategy
 
-Version 2 moves the discovery stack away from broad notebook-led publishing and toward a safer hybrid:
+The current discovery stack moves away from broad notebook-led publishing and toward a safer hybrid:
 
 - Official pages and known portals are the source of truth.
 - Automated scrapers collect high-confidence opportunities into `public/data/opportunities.json`.
@@ -14,7 +14,7 @@ Version 2 moves the discovery stack away from broad notebook-led publishing and 
 - `npm run discover:official`: runs the restored source-led collector.
 - `npm run curate:datasets`: builds the publishable dataset and review queue.
 - `npm run review:artifacts -- --limit=5`: inspects the highest-priority review items, discovers PDF/image/document artifacts, and optionally runs Gemini extraction on them.
-- `npm run sync:v2`: runs both steps in sequence.
+- `npm run sync`: runs both steps in sequence.
 
 ## Review Policy
 
@@ -30,4 +30,4 @@ The review queue also includes `reviewPriority` and `artifactReviewRecommended` 
 
 ## NotebookLM Role
 
-NotebookLM is still useful in V2, but as a document-analysis assistant for hard PDFs/images after an official source has already been captured. It is not the main backend discovery engine.
+NotebookLM is still useful in the current stack, but as a document-analysis assistant for hard PDFs/images after an official source has already been captured. It is not the main backend discovery engine.

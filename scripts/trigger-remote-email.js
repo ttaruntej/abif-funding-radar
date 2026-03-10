@@ -5,7 +5,7 @@ import path from 'path';
 dotenv.config();
 
 const REPO_OWNER = process.env.GH_REPO_OWNER || 'ttaruntej';
-const REPO_NAME = process.env.GH_REPO_NAME || 'ABIF-Funding-Tracker';
+const REPO_NAME = process.env.GH_REPO_NAME || 'abif-funding-radar';
 const WORKFLOW_ID = 'send-email.yml';
 
 async function triggerEmailWorkflow() {

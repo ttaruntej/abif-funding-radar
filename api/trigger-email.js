@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
     const GH_TOKEN = process.env.GH_TOKEN || process.env.GH_PAT;
     const REPO_OWNER = process.env.GH_REPO_OWNER || 'ttaruntej';
-    const REPO_NAME = process.env.GH_REPO_NAME || 'ABIF-Funding-Tracker';
+    const REPO_NAME = process.env.GH_REPO_NAME || 'abif-funding-radar';
     const WORKFLOW_ID = 'send-email.yml';
 
     if (!GH_TOKEN) {

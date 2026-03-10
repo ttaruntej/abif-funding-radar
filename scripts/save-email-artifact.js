@@ -10,8 +10,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_FILE = path.join(process.cwd(), 'public', 'data', 'opportunities.json');
 const ARTIFACT_PATH = 'C:\\Users\\ABIF IIT KHARAGPUR\\.gemini\\antigravity\\brain\\7dd087ed-6498-4452-a9c6-f51636e737a1\\email_preview.md';
-const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github.io/ABIF-Funding-Tracker/';
-const PUBLIC_GITHUB_REPO_URL = process.env.PUBLIC_GITHUB_REPO_URL || 'https://github.com/ttaruntej/ABIF-Funding-Tracker';
+const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github.io/abif-funding-radar/';
+const PUBLIC_GITHUB_REPO_URL = process.env.PUBLIC_GITHUB_REPO_URL || 'https://github.com/ttaruntej/abif-funding-radar';
 
 async function generatePreview() {
     const { GEMINI_API_KEY } = process.env;

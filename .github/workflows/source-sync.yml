@@ -1,7 +1,7 @@
-name: V2 Verified Source Sync
+name: Verified Source Sync
 
 concurrency:
-  group: collector-v2-${{ github.ref }}
+  group: source-sync-${{ github.ref }}
   cancel-in-progress: true
 
 on:
@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Run Verified Source Sync
-        run: npm run sync:v2
+        run: npm run sync
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 

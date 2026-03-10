@@ -17,8 +17,8 @@ export default async function handler(req, res) {
 
     const GH_TOKEN = process.env.GH_TOKEN;
     const REPO_OWNER = process.env.GH_REPO_OWNER || 'ttaruntej';
-    const REPO_NAME = process.env.GH_REPO_NAME || 'ABIF-Funding-Tracker';
-    const WORKFLOW_ID = 'collector-v2.yml';
+    const REPO_NAME = process.env.GH_REPO_NAME || 'abif-funding-radar';
+    const WORKFLOW_ID = 'source-sync.yml';
 
     if (!GH_TOKEN) {
         return res.status(500).json({ error: 'GitHub Token not configured' });

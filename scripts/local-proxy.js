@@ -7,7 +7,7 @@ dotenv.config();
 
 const PORT = 3000;
 const REPO_OWNER = process.env.GH_REPO_OWNER || 'ttaruntej';
-const REPO_NAME = process.env.GH_REPO_NAME || 'ABIF-Funding-Tracker';
+const REPO_NAME = process.env.GH_REPO_NAME || 'abif-funding-radar';
 const GH_TOKEN = process.env.GH_TOKEN || process.env.GH_PAT;
 
 if (!GH_TOKEN) {
@@ -129,7 +129,7 @@ const server = http.createServer(async (req, res) => {
         else if (pathname === '/api/trigger-sync' && req.method === 'POST') {
             const ghReq = https.request({
                 hostname: 'api.github.com',
-                    path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/collector-v2.yml/dispatches`,
+                    path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/source-sync.yml/dispatches`,
                 method: 'POST',
                 headers: ghHeaders
             }, (ghRes) => {
@@ -148,7 +148,7 @@ const server = http.createServer(async (req, res) => {
         else if (pathname === '/api/trigger-sync' && req.method === 'GET') {
             https.get({
                 hostname: 'api.github.com',
-                path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/collector-v2.yml/runs?per_page=1`,
+                path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/source-sync.yml/runs?per_page=1`,
                 headers: ghHeaders
             }, (ghRes) => {
                 let data = '';

@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_FILE = path.join(process.cwd(), 'public', 'data', 'opportunities.json');
 const HISTORY_FILE = path.join(process.cwd(), 'public', 'data', 'last_email_sent.json');
-const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github.io/ABIF-Funding-Tracker/';
+const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github.io/abif-funding-radar/';
 
 async function sendEmail() {
     const {

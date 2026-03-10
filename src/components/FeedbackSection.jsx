@@ -12,7 +12,7 @@ const FeedbackSection = ({ addLog }) => {
 
         try {
             setStatus('sending');
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-tracker.vercel.app'}/api/send-feedback`, {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar.vercel.app'}/api/send-feedback`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

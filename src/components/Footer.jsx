@@ -124,8 +124,8 @@ const Footer = ({ lastUpdatedTs }) => {
                                     </span>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-[9px] font-bold text-slate-400 uppercase">Core Version</span>
-                                    <span className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase italic">v2.9.0-Stable</span>
+                                    <span className="text-[9px] font-bold text-slate-400 uppercase">Discovery Mode</span>
+                                    <span className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase italic">Verified Source</span>
                                 </div>
                             </div>
                             <div className="mt-5 pt-5 border-t border-slate-100 dark:border-white/5 flex gap-4">

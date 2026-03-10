@@ -199,7 +199,7 @@ async function analyzeArtifact(item, pageSnippet, artifact) {
     }
 
     if (!genAI) {
-        return buildFallbackAnalysis(item, artifact, 'GEMINI_API_KEY is not configured in Version 2.');
+    return buildFallbackAnalysis(item, artifact, 'GEMINI_API_KEY is not configured in the current stack.');
     }
 
     const model = genAI.getGenerativeModel({
