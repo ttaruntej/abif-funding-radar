@@ -36,18 +36,6 @@ export const useEmailDispatch = (addLog) => {
         if (dispatching || emailCooldown > 0) return;
         try {
             setDispatching(true);
-            setEmailCooldown(60); // Start 60s cooldown
-
-            // Cooldown ticker
-            const cooldownTimer = setInterval(() => {
-                setEmailCooldown(c => {
-                    if (c <= 1) {
-                        clearInterval(cooldownTimer);
-                        return 0;
-                    }
-                    return c - 1;
-                });
-            }, 1000);
 
             setEmailNotification({ type: 'initializing', message: 'Connecting to Dispatch Proxy...' });
             addLog(`Initiating ${mode} dispatch relay to stakeholder`, 'info');
@@ -65,6 +53,18 @@ export const useEmailDispatch = (addLog) => {
             } catch (e) { }
 
             await triggerEmail(target_emails, mode, filters);
+            setEmailCooldown(60); // Start cooldown only after the backend accepts the request
+
+            const cooldownTimer = setInterval(() => {
+                setEmailCooldown(c => {
+                    if (c <= 1) {
+                        clearInterval(cooldownTimer);
+                        return 0;
+                    }
+                    return c - 1;
+                });
+            }, 1000);
+
             setEmailNotification({ type: 'in_progress', message: 'Synthesizing Strategic Briefing...' });
 
             let attempts = 0;
@@ -99,8 +99,9 @@ export const useEmailDispatch = (addLog) => {
             }, 5000);
         } catch (err) {
             setDispatching(false);
-            setEmailNotification({ type: 'error', message: 'Failed to initiate dispatch.' });
-            addLog('Critical Dispatch Failure', 'error');
+            setEmailCooldown(0);
+            setEmailNotification({ type: 'error', message: err.message || 'Failed to initiate dispatch.' });
+            addLog(`Critical Dispatch Failure: ${err.message || 'unknown error'}`, 'error');
             setTimeout(() => setEmailNotification(null), 5000);
         }
     };

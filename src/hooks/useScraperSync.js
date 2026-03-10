@@ -212,7 +212,6 @@ export const useScraperSync = (addLog, loadData) => {
         setServerStatus('queued');
         setSyncStartTime(Date.now());
         setElapsedTime(0);
-        setCooldown(60);
         setSyncRunId(null);
         setSyncUpdatedAt(null);
         setSyncFinishedAt(null);
@@ -234,6 +233,7 @@ export const useScraperSync = (addLog, loadData) => {
             }
 
             await triggerScraper();
+            setCooldown(60);
 
             let attempts = 0;
             pollIntervalRef.current = setInterval(async () => {
@@ -286,9 +286,11 @@ export const useScraperSync = (addLog, loadData) => {
         } catch (error) {
             clearPolling();
             setIsRefreshing(false);
+            setCooldown(0);
+            setServerStatus(null);
             setSyncFinishedAt(new Date().toISOString());
-            setSyncError('The sync request could not be started from the frontend.');
-            addLog('Trigger failed', 'error');
+            setSyncError(error.message || 'The sync request could not be started from the frontend.');
+            addLog(`Trigger failed: ${error.message || 'unknown error'}`, 'error');
         }
     };
 
