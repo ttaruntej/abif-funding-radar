@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar.vercel.app';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-tracker.vercel.app';
 
 /**
  * Fetch local data files
