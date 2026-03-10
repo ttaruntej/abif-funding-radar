@@ -95,7 +95,6 @@ const App = () => {
     const [briefingMode, setBriefingMode] = useState('standard');
     const [dispatchRecipients, setDispatchRecipients] = useState('');
     const [showFloatingBar, setShowFloatingBar] = useState(false);
-    const [copiedField, setCopiedField] = useState('');
 
     const sectionRefs = useRef({});
     const categoryNavRef = useRef(null);
@@ -148,20 +147,6 @@ const App = () => {
     const currentEmailFilters = briefingMode === 'filtered'
         ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
         : {};
-    const currentEmailFiltersJson = JSON.stringify(currentEmailFilters);
-    const recipientWorkflowHint = dispatchRecipients.trim() || 'Enter recipient emails to continue';
-
-    const copyWorkflowValue = async (field, value) => {
-        try {
-            if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
-                await navigator.clipboard.writeText(value);
-                setCopiedField(field);
-                setTimeout(() => setCopiedField(''), 2000);
-            }
-        } catch (error) {
-            addLog(`Clipboard copy failed for ${field}`, 'error');
-        }
-    };
 
     const handleGitHubEmailLaunch = () => {
         if (!dispatchRecipients.trim()) {
@@ -544,53 +529,6 @@ const App = () => {
                         )}
 
                         <div className="space-y-4">
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-white/5 p-4 space-y-3">
-                                <div className="flex items-center justify-between gap-3">
-                                    <p className="text-[9px] font-black uppercase tracking-[0.18em] text-slate-500">
-                                        GitHub Workflow Inputs
-                                    </p>
-                                    <span className="text-[9px] font-black text-blue-500 uppercase tracking-[0.16em]">
-                                        {briefingMode}
-                                    </span>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
-                                        <div className="flex items-center justify-between gap-3">
-                                            <span className="text-[9px] font-black uppercase tracking-[0.16em] text-slate-400">Target Emails</span>
-                                            <button
-                                                onClick={() => copyWorkflowValue('emails', dispatchRecipients.trim())}
-                                                className="text-[9px] font-black uppercase tracking-[0.16em] text-blue-500 hover:text-blue-600"
-                                                disabled={!dispatchRecipients.trim()}
-                                            >
-                                                {copiedField === 'emails' ? 'Copied' : 'Copy'}
-                                            </button>
-                                        </div>
-                                        <p className="mt-2 text-[10px] font-medium text-slate-600 dark:text-slate-300 break-all">
-                                            {recipientWorkflowHint}
-                                        </p>
-                                    </div>
-
-                                    <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
-                                        <div className="flex items-center justify-between gap-3">
-                                            <span className="text-[9px] font-black uppercase tracking-[0.16em] text-slate-400">Filters JSON</span>
-                                            <button
-                                                onClick={() => copyWorkflowValue('filters', currentEmailFiltersJson)}
-                                                className="text-[9px] font-black uppercase tracking-[0.16em] text-blue-500 hover:text-blue-600"
-                                            >
-                                                {copiedField === 'filters' ? 'Copied' : 'Copy'}
-                                            </button>
-                                        </div>
-                                        <textarea
-                                            readOnly
-                                            value={currentEmailFiltersJson}
-                                            rows={briefingMode === 'filtered' ? 4 : 2}
-                                            className="mt-2 w-full bg-transparent text-[10px] font-mono text-slate-600 dark:text-slate-300 resize-none outline-none"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
                             <div className="flex justify-between items-center mb-1">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block ml-1">New Recipient(s)</label>
                                 <span className="text-[10px] font-black text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-full uppercase tracking-tighter">
