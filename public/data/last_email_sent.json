@@ -1,32 +1,549 @@
 [
   {
-    "name": "BIRAC Biotechnology Ignition Grant (BIG)",
-    "body": "BIRAC",
-    "maxAward": "₹50 Lakhs",
-    "deadline": "01-07-2026",
-    "link": "https://birac.nic.in/big.php",
-    "description": "Grant-in-aid to establish and validate proof-of-concept for innovative ideas in BioTech/AgriTech.",
-    "status": "Rolling",
+    "name": "LIC HFL Social Trailblazer Program",
+    "body": "LIC Housing Finance Ltd",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Cohort Cycles",
+    "link": "https://www.lichousing.com/csr",
+    "description": "Incubation partner program focused on social impact, MVP, and early-revenue startups.",
+    "status": "Open",
     "linkStatus": "verified",
-    "category": "national",
-    "lastScraped": "2026-03-10T13:43:55.806Z",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:53.526Z",
     "targetAudience": [
-      "startup"
+      "incubator"
     ],
     "sectors": [
-      "BioTech",
-      "AgriTech",
-      "MedTech"
+      "Social Impact",
+      "AgriTech"
     ],
     "stages": [
       "Ideation",
       "Seed"
     ],
     "criticalEligibility": [
-      "Must be incorporated in the last 3 years",
-      "Indian citizens must hold >51% ownership (OCI/PIO disqualified from this)",
-      "Must have functional R&D lab or be physically incubated in a recognized Incubator",
-      "Cannot be basic research; must have clear commercial prospects"
+      "Must possess valid NGO Darpan ID (NITI Aayog)",
+      "TBI must demonstrate a specialization in social impact ventures",
+      "Founding team must not have political or religious affiliations"
+    ]
+  },
+  {
+    "name": "IDFC FIRST Bank IGNITE Accelerator",
+    "body": "IDFC FIRST Bank",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Recurring Cycle",
+    "link": "https://www.idfcfirstbank.com/csr",
+    "description": "Corporate-backed growth accelerator partnering with academic TBIs like IITs/IIMs.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:54.575Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Technology",
+      "Social Impact"
+    ],
+    "stages": [
+      "Seed",
+      "Growth"
+    ],
+    "criticalEligibility": [
+      "3-Year established track record in incubation activities",
+      "Mandatory selection/due-diligence committee for startups",
+      "Must have audited financials for last 3 financial years"
+    ]
+  },
+  {
+    "name": "Kotak BizLabs Accelerator (Velocity & IRP)",
+    "body": "Kotak Mahindra Bank",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Recurring Cohorts",
+    "link": "https://www.kotak.com/en/about-us/corporate-responsibility.html",
+    "description": "Implementation partnership with specialized TBIs to run growth-stage and investor readiness cohorts.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:53.640Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "DeepTech",
+      "HealthTech",
+      "FinTech"
+    ],
+    "stages": [
+      "Seed",
+      "Growth"
+    ],
+    "criticalEligibility": [
+      "CSR-1 Registration (MCA SRN) is non-negotiable",
+      "Must hold valid 12A and 80G tax registrations",
+      "Minimum track record of handling high-value grant disbursements"
+    ]
+  },
+  {
+    "name": "Infosys Social Innovation & Entrepreneurship CSR",
+    "body": "Infosys Foundation",
+    "maxAward": "Project Based",
+    "deadline": "FY 2025-26 Cycle",
+    "link": "https://www.infosys.com/infosys-foundation/grants.html",
+    "description": "Partnership with Section 8 TBIs for implementing social innovation and skills development programs.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:56.572Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Social Innovation",
+      "Education"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "criticalEligibility": [
+      "Must be a registered Section 8 company/Trust/Society",
+      "Mandatory impact assessment reports for local CSR committees",
+      "Must have strict mechanisms for fund ring-fencing"
+    ]
+  },
+  {
+    "name": "TIDE 2.0",
+    "body": "MeitY",
+    "maxAward": "₹75 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://tide20.meity.gov.in/",
+    "description": "Technology Incubation and Development of Entrepreneurs — MeitY ICT incubation programme.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:58.914Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "DST NIDHI - TBI Support",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Varies",
+    "link": "https://nidhi.dst.gov.in/",
+    "description": "National initiative for developing and harnessing innovations via Technology Business Incubators.",
+    "targetAudience": [
+      "incubator"
+    ],
+    "category": "national",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:00.937Z"
+  },
+  {
+    "status": "Rolling",
+    "name": "Startup India Seed Fund Scheme (SISFS)",
+    "body": "DPIIT / Startup India",
+    "description": "[Automated Source] Financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization.",
+    "maxAward": "Up to ₹50 Lakhs",
+    "link": "https://seedfund.startupindia.gov.in/",
+    "deadline": "Rolling (Open All Year)",
+    "category": "national",
+    "linkStatus": "verified",
+    "provider": "DPIIT",
+    "amount": "Up to ₹50 Lakhs",
+    "lastScraped": "2026-03-10T13:43:49.210Z",
+    "dataSource": "scraper:sisfs:incubator",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "BIRAC–Social Alpha Assistive Tech Quest",
+    "body": "Tata Trusts / BIRAC",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "30-09-2026",
+    "link": "https://birac.nic.in/cfp.php",
+    "description": "Joint programme to discover and scale innovations in assistive technologies for persons with disabilities.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:00.618Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ],
+    "criticalEligibility": [
+      "Prototype must be at TRL 4 or higher",
+      "Lead applicant must be a DPIIT-recognized startup",
+      "Previous awardees of BIRAC-Social Alpha cannot apply"
+    ]
+  },
+  {
+    "name": "NIDHI-TBI",
+    "body": "DST (MoST)",
+    "maxAward": "₹10 Crores",
+    "deadline": "Rolling",
+    "link": "https://nidhi.dst.gov.in/nidhi-tbi",
+    "description": "National Initiative for Developing and Harnessing Innovations — TBI grant for institutional incubators.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:05.706Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "NIDHI-EIR",
+    "body": "DST (via NSTEDB)",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://nidhi.dst.gov.in/nidhi-eir",
+    "description": "Entrepreneur In Residence fellowship for innovators to work full-time on their startup idea.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:05.669Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Atal Incubation Centre (AIC) Grant",
+    "body": "AIM (NITI Aayog)",
+    "maxAward": "Up to ₹10 Crores",
+    "deadline": "Check Portal",
+    "link": "https://aim.gov.in/aic.php",
+    "description": "Establishment grant for new incubation centres to support the Indian innovation ecosystem.",
+    "targetAudience": [
+      "incubator"
+    ],
+    "category": "national",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:10.022Z"
+  },
+  {
+    "name": "MSME Incubation Scheme",
+    "body": "Ministry of MSME",
+    "maxAward": "₹1 Crore",
+    "deadline": "Rolling",
+    "link": "https://msme.gov.in/technology-incubation",
+    "description": "Technology Incubation and Development of Enterprises scheme for business incubation support.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:09.921Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "India Agritech Incubation Network",
+    "body": "Bill & Melinda Gates Foundation",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://www.gatesfoundation.org/",
+    "description": "Gates Foundation-backed agritech incubation network supporting solutions for smallholder farmers.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:09.259Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Rockefeller Foundation Global Impact Incubator",
+    "body": "Rockefeller Foundation",
+    "maxAward": "$500,000",
+    "deadline": "Rolling",
+    "link": "https://www.rockefellerfoundation.org/grant-opportunities/",
+    "description": "Rockefeller Foundation supports incubators working on food, health, and energy systems globally.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:14.083Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Clean Energy International Incubation Centre",
+    "body": "Tata Trusts / Social Alpha",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://socialalpha.org/ceiic/",
+    "description": "CEIIC supports clean energy innovators through mentorship, funding, and market linkages.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:12.201Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "thingQbator",
+    "body": "NASSCOM Foundation + Cisco CSR",
+    "maxAward": "₹15 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://nasscomfoundation.org/thingqbator/",
+    "description": "IoT-focused incubator by NASSCOM Foundation and Cisco CSR supporting tech-for-good startups.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:17.053Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Krishi Mangal",
+    "body": "Cisco CSR + Social Alpha",
+    "maxAward": "₹10 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://socialalpha.org/krishi-mangal/",
+    "description": "Accelerates agritech innovations for small and marginal farmers through Social Alpha and Cisco.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:15.738Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "SBI Foundation – Innovators for Bharat",
+    "body": "SBI Foundation CSR",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "31-05-2026",
+    "link": "https://sbifoundation.in/",
+    "description": "Innovators for Bharat supports social innovators with funding, mentorship, and market linkages.",
+    "status": "Rolling",
+    "linkStatus": "probable",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:51.826Z",
+    "dataSource": "scraper:sbif",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Social Impact",
+      "EdTech",
+      "HealthTech"
+    ],
+    "stages": [
+      "Seed",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "MeitY TIDE 2.0 (Incubator Support)",
+    "body": "MeitY Startup Hub",
+    "maxAward": "Grants & Investment Support",
+    "deadline": "Varies",
+    "link": "https://vc.meity.gov.in/tide2.0/",
+    "description": "Technology Incubation and Development of Entrepreneurs providing financial/technical support to incubators supporting ICT startups.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:incubator",
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:23.221Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "STPI Next Generation Incubation Scheme (NGIS) / LEAP Ahead",
+    "body": "STPI (MeitY)",
+    "maxAward": "Up to ₹25 Lakhs",
+    "deadline": "Varies by Challenge",
+    "link": "https://www.stpi.in/en/next-generation-incubation-scheme",
+    "description": "Incubation facilities, seed funding edge, and mentorship for startups in Tier II/III cities via local STPI centers.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:incubator",
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:21.351Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "IIG - CSR Opportunities Portal",
+    "body": "Invest India",
+    "maxAward": "CSR Grants",
+    "deadline": "Rolling",
+    "link": "https://indiainvestmentgrid.gov.in/opportunities/csr",
+    "description": "Official portal connecting Section 8 Incubators with corporate CSR mandates.",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "category": "csr",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:23.187Z"
+  },
+  {
+    "name": "MANAGE-CIA Agri-Business Incubation",
+    "body": "MANAGE Hyderabad",
+    "maxAward": "Up to ?25 Lakhs",
+    "deadline": "March 2026",
+    "link": "https://www.manage.gov.in/cia/",
+    "description": "Comprehensive incubation program offering mentorship, infrastructure, and financial grants for agri-startups.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:24.519Z"
+  },
+  {
+    "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
+    "body": "MANAGE / Ministry of Agriculture",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "31-03-2026",
+    "link": "https://www.manage.gov.in/cia/cia.asp",
+    "description": "Grant-in-aid to support agribusiness startups for product development and scaling under the RAFTAAR scheme.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup",
+      "incubator"
+    ],
+    "sectors": [
+      "AgriTech",
+      "FoodTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:24.411Z"
+  },
+  {
+    "name": "HDFC Bank Parivartan Start-up Grants (FY26)",
+    "body": "HDFC Bank CSR",
+    "maxAward": "₹20 Crores (Total Pool)",
+    "deadline": "Rolling (FY26 Cycle)",
+    "link": "https://www.hdfcbank.com/personal/useful-links/social-initiatives/parivartan",
+    "description": "CSR funding for social impact startups focusing on education, healthcare, and rural development.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:45:37.420Z",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup",
+      "incubator"
+    ],
+    "sectors": [
+      "Social Impact",
+      "HealthTech",
+      "EdTech"
+    ],
+    "stages": [
+      "Proof of Concept",
+      "Seed",
+      "Scale-up"
     ]
   }
 ]
