@@ -62,6 +62,8 @@ const App = () => {
         syncProgress,
         cooldown,
         handleRefresh,
+        openGitHubSyncWorkflow,
+        syncLaunchMode,
         syncSteps,
         syncSummary,
         syncRunId,
@@ -77,9 +79,12 @@ const App = () => {
     // 4. Email Dispatch Engine (via Custom Hook)
     const {
         emailNotification,
+        dispatching,
+        emailLaunchMode,
         emailCooldown,
         dispatchMeta,
         handleEmailTrigger,
+        openGitHubEmailWorkflow,
         setEmailNotification
     } = useEmailDispatch(addLog);
 
@@ -90,6 +95,7 @@ const App = () => {
     const [briefingMode, setBriefingMode] = useState('standard');
     const [dispatchRecipients, setDispatchRecipients] = useState('');
     const [showFloatingBar, setShowFloatingBar] = useState(false);
+    const [copiedField, setCopiedField] = useState('');
 
     const sectionRefs = useRef({});
     const categoryNavRef = useRef(null);
@@ -137,6 +143,34 @@ const App = () => {
     const formatSyncStamp = (value) => {
         if (!value) return 'Waiting';
         return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    };
+
+    const currentEmailFilters = briefingMode === 'filtered'
+        ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
+        : {};
+    const currentEmailFiltersJson = JSON.stringify(currentEmailFilters);
+    const recipientWorkflowHint = dispatchRecipients.trim() || 'Leave blank in GitHub to use the default stakeholder list';
+
+    const copyWorkflowValue = async (field, value) => {
+        try {
+            if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(value);
+                setCopiedField(field);
+                setTimeout(() => setCopiedField(''), 2000);
+            }
+        } catch (error) {
+            addLog(`Clipboard copy failed for ${field}`, 'error');
+        }
+    };
+
+    const handleGitHubEmailLaunch = () => {
+        openGitHubEmailWorkflow(dispatchRecipients, briefingMode, currentEmailFilters);
+    };
+
+    const handleDirectEmailRelay = () => {
+        handleEmailTrigger(dispatchRecipients, briefingMode, currentEmailFilters);
+        setDispatchRecipients('');
+        setIsEmailModalOpen(false);
     };
 
     if (loading) return (
@@ -301,14 +335,24 @@ const App = () => {
                                     ? 'You can close this panel or try synchronizing again after cooldown.'
                                     : 'Leave this open to follow the sync until the dashboard reloads.'}
                         </p>
-                        <a
-                            href={SYNC_WORKFLOW_URL}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex mt-3 text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
-                        >
-                            Open GitHub Sync Workflow
-                        </a>
+                        <div className="flex flex-wrap gap-3 mt-3">
+                            <a
+                                href={SYNC_WORKFLOW_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
+                            >
+                                Open GitHub Sync Workflow
+                            </a>
+                            {syncLaunchMode === 'github' && cooldown === 0 && !refreshSuccess && !syncRunId && (
+                                <button
+                                    onClick={handleRefresh}
+                                    className="inline-flex text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-slate-700 dark:hover:text-slate-200"
+                                >
+                                    Try Direct Relay Instead
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
@@ -425,7 +469,7 @@ const App = () => {
             </main>
 
             <TacticalSpear
-                handleRefresh={handleRefresh}
+                handleRefresh={openGitHubSyncWorkflow}
                 isRefreshing={isRefreshing}
                 refreshCooldown={cooldown}
                 handleExportCSV={() => exportToCSV(filtered)}
@@ -492,10 +536,10 @@ const App = () => {
                         <div className="space-y-4">
                             <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
                                 <p className="text-[9px] font-black uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
-                                    Fallback Path
+                                    GitHub-First Flow
                                 </p>
                                 <p className="mt-2 text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
-                                    If the dispatch API is slow or unreachable, run the same email workflow directly in GitHub.
+                                    Campus networks sometimes block the API host. Open the GitHub workflow first, then use the prepared values below.
                                 </p>
                                 <a
                                     href={EMAIL_WORKFLOW_URL}
@@ -505,6 +549,53 @@ const App = () => {
                                 >
                                     Open GitHub Email Workflow
                                 </a>
+                            </div>
+
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-white/5 p-4 space-y-3">
+                                <div className="flex items-center justify-between gap-3">
+                                    <p className="text-[9px] font-black uppercase tracking-[0.18em] text-slate-500">
+                                        GitHub Workflow Inputs
+                                    </p>
+                                    <span className="text-[9px] font-black text-blue-500 uppercase tracking-[0.16em]">
+                                        {briefingMode}
+                                    </span>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
+                                        <div className="flex items-center justify-between gap-3">
+                                            <span className="text-[9px] font-black uppercase tracking-[0.16em] text-slate-400">Target Emails</span>
+                                            <button
+                                                onClick={() => copyWorkflowValue('emails', dispatchRecipients.trim())}
+                                                className="text-[9px] font-black uppercase tracking-[0.16em] text-blue-500 hover:text-blue-600"
+                                                disabled={!dispatchRecipients.trim()}
+                                            >
+                                                {copiedField === 'emails' ? 'Copied' : 'Copy'}
+                                            </button>
+                                        </div>
+                                        <p className="mt-2 text-[10px] font-medium text-slate-600 dark:text-slate-300 break-all">
+                                            {recipientWorkflowHint}
+                                        </p>
+                                    </div>
+
+                                    <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
+                                        <div className="flex items-center justify-between gap-3">
+                                            <span className="text-[9px] font-black uppercase tracking-[0.16em] text-slate-400">Filters JSON</span>
+                                            <button
+                                                onClick={() => copyWorkflowValue('filters', currentEmailFiltersJson)}
+                                                className="text-[9px] font-black uppercase tracking-[0.16em] text-blue-500 hover:text-blue-600"
+                                            >
+                                                {copiedField === 'filters' ? 'Copied' : 'Copy'}
+                                            </button>
+                                        </div>
+                                        <textarea
+                                            readOnly
+                                            value={currentEmailFiltersJson}
+                                            rows={briefingMode === 'filtered' ? 4 : 2}
+                                            className="mt-2 w-full bg-transparent text-[10px] font-mono text-slate-600 dark:text-slate-300 resize-none outline-none"
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="flex justify-between items-center mb-1">
@@ -555,21 +646,22 @@ const App = () => {
                             <p className="text-[9px] text-slate-400 font-bold uppercase italic px-1">
                                 * Leave recipients blank to use the default stakeholder list from the secure email workflow.
                             </p>
-                            <button
-                                onClick={() => {
-                                    handleEmailTrigger(
-                                        dispatchRecipients,
-                                        briefingMode,
-                                        briefingMode === 'filtered' ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery } : {}
-                                    );
-                                    setDispatchRecipients('');
-                                    setIsEmailModalOpen(false);
-                                }}
-                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
-                                disabled={emailCooldown > 0}
-                            >
-                                {emailCooldown > 0 ? `Proxy Locked (${emailCooldown}s)` : 'Initiate Dispatch Relay'}
-                            </button>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button
+                                    onClick={handleGitHubEmailLaunch}
+                                    className="w-full bg-slate-950 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl active:scale-95 disabled:opacity-50"
+                                    disabled={emailCooldown > 0 || dispatching}
+                                >
+                                    {dispatching ? 'Watching GitHub Run' : 'Open GitHub Workflow'}
+                                </button>
+                                <button
+                                    onClick={handleDirectEmailRelay}
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
+                                    disabled={emailCooldown > 0 || (dispatching && emailLaunchMode !== 'github')}
+                                >
+                                    {emailCooldown > 0 ? `Cooling (${emailCooldown}s)` : 'Try Direct Relay'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

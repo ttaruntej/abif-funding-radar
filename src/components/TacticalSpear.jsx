@@ -32,7 +32,7 @@ const TacticalSpear = ({
         {
             id: 'sync',
             icon: refreshCooldown > 0 ? <span className="text-[10px] font-black">{refreshCooldown}s</span> : <RefreshCw size={20} className={isRefreshing ? 'animate-spin' : ''} />,
-            label: refreshCooldown > 0 ? `COOLDOWN: ${refreshCooldown}S` : 'SYNCHRONIZE',
+            label: refreshCooldown > 0 ? `COOLDOWN: ${refreshCooldown}S` : 'OPEN GITHUB SYNC',
             onClick: handleRefresh,
             disabled: isRefreshing || currentView === 'archive' || refreshCooldown > 0,
             color: refreshCooldown > 0 ? 'text-amber-500' : 'hover:text-blue-500 hover:bg-blue-500/10'
@@ -47,7 +47,7 @@ const TacticalSpear = ({
         {
             id: 'email',
             icon: emailCooldown > 0 ? <span className="text-[10px] font-black">{emailCooldown}s</span> : <Mail size={20} />,
-            label: emailCooldown > 0 ? `LINK COOLING: ${emailCooldown}S` : 'TRANSMIT BRIEFING',
+            label: emailCooldown > 0 ? `LINK COOLING: ${emailCooldown}S` : 'OPEN EMAIL WORKFLOW',
             onClick: onEmailClick,
             disabled: emailCooldown > 0,
             color: emailCooldown > 0 ? 'text-amber-500' : 'hover:text-indigo-500 hover:bg-indigo-500/10'
