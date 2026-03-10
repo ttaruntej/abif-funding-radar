@@ -14,7 +14,9 @@
         "curate:datasets": "node scripts/build-datasets.js",
         "review:artifacts": "node scripts/review-artifacts.js",
         "sync": "node scripts/official-discovery.js && node scripts/build-datasets.js",
-        "scrape:integrity": "node scripts/integrity-guard.js"
+        "scrape:integrity": "node scripts/integrity-guard.js",
+        "proxy:local": "node scripts/local-proxy.js",
+        "email:trigger": "node scripts/trigger-remote-email.js"
     },
     "dependencies": {
         "@google/generative-ai": "^0.24.1",
