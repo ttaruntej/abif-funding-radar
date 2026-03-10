@@ -9,7 +9,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:43:54.183Z",
+    "lastScraped": "2026-03-10T15:25:22.043Z",
     "targetAudience": [
       "startup"
     ],
@@ -38,7 +38,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:43:54.298Z",
+    "lastScraped": "2026-03-10T15:25:21.756Z",
     "targetAudience": [
       "startup"
     ],
@@ -67,7 +67,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:43:53.526Z",
+    "lastScraped": "2026-03-10T15:25:20.283Z",
     "targetAudience": [
       "incubator"
     ],
@@ -95,7 +95,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:43:54.575Z",
+    "lastScraped": "2026-03-10T15:25:21.414Z",
     "targetAudience": [
       "incubator"
     ],
@@ -123,7 +123,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:43:53.640Z",
+    "lastScraped": "2026-03-10T15:25:19.566Z",
     "targetAudience": [
       "incubator"
     ],
@@ -152,7 +152,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:43:56.572Z",
+    "lastScraped": "2026-03-10T15:25:23.454Z",
     "targetAudience": [
       "incubator"
     ],
@@ -180,7 +180,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:43:55.872Z",
+    "lastScraped": "2026-03-10T15:25:24.120Z",
     "targetAudience": [
       "startup",
       "student"
@@ -209,7 +209,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "national",
-    "lastScraped": "2026-03-10T13:43:58.914Z",
+    "lastScraped": "2026-03-10T15:25:28.042Z",
     "targetAudience": [
       "incubator"
     ],
@@ -242,7 +242,7 @@
       "Seed"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:43:56.265Z"
+    "lastScraped": "2026-03-10T15:25:29.400Z"
   },
   {
     "name": "BIRAC Biotechnology Ignition Grant (BIG)",
@@ -254,7 +254,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:43:55.806Z",
+    "lastScraped": "2026-03-10T15:25:29.758Z",
     "targetAudience": [
       "startup"
     ],
@@ -287,7 +287,7 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T13:44:00.937Z"
+    "lastScraped": "2026-03-10T15:25:34.660Z"
   },
   {
     "status": "Rolling",
@@ -301,7 +301,7 @@
     "linkStatus": "verified",
     "provider": "DPIIT",
     "amount": "Up to ₹50 Lakhs",
-    "lastScraped": "2026-03-10T13:43:49.210Z",
+    "lastScraped": "2026-03-10T15:25:13.778Z",
     "dataSource": "scraper:sisfs:incubator",
     "targetAudience": [
       "incubator"
@@ -323,7 +323,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:44:00.618Z",
+    "lastScraped": "2026-03-10T15:25:33.314Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -350,7 +350,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:00.339Z",
+    "lastScraped": "2026-03-10T15:25:32.869Z",
     "targetAudience": [
       "startup"
     ],
@@ -371,7 +371,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:03.452Z",
+    "lastScraped": "2026-03-10T15:25:34.022Z",
     "targetAudience": [
       "startup"
     ],
@@ -392,7 +392,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:00.494Z",
+    "lastScraped": "2026-03-10T15:25:35.489Z",
     "targetAudience": [
       "startup"
     ],
@@ -413,7 +413,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:06.099Z",
+    "lastScraped": "2026-03-10T15:25:38.870Z",
     "targetAudience": [
       "startup"
     ],
@@ -434,7 +434,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:04.949Z",
+    "lastScraped": "2026-03-10T15:25:38.816Z",
     "targetAudience": [
       "startup"
     ],
@@ -455,7 +455,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:06.311Z",
+    "lastScraped": "2026-03-10T15:25:39.051Z",
     "targetAudience": [
       "startup"
     ],
@@ -476,7 +476,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:05.706Z",
+    "lastScraped": "2026-03-10T15:25:36.721Z",
     "targetAudience": [
       "incubator"
     ],
@@ -497,7 +497,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:05.669Z",
+    "lastScraped": "2026-03-10T15:25:36.576Z",
     "targetAudience": [
       "incubator"
     ],
@@ -521,7 +521,7 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T13:44:10.022Z"
+    "lastScraped": "2026-03-10T15:25:42.386Z"
   },
   {
     "name": "MSME Incubation Scheme",
@@ -533,7 +533,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "national",
-    "lastScraped": "2026-03-10T13:44:09.921Z",
+    "lastScraped": "2026-03-10T15:25:43.999Z",
     "targetAudience": [
       "incubator"
     ],
@@ -554,7 +554,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:07.672Z",
+    "lastScraped": "2026-03-10T15:25:39.728Z",
     "targetAudience": [
       "startup"
     ],
@@ -575,7 +575,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:07.108Z",
+    "lastScraped": "2026-03-10T15:25:39.463Z",
     "targetAudience": [
       "startup"
     ],
@@ -596,7 +596,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:44:09.259Z",
+    "lastScraped": "2026-03-10T15:25:40.005Z",
     "targetAudience": [
       "incubator"
     ],
@@ -617,7 +617,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:13.589Z",
+    "lastScraped": "2026-03-10T15:25:46.339Z",
     "targetAudience": [
       "startup"
     ],
@@ -638,7 +638,7 @@
     "status": "Verify Manually",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:11.034Z",
+    "lastScraped": "2026-03-10T15:25:48.930Z",
     "targetAudience": [
       "startup"
     ],
@@ -659,7 +659,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:14.083Z",
+    "lastScraped": "2026-03-10T15:25:46.377Z",
     "targetAudience": [
       "incubator"
     ],
@@ -680,7 +680,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:12.114Z",
+    "lastScraped": "2026-03-10T15:25:44.951Z",
     "targetAudience": [
       "startup"
     ],
@@ -701,7 +701,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:44:12.201Z",
+    "lastScraped": "2026-03-10T15:25:49.156Z",
     "targetAudience": [
       "incubator"
     ],
@@ -722,7 +722,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:44:17.053Z",
+    "lastScraped": "2026-03-10T15:26:57.021Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -744,7 +744,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:44:15.738Z",
+    "lastScraped": "2026-03-10T15:25:50.794Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -766,7 +766,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:18.655Z",
+    "lastScraped": "2026-03-10T15:25:53.669Z",
     "targetAudience": [
       "startup"
     ],
@@ -787,7 +787,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:15.308Z",
+    "lastScraped": "2026-03-10T15:25:50.436Z",
     "targetAudience": [
       "startup"
     ],
@@ -808,7 +808,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-03-10T13:44:16.766Z",
+    "lastScraped": "2026-03-10T15:25:51.865Z",
     "targetAudience": [
       "startup"
     ],
@@ -829,7 +829,7 @@
     "status": "Rolling",
     "linkStatus": "probable",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:43:51.826Z",
+    "lastScraped": "2026-03-10T15:25:17.442Z",
     "dataSource": "scraper:sbif",
     "targetAudience": [
       "incubator",
@@ -860,7 +860,7 @@
     "deadline": "BIRAC Announces Call for under Proposal Product Commercialization Program Fund... Call is open throughout the year",
     "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T13:43:41.167Z",
+    "lastScraped": "2026-03-10T15:25:00.039Z",
     "sectors": [
       "BioTech",
       "MedTech",
@@ -887,7 +887,7 @@
     "deadline": "30-06-2026",
     "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T13:43:41.137Z",
+    "lastScraped": "2026-03-10T15:25:01.077Z",
     "sectors": [
       "BioTech",
       "MedTech",
@@ -984,7 +984,7 @@
     "category": "national",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:43:42.655Z",
+    "lastScraped": "2026-03-10T15:25:04.340Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1010,7 +1010,7 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:43:42.564Z",
+    "lastScraped": "2026-03-10T15:25:04.785Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1036,7 +1036,7 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:43:43.135Z",
+    "lastScraped": "2026-03-10T15:25:04.351Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1062,7 +1062,7 @@
     "category": "international",
     "status": "Rolling",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:43:42.534Z",
+    "lastScraped": "2026-03-10T15:25:05.263Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1089,7 +1089,7 @@
     "status": "Verify Manually",
     "dataSource": "manual:incubator",
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:44:23.221Z",
+    "lastScraped": "2026-03-10T15:27:02.684Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1111,7 +1111,7 @@
     "status": "Verify Manually",
     "dataSource": "manual:incubator",
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:44:21.351Z",
+    "lastScraped": "2026-03-10T15:27:00.469Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1136,7 +1136,7 @@
     "category": "csr",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T13:44:23.187Z"
+    "lastScraped": "2026-03-10T15:27:04.094Z"
   },
   {
     "name": "NABARD AgriSURE Fund (Direct Scheme)",
@@ -1161,7 +1161,7 @@
       "Scale-up"
     ],
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:44:20.509Z"
+    "lastScraped": "2026-03-10T15:26:57.491Z"
   },
   {
     "name": "RKVY-RAFTAAR Seed Grants (NEST/NEO)",
@@ -1184,7 +1184,7 @@
       "Seed"
     ],
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T13:44:23.882Z"
+    "lastScraped": "2026-03-10T15:27:03.032Z"
   },
   {
     "name": "MANAGE-CIA Agri-Business Incubation",
@@ -1208,7 +1208,7 @@
       "Seed"
     ],
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:44:24.519Z"
+    "lastScraped": "2026-03-10T15:27:05.254Z"
   },
   {
     "name": "AGRI UDAAN 8.0 Food & Agribusiness Accelerator",
@@ -1232,7 +1232,7 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:44:26.882Z"
+    "lastScraped": "2026-03-10T15:27:10.286Z"
   },
   {
     "name": "Karnataka Elevate NXT 2026 (Deeptech)",
@@ -1257,7 +1257,7 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:32.537Z"
+    "lastScraped": "2026-03-10T15:27:10.237Z"
   },
   {
     "name": "Startup Odisha – Monthly Sustenance Allowance",
@@ -1280,7 +1280,7 @@
       "Prototype"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:44:26.945Z"
+    "lastScraped": "2026-03-10T15:28:38.304Z"
   },
   {
     "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
@@ -1305,7 +1305,7 @@
       "Seed"
     ],
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:44:24.411Z"
+    "lastScraped": "2026-03-10T15:27:05.251Z"
   },
   {
     "name": "StartupTN Agri-Tech Grant",
@@ -1328,7 +1328,7 @@
       "Early Traction"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:36.196Z"
+    "lastScraped": "2026-03-10T15:28:40.102Z"
   },
   {
     "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
@@ -1352,8 +1352,8 @@
       "MVP",
       "Scale-up"
     ],
-    "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:35.307Z"
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T15:28:38.585Z"
   },
   {
     "name": "AFI Agri Cohort 25-26",
@@ -1377,7 +1377,7 @@
       "Growth"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:36.761Z"
+    "lastScraped": "2026-03-10T15:28:39.867Z"
   },
   {
     "name": "Startup Gujarat – Srujan Seed Support (S4)",
@@ -1400,7 +1400,7 @@
       "MVP"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:34.551Z"
+    "lastScraped": "2026-03-10T15:28:41.727Z"
   },
   {
     "name": "KSUM Idea Grant / Productization Grant",
@@ -1423,7 +1423,7 @@
       "Prototype"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:34.752Z"
+    "lastScraped": "2026-03-10T15:28:41.699Z"
   },
   {
     "name": "HDFC Bank Parivartan Start-up Grants (FY26)",
@@ -1435,7 +1435,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "csr",
-    "lastScraped": "2026-03-10T13:45:37.420Z",
+    "lastScraped": "2026-03-10T15:28:43.123Z",
     "dataSource": "research:notebooklm",
     "targetAudience": [
       "startup",
@@ -1462,7 +1462,7 @@
     "status": "Verify Manually",
     "linkStatus": "broken",
     "category": "national",
-    "lastScraped": "2026-03-10T13:45:41.214Z",
+    "lastScraped": "2026-03-10T15:28:46.008Z",
     "dataSource": "research:notebooklm",
     "targetAudience": [
       "startup"
@@ -1488,7 +1488,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-03-10T13:45:37.824Z",
+    "lastScraped": "2026-03-10T15:28:43.463Z",
     "dataSource": "research:notebooklm",
     "targetAudience": [
       "startup"
@@ -1518,7 +1518,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.943Z",
     "linkStatus": "broken",
-    "lastScraped": "2026-03-10T13:45:42.074Z"
+    "lastScraped": "2026-03-10T15:28:46.314Z"
   },
   {
     "name": "Keeling Curve Prize 2026",
@@ -1535,7 +1535,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.955Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:37.638Z"
+    "lastScraped": "2026-03-10T15:28:42.237Z"
   },
   {
     "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
@@ -1552,7 +1552,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.955Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:46.983Z"
+    "lastScraped": "2026-03-10T15:28:49.286Z"
   },
   {
     "name": "Amazon Devices Climate Tech Accelerator 2026",
@@ -1569,7 +1569,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.956Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:44.725Z"
+    "lastScraped": "2026-03-10T15:28:47.007Z"
   },
   {
     "name": "AI4Good AgriTech Farmer Solutions",
@@ -1586,7 +1586,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.957Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:45:45.397Z"
+    "lastScraped": "2026-03-10T15:28:47.587Z"
   },
   {
     "name": "Greenovation Agrivoltaics Challenge",
@@ -1603,7 +1603,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.958Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:46:05.178Z"
+    "lastScraped": "2026-03-10T15:28:50.691Z"
   },
   {
     "name": "AI for ALL: Global Impact Challenge",
@@ -1620,7 +1620,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.959Z",
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T13:45:48.631Z"
+    "lastScraped": "2026-03-10T15:28:51.071Z"
   },
   {
     "name": "Aspire Climatetech Program Spring 2026",
@@ -1637,7 +1637,7 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.959Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:46:22.372Z"
+    "lastScraped": "2026-03-10T15:28:53.107Z"
   },
   {
     "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
@@ -1654,6 +1654,6 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.960Z",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T13:46:21.018Z"
+    "lastScraped": "2026-03-10T15:28:52.707Z"
   }
 ]
