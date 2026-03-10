@@ -79,6 +79,7 @@ const App = () => {
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [isSyncingReport, setIsSyncingReport] = useState(false);
     const [briefingMode, setBriefingMode] = useState('standard');
+    const [dispatchRecipients, setDispatchRecipients] = useState('');
     const [showFloatingBar, setShowFloatingBar] = useState(false);
 
     const sectionRefs = useRef({});
@@ -362,34 +363,35 @@ const App = () => {
                             <div>
                                 <input
                                     type="text"
+                                    value={dispatchRecipients}
                                     placeholder="Enter emails separated by commas..."
                                     className="w-full text-sm font-bold bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 dark:text-white"
+                                    onChange={(e) => setDispatchRecipients(e.target.value)}
                                     onKeyDown={(e) => {
-                                        if (e.key === 'Enter' && e.target.value.trim()) {
+                                        if (e.key === 'Enter') {
                                             handleEmailTrigger(
-                                                e.target.value,
+                                                dispatchRecipients,
                                                 briefingMode,
                                                 briefingMode === 'filtered' ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery } : {}
                                             );
+                                            setDispatchRecipients('');
                                             setIsEmailModalOpen(false);
                                         }
                                     }}
                                 />
                             </div>
                             <p className="text-[9px] text-slate-400 font-bold uppercase italic px-1">
-                                * This will trigger the AI Agent to perform a fresh delta-analysis and dispatch summaries to the targets above.
+                                * Leave recipients blank to use the default stakeholder list from the secure email workflow.
                             </p>
                             <button
                                 onClick={() => {
-                                    const input = document.querySelector('input[placeholder="Enter emails separated by commas..."]');
-                                    if (input && input.value.trim()) {
-                                        handleEmailTrigger(
-                                            input.value,
-                                            briefingMode,
-                                            briefingMode === 'filtered' ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery } : {}
-                                        );
-                                        setIsEmailModalOpen(false);
-                                    }
+                                    handleEmailTrigger(
+                                        dispatchRecipients,
+                                        briefingMode,
+                                        briefingMode === 'filtered' ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery } : {}
+                                    );
+                                    setDispatchRecipients('');
+                                    setIsEmailModalOpen(false);
                                 }}
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
                                 disabled={emailCooldown > 0}

@@ -30,16 +30,18 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         let { target_emails, mode, filters } = req.body || {};
 
-        // Basic Sanitization: Extract valid emails only
-        if (target_emails) {
+        const rawRecipients = typeof target_emails === 'string' ? target_emails.trim() : '';
+
+        // Basic sanitization: extract valid emails only when the caller provided a value.
+        if (rawRecipients) {
             const emailArray = target_emails.split(',')
                 .map(e => e.trim())
                 .filter(e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e));
             target_emails = emailArray.slice(0, 10).join(','); // Limit to 10 recipients for safety
         }
 
-        if (!target_emails) {
-            return res.status(400).json({ error: 'At least one valid email recipient is required' });
+        if (rawRecipients && !target_emails) {
+            return res.status(400).json({ error: 'No valid email recipients found in the provided list' });
         }
 
         try {
@@ -51,7 +53,7 @@ export default async function handler(req, res) {
                     body: JSON.stringify({
                         ref: 'main',
                         inputs: {
-                            target_emails: target_emails,
+                            target_emails: target_emails || '',
                             mode: mode || 'standard',
                             filters: JSON.stringify(filters || {})
                         }
