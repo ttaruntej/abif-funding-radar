@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Karnataka Elevate NXT 2026 (Deeptech)",
+    "body": "KITS / Startup Karnataka",
+    "maxAward": "Up to ₹1 Crore",
+    "deadline": "24-02-2026",
+    "link": "https://www.missionstartupkarnataka.org/elevate-karnataka",
+    "description": "Grant-in-aid funding for Deeptech startups in AI, ML, IoT, Robotics, and Quantum Technologies. relocate to Karnataka if outside.",
+    "category": "state",
+    "status": "Check Website",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "AI",
+      "Robotics"
+    ],
+    "stages": [
+      "Early Traction",
+      "Scale-up"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-08T06:40:04.487Z"
+  },
+  {
+    "name": "Startup Odisha – Monthly Sustenance Allowance",
+    "body": "MSME Dept, Odisha",
+    "maxAward": "₹20,000 - ₹22,000 / month",
+    "deadline": "Rolling (Open All Year)",
+    "link": "https://startupodisha.gov.in/",
+    "description": "One-year sustenance allowance for recognized startups. Additional 10% for women/SC/ST/PH founders.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Ideation",
+      "Prototype"
+    ],
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-08T06:41:37.769Z"
+  },
+  {
+    "name": "StartupTN Agri-Tech Grant",
+    "body": "StartupTN / Govt of Tamil Nadu",
+    "maxAward": "₹10 Lakhs - ₹25 Lakhs",
+    "deadline": "31-12-2025",
+    "link": "https://startuptn.in/",
+    "description": "Financial support for Agri-Tech startups focused on market expansion, innovation, or agricultural process improvement.",
+    "category": "state",
+    "status": "Open",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-08T06:41:39.445Z"
+  },
+  {
+    "name": "Startup Gujarat – Srujan Seed Support (S4)",
+    "body": "i-Hub Gujarat",
+    "maxAward": "₹2.5 Lakhs - ₹10 Lakhs",
+    "deadline": "31-12-2026",
+    "link": "https://ihubgujarat.in/srujan",
+    "description": "Financial assistance for innovators and startups to progress from PoC to product/market stage.",
+    "category": "state",
+    "status": "Open",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Prototype",
+      "MVP"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-08T06:41:40.707Z"
+  },
+  {
+    "name": "KSUM Idea Grant / Productization Grant",
+    "body": "Kerala Startup Mission",
+    "maxAward": "₹2 Lakhs - ₹12 Lakhs",
+    "deadline": "Rolling (Check Cohorts)",
+    "link": "https://grants.startupmission.in/",
+    "description": "Grants for scaling budding entrepreneurs and startups to develop prototypes and products.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Ideation",
+      "Prototype"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-08T06:41:44.312Z"
+  }
+]
