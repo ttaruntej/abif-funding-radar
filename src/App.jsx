@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import './index.css';
 
 import { exportToCSV } from './utils/csvExporter';
-import { fetchResearchReport } from './services/api';
+import { fetchResearchReport, EMAIL_WORKFLOW_URL, SYNC_WORKFLOW_URL } from './services/api';
 import { SECTIONS } from './constants/tracker';
 
 // Hooks
@@ -301,6 +301,14 @@ const App = () => {
                                     ? 'You can close this panel or try synchronizing again after cooldown.'
                                     : 'Leave this open to follow the sync until the dashboard reloads.'}
                         </p>
+                        <a
+                            href={SYNC_WORKFLOW_URL}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex mt-3 text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
+                        >
+                            Open GitHub Sync Workflow
+                        </a>
                     </div>
                 </div>
             )}
@@ -331,6 +339,16 @@ const App = () => {
                         <div className="flex-1 pr-4">
                             <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest leading-none">Transmission</h3>
                             <p className="text-[8px] text-slate-500 font-bold uppercase mt-2">{emailNotification.message}</p>
+                            {emailNotification.type === 'error' && (
+                                <a
+                                    href={EMAIL_WORKFLOW_URL}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex mt-3 text-[8px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
+                                >
+                                    Open GitHub Email Workflow
+                                </a>
+                            )}
                         </div>
 
                         {/* Close Button */}
@@ -472,6 +490,23 @@ const App = () => {
                         )}
 
                         <div className="space-y-4">
+                            <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
+                                <p className="text-[9px] font-black uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
+                                    Fallback Path
+                                </p>
+                                <p className="mt-2 text-[10px] font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
+                                    If the dispatch API is slow or unreachable, run the same email workflow directly in GitHub.
+                                </p>
+                                <a
+                                    href={EMAIL_WORKFLOW_URL}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex mt-3 text-[10px] font-black uppercase tracking-[0.18em] text-blue-500 hover:text-blue-600"
+                                >
+                                    Open GitHub Email Workflow
+                                </a>
+                            </div>
+
                             <div className="flex justify-between items-center mb-1">
                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block ml-1">New Recipient(s)</label>
                                 <span className="text-[10px] font-black text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-full uppercase tracking-tighter">
