@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Synapse Architecture Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        filter: blur(8px);
+    }
+
+    50% {
+        opacity: 0.6;
+        filter: blur(12px);
+    }
+}
+
+@keyframes shutterTransition {
+    0% {
+        opacity: 0.3;
+        transform: scaleX(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes signalPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.animate-in {
+    animation: slideUpFade 0.6s ease-out forwards;
+}
+
+.animate-scan {
+    animation: scanLine 3s linear infinite;
+}
+
+.animate-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-shutter {
+    animation: shutterTransition 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-signal {
+    animation: signalPulse 1s ease-out infinite;
+}
+
+@keyframes successCheck {
+    0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.animate-success-check {
+    animation: successCheck 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: theme('colors.slate.100');
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: theme('colors.slate.300');
+    border-radius: 10px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.slate.400');
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}
+
+/* Utilities for Command Rift - Enhanced for Discoverability */
+.mask-fade-right {
+    mask-image: linear-gradient(to right, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 75%, transparent 100%);
+}
+
+.mask-fade-left {
+    mask-image: linear-gradient(to left, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 75%, transparent 100%);
+}
+
+.mask-fade-both {
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Strategic Intel Ticker Animation */
+.animate-ticker {
+    animation: ticker-scroll 60s linear infinite;
+}
+
+.animate-ticker:hover {
+    animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(100vw);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Arclight Depth Effects */
+.arclight-gradient {
+    background: radial-gradient(circle at top center, rgba(59, 130, 246, 0.08) 0%, transparent 100%);
+}
+
+.dark .arclight-gradient {
+    background: radial-gradient(circle at top center, rgba(30, 41, 59, 0.5) 0%, transparent 100%);
+}
+
+/* 2026 Institutional Metrics Depth */
+.command-box-depth {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+}
+
+.dark .command-box-depth {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.9) 100%);
+}
+
+.archive-stamp {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.03);
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    white-space: nowrap;
+}
+
+.dark .archive-stamp {
+    color: rgba(255, 255, 255, 0.03);
+}
+
+/* UI feedback for all buttons & interactive items */
+button,
+a,
+[role="button"],
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+input,
+textarea {
+    cursor: text !important;
+}
+
+input:hover,
+textarea:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+input:focus,
+textarea:focus {
+    background-color: white;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+    background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* 
+   PROFESSIONAL REPORT PRINT ARCHITECTURE
+   Optimized for ABIF IIT Kharagpur standards.
+*/
+@media print {
+
+    /* Step 1: Hide all non-report elements from the DOM path */
+    * {
+        display: none !important;
+    }
+
+    /* Step 2: Restore the report modal container path */
+    html,
+    body,
+    #root,
+    #root>div,
+    .print-report-active,
+    .print-report-active * {
+        display: block !important;
+    }
+
+    /* Global Typography Fix for Print */
+    html,
+    body {
+        height: auto !important;
+        background: white !important;
+        color: black !important;
+        overflow: visible !important;
+        font-family: 'Inter', sans-serif !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Sectional Controls */
+    .print-report-active {
+        position: static !important;
+        width: 100% !important;
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #report-modal-content {
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 40px !important;
+        background: white !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Hide the web-specific modal UI like Close button & download footer */
+    .no-print,
+    button,
+    svg,
+    [role="button"],
+    .p-8.border-b,
+    .px-8.py-6.border-t {
+        display: none !important;
+    }
+
+    /* Institutional Header Design */
+    .print\:block {
+        display: block !important;
+    }
+
+    /* Text High-Contrast & Color Force */
+    #report-modal-content * {
+        color: black !important;
+        background: none !important;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    span {
+        color: black !important;
+    }
+
+    /* Spacing between Strategic Blocks */
+    section {
+        margin-bottom: 3.5rem !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Trend Cards Reset for Print */
+    .grid {
+        display: block !important;
+    }
+
+    .grid>div {
+        margin-bottom: 2rem !important;
+        page-break-inside: avoid !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        background: #f8fafc !important;
+        /* Light slate for subtle card structure in print */
+    }
+
+    /* Executive Summary Boldness */
+    p.text-xl {
+        font-size: 1.25rem !important;
+        border-left: 6px solid #1e293b !important;
+        padding-left: 24px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Auto-Page Break Protection */
+    h2,
+    h3 {
+        page-break-after: avoid !important;
+        margin-top: 2rem !important;
+    }
+}
+
+/* Mobile Performance: Blur Optimization */
+@media (max-width: 639px) {
+    [class*="backdrop-blur"] {
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+}

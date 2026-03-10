@@ -1,0 +1,142 @@
+[
+    {
+        "name": "AFI Agri Cohort 25-26",
+        "link": "info@actionforindia.org",
+        "body": "Action for India (AFI)",
+        "deadline": "14 August 2025",
+        "maxAward": "Accelerator Support (No equity)",
+        "description": "A 5-month accelerator program for startups in precision agriculture, automation, agri financing, or dairy & cattle management in India.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "SAREP Partnership Fund",
+        "link": "https://www.sarepenergy.net",
+        "body": "USAID / RTI International",
+        "deadline": "31 March 2025",
+        "maxAward": "$500,000",
+        "description": "Funding for market-based transformative solutions that enable the clean energy transition, increased deployment of advanced energy solutions, and climate resilience in South Asia.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "Keeling Curve Prize 2026",
+        "link": "https://www.climatecurve.org/kcp",
+        "body": "Climate Curve",
+        "deadline": "15 January 2026",
+        "maxAward": "$50,000",
+        "description": "Awards for innovative climate solutions globally that reduce atmospheric CO2 and other greenhouse gases across categories including Energy, Carbon Sinks, and Finance.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
+        "link": "https://riseaccelerator.org/",
+        "body": "CSIRO",
+        "deadline": "22 March 2026",
+        "maxAward": "Accelerator Support",
+        "description": "Accelerator program aimed at fast-tracking cross-border expansion for climate and environment tech startups from Australia or India.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "Amazon Devices Climate Tech Accelerator 2026",
+        "link": "https://aws.amazon.com/activate/",
+        "body": "Amazon",
+        "deadline": "24 February 2026",
+        "maxAward": "$100,000 in AWS Activate Credits",
+        "description": "Global accelerator focused on devices, semiconductors, low-carbon materials, and AI to reduce the carbon footprint of devices.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "AI4Good AgriTech Farmer Solutions",
+        "link": "https://ai4good.org/",
+        "body": "AI4Good",
+        "deadline": "30 March 2026",
+        "maxAward": "$360,000",
+        "description": "Grants for developing digital advisory tools and AI solutions targeted at smallholder farmers in developing countries.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "Greenovation Agrivoltaics Challenge",
+        "link": "https://startupindia.gov.in",
+        "body": "Greenovation",
+        "deadline": "25 February 2026",
+        "maxAward": "₹15,00,000",
+        "description": "Challenge funding for Indian startups innovating in climate-resilient agriculture and agrivoltaics (renewable energy).",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "AI for ALL: Global Impact Challenge",
+        "link": "https://aiforall.org/",
+        "body": "AI for ALL",
+        "deadline": "Rolling",
+        "maxAward": "₹2,50,00,000",
+        "description": "A global challenge awarding top teams for building impactful AI solutions in sectors such as agriculture, healthcare, and education.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "Aspire Climatetech Program Spring 2026",
+        "link": "https://aspire.org/",
+        "body": "Aspire",
+        "deadline": "8 April 2026",
+        "maxAward": "Accelerator Support",
+        "description": "A 5-week hybrid accelerator for science and engineering startups tackling climate change, sustainability, pollution, and energy issues.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    },
+    {
+        "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
+        "link": "https://revithaca.com/",
+        "body": "Rev: Ithaca Startup Works",
+        "deadline": "Rolling",
+        "maxAward": "$2,000",
+        "description": "Free 10-week summer accelerator offering prototyping funds for physical product concepts with dedicated tracks in ClimateTech and AgTech.",
+        "category": "international",
+        "status": "Open",
+        "targetAudience": [
+            "startup"
+        ],
+        "dataSource": "notebooklm:fast_research"
+    }
+]

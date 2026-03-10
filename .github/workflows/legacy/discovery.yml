@@ -1,0 +1,44 @@
+name: ABIF Automated Discovery
+
+on:
+  schedule:
+    # Runs at 21:00 UTC (2:30 AM IST) every night
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from the Actions tab
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Discovery Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DISCOVERY_NOTEBOOK_ID: ${{ secrets.DISCOVERY_NOTEBOOK_ID }}
+          # The agent script will use these to interact with NotebookLM
+          NOTEBOOKLM_COOKIES: ${{ secrets.NOTEBOOKLM_COOKIES }}
+          DISCOVERY_QUERIES_PATH: './scripts/query_strategy.json'
+        run: node scripts/notebook-agent.js
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update: Discoveries from Overnight Agent [skip ci]"
+          file_pattern: 'public/data/opportunities.json'
+          commit_user_name: "ABIF Discovery Agent"
+          commit_user_email: "abif-agent@github.com"

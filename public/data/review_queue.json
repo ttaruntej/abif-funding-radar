@@ -1,0 +1,1236 @@
+{
+  "generatedAt": "2026-03-10T13:46:23.337Z",
+  "summary": {
+    "totalSourceItems": 73,
+    "publishableItems": 19,
+    "reviewItems": 54,
+    "duplicateGroups": 1,
+    "artifactReviewCandidates": 9
+  },
+  "items": [
+    {
+      "name": "Amazon Devices Climate Tech Accelerator 2026",
+      "body": "Amazon",
+      "link": "https://aws.amazon.com/activate/",
+      "deadline": "24 February 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Open\" even though the deadline has passed."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 95,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:44.725Z"
+    },
+    {
+      "name": "Greenovation Agrivoltaics Challenge",
+      "body": "Greenovation",
+      "link": "https://startupindia.gov.in",
+      "deadline": "25 February 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Open\" even though the deadline has passed."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 95,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:46:05.178Z"
+    },
+    {
+      "name": "Keeling Curve Prize 2026",
+      "body": "Climate Curve",
+      "link": "https://www.climatecurve.org/kcp",
+      "deadline": "15 January 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Open\" even though the deadline has passed."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 95,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:37.638Z"
+    },
+    {
+      "name": "AI4Good AgriTech Farmer Solutions",
+      "body": "AI4Good",
+      "link": "https://ai4good.org/",
+      "deadline": "30 March 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 80,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:45.397Z"
+    },
+    {
+      "name": "Aspire Climatetech Program Spring 2026",
+      "body": "Aspire",
+      "link": "https://aspire.org/",
+      "deadline": "8 April 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 80,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:46:22.372Z"
+    },
+    {
+      "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
+      "body": "BIRAC",
+      "link": "https://birac.nic.in/desc_new.php?id=217",
+      "deadline": "15-08-2026",
+      "status": "Open",
+      "dataSource": "research:notebooklm",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"research:notebooklm\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 80,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:37.824Z"
+    },
+    {
+      "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
+      "body": "CSIRO",
+      "link": "https://riseaccelerator.org/",
+      "deadline": "22 March 2026",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 80,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:46.983Z"
+    },
+    {
+      "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
+      "body": "Rev: Ithaca Startup Works",
+      "link": "https://revithaca.com/",
+      "deadline": "Rolling",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 80,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:46:21.018Z"
+    },
+    {
+      "name": "AI for ALL: Global Impact Challenge",
+      "body": "AI for ALL",
+      "link": "https://aiforall.org/",
+      "deadline": "Rolling",
+      "status": "Open",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "probable",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 70,
+      "artifactReviewRecommended": true,
+      "lastScraped": "2026-03-10T13:45:48.631Z"
+    },
+    {
+      "name": "SAREP Partnership Fund",
+      "body": "USAID / RTI International",
+      "link": "https://www.sarepenergy.net",
+      "deadline": "31 March 2025",
+      "status": "Verify Manually",
+      "dataSource": "notebooklm:fast_research",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"notebooklm:fast_research\" should pass through review before publication."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Verify Manually\" even though the deadline has passed."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 70,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:42.074Z"
+    },
+    {
+      "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
+      "body": "MANAGE / Ministry of Agriculture",
+      "link": "https://www.manage.gov.in/cia/cia.asp",
+      "deadline": "31-03-2026",
+      "status": "Verify Manually",
+      "dataSource": "research:notebooklm",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"research:notebooklm\" should pass through review before publication."
+        },
+        {
+          "code": "duplicate-name",
+          "detail": "Another opportunity with the same normalized name exists in the dataset."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "merge-or-deduplicate",
+      "reviewPriority": 65,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:24.411Z"
+    },
+    {
+      "name": "HDFC Bank Parivartan Start-up Grants (FY26)",
+      "body": "HDFC Bank CSR",
+      "link": "https://www.hdfcbank.com/personal/useful-links/social-initiatives/parivartan",
+      "deadline": "Rolling (FY26 Cycle)",
+      "status": "Verify Manually",
+      "dataSource": "research:notebooklm",
+      "category": "csr",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"research:notebooklm\" should pass through review before publication."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 55,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:37.420Z"
+    },
+    {
+      "name": "MeitY Blockchain India Challenge",
+      "body": "MeitY / NIC",
+      "link": "https://www.msh.gov.in/",
+      "deadline": "Rolling (Phase-wise)",
+      "status": "Verify Manually",
+      "dataSource": "research:notebooklm",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "source-review-required",
+          "detail": "Source \"research:notebooklm\" should pass through review before publication."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "missing-critical-eligibility",
+          "detail": "Notebook-derived record does not yet include critical eligibility extraction."
+        }
+      ],
+      "recommendedAction": "verify-from-official-source",
+      "reviewPriority": 55,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:41.214Z"
+    },
+    {
+      "name": "AFI Agri Cohort 25-26",
+      "body": "Action For India",
+      "link": "https://actionforindia.org/",
+      "deadline": "15-01-2026",
+      "status": "Open",
+      "dataSource": "manual:agritech",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Open\" even though the deadline has passed."
+        }
+      ],
+      "recommendedAction": "recompute-status-or-archive",
+      "reviewPriority": 25,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:36.761Z"
+    },
+    {
+      "name": "StartupTN Agri-Tech Grant",
+      "body": "StartupTN / Govt of Tamil Nadu",
+      "link": "https://startuptn.in/",
+      "deadline": "31-12-2025",
+      "status": "Open",
+      "dataSource": "manual:agritech",
+      "category": "state",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Open\" even though the deadline has passed."
+        }
+      ],
+      "recommendedAction": "recompute-status-or-archive",
+      "reviewPriority": 25,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:36.196Z"
+    },
+    {
+      "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
+      "body": "AIC-SNU",
+      "link": "https://aic.snu.edu.in/",
+      "deadline": "28-02-2026",
+      "status": "Verify Manually",
+      "dataSource": "manual:incubator",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Verify Manually\" even though the deadline has passed."
+        }
+      ],
+      "recommendedAction": "recompute-status-or-archive",
+      "reviewPriority": 25,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:45:35.307Z"
+    },
+    {
+      "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
+      "body": "MANAGE / Dept of Agriculture",
+      "link": "https://www.manage.gov.in/",
+      "deadline": "31-03-2026",
+      "status": "Open",
+      "dataSource": "manual:agritech",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "duplicate-name",
+          "detail": "Another opportunity with the same normalized name exists in the dataset."
+        }
+      ],
+      "recommendedAction": "merge-or-deduplicate",
+      "reviewPriority": 20,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:56.265Z"
+    },
+    {
+      "name": "AMRUT 2.0 Water Pitch Challenge",
+      "body": "MoHUA",
+      "link": "https://innovateindia.mygov.in/",
+      "deadline": "31-03-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:54.183Z"
+    },
+    {
+      "name": "BIRAC BioNEST",
+      "body": "BIRAC",
+      "link": "https://birac.nic.in/bionest.php",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:00.494Z"
+    },
+    {
+      "name": "BIRAC Biotechnology Ignition Grant (BIG)",
+      "body": "BIRAC",
+      "link": "https://birac.nic.in/big.php",
+      "deadline": "01-07-2026",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:55.806Z"
+    },
+    {
+      "name": "BIRAC–Social Alpha Assistive Tech Quest",
+      "body": "Tata Trusts / BIRAC",
+      "link": "https://birac.nic.in/cfp.php",
+      "deadline": "30-09-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:00.618Z"
+    },
+    {
+      "name": "D.E.S.I.G.N for BioE3 Challenge",
+      "body": "DBT / MyGov",
+      "link": "https://innovateindia.mygov.in/bioe3/",
+      "deadline": "20-03-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:55.872Z"
+    },
+    {
+      "name": "Ford Foundation – Global Grants",
+      "body": "Ford Foundation",
+      "link": "https://www.fordfoundation.org/work/our-grants/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:15.308Z"
+    },
+    {
+      "name": "India Agritech Incubation Network",
+      "body": "Bill & Melinda Gates Foundation",
+      "link": "https://www.gatesfoundation.org/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:09.259Z"
+    },
+    {
+      "name": "India-France AI Call",
+      "body": "DST & ANR",
+      "link": "https://onlinedst.gov.in/",
+      "deadline": "20-04-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:00.339Z"
+    },
+    {
+      "name": "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
+      "body": "MoHUA / MyGov",
+      "link": "https://innovateindia.mygov.in/ipps-startup/",
+      "deadline": "31-03-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:54.298Z"
+    },
+    {
+      "name": "Kotak BizLabs Accelerator (Velocity & IRP)",
+      "body": "Kotak Mahindra Bank",
+      "link": "https://www.kotak.com/en/about-us/corporate-responsibility.html",
+      "deadline": "Recurring Cohorts",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:53.640Z"
+    },
+    {
+      "name": "Krishi Mangal",
+      "body": "Cisco CSR + Social Alpha",
+      "link": "https://socialalpha.org/krishi-mangal/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:15.738Z"
+    },
+    {
+      "name": "LIC HFL Social Trailblazer Program",
+      "body": "LIC Housing Finance Ltd",
+      "link": "https://www.lichousing.com/csr",
+      "deadline": "Cohort Cycles",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:53.526Z"
+    },
+    {
+      "name": "NEAT 3.0",
+      "body": "AICTE / MoE",
+      "link": "https://neat.aicte-india.org/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:06.311Z"
+    },
+    {
+      "name": "NIDHI-EIR",
+      "body": "DST (via NSTEDB)",
+      "link": "https://nidhi.dst.gov.in/nidhi-eir",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:05.669Z"
+    },
+    {
+      "name": "PRISM",
+      "body": "DSIR",
+      "link": "https://www.dsir.gov.in/prism-scheme",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:04.949Z"
+    },
+    {
+      "name": "Skoll Foundation Awards",
+      "body": "Skoll Foundation",
+      "link": "https://skoll.org/skoll-award/",
+      "deadline": "01-04-2026",
+      "status": "Open",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:16.766Z"
+    },
+    {
+      "name": "Startup India SISFS",
+      "body": "Startup India",
+      "link": "https://www.startupindia.gov.in/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:06.099Z"
+    },
+    {
+      "name": "thingQbator",
+      "body": "NASSCOM Foundation + Cisco CSR",
+      "link": "https://nasscomfoundation.org/thingqbator/",
+      "deadline": "Rolling",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:17.053Z"
+    },
+    {
+      "name": "UNIDO Global Cleantech Innovation Programme",
+      "body": "UNIDO",
+      "link": "https://www.unido.org/cleantech",
+      "deadline": "30-06-2026",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:11.034Z"
+    },
+    {
+      "name": "Youth Co:Lab",
+      "body": "UNDP – Citi – AIM",
+      "link": "https://www.youthcolab.org/",
+      "deadline": "TBA 2026",
+      "status": "Rolling",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "verified",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        }
+      ],
+      "recommendedAction": "manual-review",
+      "reviewPriority": 10,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:07.672Z"
+    },
+    {
+      "name": "MANAGE-CIA Agri-Business Incubation",
+      "body": "MANAGE Hyderabad",
+      "link": "https://www.manage.gov.in/cia/",
+      "deadline": "March 2026",
+      "status": "Verify Manually",
+      "dataSource": "manual:agritech",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Verify Manually\" even though the deadline has passed."
+        }
+      ],
+      "recommendedAction": "recompute-status-or-archive",
+      "reviewPriority": 0,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:24.519Z"
+    },
+    {
+      "name": "SAMRIDH Cohort 3",
+      "body": "MeitY Startup Hub",
+      "link": "https://www.msh.gov.in/samridh",
+      "deadline": "TBA 2026",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        },
+        {
+          "code": "past-deadline-status-mismatch",
+          "detail": "Status is \"Verify Manually\" even though the deadline has passed."
+        }
+      ],
+      "recommendedAction": "recompute-status-or-archive",
+      "reviewPriority": 0,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:03.452Z"
+    },
+    {
+      "name": "ADB FinTech Institute",
+      "body": "Asian Development Bank",
+      "link": "https://www.adb.org/what-we-do/sectors/finance/fintech",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:07.108Z"
+    },
+    {
+      "name": "Clean Energy International Incubation Centre",
+      "body": "Tata Trusts / Social Alpha",
+      "link": "https://socialalpha.org/ceiic/",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:12.201Z"
+    },
+    {
+      "name": "GIZ–FCDO StartUpWave",
+      "body": "GIZ (Germany) & FCDO (UK)",
+      "link": "https://www.giz.de/en/worldwidegiz/india.html",
+      "deadline": "30-06-2026",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:13.589Z"
+    },
+    {
+      "name": "IDFC FIRST Bank IGNITE Accelerator",
+      "body": "IDFC FIRST Bank",
+      "link": "https://www.idfcfirstbank.com/csr",
+      "deadline": "Recurring Cycle",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:54.575Z"
+    },
+    {
+      "name": "Infosys Social Innovation & Entrepreneurship CSR",
+      "body": "Infosys Foundation",
+      "link": "https://www.infosys.com/infosys-foundation/grants.html",
+      "deadline": "FY 2025-26 Cycle",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "csr",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:56.572Z"
+    },
+    {
+      "name": "Lemelson Foundation ASME iShow",
+      "body": "Lemelson Foundation",
+      "link": "https://ishow.asme.org/",
+      "deadline": "31-03-2026",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:18.655Z"
+    },
+    {
+      "name": "MeitY TIDE 2.0 (Incubator Support)",
+      "body": "MeitY Startup Hub",
+      "link": "https://vc.meity.gov.in/tide2.0/",
+      "deadline": "Varies",
+      "status": "Verify Manually",
+      "dataSource": "manual:incubator",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:23.221Z"
+    },
+    {
+      "name": "MSME Incubation Scheme",
+      "body": "Ministry of MSME",
+      "link": "https://msme.gov.in/technology-incubation",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:09.921Z"
+    },
+    {
+      "name": "NABARD AgriSURE Fund (Direct Scheme)",
+      "body": "NABVENTURES / MoA&FW",
+      "link": "https://nabventures.in/agrisure/",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "manual:agritech",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:20.509Z"
+    },
+    {
+      "name": "NIDHI-TBI",
+      "body": "DST (MoST)",
+      "link": "https://nidhi.dst.gov.in/nidhi-tbi",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:05.706Z"
+    },
+    {
+      "name": "Rockefeller Foundation Global Impact Incubator",
+      "body": "Rockefeller Foundation",
+      "link": "https://www.rockefellerfoundation.org/grant-opportunities/",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:14.083Z"
+    },
+    {
+      "name": "SIDBI SRIJAN Revolving Fund",
+      "body": "SIDBI",
+      "link": "https://www.sidbi.in/en/srijan",
+      "deadline": "Rolling (Open All Year)",
+      "status": "Rolling",
+      "dataSource": "scraper:sidbi",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-08T07:22:03.304Z"
+    },
+    {
+      "name": "STPI Next Generation Incubation Scheme (NGIS) / LEAP Ahead",
+      "body": "STPI (MeitY)",
+      "link": "https://www.stpi.in/en/next-generation-incubation-scheme",
+      "deadline": "Varies by Challenge",
+      "status": "Verify Manually",
+      "dataSource": "manual:incubator",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:21.351Z"
+    },
+    {
+      "name": "TIDE 2.0",
+      "body": "MeitY",
+      "link": "https://tide20.meity.gov.in/",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "national",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:43:58.914Z"
+    },
+    {
+      "name": "World Bank Group Startup Financing",
+      "body": "World Bank / IFC",
+      "link": "https://www.ifc.org/en/what-we-do/sector-expertise/disruptive-technologies-and-funds",
+      "deadline": "Rolling",
+      "status": "Verify Manually",
+      "dataSource": "unknown",
+      "category": "international",
+      "linkStatus": "broken",
+      "issues": [
+        {
+          "code": "missing-data-source",
+          "detail": "Opportunity has no provenance tag."
+        },
+        {
+          "code": "broken-link",
+          "detail": "Stored application/source link is currently marked broken."
+        }
+      ],
+      "recommendedAction": "replace-link",
+      "reviewPriority": -15,
+      "artifactReviewRecommended": false,
+      "lastScraped": "2026-03-10T13:44:12.114Z"
+    }
+  ]
+}

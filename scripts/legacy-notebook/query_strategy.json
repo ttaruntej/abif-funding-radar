@@ -1,0 +1,26 @@
+[
+    {
+        "id": "incubator_ops",
+        "name": "Incubator Sustainability & Ops",
+        "query": "Active central government schemes for 'Establishing and Supporting Technology Business Incubators (TBIs)' in India. Focus on DST-NIDHI, Startup India Seed Fund Scheme (SISFS) for Incubators, and MeitY TIDE 2.0. Find open calls for new or existing Section 8 company incubators.",
+        "priority": 1
+    },
+    {
+        "id": "accelerator_programs",
+        "name": "Ecosystem & Accelerator Programs",
+        "query": "Corporate CSR funding for 'Startup Accelerator Programs' and 'Cohort-based Incubation' in India for 2026. Target companies like Reliance, Tata, Infosys, and HCL looking for Section 8 implementation partners.",
+        "priority": 2
+    },
+    {
+        "id": "startup_grants",
+        "name": "Agri/Bio Startup Grants",
+        "query": "Seed-stage grants and procurement opportunities for Indian startups in AgriTech and MedTech. Focus on SISFS for Startups and BIRAC ignition grants (BIG) active in March 2026. Prioritize DPIIT recognized startups.",
+        "priority": 3
+    },
+    {
+        "id": "discovery_heuristics",
+        "name": "Portal Discovery",
+        "query": "Recently updated list of startup innovation challenges on Innovate India, MyGov, and Startup India portal for the current quarter. Include direct application links.",
+        "priority": 4
+    }
+]

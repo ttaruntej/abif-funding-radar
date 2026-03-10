@@ -1,0 +1,254 @@
+{
+  "generatedAt": "2026-03-10T13:51:02.229Z",
+  "reviewedCount": 8,
+  "geminiConfigured": true,
+  "geminiOperational": false,
+  "geminiDisabledReason": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.",
+  "limit": 8,
+  "items": [
+    {
+      "name": "Amazon Devices Climate Tech Accelerator 2026",
+      "sourceLink": "https://aws.amazon.com/activate/",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 95,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://aws.amazon.com/startups",
+        "error": null
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "Amazon Devices Climate Tech Accelerator 2026 requires manual verification from the official source before publication.",
+        "deadline": "24 February 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://aws.amazon.com/activate/",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "Greenovation Agrivoltaics Challenge",
+      "sourceLink": "https://startupindia.gov.in",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 95,
+      "landingPage": {
+        "status": null,
+        "ok": false,
+        "finalUrl": "https://startupindia.gov.in",
+        "error": "fetch failed"
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "Greenovation Agrivoltaics Challenge requires manual verification from the official source before publication.",
+        "deadline": "25 February 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://startupindia.gov.in",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "Keeling Curve Prize 2026",
+      "sourceLink": "https://www.climatecurve.org/kcp",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 95,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://www.climatecurve.org/kcp",
+        "error": null
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "Keeling Curve Prize 2026 requires manual verification from the official source before publication.",
+        "deadline": "15 January 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://www.climatecurve.org/kcp",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "AI4Good AgriTech Farmer Solutions",
+      "sourceLink": "https://ai4good.org/",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 80,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://ai4good.org/",
+        "error": null
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "AI4Good AgriTech Farmer Solutions requires manual verification from the official source before publication.",
+        "deadline": "30 March 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://ai4good.org/",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "Aspire Climatetech Program Spring 2026",
+      "sourceLink": "https://aspire.org/",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 80,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://www.aspire.org/",
+        "error": null
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "Aspire Climatetech Program Spring 2026 requires manual verification from the official source before publication.",
+        "deadline": "8 April 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://aspire.org/",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
+      "sourceLink": "https://birac.nic.in/desc_new.php?id=217",
+      "dataSource": "research:notebooklm",
+      "reviewPriority": 80,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://birac.nic.in/desc_new.php?id=217",
+        "error": null
+      },
+      "artifactCandidates": [
+        {
+          "url": "https://www.birac.nic.in/webcontent/1745298212_SBIRI_scheme_guidelines_16_04_2025.pdf",
+          "label": "SBIRI - Complete Scheme Document",
+          "score": 78
+        },
+        {
+          "url": "https://birac.nic.in/webcontent/1684306604_Code_of_Conduct_English.pdf",
+          "label": "Code of Conduct",
+          "score": 53
+        },
+        {
+          "url": "https://birac.nic.in/cfp.php",
+          "label": "Call for Proposal",
+          "score": 48
+        },
+        {
+          "url": "https://birac.nic.in/howtoSubmitProposal.php",
+          "label": "Proposal Format",
+          "score": 28
+        },
+        {
+          "url": "https://birac.nic.in/desc_new.php?id=217#",
+          "label": "Focused Call",
+          "score": 28
+        }
+      ],
+      "selectedArtifact": {
+        "url": "https://www.birac.nic.in/webcontent/1745298212_SBIRI_scheme_guidelines_16_04_2025.pdf",
+        "mimeType": "application/pdf",
+        "sizeBytes": 488970,
+        "status": 200,
+        "error": null
+      },
+      "analysis": {
+        "status": "fallback",
+        "summary": "BIRAC Biotechnology Ignition Grant (BIG-25) requires manual verification from the official source before publication.",
+        "deadline": "15-08-2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://www.birac.nic.in/webcontent/1745298212_SBIRI_scheme_guidelines_16_04_2025.pdf",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
+      "sourceLink": "https://riseaccelerator.org/",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 80,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://riseaccelerator.org/",
+        "error": null
+      },
+      "artifactCandidates": [],
+      "selectedArtifact": null,
+      "analysis": {
+        "status": "fallback",
+        "summary": "India Australia RISE Accelerator (Round 4: Alumni Scale-up) requires manual verification from the official source before publication.",
+        "deadline": "22 March 2026",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://riseaccelerator.org/",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    },
+    {
+      "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
+      "sourceLink": "https://revithaca.com/",
+      "dataSource": "notebooklm:fast_research",
+      "reviewPriority": 80,
+      "landingPage": {
+        "status": 200,
+        "ok": true,
+        "finalUrl": "https://www.revithaca.com/",
+        "error": null
+      },
+      "artifactCandidates": [
+        {
+          "url": "https://www.revithaca.com/join-rev/",
+          "label": "How to Apply",
+          "score": 28
+        }
+      ],
+      "selectedArtifact": {
+        "url": "https://www.revithaca.com/join-rev/",
+        "mimeType": "text/html; charset=UTF-8",
+        "sizeBytes": 296009,
+        "status": 200,
+        "error": null
+      },
+      "analysis": {
+        "status": "fallback",
+        "summary": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator requires manual verification from the official source before publication.",
+        "deadline": "Rolling",
+        "targetAudience": null,
+        "criticalEligibility": [],
+        "applicationLink": "https://www.revithaca.com/join-rev/",
+        "publicationDecision": "manual_review",
+        "confidence": 0.2,
+        "notes": "Fallback heuristic used because Gemini extraction is unavailable: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key."
+      }
+    }
+  ]
+}

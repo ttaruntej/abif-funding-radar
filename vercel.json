@@ -1,0 +1,11 @@
+{
+    "github": {
+        "silent": true
+    },
+    "git": {
+        "deploymentEnabled": {
+            "main": true,
+            "gh-pages": false
+        }
+    }
+}

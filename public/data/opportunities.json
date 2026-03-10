@@ -1,0 +1,1659 @@
+[
+  {
+    "name": "AMRUT 2.0 Water Pitch Challenge",
+    "body": "MoHUA",
+    "maxAward": "₹20 Lakhs",
+    "deadline": "31-03-2026",
+    "link": "https://innovateindia.mygov.in/",
+    "description": "Scaling decentralized circular economy solutions for water management.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:54.183Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Cleantech",
+      "Sustainability"
+    ],
+    "stages": [
+      "Seed",
+      "Growth"
+    ],
+    "criticalEligibility": [
+      "Technology must be capable of lab demonstration for scaling",
+      "Tranche-based disbursement: 5L (start), 7L (mid), 8L (final)",
+      "Specific focus on used water and urban flooding governance",
+      "Open to officially recognized Indian startups only"
+    ]
+  },
+  {
+    "name": "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
+    "body": "MoHUA / MyGov",
+    "maxAward": "₹20 Lakhs",
+    "deadline": "31-03-2026",
+    "link": "https://innovateindia.mygov.in/ipps-startup/",
+    "description": "Grant for water-secure cities addressing urban water, wastewater, and floods.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:54.298Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Water",
+      "Sustainability"
+    ],
+    "stages": [
+      "Seed",
+      "Expansion"
+    ],
+    "criticalEligibility": [
+      "Must have a viable prototype ready for pilot-testing (No concept-only ideas)",
+      "DPIIT Recognition mandatory",
+      "Grant tranches tied strictly to Fund Utilisation Certificates at each milestone",
+      "Usage restricted to solution augmentation and city pilot costs"
+    ]
+  },
+  {
+    "name": "LIC HFL Social Trailblazer Program",
+    "body": "LIC Housing Finance Ltd",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Cohort Cycles",
+    "link": "https://www.lichousing.com/csr",
+    "description": "Incubation partner program focused on social impact, MVP, and early-revenue startups.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:53.526Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Social Impact",
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "criticalEligibility": [
+      "Must possess valid NGO Darpan ID (NITI Aayog)",
+      "TBI must demonstrate a specialization in social impact ventures",
+      "Founding team must not have political or religious affiliations"
+    ]
+  },
+  {
+    "name": "IDFC FIRST Bank IGNITE Accelerator",
+    "body": "IDFC FIRST Bank",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Recurring Cycle",
+    "link": "https://www.idfcfirstbank.com/csr",
+    "description": "Corporate-backed growth accelerator partnering with academic TBIs like IITs/IIMs.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:54.575Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Technology",
+      "Social Impact"
+    ],
+    "stages": [
+      "Seed",
+      "Growth"
+    ],
+    "criticalEligibility": [
+      "3-Year established track record in incubation activities",
+      "Mandatory selection/due-diligence committee for startups",
+      "Must have audited financials for last 3 financial years"
+    ]
+  },
+  {
+    "name": "Kotak BizLabs Accelerator (Velocity & IRP)",
+    "body": "Kotak Mahindra Bank",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Recurring Cohorts",
+    "link": "https://www.kotak.com/en/about-us/corporate-responsibility.html",
+    "description": "Implementation partnership with specialized TBIs to run growth-stage and investor readiness cohorts.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:53.640Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "DeepTech",
+      "HealthTech",
+      "FinTech"
+    ],
+    "stages": [
+      "Seed",
+      "Growth"
+    ],
+    "criticalEligibility": [
+      "CSR-1 Registration (MCA SRN) is non-negotiable",
+      "Must hold valid 12A and 80G tax registrations",
+      "Minimum track record of handling high-value grant disbursements"
+    ]
+  },
+  {
+    "name": "Infosys Social Innovation & Entrepreneurship CSR",
+    "body": "Infosys Foundation",
+    "maxAward": "Project Based",
+    "deadline": "FY 2025-26 Cycle",
+    "link": "https://www.infosys.com/infosys-foundation/grants.html",
+    "description": "Partnership with Section 8 TBIs for implementing social innovation and skills development programs.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:56.572Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Social Innovation",
+      "Education"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "criticalEligibility": [
+      "Must be a registered Section 8 company/Trust/Society",
+      "Mandatory impact assessment reports for local CSR committees",
+      "Must have strict mechanisms for fund ring-fencing"
+    ]
+  },
+  {
+    "name": "D.E.S.I.G.N for BioE3 Challenge",
+    "body": "DBT / MyGov",
+    "maxAward": "Incubation Support",
+    "deadline": "20-03-2026",
+    "link": "https://innovateindia.mygov.in/bioe3/",
+    "description": "Ideation challenge for sustainable biotechnological solutions in climate-resilient agriculture.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:55.872Z",
+    "targetAudience": [
+      "startup",
+      "student"
+    ],
+    "sectors": [
+      "BioTech",
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation"
+    ],
+    "criticalEligibility": [
+      "Strictly restricted to students (Classes VI–XII) enrolled in India",
+      "Video pitches must be original (No AI-generated visuals/narration)",
+      "Parental consent mandatory for participants under 18",
+      "Aligned with BioE3 policy pillars"
+    ]
+  },
+  {
+    "name": "TIDE 2.0",
+    "body": "MeitY",
+    "maxAward": "₹75 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://tide20.meity.gov.in/",
+    "description": "Technology Incubation and Development of Entrepreneurs — MeitY ICT incubation programme.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:58.914Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
+    "body": "MANAGE / Dept of Agriculture",
+    "maxAward": "Up to ₹25 Lakhs",
+    "deadline": "31-03-2026",
+    "link": "https://www.manage.gov.in/",
+    "description": "Seed stage and idea stage funding for Agri-startups, students, and agripreneurs under the RKVY-RAFTAAR scheme.",
+    "category": "national",
+    "status": "Open",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech",
+      "Rural Development"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:43:56.265Z"
+  },
+  {
+    "name": "BIRAC Biotechnology Ignition Grant (BIG)",
+    "body": "BIRAC",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "01-07-2026",
+    "link": "https://birac.nic.in/big.php",
+    "description": "Grant-in-aid to establish and validate proof-of-concept for innovative ideas in BioTech/AgriTech.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:43:55.806Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "BioTech",
+      "AgriTech",
+      "MedTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "criticalEligibility": [
+      "Must be incorporated in the last 3 years",
+      "Indian citizens must hold >51% ownership (OCI/PIO disqualified from this)",
+      "Must have functional R&D lab or be physically incubated in a recognized Incubator",
+      "Cannot be basic research; must have clear commercial prospects"
+    ]
+  },
+  {
+    "name": "DST NIDHI - TBI Support",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Varies",
+    "link": "https://nidhi.dst.gov.in/",
+    "description": "National initiative for developing and harnessing innovations via Technology Business Incubators.",
+    "targetAudience": [
+      "incubator"
+    ],
+    "category": "national",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:00.937Z"
+  },
+  {
+    "status": "Rolling",
+    "name": "Startup India Seed Fund Scheme (SISFS)",
+    "body": "DPIIT / Startup India",
+    "description": "[Automated Source] Financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization.",
+    "maxAward": "Up to ₹50 Lakhs",
+    "link": "https://seedfund.startupindia.gov.in/",
+    "deadline": "Rolling (Open All Year)",
+    "category": "national",
+    "linkStatus": "verified",
+    "provider": "DPIIT",
+    "amount": "Up to ₹50 Lakhs",
+    "lastScraped": "2026-03-10T13:43:49.210Z",
+    "dataSource": "scraper:sisfs:incubator",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "BIRAC–Social Alpha Assistive Tech Quest",
+    "body": "Tata Trusts / BIRAC",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "30-09-2026",
+    "link": "https://birac.nic.in/cfp.php",
+    "description": "Joint programme to discover and scale innovations in assistive technologies for persons with disabilities.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:00.618Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ],
+    "criticalEligibility": [
+      "Prototype must be at TRL 4 or higher",
+      "Lead applicant must be a DPIIT-recognized startup",
+      "Previous awardees of BIRAC-Social Alpha cannot apply"
+    ]
+  },
+  {
+    "name": "India-France AI Call",
+    "body": "DST & ANR",
+    "maxAward": "€500,000+",
+    "deadline": "20-04-2026",
+    "link": "https://onlinedst.gov.in/",
+    "description": "Joint call for proposals in Applied Mathematics and Artificial Intelligence between India and France.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:00.339Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "SAMRIDH Cohort 3",
+    "body": "MeitY Startup Hub",
+    "maxAward": "₹40 Lakhs",
+    "deadline": "TBA 2026",
+    "link": "https://www.msh.gov.in/samridh",
+    "description": "Scaling and Accelerating MSME and Rural Innovation for Digital and Hardware Startups. Cohort 3 expected in 2026.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:03.452Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "BIRAC BioNEST",
+    "body": "BIRAC",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://birac.nic.in/bionest.php",
+    "description": "Bio Incubators Nurturing Entrepreneurship for Scaling Technologies — BIRAC's flagship bioincubation scheme.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:00.494Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Startup India SISFS",
+    "body": "Startup India",
+    "maxAward": "₹20 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://www.startupindia.gov.in/",
+    "description": "Startup India Seed Fund Scheme: financial assistance for proof of concept, prototype and market entry.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:06.099Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "PRISM",
+    "body": "DSIR",
+    "maxAward": "₹2 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://www.dsir.gov.in/prism-scheme",
+    "description": "Promoting Innovations in Individuals, Startups & MSMEs — grassroots innovation scheme by DSIR.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:04.949Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "NEAT 3.0",
+    "body": "AICTE / MoE",
+    "maxAward": "₹10 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://neat.aicte-india.org/",
+    "description": "National Educational Alliance for Technology — MoE's EdTech platform connecting solutions with learners.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:06.311Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "NIDHI-TBI",
+    "body": "DST (MoST)",
+    "maxAward": "₹10 Crores",
+    "deadline": "Rolling",
+    "link": "https://nidhi.dst.gov.in/nidhi-tbi",
+    "description": "National Initiative for Developing and Harnessing Innovations — TBI grant for institutional incubators.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:05.706Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "NIDHI-EIR",
+    "body": "DST (via NSTEDB)",
+    "maxAward": "₹30 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://nidhi.dst.gov.in/nidhi-eir",
+    "description": "Entrepreneur In Residence fellowship for innovators to work full-time on their startup idea.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:05.669Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Atal Incubation Centre (AIC) Grant",
+    "body": "AIM (NITI Aayog)",
+    "maxAward": "Up to ₹10 Crores",
+    "deadline": "Check Portal",
+    "link": "https://aim.gov.in/aic.php",
+    "description": "Establishment grant for new incubation centres to support the Indian innovation ecosystem.",
+    "targetAudience": [
+      "incubator"
+    ],
+    "category": "national",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:10.022Z"
+  },
+  {
+    "name": "MSME Incubation Scheme",
+    "body": "Ministry of MSME",
+    "maxAward": "₹1 Crore",
+    "deadline": "Rolling",
+    "link": "https://msme.gov.in/technology-incubation",
+    "description": "Technology Incubation and Development of Enterprises scheme for business incubation support.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:44:09.921Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Youth Co:Lab",
+    "body": "UNDP – Citi – AIM",
+    "maxAward": "$10,000",
+    "deadline": "TBA 2026",
+    "link": "https://www.youthcolab.org/",
+    "description": "UNDP and Citi joint initiative to accelerate youth-led social innovation and entrepreneurship in Asia-Pacific.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:07.672Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "ADB FinTech Institute",
+    "body": "Asian Development Bank",
+    "maxAward": "Varies",
+    "deadline": "Rolling",
+    "link": "https://www.adb.org/what-we-do/sectors/finance/fintech",
+    "description": "ADB's FinTech innovation programs supporting financial inclusion and digital finance startups across Asia.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:07.108Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "India Agritech Incubation Network",
+    "body": "Bill & Melinda Gates Foundation",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://www.gatesfoundation.org/",
+    "description": "Gates Foundation-backed agritech incubation network supporting solutions for smallholder farmers.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:09.259Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "GIZ–FCDO StartUpWave",
+    "body": "GIZ (Germany) & FCDO (UK)",
+    "maxAward": "€50,000",
+    "deadline": "30-06-2026",
+    "link": "https://www.giz.de/en/worldwidegiz/india.html",
+    "description": "StartUpWave supports climate and social impact startups through Indo-German development cooperation.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:13.589Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "UNIDO Global Cleantech Innovation Programme",
+    "body": "UNIDO",
+    "maxAward": "$50,000",
+    "deadline": "30-06-2026",
+    "link": "https://www.unido.org/cleantech",
+    "description": "UNIDO's GCIP supports cleantech SMEs and startups with mentoring, capacity building, and investor connectivity.",
+    "status": "Verify Manually",
+    "linkStatus": "verified",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:11.034Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Rockefeller Foundation Global Impact Incubator",
+    "body": "Rockefeller Foundation",
+    "maxAward": "$500,000",
+    "deadline": "Rolling",
+    "link": "https://www.rockefellerfoundation.org/grant-opportunities/",
+    "description": "Rockefeller Foundation supports incubators working on food, health, and energy systems globally.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:14.083Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "World Bank Group Startup Financing",
+    "body": "World Bank / IFC",
+    "maxAward": "Varies",
+    "deadline": "Rolling",
+    "link": "https://www.ifc.org/en/what-we-do/sector-expertise/disruptive-technologies-and-funds",
+    "description": "IFC Disruptive Technologies program invests in VC funds and tech-driven startups across emerging markets.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:12.114Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Clean Energy International Incubation Centre",
+    "body": "Tata Trusts / Social Alpha",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://socialalpha.org/ceiic/",
+    "description": "CEIIC supports clean energy innovators through mentorship, funding, and market linkages.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:12.201Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "thingQbator",
+    "body": "NASSCOM Foundation + Cisco CSR",
+    "maxAward": "₹15 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://nasscomfoundation.org/thingqbator/",
+    "description": "IoT-focused incubator by NASSCOM Foundation and Cisco CSR supporting tech-for-good startups.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:17.053Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Krishi Mangal",
+    "body": "Cisco CSR + Social Alpha",
+    "maxAward": "₹10 Lakhs",
+    "deadline": "Rolling",
+    "link": "https://socialalpha.org/krishi-mangal/",
+    "description": "Accelerates agritech innovations for small and marginal farmers through Social Alpha and Cisco.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:44:15.738Z",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Lemelson Foundation ASME iShow",
+    "body": "Lemelson Foundation",
+    "maxAward": "$15,000",
+    "deadline": "31-03-2026",
+    "link": "https://ishow.asme.org/",
+    "description": "Global hardware innovation competition recognizing inventions with strong social impact potential.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:18.655Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Ford Foundation – Global Grants",
+    "body": "Ford Foundation",
+    "maxAward": "$500,000",
+    "deadline": "Rolling",
+    "link": "https://www.fordfoundation.org/work/our-grants/",
+    "description": "Ford Foundation provides grants for reducing inequality through social justice and economic security initiatives.",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:15.308Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "Skoll Foundation Awards",
+    "body": "Skoll Foundation",
+    "maxAward": "$1.5 Million",
+    "deadline": "01-04-2026",
+    "link": "https://skoll.org/skoll-award/",
+    "description": "Annual Skoll Award for Social Entrepreneurship recognizing and funding large-scale social entrepreneurs worldwide.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "international",
+    "lastScraped": "2026-03-10T13:44:16.766Z",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "SBI Foundation – Innovators for Bharat",
+    "body": "SBI Foundation CSR",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "31-05-2026",
+    "link": "https://sbifoundation.in/",
+    "description": "Innovators for Bharat supports social innovators with funding, mentorship, and market linkages.",
+    "status": "Rolling",
+    "linkStatus": "probable",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:43:51.826Z",
+    "dataSource": "scraper:sbif",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "Social Impact",
+      "EdTech",
+      "HealthTech"
+    ],
+    "stages": [
+      "Seed",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "BIRAC Announces Call for under Proposal Product Commercialization Program Fund...",
+    "link": "https://birac.nic.in/cfp_view.php?id=117&scheme_type=29",
+    "body": "BIRAC (DBT)",
+    "status": "Rolling",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "scraper:birac",
+    "category": "national",
+    "lastScanned": "2026-03-07T12:30:19.793Z",
+    "maxAward": "Grant (competitive scale)",
+    "deadline": "BIRAC Announces Call for under Proposal Product Commercialization Program Fund... Call is open throughout the year",
+    "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-10T13:43:41.167Z",
+    "sectors": [
+      "BioTech",
+      "MedTech",
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed",
+      "Early Traction"
+    ]
+  },
+  {
+    "name": "DBT-BIRAC Joint Call for Proposals on ‘Bio AI’ for Fostering High Performance Biomanufacturing under BioE3 Policy Last Date :30th June,2026...",
+    "link": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
+    "body": "BIRAC (DBT)",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "scraper:birac",
+    "category": "national",
+    "lastScanned": "2026-03-07T12:30:20.115Z",
+    "maxAward": "Grant (competitive scale)",
+    "deadline": "30-06-2026",
+    "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-10T13:43:41.137Z",
+    "sectors": [
+      "BioTech",
+      "MedTech",
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed",
+      "Early Traction"
+    ]
+  },
+  {
+    "name": "SIDBI SRIJAN Revolving Fund",
+    "body": "SIDBI",
+    "maxAward": "Up to ₹1 Crore",
+    "deadline": "Rolling (Open All Year)",
+    "link": "https://www.sidbi.in/en/srijan",
+    "description": "Revolving fund for technology innovation supporting startups and MSMEs with debt financing.",
+    "targetAudience": [
+      "startup"
+    ],
+    "category": "national",
+    "linkStatus": "broken",
+    "dataSource": "scraper:sidbi",
+    "lastScraped": "2026-03-08T07:22:03.304Z",
+    "status": "Rolling",
+    "sectors": [
+      "DeepTech",
+      "CleanTech",
+      "Hardware"
+    ],
+    "stages": [
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "SIDBI Make in India Soft Loan Fund for MSMEs (SMILE)",
+    "body": "SIDBI",
+    "maxAward": "₹25 Lakhs – ₹5 Crores",
+    "deadline": "Rolling (Open All Year)",
+    "link": "https://www.sidbi.in/en/smile",
+    "category": "national",
+    "status": "Rolling",
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-06T17:12:54.389Z",
+    "description": "Soft loan fund for MSMEs seeking to expand or modernize under the Make in India initiative.",
+    "dataSource": "scraper:sidbi",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Manufacturing",
+      "Hardware"
+    ],
+    "stages": [
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "Click herefor open Project Proposal format page in new Tab",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Expired / Removed from source",
+    "link": "https://onlinedst.gov.in/Projectproposalformat.aspx",
+    "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
+    "category": "national",
+    "status": "Closed",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:41:25.702Z",
+    "dataSource": "scraper:dst",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "Hardware",
+      "Agnostic"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "Mission सह-SANKALP",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Check website for details",
+    "link": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2373",
+    "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
+    "category": "national",
+    "status": "Open",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:43:42.655Z",
+    "dataSource": "scraper:dst",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "Hardware",
+      "Agnostic"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "India Netherlands Hydrogen Fellowship Programme",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Check website for details",
+    "link": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2380",
+    "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
+    "category": "international",
+    "status": "Open",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:43:42.564Z",
+    "dataSource": "scraper:dst",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "Hardware",
+      "Agnostic"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "Indo-French call by DST-ANR on Applied Mathematics and Artificial Intelligence",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Check website for details",
+    "link": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2381",
+    "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
+    "category": "international",
+    "status": "Open",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:43:43.135Z",
+    "dataSource": "scraper:dst",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "Hardware",
+      "Agnostic"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "DST DFG joint call on International Research Training Groups (IRTG)",
+    "body": "DST (MoST)",
+    "maxAward": "Varies",
+    "deadline": "Rolling (Open All Year)",
+    "link": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2232",
+    "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
+    "category": "international",
+    "status": "Rolling",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:43:42.534Z",
+    "dataSource": "scraper:dst",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "Hardware",
+      "Agnostic"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "MeitY TIDE 2.0 (Incubator Support)",
+    "body": "MeitY Startup Hub",
+    "maxAward": "Grants & Investment Support",
+    "deadline": "Varies",
+    "link": "https://vc.meity.gov.in/tide2.0/",
+    "description": "Technology Incubation and Development of Entrepreneurs providing financial/technical support to incubators supporting ICT startups.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:incubator",
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:23.221Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "STPI Next Generation Incubation Scheme (NGIS) / LEAP Ahead",
+    "body": "STPI (MeitY)",
+    "maxAward": "Up to ₹25 Lakhs",
+    "deadline": "Varies by Challenge",
+    "link": "https://www.stpi.in/en/next-generation-incubation-scheme",
+    "description": "Incubation facilities, seed funding edge, and mentorship for startups in Tier II/III cities via local STPI centers.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:incubator",
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:21.351Z",
+    "targetAudience": [
+      "incubator"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "All Stages"
+    ]
+  },
+  {
+    "name": "IIG - CSR Opportunities Portal",
+    "body": "Invest India",
+    "maxAward": "CSR Grants",
+    "deadline": "Rolling",
+    "link": "https://indiainvestmentgrid.gov.in/opportunities/csr",
+    "description": "Official portal connecting Section 8 Incubators with corporate CSR mandates.",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "category": "csr",
+    "linkStatus": "verified",
+    "dataSource": "integrity-guard",
+    "lastScraped": "2026-03-10T13:44:23.187Z"
+  },
+  {
+    "name": "NABARD AgriSURE Fund (Direct Scheme)",
+    "body": "NABVENTURES / MoA&FW",
+    "maxAward": "Up to ?25 Crores",
+    "deadline": "Rolling",
+    "link": "https://nabventures.in/agrisure/",
+    "description": "Direct equity investments in early-stage AgriTech and allied sector startups with high-impact potential.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech",
+      "DeepTech"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction",
+      "Scale-up"
+    ],
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:20.509Z"
+  },
+  {
+    "name": "RKVY-RAFTAAR Seed Grants (NEST/NEO)",
+    "body": "Various Incubators (NaaViC, etc.)",
+    "maxAward": "Up to ?25 Lakhs",
+    "deadline": "Varies by Incubator",
+    "link": "https://rkvy.nic.in/",
+    "description": "Pre-seed and seed stage grants disbursed through partner Agribusiness Incubators (R-ABIs) across India.",
+    "category": "national",
+    "status": "Rolling",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-10T13:44:23.882Z"
+  },
+  {
+    "name": "MANAGE-CIA Agri-Business Incubation",
+    "body": "MANAGE Hyderabad",
+    "maxAward": "Up to ?25 Lakhs",
+    "deadline": "March 2026",
+    "link": "https://www.manage.gov.in/cia/",
+    "description": "Comprehensive incubation program offering mentorship, infrastructure, and financial grants for agri-startups.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "incubator",
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:24.519Z"
+  },
+  {
+    "name": "AGRI UDAAN 8.0 Food & Agribusiness Accelerator",
+    "body": "ICAR-NAARM a-IDEA",
+    "maxAward": "Accelerator Support",
+    "deadline": "Coming Soon",
+    "link": "https://aidea.naarm.org.in/",
+    "description": "Premier acceleration program targeting scaling startups with validated market solutions in agriculture and food tech.",
+    "category": "national",
+    "status": "Coming Soon",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech",
+      "FoodTech"
+    ],
+    "stages": [
+      "Early Traction",
+      "Scale-up"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:44:26.882Z"
+  },
+  {
+    "name": "Karnataka Elevate NXT 2026 (Deeptech)",
+    "body": "KITS / Startup Karnataka",
+    "maxAward": "Up to ₹1 Crore",
+    "deadline": "24-02-2026",
+    "link": "https://www.missionstartupkarnataka.org/elevate-karnataka",
+    "description": "Grant-in-aid funding for Deeptech startups in AI, ML, IoT, Robotics, and Quantum Technologies. relocate to Karnataka if outside.",
+    "category": "state",
+    "status": "Check Website",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech",
+      "AI",
+      "Robotics"
+    ],
+    "stages": [
+      "Early Traction",
+      "Scale-up"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:32.537Z"
+  },
+  {
+    "name": "Startup Odisha – Monthly Sustenance Allowance",
+    "body": "MSME Dept, Odisha",
+    "maxAward": "₹20,000 - ₹22,000 / month",
+    "deadline": "Rolling (Open All Year)",
+    "link": "https://startupodisha.gov.in/",
+    "description": "One-year sustenance allowance for recognized startups. Additional 10% for women/SC/ST/PH founders.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Ideation",
+      "Prototype"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:44:26.945Z"
+  },
+  {
+    "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
+    "body": "MANAGE / Ministry of Agriculture",
+    "maxAward": "₹25 Lakhs",
+    "deadline": "31-03-2026",
+    "link": "https://www.manage.gov.in/cia/cia.asp",
+    "description": "Grant-in-aid to support agribusiness startups for product development and scaling under the RAFTAAR scheme.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup",
+      "incubator"
+    ],
+    "sectors": [
+      "AgriTech",
+      "FoodTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Seed"
+    ],
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:44:24.411Z"
+  },
+  {
+    "name": "StartupTN Agri-Tech Grant",
+    "body": "StartupTN / Govt of Tamil Nadu",
+    "maxAward": "₹10 Lakhs - ₹25 Lakhs",
+    "deadline": "31-12-2025",
+    "link": "https://startuptn.in/",
+    "description": "Financial support for Agri-Tech startups focused on market expansion, innovation, or agricultural process improvement.",
+    "category": "state",
+    "status": "Open",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech"
+    ],
+    "stages": [
+      "Seed",
+      "Early Traction"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:36.196Z"
+  },
+  {
+    "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
+    "body": "AIC-SNU",
+    "maxAward": "₹5 Lakhs - ₹1 Crore",
+    "deadline": "28-02-2026",
+    "link": "https://aic.snu.edu.in/",
+    "description": "Incubation and funding program for startups at various stages from prototype to scaling.",
+    "category": "national",
+    "status": "Verify Manually",
+    "dataSource": "manual:incubator",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic",
+      "Tech"
+    ],
+    "stages": [
+      "Prototype",
+      "MVP",
+      "Scale-up"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:35.307Z"
+  },
+  {
+    "name": "AFI Agri Cohort 25-26",
+    "body": "Action For India",
+    "maxAward": "Accelerator Support & Investment",
+    "deadline": "15-01-2026",
+    "link": "https://actionforindia.org/",
+    "description": "Accelerator program for climate-resilient farming, agri-fintech, and market linkages startups.",
+    "category": "national",
+    "status": "Open",
+    "dataSource": "manual:agritech",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "AgriTech",
+      "ClimateTech"
+    ],
+    "stages": [
+      "Early Traction",
+      "Growth"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:36.761Z"
+  },
+  {
+    "name": "Startup Gujarat – Srujan Seed Support (S4)",
+    "body": "i-Hub Gujarat",
+    "maxAward": "₹2.5 Lakhs - ₹10 Lakhs",
+    "deadline": "31-12-2026",
+    "link": "https://ihubgujarat.in/srujan",
+    "description": "Financial assistance for innovators and startups to progress from PoC to product/market stage.",
+    "category": "state",
+    "status": "Open",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Prototype",
+      "MVP"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:34.551Z"
+  },
+  {
+    "name": "KSUM Idea Grant / Productization Grant",
+    "body": "Kerala Startup Mission",
+    "maxAward": "₹2 Lakhs - ₹12 Lakhs",
+    "deadline": "Rolling (Check Cohorts)",
+    "link": "https://grants.startupmission.in/",
+    "description": "Grants for scaling budding entrepreneurs and startups to develop prototypes and products.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "manual:state",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Ideation",
+      "Prototype"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:34.752Z"
+  },
+  {
+    "name": "HDFC Bank Parivartan Start-up Grants (FY26)",
+    "body": "HDFC Bank CSR",
+    "maxAward": "₹20 Crores (Total Pool)",
+    "deadline": "Rolling (FY26 Cycle)",
+    "link": "https://www.hdfcbank.com/personal/useful-links/social-initiatives/parivartan",
+    "description": "CSR funding for social impact startups focusing on education, healthcare, and rural development.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "csr",
+    "lastScraped": "2026-03-10T13:45:37.420Z",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup",
+      "incubator"
+    ],
+    "sectors": [
+      "Social Impact",
+      "HealthTech",
+      "EdTech"
+    ],
+    "stages": [
+      "Proof of Concept",
+      "Seed",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "MeitY Blockchain India Challenge",
+    "body": "MeitY / NIC",
+    "maxAward": "Stage-wise funding",
+    "deadline": "Rolling (Phase-wise)",
+    "link": "https://www.msh.gov.in/",
+    "description": "National challenge for startups building blockchain solutions for governance and supply chain transparency.",
+    "status": "Verify Manually",
+    "linkStatus": "broken",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:45:41.214Z",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Web3",
+      "Blockchain",
+      "GovTech"
+    ],
+    "stages": [
+      "Ideation",
+      "MVP",
+      "Scale-up"
+    ]
+  },
+  {
+    "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
+    "body": "BIRAC",
+    "maxAward": "₹50 Lakhs",
+    "deadline": "15-08-2026",
+    "link": "https://birac.nic.in/desc_new.php?id=217",
+    "description": " Flagship grant for early-stage biotech innovators to translate ideas into proof-of-concept.",
+    "status": "Open",
+    "linkStatus": "verified",
+    "category": "national",
+    "lastScraped": "2026-03-10T13:45:37.824Z",
+    "dataSource": "research:notebooklm",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "BioTech",
+      "MedTech",
+      "HealthTech"
+    ],
+    "stages": [
+      "Ideation",
+      "Proof of Concept"
+    ]
+  },
+  {
+    "name": "SAREP Partnership Fund",
+    "link": "https://www.sarepenergy.net",
+    "body": "USAID / RTI International",
+    "deadline": "31 March 2025",
+    "maxAward": "$500,000",
+    "description": "Funding for market-based transformative solutions that enable the clean energy transition, increased deployment of advanced energy solutions, and climate resilience in South Asia.",
+    "category": "international",
+    "status": "Verify Manually",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.943Z",
+    "linkStatus": "broken",
+    "lastScraped": "2026-03-10T13:45:42.074Z"
+  },
+  {
+    "name": "Keeling Curve Prize 2026",
+    "link": "https://www.climatecurve.org/kcp",
+    "body": "Climate Curve",
+    "deadline": "15 January 2026",
+    "maxAward": "$50,000",
+    "description": "Awards for innovative climate solutions globally that reduce atmospheric CO2 and other greenhouse gases across categories including Energy, Carbon Sinks, and Finance.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.955Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:37.638Z"
+  },
+  {
+    "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
+    "link": "https://riseaccelerator.org/",
+    "body": "CSIRO",
+    "deadline": "22 March 2026",
+    "maxAward": "Accelerator Support",
+    "description": "Accelerator program aimed at fast-tracking cross-border expansion for climate and environment tech startups from Australia or India.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.955Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:46.983Z"
+  },
+  {
+    "name": "Amazon Devices Climate Tech Accelerator 2026",
+    "link": "https://aws.amazon.com/activate/",
+    "body": "Amazon",
+    "deadline": "24 February 2026",
+    "maxAward": "$100,000 in AWS Activate Credits",
+    "description": "Global accelerator focused on devices, semiconductors, low-carbon materials, and AI to reduce the carbon footprint of devices.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.956Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:44.725Z"
+  },
+  {
+    "name": "AI4Good AgriTech Farmer Solutions",
+    "link": "https://ai4good.org/",
+    "body": "AI4Good",
+    "deadline": "30 March 2026",
+    "maxAward": "$360,000",
+    "description": "Grants for developing digital advisory tools and AI solutions targeted at smallholder farmers in developing countries.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.957Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:45:45.397Z"
+  },
+  {
+    "name": "Greenovation Agrivoltaics Challenge",
+    "link": "https://startupindia.gov.in",
+    "body": "Greenovation",
+    "deadline": "25 February 2026",
+    "maxAward": "₹15,00,000",
+    "description": "Challenge funding for Indian startups innovating in climate-resilient agriculture and agrivoltaics (renewable energy).",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.958Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:46:05.178Z"
+  },
+  {
+    "name": "AI for ALL: Global Impact Challenge",
+    "link": "https://aiforall.org/",
+    "body": "AI for ALL",
+    "deadline": "Rolling",
+    "maxAward": "₹2,50,00,000",
+    "description": "A global challenge awarding top teams for building impactful AI solutions in sectors such as agriculture, healthcare, and education.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.959Z",
+    "linkStatus": "probable",
+    "lastScraped": "2026-03-10T13:45:48.631Z"
+  },
+  {
+    "name": "Aspire Climatetech Program Spring 2026",
+    "link": "https://aspire.org/",
+    "body": "Aspire",
+    "deadline": "8 April 2026",
+    "maxAward": "Accelerator Support",
+    "description": "A 5-week hybrid accelerator for science and engineering startups tackling climate change, sustainability, pollution, and energy issues.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.959Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:46:22.372Z"
+  },
+  {
+    "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
+    "link": "https://revithaca.com/",
+    "body": "Rev: Ithaca Startup Works",
+    "deadline": "Rolling",
+    "maxAward": "$2,000",
+    "description": "Free 10-week summer accelerator offering prototyping funds for physical product concepts with dedicated tracks in ClimateTech and AgTech.",
+    "category": "international",
+    "status": "Open",
+    "targetAudience": [
+      "startup"
+    ],
+    "dataSource": "notebooklm:fast_research",
+    "lastScanned": "2026-03-07T16:21:14.960Z",
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-10T13:46:21.018Z"
+  }
+]
