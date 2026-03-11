@@ -21,6 +21,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Save Previous Publishable List
+        run: |
+          if [ -f public/data/publishable_opportunities.json ]; then
+            cp public/data/publishable_opportunities.json "$RUNNER_TEMP/previous_publishable_opportunities.json"
+          else
+            echo "[]" > "$RUNNER_TEMP/previous_publishable_opportunities.json"
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,10 +46,34 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/opportunities.json public/data/publishable_opportunities.json public/data/review_queue.json public/data/research_report.json
+          git add public/data/opportunities.json public/data/publishable_opportunities.json public/data/review_queue.json public/data/research_report.json public/data/source_health.json
           # Only commit if there are changes
           git diff --quiet && git diff --staged --quiet || git commit -m "chore: sync verified-source opportunities"
           git push
+
+      - name: Send Team Alert For New Opportunities
+        id: team_alert
+        continue-on-error: true
+        run: node scripts/send-sync-alert.js
+        env:
+          BASELINE_PUBLISHABLE_FILE: ${{ runner.temp }}/previous_publishable_opportunities.json
+          CURRENT_PUBLISHABLE_FILE: ${{ github.workspace }}/public/data/publishable_opportunities.json
+          SYNC_ALERT_RECIPIENTS: office@abif.iitkgp.ac.in,tbimanager@abif.iitkgp.ac.in,abimanager@abif.iitkgp.ac.in,financemanager@abif.iitkgp.ac.in,ceoabif@iitkgp.ac.in
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          PUBLIC_SITE_URL: https://ttaruntej.github.io/abif-funding-radar/
+
+      - name: Summarize Team Alert Step
+        if: always()
+        run: |
+          if [ "${{ steps.team_alert.outcome }}" = "failure" ]; then
+            echo "Automatic team alert could not be sent. Check the previous step logs." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Automatic team alert step completed." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Build React App
         run: npm run build
