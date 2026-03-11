@@ -5,13 +5,13 @@ import ReactGA from "react-ga4";
 const SYNC_STAGES = [
     {
         key: 'dispatch',
-        label: 'Launch workflow',
-        description: 'Open the GitHub Actions workflow and start a verified-source run.',
+        label: 'Submit sync request',
+        description: 'Send a secure request to start a verified-source run.',
     },
     {
         key: 'queue',
-        label: 'Wait for GitHub runner',
-        description: 'GitHub Actions has accepted the run and is assigning capacity.',
+        label: 'Queue processing',
+        description: 'The request has been accepted and capacity is being assigned.',
     },
     {
         key: 'collect',
@@ -39,6 +39,43 @@ const formatDuration = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
+};
+
+const getOpportunityKey = (opportunity = {}) => (
+    [opportunity.name, opportunity.body, opportunity.link]
+        .filter(Boolean)
+        .join('::')
+        .toLowerCase()
+);
+
+const summarizeSyncFindings = (previousOpportunities = [], nextOpportunities = []) => {
+    const previousKeys = new Set(
+        previousOpportunities
+            .map(getOpportunityKey)
+            .filter(Boolean)
+    );
+    const seenNewKeys = new Set();
+    const newItems = [];
+
+    nextOpportunities.forEach((opportunity) => {
+        const key = getOpportunityKey(opportunity);
+        if (!key || previousKeys.has(key) || seenNewKeys.has(key)) return;
+
+        seenNewKeys.add(key);
+        newItems.push({
+            name: opportunity.name || 'Untitled opportunity',
+            body: opportunity.body || 'Verified source',
+            status: opportunity.status || 'Updated',
+            deadline: opportunity.deadline || 'Check portal',
+        });
+    });
+
+    return {
+        totalBefore: previousOpportunities.length,
+        totalAfter: nextOpportunities.length,
+        newCount: newItems.length,
+        newItems: newItems.slice(0, 5),
+    };
 };
 
 const resolveActiveStageIndex = ({ syncRunId, serverStatus, elapsedTime, refreshSuccess, syncError }) => {
@@ -81,12 +118,15 @@ const buildSyncSteps = (state) => {
 };
 
 const buildSyncSummary = (state) => {
-    const { syncRunId, serverStatus, elapsedTime, refreshSuccess, syncError, launchMode } = state;
+    const { syncRunId, serverStatus, elapsedTime, refreshSuccess, syncError, launchMode, syncFindings } = state;
 
     if (refreshSuccess) {
+        const newCount = syncFindings?.newCount || 0;
         return {
-            title: 'Sync Finished',
-            subtitle: 'Fresh verified-source data has been loaded into the dashboard.',
+            title: newCount > 0 ? 'New Findings Loaded' : 'Sync Finished',
+            subtitle: newCount > 0
+                ? `${newCount} new finding${newCount === 1 ? '' : 's'} added to the live dataset.`
+                : 'No new findings were detected in this cycle.',
             tone: 'success',
         };
     }
@@ -100,25 +140,19 @@ const buildSyncSummary = (state) => {
     }
 
     if (!syncRunId) {
-        if (launchMode === 'github') {
-            return {
-                title: 'Awaiting GitHub Launch',
-                subtitle: 'Click "Run workflow" in the GitHub tab. This panel will detect the new run automatically.',
-                tone: 'active',
-            };
-        }
-
         return {
-            title: 'Dispatching Sync',
-            subtitle: 'Requesting the direct relay to start the GitHub workflow.',
+            title: 'Starting Sync',
+            subtitle: launchMode === 'github'
+                ? 'Waiting for the sync run to be started.'
+                : 'Submitting the sync request and waiting for confirmation.',
             tone: 'active',
         };
     }
 
     if (serverStatus === 'queued') {
         return {
-            title: 'Workflow Queued',
-            subtitle: 'GitHub Actions has accepted the run and is waiting for a runner.',
+            title: 'Run Queued',
+            subtitle: 'The request was accepted and is waiting for processing capacity.',
             tone: 'active',
         };
     }
@@ -164,7 +198,7 @@ const buildSyncProgress = (state) => {
     return Math.min(96, 10 + stageBase + stagePulse);
 };
 
-export const useScraperSync = (addLog, loadData) => {
+export const useScraperSync = (addLog, loadData, opportunities = []) => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [refreshSuccess, setRefreshSuccess] = useState(false);
     const [serverStatus, setServerStatus] = useState(null);
@@ -175,10 +209,13 @@ export const useScraperSync = (addLog, loadData) => {
     const [syncUpdatedAt, setSyncUpdatedAt] = useState(null);
     const [syncFinishedAt, setSyncFinishedAt] = useState(null);
     const [syncError, setSyncError] = useState(null);
+    const [syncFindings, setSyncFindings] = useState(null);
     const [isSyncPanelVisible, setIsSyncPanelVisible] = useState(false);
+    const [isSyncPanelMinimized, setIsSyncPanelMinimized] = useState(false);
     const [launchMode, setLaunchMode] = useState(null);
 
     const pollIntervalRef = useRef(null);
+    const previousOpportunitiesRef = useRef([]);
 
     const clearPolling = () => {
         if (pollIntervalRef.current) {
@@ -191,6 +228,7 @@ export const useScraperSync = (addLog, loadData) => {
         clearPolling();
         setLaunchMode(mode);
         setIsSyncPanelVisible(true);
+        setIsSyncPanelMinimized(false);
         setIsRefreshing(true);
         setRefreshSuccess(false);
         setServerStatus(mode === 'github' ? 'awaiting_launch' : 'queued');
@@ -200,6 +238,7 @@ export const useScraperSync = (addLog, loadData) => {
         setSyncUpdatedAt(null);
         setSyncFinishedAt(null);
         setSyncError(null);
+        setSyncFindings(null);
     };
 
     useEffect(() => {
@@ -240,12 +279,12 @@ export const useScraperSync = (addLog, loadData) => {
                 setServerStatus(null);
                 setSyncError(
                     mode === 'github'
-                        ? 'No new GitHub sync run was detected. Open the workflow page, click "Run workflow", or try the direct relay.'
-                        : 'The workflow took too long to confirm. You can close this panel and try again.'
+                        ? 'No new sync run was detected. Please try again.'
+                        : 'The run took too long to confirm. You can close this panel and try again.'
                 );
                 addLog(
                     mode === 'github'
-                        ? 'No new GitHub sync run was detected.'
+                        ? 'No new sync run was detected.'
                         : 'Sync status timed out before completion.',
                     'error'
                 );
@@ -268,7 +307,7 @@ export const useScraperSync = (addLog, loadData) => {
                     detectedRunId = statusData.run_id;
                     if (mode === 'github' && cooldown === 0) {
                         setCooldown(60);
-                        addLog('GitHub sync workflow detected. Monitoring live run.', 'info');
+                        addLog('Sync run detected. Monitoring live run.', 'info');
                     }
                 }
 
@@ -281,7 +320,16 @@ export const useScraperSync = (addLog, loadData) => {
                     setIsRefreshing(false);
 
                     if (statusData.conclusion === 'success') {
-                        await loadData(true);
+                        const refreshedOpportunities = await loadData(true);
+
+                        if (!Array.isArray(refreshedOpportunities)) {
+                            setSyncError('The run finished, but the refreshed dataset could not be loaded.');
+                            addLog('Sync completed but the dashboard dataset could not be refreshed.', 'error');
+                            setServerStatus('attention');
+                            return;
+                        }
+
+                        setSyncFindings(summarizeSyncFindings(previousOpportunitiesRef.current, refreshedOpportunities));
                         setRefreshSuccess(true);
                         addLog('Verified source sync completed successfully.', 'success');
                     } else {
@@ -305,8 +353,9 @@ export const useScraperSync = (addLog, loadData) => {
             ? window.open(SYNC_WORKFLOW_URL, '_blank', 'noopener,noreferrer')
             : null;
 
+        previousOpportunitiesRef.current = Array.isArray(opportunities) ? opportunities : [];
         initializeSyncState('github');
-        addLog('Opening GitHub sync workflow. Click "Run workflow" in the new tab.', 'info');
+        addLog('Opening sync console. Start the run in the new tab.', 'info');
 
         ReactGA.event({
             category: "Operations",
@@ -325,7 +374,7 @@ export const useScraperSync = (addLog, loadData) => {
             }
 
             if (!workflowWindow) {
-                addLog('GitHub tab was blocked. Use the workflow link in the sync panel.', 'error');
+                addLog('Sync console tab was blocked. Allow pop-ups and try again.', 'error');
             }
 
             startPolling(baselineRunId, 'github');
@@ -335,8 +384,8 @@ export const useScraperSync = (addLog, loadData) => {
             setCooldown(0);
             setServerStatus(null);
             setSyncFinishedAt(new Date().toISOString());
-            setSyncError(error.message || 'The GitHub workflow page could not be opened.');
-            addLog(`GitHub sync launch failed: ${error.message || 'unknown error'}`, 'error');
+            setSyncError(error.message || 'The sync console could not be opened.');
+            addLog(`Sync console launch failed: ${error.message || 'unknown error'}`, 'error');
         }
     };
 
@@ -345,8 +394,9 @@ export const useScraperSync = (addLog, loadData) => {
         if ((isRefreshing && !canSwitchFromGitHub) || cooldown > 0) return;
 
         let baselineRunId = null;
+        previousOpportunitiesRef.current = Array.isArray(opportunities) ? opportunities : [];
         initializeSyncState('relay');
-        addLog('Initiating verified source sync via direct relay...', 'info');
+        addLog('Initiating verified source sync...', 'info');
 
         ReactGA.event({
             category: "Operations",
@@ -375,7 +425,12 @@ export const useScraperSync = (addLog, loadData) => {
         }
     };
 
-    const dismissSyncPanel = () => setIsSyncPanelVisible(false);
+    const dismissSyncPanel = () => {
+        setIsSyncPanelVisible(false);
+        setIsSyncPanelMinimized(false);
+    };
+    const toggleSyncPanelMinimized = () => setIsSyncPanelMinimized((value) => !value);
+    const restoreSyncPanel = () => setIsSyncPanelMinimized(false);
 
     const syncState = {
         syncRunId,
@@ -384,6 +439,7 @@ export const useScraperSync = (addLog, loadData) => {
         refreshSuccess,
         syncError,
         launchMode,
+        syncFindings,
     };
 
     return {
@@ -404,8 +460,12 @@ export const useScraperSync = (addLog, loadData) => {
         syncFinishedAt,
         syncStartTime,
         syncError,
+        syncFindings,
         isSyncPanelVisible,
+        isSyncPanelMinimized,
         dismissSyncPanel,
+        toggleSyncPanelMinimized,
+        restoreSyncPanel,
         formatSyncDuration: formatDuration,
     };
 };

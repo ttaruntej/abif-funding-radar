@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import './index.css';
 
 import { exportToCSV } from './utils/csvExporter';
-import { fetchResearchReport, EMAIL_WORKFLOW_URL, SYNC_WORKFLOW_URL } from './services/api';
+import { fetchResearchReport } from './services/api';
 import { SECTIONS } from './constants/tracker';
 
 // Hooks
@@ -21,7 +21,7 @@ import FeedbackSection from './components/FeedbackSection';
 import TacticalSpear from './components/TacticalSpear';
 import EcosystemTicker from './components/EcosystemTicker';
 import LazyGrid from './components/LazyGrid';
-import { Activity, X, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { Activity, X, TrendingUp, CheckCircle2, Minus, Maximize2, AlertTriangle, RotateCcw } from 'lucide-react';
 
 const IntelligenceReport = lazy(() => import('./components/IntelligenceReport'));
 
@@ -42,7 +42,7 @@ const App = () => {
 
     // 2. Data & Ecosystem State (via Custom Hook)
     const {
-        loading, error, report, setReport, lastUpdatedTs, loadData,
+        opportunities, loading, error, report, setReport, lastUpdatedTs, loadData,
         activeAudience, setActiveAudience,
         activeCategory, setActiveCategory,
         activeSector, setActiveSector,
@@ -62,8 +62,6 @@ const App = () => {
         syncProgress,
         cooldown,
         handleRefresh,
-        openGitHubSyncWorkflow,
-        syncLaunchMode,
         syncSteps,
         syncSummary,
         syncRunId,
@@ -71,10 +69,14 @@ const App = () => {
         syncFinishedAt,
         syncStartTime,
         syncError,
+        syncFindings,
         isSyncPanelVisible,
+        isSyncPanelMinimized,
         dismissSyncPanel,
+        toggleSyncPanelMinimized,
+        restoreSyncPanel,
         formatSyncDuration
-    } = useScraperSync(addLog, loadData);
+    } = useScraperSync(addLog, loadData, opportunities);
 
     // 4. Email Dispatch Engine (via Custom Hook)
     const {
@@ -137,7 +139,7 @@ const App = () => {
     };
 
     const isFiltered = searchQuery !== '' || activeCategory !== 'all' || activeSector !== 'All Sectors' || activeStatus !== 'all';
-    const shouldShowSyncPanel = isSyncPanelVisible && (isRefreshing || refreshSuccess || syncError);
+    const shouldShowSyncPanel = isSyncPanelVisible && Boolean(syncStartTime || isRefreshing || refreshSuccess || syncError || syncFindings);
 
     const formatSyncStamp = (value) => {
         if (!value) return 'Waiting';
@@ -148,10 +150,10 @@ const App = () => {
         ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
         : {};
 
-    const handleGitHubEmailLaunch = () => {
+    const handleWorkflowEmailLaunch = () => {
         if (!dispatchRecipients.trim()) {
             setEmailNotification({ type: 'error', message: 'Add at least one recipient email.' });
-            addLog('Recipient email required before opening GitHub workflow', 'error');
+            addLog('Recipient email required before opening dispatch console', 'error');
             return;
         }
         openGitHubEmailWorkflow(dispatchRecipients, briefingMode, currentEmailFilters);
@@ -186,7 +188,77 @@ const App = () => {
 
             {shouldShowSyncPanel && (
                 <div className="fixed top-24 right-4 sm:right-8 z-[110] animate-in scale-95 origin-right">
-                    <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
+                    {isSyncPanelMinimized ? (
+                        <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[24px] px-4 py-3 w-[280px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
+                                ? 'border-emerald-500/30'
+                                : syncSummary.tone === 'error'
+                                    ? 'border-red-500/30'
+                                    : 'border-blue-500/20'
+                            }`}>
+                            <div className="absolute bottom-0 left-0 h-1 bg-slate-200/60 dark:bg-white/5 w-full" />
+                            <div
+                                className={`absolute bottom-0 left-0 h-1 transition-all duration-1000 ease-out ${syncSummary.tone === 'success'
+                                        ? 'bg-emerald-500'
+                                        : syncSummary.tone === 'error'
+                                            ? 'bg-red-500'
+                                            : 'bg-blue-500'
+                                    }`}
+                                style={{ width: `${syncProgress}%` }}
+                            />
+                            <div className="flex items-start gap-3 pr-14">
+                                <div className={`w-9 h-9 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
+                                        ? 'bg-emerald-500 border-emerald-500'
+                                        : syncSummary.tone === 'error'
+                                            ? 'bg-red-500 border-red-500'
+                                            : 'border-blue-500/40 bg-blue-500/10'
+                                    }`}>
+                                    {syncSummary.tone === 'success' ? (
+                                        <CheckCircle2 size={16} className="text-white" />
+                                    ) : syncSummary.tone === 'error' ? (
+                                        <AlertTriangle size={16} className="text-white" />
+                                    ) : (
+                                        <Activity size={15} className="text-blue-500 animate-pulse" />
+                                    )}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="flex items-center justify-between gap-3">
+                                        <h3 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] truncate">
+                                            {syncSummary.title}
+                                        </h3>
+                                        <span className="text-[8px] font-mono font-black text-slate-500 dark:text-slate-400">
+                                            {Math.round(syncProgress)}%
+                                        </span>
+                                    </div>
+                                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                        {refreshSuccess && syncFindings
+                                            ? syncFindings.newCount > 0
+                                                ? `${syncFindings.newCount} new findings ready to review.`
+                                                : 'No new findings in this cycle.'
+                                            : syncError
+                                                ? 'Needs review. Restore this panel for details.'
+                                                : 'Sync remains active in the background.'}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="absolute top-3 right-3 flex items-center gap-1">
+                                <button
+                                    onClick={restoreSyncPanel}
+                                    className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                    aria-label="Restore sync panel"
+                                >
+                                    <Maximize2 size={14} />
+                                </button>
+                                <button
+                                    onClick={dismissSyncPanel}
+                                    className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                    aria-label="Close sync panel"
+                                >
+                                    <X size={14} />
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                    <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
                             ? 'border-emerald-500/30'
                             : syncSummary.tone === 'error'
                                 ? 'border-red-500/30'
@@ -204,15 +276,24 @@ const App = () => {
                             style={{ width: `${syncProgress}%` }}
                         />
 
-                        <button
-                            onClick={dismissSyncPanel}
-                            className="absolute top-3 right-3 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                            aria-label="Close sync panel"
-                        >
-                            <X size={14} />
-                        </button>
+                        <div className="absolute top-3 right-3 flex items-center gap-1">
+                            <button
+                                onClick={toggleSyncPanelMinimized}
+                                className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                aria-label="Minimize sync panel"
+                            >
+                                <Minus size={14} />
+                            </button>
+                            <button
+                                onClick={dismissSyncPanel}
+                                className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                aria-label="Close sync panel"
+                            >
+                                <X size={14} />
+                            </button>
+                        </div>
 
-                        <div className="flex items-start gap-4 mb-5 pr-6">
+                        <div className="flex items-start gap-4 mb-5 pr-10">
                             <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
                                     ? 'bg-emerald-500 border-emerald-500'
                                     : syncSummary.tone === 'error'
@@ -247,7 +328,8 @@ const App = () => {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3 mb-5">
+                        <div className="min-h-0 flex-1 overflow-y-auto pr-1 -mr-1 space-y-5">
+                        <div className="grid grid-cols-2 gap-3">
                             <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
                                 <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
                                 <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
@@ -276,13 +358,13 @@ const App = () => {
                             </div>
                         </div>
 
-                        <div className="mb-4">
+                        <div>
                             <div className="flex items-center justify-between mb-3">
                                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.24em]">
                                     Live Cycle
                                 </span>
                                 <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                                    Estimated stages + workflow status
+                                    Estimated stages + run status
                                 </span>
                             </div>
 
@@ -323,32 +405,91 @@ const App = () => {
                             </div>
                         </div>
 
+                        {(refreshSuccess || syncFindings) && (
+                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-4">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div>
+                                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Cycle Findings</p>
+                                        <p className="mt-1 text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.16em]">
+                                            {syncFindings?.newCount > 0 ? `${syncFindings.newCount} new findings detected` : 'No new findings detected'}
+                                        </p>
+                                    </div>
+                                    <span className="text-[9px] font-mono font-black text-slate-500 dark:text-slate-400">
+                                        {syncFindings ? `${syncFindings.totalBefore} -> ${syncFindings.totalAfter}` : 'Stable'}
+                                    </span>
+                                </div>
+
+                                {syncFindings?.newCount > 0 ? (
+                                    <div className="mt-3 space-y-2.5">
+                                        {syncFindings.newItems.map((item) => (
+                                            <div key={`${item.name}-${item.deadline}`} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
+                                                <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.14em] leading-relaxed">
+                                                    {item.name}
+                                                </p>
+                                                <div className="mt-2 flex items-center justify-between gap-3">
+                                                    <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em] truncate">
+                                                        {item.body}
+                                                    </span>
+                                                    <span className="text-[8px] font-black px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 uppercase tracking-[0.14em]">
+                                                        {item.status}
+                                                    </span>
+                                                </div>
+                                                <p className="mt-2 text-[9px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em]">
+                                                    {item.deadline}
+                                                </p>
+                                            </div>
+                                        ))}
+                                        {syncFindings.newCount > syncFindings.newItems.length && (
+                                            <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                                                +{syncFindings.newCount - syncFindings.newItems.length} more new findings in this cycle
+                                            </p>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                        The dataset refreshed successfully, but this cycle did not add any new findings.
+                                    </p>
+                                )}
+                            </div>
+                        )}
+
+                        {syncError && (
+                            <div className="rounded-2xl bg-red-500/5 border border-red-500/20 p-4">
+                                <div className="flex items-start gap-3">
+                                    <div className="w-8 h-8 rounded-xl bg-red-500 text-white flex items-center justify-center flex-shrink-0">
+                                        <AlertTriangle size={15} />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-red-600 dark:text-red-400">
+                                            Sync Needs Attention
+                                        </p>
+                                        <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300 leading-relaxed">
+                                            {syncError}
+                                        </p>
+                                        <p className="mt-3 text-[9px] font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                            The last published dataset remains available. You can retry without closing this panel.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap gap-2 mt-4">
+                                    <button
+                                        onClick={handleRefresh}
+                                        disabled={cooldown > 0 || isRefreshing}
+                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[9px] font-black uppercase tracking-[0.16em] disabled:opacity-50"
+                                    >
+                                        <RotateCcw size={12} />
+                                        {cooldown > 0 ? `Retry in ${cooldown}s` : 'Retry Sync'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
                         <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.18em]">
-                            {refreshSuccess
-                                ? 'This panel stays open until you close it.'
-                                : syncError
-                                    ? 'You can close this panel or try synchronizing again after cooldown.'
-                                    : 'Leave this open to follow the sync until the dashboard reloads.'}
+                            This panel stays available until you close it. Minimize keeps the run visible without dismissing it.
                         </p>
-                        <div className="flex flex-wrap gap-3 mt-3">
-                            <a
-                                href={SYNC_WORKFLOW_URL}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
-                            >
-                                Open GitHub Sync Workflow
-                            </a>
-                            {syncLaunchMode === 'github' && cooldown === 0 && !refreshSuccess && !syncRunId && (
-                                <button
-                                    onClick={handleRefresh}
-                                    className="inline-flex text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-slate-700 dark:hover:text-slate-200"
-                                >
-                                    Try Direct Relay Instead
-                                </button>
-                            )}
                         </div>
                     </div>
+                    )}
                 </div>
             )}
 
@@ -378,16 +519,6 @@ const App = () => {
                         <div className="flex-1 pr-4">
                             <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest leading-none">Transmission</h3>
                             <p className="text-[8px] text-slate-500 font-bold uppercase mt-2">{emailNotification.message}</p>
-                            {emailNotification.type === 'error' && (
-                                <a
-                                    href={EMAIL_WORKFLOW_URL}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex mt-3 text-[8px] font-black uppercase tracking-[0.2em] text-blue-500 hover:text-blue-600"
-                                >
-                                    Open GitHub Email Workflow
-                                </a>
-                            )}
                         </div>
 
                         {/* Close Button */}
@@ -464,7 +595,7 @@ const App = () => {
             </main>
 
             <TacticalSpear
-                handleRefresh={openGitHubSyncWorkflow}
+                handleRefresh={handleRefresh}
                 isRefreshing={isRefreshing}
                 refreshCooldown={cooldown}
                 handleExportCSV={() => exportToCSV(filtered)}
@@ -570,11 +701,11 @@ const App = () => {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <button
-                                    onClick={handleGitHubEmailLaunch}
+                                    onClick={handleWorkflowEmailLaunch}
                                     className="w-full bg-slate-950 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl active:scale-95 disabled:opacity-50"
                                     disabled={emailCooldown > 0 || dispatching}
                                 >
-                                    {dispatching ? 'Watching GitHub Run' : 'Open GitHub Workflow'}
+                                    {dispatching ? 'Watching Dispatch Run' : 'Open Dispatch Console'}
                                 </button>
                                 <button
                                     onClick={handleDirectEmailRelay}

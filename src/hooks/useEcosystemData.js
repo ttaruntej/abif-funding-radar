@@ -59,9 +59,11 @@ export const useEcosystemData = () => {
             try { localStorage.setItem('lastUpdatedTs', nowTs); } catch (e) { }
 
             if (isSilent) addLog(`Data Refresh Complete: ${data.length} records synced`, 'success');
+            return data;
         } catch (err) {
             setError("Ecosystem connection disrupted.");
             addLog(`Sync Failure: API issue`, 'error');
+            return null;
         } finally {
             setLoading(false);
         }

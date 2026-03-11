@@ -61,10 +61,10 @@ export const useEmailDispatch = (addLog) => {
                 setEmailNotification({
                     type: 'error',
                     message: mode === 'github'
-                        ? 'No new GitHub email run detected. Open the workflow and click Run workflow.'
+                        ? 'No new email run detected. Open the dispatch console and start the run.'
                         : 'Dispatch status unconfirmed.'
                 });
-                addLog(mode === 'github' ? 'No new GitHub email run detected.' : 'Dispatch Timeout', 'error');
+                addLog(mode === 'github' ? 'No new email run detected.' : 'Dispatch Timeout', 'error');
                 setTimeout(() => setEmailNotification(null), 6000);
                 return;
             }
@@ -80,7 +80,7 @@ export const useEmailDispatch = (addLog) => {
                         setEmailNotification({
                             type: 'in_progress',
                             message: mode === 'github'
-                                ? 'GitHub workflow detected. Monitoring dispatch...'
+                                ? 'Dispatch run detected. Monitoring...'
                                 : 'Synthesizing Strategic Briefing...'
                         });
                     }
@@ -100,7 +100,7 @@ export const useEmailDispatch = (addLog) => {
                             loadDispatchMeta(true);
                             setTimeout(() => setEmailNotification(null), 30000);
                         } else {
-                            const failureMessage = `Workflow finished with conclusion: ${statusData.conclusion || 'unknown'}.`;
+                            const failureMessage = `Run finished with result: ${statusData.conclusion || 'unknown'}.`;
                             setEmailNotification({ type: 'error', message: failureMessage });
                             addLog(failureMessage, 'error');
                             setTimeout(() => setEmailNotification(null), 7000);
@@ -117,7 +117,7 @@ export const useEmailDispatch = (addLog) => {
         if (dispatching || emailCooldown > 0) return;
         if (!hasRecipientInput(target_emails)) {
             setEmailNotification({ type: 'error', message: 'At least one recipient email is required.' });
-            addLog('Recipient email required before opening GitHub workflow', 'error');
+            addLog('Recipient email required before opening dispatch console', 'error');
             return;
         }
         const workflowWindow = typeof window !== 'undefined'
@@ -126,8 +126,8 @@ export const useEmailDispatch = (addLog) => {
         try {
             setDispatching(true);
             setLaunchMode('github');
-            setEmailNotification({ type: 'initializing', message: 'Open GitHub Actions and click Run workflow.' });
-            addLog(`Opening ${mode} email workflow in GitHub`, 'info');
+            setEmailNotification({ type: 'initializing', message: 'Open the dispatch console and start the run.' });
+            addLog(`Opening ${mode} email dispatch console`, 'info');
 
             ReactGA.event({
                 category: "Communication",
@@ -142,11 +142,11 @@ export const useEmailDispatch = (addLog) => {
             } catch (e) { }
 
             if (!workflowWindow) {
-                addLog('GitHub tab was blocked. Use the workflow link in the modal.', 'error');
+                addLog('Dispatch console tab was blocked. Allow pop-ups and try again.', 'error');
             }
 
             if (mode === 'filtered') {
-                addLog('Paste the prepared filters JSON into the GitHub workflow inputs.', 'info');
+                addLog('Paste the prepared filters JSON into the dispatch inputs.', 'info');
             }
 
             monitorDispatch(baselineRunId, 'github');
@@ -154,8 +154,8 @@ export const useEmailDispatch = (addLog) => {
             setDispatching(false);
             setLaunchMode(null);
             setEmailCooldown(0);
-            setEmailNotification({ type: 'error', message: err.message || 'Failed to open GitHub workflow.' });
-            addLog(`GitHub email launch failed: ${err.message || 'unknown error'}`, 'error');
+            setEmailNotification({ type: 'error', message: err.message || 'Failed to open dispatch console.' });
+            addLog(`Dispatch console launch failed: ${err.message || 'unknown error'}`, 'error');
             setTimeout(() => setEmailNotification(null), 5000);
         }
     };

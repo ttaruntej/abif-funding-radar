@@ -1,4 +1,4 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-tracker.vercel.app';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app';
 export const GITHUB_REPO_URL = 'https://github.com/ttaruntej/abif-funding-radar';
 export const EMAIL_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/send-email.yml`;
 export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sync.yml`;
@@ -80,23 +80,17 @@ export const fetchDispatchMeta = async () => {
     try {
         const liveRes = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email?action=fetch_meta`, { method: 'GET' });
         if (liveRes.ok) return await liveRes.json();
-    } catch (err) {
-        console.warn('Live dispatch metadata unavailable from API host.');
-    }
+    } catch (err) { }
 
     try {
         const githubRes = await fetchJsonWithTimeout(`${GITHUB_RAW_DATA_BASE}/last_dispatch_meta.json`, { method: 'GET' });
         if (githubRes.ok) return await githubRes.json();
-    } catch (err) {
-        console.warn('GitHub raw dispatch metadata unavailable.');
-    }
+    } catch (err) { }
 
     try {
         const staticRes = await fetchJsonWithTimeout(`./data/last_dispatch_meta.json`, { method: 'GET' });
         if (staticRes.ok) return await staticRes.json();
-    } catch (err) {
-        console.warn('Static dispatch metadata unavailable.');
-    }
+    } catch (err) { }
 
     return null;
 };
@@ -113,7 +107,7 @@ export const triggerScraper = async () => {
         if (!res.ok) throw new Error(data.error || 'Failed to start verified source sync');
         return data;
     } catch (err) {
-        throw new Error(`Failed to start verified source sync. Open GitHub fallback: ${SYNC_WORKFLOW_URL}`);
+        throw new Error('Failed to start verified source sync. Please try again when the relay is reachable.');
     }
 };
 
@@ -152,7 +146,7 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
             url: `${API_BASE_URL}/api/trigger-email`,
             stack: err.stack
         });
-        throw new Error(`Connection Error: ${err.message}. Open GitHub fallback: ${EMAIL_WORKFLOW_URL}`);
+        throw new Error(`Connection Error: ${err.message}. Please try again when the relay is reachable.`);
     }
 };
 
@@ -162,7 +156,6 @@ export const getEmailStatus = async () => {
         if (!res.ok) throw new Error(`Status check failed: ${res.status}`);
         return await res.json();
     } catch (err) {
-        console.warn('Email status polling via API host failed:', err.message);
         return await fetchLatestWorkflowRunFromGitHub('send-email.yml');
     }
 };
