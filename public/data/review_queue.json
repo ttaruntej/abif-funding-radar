@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T01:30:40.665Z",
+  "generatedAt": "2026-03-11T07:30:18.109Z",
   "summary": {
     "totalSourceItems": 73,
     "publishableItems": 19,
@@ -34,7 +34,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:33.878Z"
+      "lastScraped": "2026-03-11T07:30:10.658Z"
     },
     {
       "name": "Greenovation Agrivoltaics Challenge",
@@ -62,7 +62,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:38.177Z"
+      "lastScraped": "2026-03-11T07:30:14.844Z"
     },
     {
       "name": "Keeling Curve Prize 2026",
@@ -90,7 +90,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:29.391Z"
+      "lastScraped": "2026-03-11T07:30:05.875Z"
     },
     {
       "name": "AI4Good AgriTech Farmer Solutions",
@@ -114,7 +114,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:34.328Z"
+      "lastScraped": "2026-03-11T07:30:11.324Z"
     },
     {
       "name": "Aspire Climatetech Program Spring 2026",
@@ -138,7 +138,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:40.167Z"
+      "lastScraped": "2026-03-11T07:30:17.601Z"
     },
     {
       "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
@@ -162,7 +162,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:30.163Z"
+      "lastScraped": "2026-03-11T07:30:06.821Z"
     },
     {
       "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
@@ -186,7 +186,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:36.063Z"
+      "lastScraped": "2026-03-11T07:30:13.247Z"
     },
     {
       "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
@@ -210,7 +210,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:39.764Z"
+      "lastScraped": "2026-03-11T07:30:17.285Z"
     },
     {
       "name": "AI for ALL: Global Impact Challenge",
@@ -234,7 +234,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 70,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-11T01:30:37.901Z"
+      "lastScraped": "2026-03-11T07:30:14.581Z"
     },
     {
       "name": "SAREP Partnership Fund",
@@ -266,7 +266,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 70,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:33.186Z"
+      "lastScraped": "2026-03-11T07:30:09.881Z"
     },
     {
       "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
@@ -298,7 +298,7 @@
       "recommendedAction": "merge-or-deduplicate",
       "reviewPriority": 65,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:50.987Z"
+      "lastScraped": "2026-03-11T07:28:28.031Z"
     },
     {
       "name": "HDFC Bank Parivartan Start-up Grants (FY26)",
@@ -326,7 +326,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 55,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:29.949Z"
+      "lastScraped": "2026-03-11T07:30:06.842Z"
     },
     {
       "name": "MeitY Blockchain India Challenge",
@@ -354,7 +354,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 55,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:32.820Z"
+      "lastScraped": "2026-03-11T07:30:09.575Z"
     },
     {
       "name": "AFI Agri Cohort 25-26",
@@ -374,7 +374,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:26.323Z"
+      "lastScraped": "2026-03-11T07:30:03.160Z"
     },
     {
       "name": "StartupTN Agri-Tech Grant",
@@ -394,7 +394,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:27.416Z"
+      "lastScraped": "2026-03-11T07:30:03.499Z"
     },
     {
       "name": "MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation",
@@ -414,7 +414,7 @@
       "recommendedAction": "merge-or-deduplicate",
       "reviewPriority": 20,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:19.206Z"
+      "lastScraped": "2026-03-11T07:27:52.892Z"
     },
     {
       "name": "AMRUT 2.0 Water Pitch Challenge",
@@ -434,7 +434,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:15.467Z"
+      "lastScraped": "2026-03-11T07:27:45.209Z"
     },
     {
       "name": "BIRAC BioNEST",
@@ -454,7 +454,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:25.615Z"
+      "lastScraped": "2026-03-11T07:27:56.127Z"
     },
     {
       "name": "BIRAC Biotechnology Ignition Grant (BIG)",
@@ -474,7 +474,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:22.330Z"
+      "lastScraped": "2026-03-11T07:27:52.562Z"
     },
     {
       "name": "BIRAC–Social Alpha Assistive Tech Quest",
@@ -494,7 +494,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:24.117Z"
+      "lastScraped": "2026-03-11T07:27:55.355Z"
     },
     {
       "name": "D.E.S.I.G.N for BioE3 Challenge",
@@ -514,7 +514,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:17.573Z"
+      "lastScraped": "2026-03-11T07:27:47.905Z"
     },
     {
       "name": "Ford Foundation – Global Grants",
@@ -534,7 +534,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:40.283Z"
+      "lastScraped": "2026-03-11T07:28:16.032Z"
     },
     {
       "name": "India Agritech Incubation Network",
@@ -554,7 +554,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:31.714Z"
+      "lastScraped": "2026-03-11T07:28:06.571Z"
     },
     {
       "name": "India-France AI Call",
@@ -574,7 +574,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:25.834Z"
+      "lastScraped": "2026-03-11T07:27:56.503Z"
     },
     {
       "name": "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
@@ -594,7 +594,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:15.143Z"
+      "lastScraped": "2026-03-11T07:27:44.972Z"
     },
     {
       "name": "Kotak BizLabs Accelerator (Velocity & IRP)",
@@ -614,7 +614,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:12.511Z"
+      "lastScraped": "2026-03-11T07:27:41.606Z"
     },
     {
       "name": "Krishi Mangal",
@@ -634,7 +634,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:44.050Z"
+      "lastScraped": "2026-03-11T07:28:20.489Z"
     },
     {
       "name": "LIC HFL Social Trailblazer Program",
@@ -654,7 +654,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:13.047Z"
+      "lastScraped": "2026-03-11T07:27:41.986Z"
     },
     {
       "name": "NEAT 3.0",
@@ -674,7 +674,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:29.567Z"
+      "lastScraped": "2026-03-11T07:28:04.743Z"
     },
     {
       "name": "NIDHI-EIR",
@@ -694,7 +694,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:28.800Z"
+      "lastScraped": "2026-03-11T07:28:03.472Z"
     },
     {
       "name": "PRISM",
@@ -714,7 +714,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:30.116Z"
+      "lastScraped": "2026-03-11T07:28:05.492Z"
     },
     {
       "name": "Skoll Foundation Awards",
@@ -734,7 +734,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:42.494Z"
+      "lastScraped": "2026-03-11T07:28:18.604Z"
     },
     {
       "name": "Startup India SISFS",
@@ -754,7 +754,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:30.650Z"
+      "lastScraped": "2026-03-11T07:28:05.516Z"
     },
     {
       "name": "thingQbator",
@@ -774,7 +774,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:41.776Z"
+      "lastScraped": "2026-03-11T07:28:17.672Z"
     },
     {
       "name": "UNIDO Global Cleantech Innovation Programme",
@@ -794,7 +794,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:38.397Z"
+      "lastScraped": "2026-03-11T07:28:12.978Z"
     },
     {
       "name": "Youth Co:Lab",
@@ -814,7 +814,7 @@
       "recommendedAction": "manual-review",
       "reviewPriority": 10,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:31.606Z"
+      "lastScraped": "2026-03-11T07:28:06.194Z"
     },
     {
       "name": "MANAGE-CIA Agri-Business Incubation",
@@ -838,7 +838,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 0,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:50.970Z"
+      "lastScraped": "2026-03-11T07:28:28.016Z"
     },
     {
       "name": "SAMRIDH Cohort 3",
@@ -866,7 +866,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 0,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:26.585Z"
+      "lastScraped": "2026-03-11T07:27:57.298Z"
     },
     {
       "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
@@ -890,7 +890,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 0,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:30:25.012Z"
+      "lastScraped": "2026-03-11T07:30:02.046Z"
     },
     {
       "name": "ADB FinTech Institute",
@@ -914,7 +914,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:31.806Z"
+      "lastScraped": "2026-03-11T07:28:06.796Z"
     },
     {
       "name": "Clean Energy International Incubation Centre",
@@ -938,7 +938,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:39.897Z"
+      "lastScraped": "2026-03-11T07:28:15.560Z"
     },
     {
       "name": "GIZ–FCDO StartUpWave",
@@ -962,7 +962,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:37.097Z"
+      "lastScraped": "2026-03-11T07:28:12.208Z"
     },
     {
       "name": "IDFC FIRST Bank IGNITE Accelerator",
@@ -986,7 +986,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:14.358Z"
+      "lastScraped": "2026-03-11T07:27:43.623Z"
     },
     {
       "name": "Infosys Social Innovation & Entrepreneurship CSR",
@@ -1010,7 +1010,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:16.390Z"
+      "lastScraped": "2026-03-11T07:27:46.654Z"
     },
     {
       "name": "Lemelson Foundation ASME iShow",
@@ -1034,7 +1034,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:44.484Z"
+      "lastScraped": "2026-03-11T07:28:19.917Z"
     },
     {
       "name": "MeitY TIDE 2.0 (Incubator Support)",
@@ -1054,7 +1054,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:50.166Z"
+      "lastScraped": "2026-03-11T07:28:25.981Z"
     },
     {
       "name": "MSME Incubation Scheme",
@@ -1078,7 +1078,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:35.189Z"
+      "lastScraped": "2026-03-11T07:28:10.220Z"
     },
     {
       "name": "NABARD AgriSURE Fund (Direct Scheme)",
@@ -1098,7 +1098,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:44.826Z"
+      "lastScraped": "2026-03-11T07:28:21.058Z"
     },
     {
       "name": "NIDHI-TBI",
@@ -1122,7 +1122,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:28.614Z"
+      "lastScraped": "2026-03-11T07:28:03.294Z"
     },
     {
       "name": "Rockefeller Foundation Global Impact Incubator",
@@ -1146,7 +1146,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:37.216Z"
+      "lastScraped": "2026-03-11T07:28:12.538Z"
     },
     {
       "name": "SIDBI SRIJAN Revolving Fund",
@@ -1186,7 +1186,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:48.409Z"
+      "lastScraped": "2026-03-11T07:28:24.600Z"
     },
     {
       "name": "TIDE 2.0",
@@ -1210,7 +1210,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:21.950Z"
+      "lastScraped": "2026-03-11T07:27:51.762Z"
     },
     {
       "name": "World Bank Group Startup Financing",
@@ -1234,7 +1234,7 @@
       "recommendedAction": "replace-link",
       "reviewPriority": -15,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-11T01:28:36.176Z"
+      "lastScraped": "2026-03-11T07:28:11.313Z"
     }
   ]
 }
