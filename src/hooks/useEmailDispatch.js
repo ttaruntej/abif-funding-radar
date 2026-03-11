@@ -2,6 +2,21 @@ import { useState, useEffect } from 'react';
 import { triggerEmail, getEmailStatus, fetchDispatchMeta, EMAIL_WORKFLOW_URL } from '../services/api';
 import ReactGA from "react-ga4";
 
+const EMAIL_POLL_INTERVAL_MS = {
+    github: 15000,
+    relay: 5000,
+};
+
+const EMAIL_DETECTION_TIMEOUT_MS = {
+    github: 6 * 60 * 1000,
+    relay: 2 * 60 * 1000,
+};
+
+const EMAIL_COMPLETION_TIMEOUT_MS = {
+    github: 12 * 60 * 1000,
+    relay: 8 * 60 * 1000,
+};
+
 export const useEmailDispatch = (addLog) => {
     const [emailNotification, setEmailNotification] = useState(null);
     const [dispatching, setDispatching] = useState(false);
@@ -47,24 +62,38 @@ export const useEmailDispatch = (addLog) => {
     };
 
     const monitorDispatch = (baselineRunId, mode) => {
-        const pollIntervalMs = mode === 'github' ? 15000 : 5000;
-        const maxAttempts = mode === 'github' ? 24 : 20;
-        let attempts = 0;
+        const pollIntervalMs = EMAIL_POLL_INTERVAL_MS[mode] || EMAIL_POLL_INTERVAL_MS.relay;
+        const detectionTimeoutMs = EMAIL_DETECTION_TIMEOUT_MS[mode] || EMAIL_DETECTION_TIMEOUT_MS.relay;
+        const completionTimeoutMs = EMAIL_COMPLETION_TIMEOUT_MS[mode] || EMAIL_COMPLETION_TIMEOUT_MS.relay;
+        const pollingStartedAt = Date.now();
         let detectedRunId = null;
+        let runDetectedAt = null;
 
         const pollInterval = setInterval(async () => {
-            attempts += 1;
-            if (attempts > maxAttempts) {
+            const now = Date.now();
+
+            if (!detectedRunId && now - pollingStartedAt > detectionTimeoutMs) {
                 clearInterval(pollInterval);
                 setDispatching(false);
                 setLaunchMode(null);
                 setEmailNotification({
                     type: 'error',
-                    message: mode === 'github'
-                        ? 'No new briefing activity was detected. Please try again.'
-                        : 'Still checking briefing status.'
+                    message: 'No new briefing activity was detected yet. It may still be waiting in line. Please try again.'
                 });
-                addLog(mode === 'github' ? 'No new briefing activity was detected.' : 'Briefing status check timed out.', 'error');
+                addLog('No new briefing activity was detected yet.', 'error');
+                setTimeout(() => setEmailNotification(null), 6000);
+                return;
+            }
+
+            if (detectedRunId && runDetectedAt && now - runDetectedAt > completionTimeoutMs) {
+                clearInterval(pollInterval);
+                setDispatching(false);
+                setLaunchMode(null);
+                setEmailNotification({
+                    type: 'error',
+                    message: 'This briefing is still running longer than usual. Please check again in a moment.'
+                });
+                addLog('Briefing is taking longer than usual.', 'error');
                 setTimeout(() => setEmailNotification(null), 6000);
                 return;
             }
@@ -74,6 +103,7 @@ export const useEmailDispatch = (addLog) => {
                 if (statusData.run_id && statusData.run_id !== baselineRunId) {
                     if (!detectedRunId) {
                         detectedRunId = statusData.run_id;
+                        runDetectedAt = Date.now();
                         if (emailCooldown === 0) {
                             startCooldownTicker();
                         }

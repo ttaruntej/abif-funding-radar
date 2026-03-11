@@ -35,6 +35,21 @@ const SYNC_STAGES = [
     },
 ];
 
+const SYNC_POLL_INTERVAL_MS = {
+    github: 15000,
+    relay: 5000,
+};
+
+const SYNC_DETECTION_TIMEOUT_MS = {
+    github: 6 * 60 * 1000,
+    relay: 2 * 60 * 1000,
+};
+
+const SYNC_COMPLETION_TIMEOUT_MS = {
+    github: 15 * 60 * 1000,
+    relay: 12 * 60 * 1000,
+};
+
 const formatDuration = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -264,30 +279,37 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
     useEffect(() => () => clearPolling(), []);
 
     const startPolling = (baselineRunId, mode) => {
-        const pollIntervalMs = mode === 'github' ? 15000 : 5000;
-        const maxAttempts = mode === 'github' ? 24 : 36;
-        let attempts = 0;
+        const pollIntervalMs = SYNC_POLL_INTERVAL_MS[mode] || SYNC_POLL_INTERVAL_MS.relay;
+        const detectionTimeoutMs = SYNC_DETECTION_TIMEOUT_MS[mode] || SYNC_DETECTION_TIMEOUT_MS.relay;
+        const completionTimeoutMs = SYNC_COMPLETION_TIMEOUT_MS[mode] || SYNC_COMPLETION_TIMEOUT_MS.relay;
+        const pollingStartedAt = Date.now();
         let detectedRunId = null;
+        let runDetectedAt = null;
 
         pollIntervalRef.current = setInterval(async () => {
-            attempts += 1;
+            const now = Date.now();
 
-            if (attempts > maxAttempts) {
+            if (!detectedRunId && now - pollingStartedAt > detectionTimeoutMs) {
                 clearPolling();
                 setIsRefreshing(false);
                 setSyncFinishedAt(new Date().toISOString());
                 setServerStatus(null);
                 setSyncError(
-                    mode === 'github'
-                        ? 'No new refresh activity was detected. Please try again.'
-                        : 'This refresh is taking longer than expected. You can keep this panel open and try again.'
+                    'No new refresh activity was detected yet. It may still be waiting in line. Please try again.'
                 );
-                addLog(
-                    mode === 'github'
-                        ? 'No new refresh activity was detected.'
-                        : 'Refresh took longer than expected.',
-                    'error'
+                addLog('No new refresh activity was detected yet.', 'error');
+                return;
+            }
+
+            if (detectedRunId && runDetectedAt && now - runDetectedAt > completionTimeoutMs) {
+                clearPolling();
+                setIsRefreshing(false);
+                setSyncFinishedAt(new Date().toISOString());
+                setServerStatus(null);
+                setSyncError(
+                    'This refresh is still running longer than usual. You can keep the panel open and try again in a moment.'
                 );
+                addLog('Refresh is taking longer than usual.', 'error');
                 return;
             }
 
@@ -305,6 +327,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
 
                 if (!detectedRunId) {
                     detectedRunId = statusData.run_id;
+                    runDetectedAt = Date.now();
                     if (mode === 'github' && cooldown === 0) {
                         setCooldown(60);
                         addLog('Refresh started. Tracking progress.', 'info');
