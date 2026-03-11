@@ -10,7 +10,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
     const catMeta = CATEGORIES.find(c => c.key === scheme.category);
     const statusStyle = STATUS_COLORS[scheme.status] || 'bg-slate-800 text-slate-400 border-slate-700';
 
-    // Neural Match Logic (Relabeled for Institutional Integrity)
+    // Stable confidence badge derived from source status.
     const generateConfidence = (name) => {
         let hash = 0;
         for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
@@ -49,7 +49,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                         ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600'
                         : 'bg-blue-500/10 border-blue-500/20 text-blue-600'
                         }`}>
-                        {scheme.dataSource === 'integrity-guard' ? 'INSTITUTIONAL' : 'AI-DISCOVERED'}
+                        {scheme.dataSource === 'integrity-guard' ? 'INSTITUTIONAL' : 'TRACKED'}
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                 )}
             </div>
 
-            {/* Bottom Strategic Layer */}
+            {/* Bottom action area */}
             <div className={`mt-auto pt-6 border-t relative z-10 flex items-center justify-between ${isArchivedMode ? 'border-slate-300 dark:border-slate-800/50' : 'border-slate-100 dark:border-slate-800/50'
                 }`}>
                 <div className="flex flex-col gap-2">
@@ -122,12 +122,12 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                         {isVerified ? (
                             <>
                                 <ShieldCheck size={12} className={isArchivedMode ? 'text-slate-400' : 'text-emerald-500'} />
-                                <span className={`text-[9px] font-black uppercase tracking-[0.2em] ${isArchivedMode ? 'text-slate-400' : 'text-emerald-500'}`}>Neural Match ({confidence}%)</span>
+                                <span className={`text-[9px] font-black uppercase tracking-[0.2em] ${isArchivedMode ? 'text-slate-400' : 'text-emerald-500'}`}>Source Match ({confidence}%)</span>
                             </>
                         ) : (
                             <>
                                 <AlertTriangle size={12} className={isArchivedMode ? 'text-slate-400' : 'text-amber-500'} />
-                                <span className={`text-[9px] font-black uppercase tracking-[0.2em] ${isArchivedMode ? 'text-slate-400' : 'text-amber-500'}`}>Probable Match ({confidence}%)</span>
+                                <span className={`text-[9px] font-black uppercase tracking-[0.2em] ${isArchivedMode ? 'text-slate-400' : 'text-amber-500'}`}>Review Match ({confidence}%)</span>
                             </>
                         )}
                     </div>
@@ -142,7 +142,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                         ? 'bg-slate-300/30 dark:bg-slate-900/50 text-slate-500 border border-slate-400/20'
                         : 'bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-slate-950 dark:text-white hover:bg-slate-950 dark:hover:bg-white hover:text-white dark:hover:text-slate-950 shadow-xl'}`}
                 >
-                    {isArchivedMode ? <><Lock size={12} /> Vault Access</> : <><ExternalLink size={14} /> Open Mandate</>}
+                    {isArchivedMode ? <><Lock size={12} /> View Record</> : <><ExternalLink size={14} /> View Opportunity</>}
                 </a>
             </div>
 

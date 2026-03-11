@@ -1,17 +1,17 @@
 export const CATEGORIES = [
-    { key: 'all', label: 'All', icon: '🌐' },
-    { key: 'national', label: 'National', icon: '🇮🇳' },
-    { key: 'international', label: 'International', icon: '🌍' },
-    { key: 'state', label: 'State Specific', icon: '🏛️' },
-    { key: 'csr', label: 'CSR', icon: '🤝' },
+    { key: 'all', label: 'All', icon: 'ALL' },
+    { key: 'national', label: 'National', icon: 'IN' },
+    { key: 'international', label: 'International', icon: 'GL' },
+    { key: 'state', label: 'State Specific', icon: 'ST' },
+    { key: 'csr', label: 'CSR', icon: 'CSR' },
 ];
 
 export const STATUS_COLORS = {
-    'Open': 'bg-emerald-900/30 text-emerald-400 border-emerald-500/30',
+    Open: 'bg-emerald-900/30 text-emerald-400 border-emerald-500/30',
     'Coming Soon': 'bg-blue-900/30 text-blue-400 border-blue-500/30',
-    'Rolling': 'bg-emerald-900/30 text-emerald-400 border-emerald-500/30',
+    Rolling: 'bg-emerald-900/30 text-emerald-400 border-emerald-500/30',
     'Closing Soon': 'bg-red-900/30 text-red-400 border-red-500/30',
-    'Closed': 'bg-slate-800 text-slate-500 border-slate-700',
+    Closed: 'bg-slate-800 text-slate-500 border-slate-700',
     'Verify Manually': 'bg-slate-800 text-slate-500 border-slate-700',
 };
 
@@ -33,30 +33,30 @@ export const CAT_COLORS = {
 export const SECTIONS = [
     {
         key: 'closing-soon',
-        label: '🔴 Closing Soon',
+        label: 'Closing Soon',
         subtitle: 'Apply before the deadline passes',
-        filter: o => o.status === 'Closing Soon',
+        filter: (o) => o.status === 'Closing Soon',
         borderColor: 'border-red-500'
     },
     {
         key: 'open',
-        label: '🟢 Open — Fixed Deadline',
+        label: 'Open | Fixed Deadline',
         subtitle: 'Active calls with specific closing dates',
-        filter: o => o.status === 'Open',
+        filter: (o) => o.status === 'Open',
         borderColor: 'border-emerald-500'
     },
     {
         key: 'rolling',
-        label: '🔵 Rolling Mandates',
-        subtitle: 'Apply anytime — no fixed deadline',
-        filter: o => o.status === 'Rolling',
+        label: 'Rolling Opportunities',
+        subtitle: 'Apply anytime | no fixed deadline',
+        filter: (o) => o.status === 'Rolling',
         borderColor: 'border-blue-500'
     },
     {
         key: 'coming-soon',
-        label: '🟡 Coming Soon',
-        subtitle: 'Watch these — cycle expected to open',
-        filter: o => o.status === 'Coming Soon',
+        label: 'Coming Soon',
+        subtitle: 'Watch these | expected to open soon',
+        filter: (o) => o.status === 'Coming Soon',
         borderColor: 'border-amber-500'
     },
 ];

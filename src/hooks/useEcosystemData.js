@@ -58,11 +58,11 @@ export const useEcosystemData = () => {
             setLastUpdatedTs(nowTs);
             try { localStorage.setItem('lastUpdatedTs', nowTs); } catch (e) { }
 
-            if (isSilent) addLog(`Data Refresh Complete: ${data.length} records synced`, 'success');
+            if (isSilent) addLog(`Opportunity list updated: ${data.length} items available.`, 'success');
             return data;
         } catch (err) {
-            setError("Ecosystem connection disrupted.");
-            addLog(`Sync Failure: API issue`, 'error');
+            setError("The opportunity list could not be reached.");
+            addLog('Refresh could not be completed right now.', 'error');
             return null;
         } finally {
             setLoading(false);
@@ -142,8 +142,8 @@ export const useEcosystemData = () => {
         };
 
         const sentiment = (statsObj.active / (statsObj.total || 1)) > 0.5
-            ? { label: 'Aggressive / Bullish', color: 'text-emerald-400', bg: 'bg-emerald-500/10' }
-            : { label: 'Transition / Stable', color: 'text-blue-400', bg: 'bg-blue-500/10' };
+            ? { label: 'High Activity', color: 'text-emerald-400', bg: 'bg-emerald-500/10' }
+            : { label: 'Steady Activity', color: 'text-blue-400', bg: 'bg-blue-500/10' };
 
         return {
             filtered: result,
@@ -159,7 +159,7 @@ export const useEcosystemData = () => {
         setActiveCategory('all');
         setActiveSector('All Sectors');
         setActiveStatus('all');
-        addLog('Global Filters Reset', 'info');
+        addLog('Filters cleared.', 'info');
     };
 
     return {

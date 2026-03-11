@@ -5,35 +5,33 @@ const EcosystemTicker = ({ opportunities, lastUpdatedTs }) => {
     const tickerItems = useMemo(() => {
         if (!opportunities || opportunities.length === 0) return [];
 
-        const openCount = opportunities.filter(o => ['Open', 'Rolling', 'Closing Soon'].includes(o.status)).length;
-        const closingSoon = opportunities.filter(o => o.status === 'Closing Soon');
-        const internationalCount = opportunities.filter(o => o.category === 'international').length;
+        const openCount = opportunities.filter((o) => ['Open', 'Rolling', 'Closing Soon'].includes(o.status)).length;
+        const closingSoon = opportunities.filter((o) => o.status === 'Closing Soon');
+        const internationalCount = opportunities.filter((o) => o.category === 'international').length;
 
-        // Dynamic Sector trends
-        const sectors = opportunities.flatMap(o => o.sectors || []);
-        const sectorCounts = sectors.reduce((acc, s) => ({ ...acc, [s]: (acc[s] || 0) + 1 }), {});
+        const sectors = opportunities.flatMap((o) => o.sectors || []);
+        const sectorCounts = sectors.reduce((acc, sector) => ({ ...acc, [sector]: (acc[sector] || 0) + 1 }), {});
         const topSector = Object.entries(sectorCounts).sort((a, b) => b[1] - a[1])[0];
 
         const lastUpdatedText = lastUpdatedTs
-            ? `Cycle Completed: ${new Date(Number(lastUpdatedTs)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
-            : 'Autonomous Search Active';
+            ? `Last updated: ${new Date(Number(lastUpdatedTs)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+            : 'Opportunity check in progress';
 
         const items = [
-            { icon: <Radio size={12} className="text-emerald-500 animate-pulse" />, text: `System Status: ${openCount} Live Mandates Discovered` },
-            { icon: <TrendingUp size={12} className="text-blue-500" />, text: `Sector Dominance: ${topSector ? topSector[0] : 'Strategic Tech'} leading ecosystem flow` },
+            { icon: <Radio size={12} className="text-emerald-500 animate-pulse" />, text: `${openCount} opportunities currently open` },
+            { icon: <TrendingUp size={12} className="text-blue-500" />, text: `${topSector ? topSector[0] : 'Priority sectors'} showing the most activity` },
             { icon: <Zap size={12} className="text-amber-500" />, text: lastUpdatedText },
-            { icon: <Globe size={12} className="text-purple-500" />, text: `Global Intel: ${internationalCount} Cross-border schemes verified` }
+            { icon: <Globe size={12} className="text-purple-500" />, text: `${internationalCount} international opportunities listed` }
         ];
 
-        // Add specific alerts if closing soon
         if (closingSoon.length > 0) {
             items.unshift({
                 icon: <AlertCircle size={12} className="text-red-500" />,
-                text: `Urgent: ${closingSoon[0].name.slice(0, 30)}... expires soon`
+                text: `Closing soon: ${closingSoon[0].name.slice(0, 30)}...`
             });
         }
 
-        return [...items, ...items]; // Duplicate for seamless infinite loop
+        return [...items, ...items];
     }, [opportunities, lastUpdatedTs]);
 
     if (tickerItems.length === 0) return null;
@@ -51,22 +49,27 @@ const EcosystemTicker = ({ opportunities, lastUpdatedTs }) => {
                 ))}
             </div>
 
-            {/* Legend Tag - High Visibility */}
             <div className="absolute left-0 top-0 bottom-0 bg-blue-700 px-6 flex items-center shadow-[10px_0_30px_rgba(0,0,0,0.8)] z-10 border-r border-white/10">
-                <span className="text-[9px] font-black italic uppercase tracking-widest text-white">Live Intel Feed</span>
+                <span className="text-[9px] font-black italic uppercase tracking-widest text-white">Live Updates</span>
             </div>
         </div>
     );
 };
 
-// Simple Globe Icon fallback since it's not in the import list of original lucide icons I was using
 const Globe = ({ size, className }) => (
     <svg
-        width={size} height={size} viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-        strokeLinejoin="round" className={className}
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
     >
-        <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
     </svg>
 );

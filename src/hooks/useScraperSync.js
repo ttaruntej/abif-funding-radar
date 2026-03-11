@@ -5,33 +5,33 @@ import ReactGA from "react-ga4";
 const SYNC_STAGES = [
     {
         key: 'dispatch',
-        label: 'Submit sync request',
-        description: 'Send a secure request to start a verified-source run.',
+        label: 'Start refresh',
+        description: 'Send a secure request to refresh the opportunity list.',
     },
     {
         key: 'queue',
-        label: 'Queue processing',
-        description: 'The request has been accepted and capacity is being assigned.',
+        label: 'Reserve capacity',
+        description: 'The refresh request has been accepted and placed in line.',
     },
     {
         key: 'collect',
-        label: 'Collect official sources',
-        description: 'Pull opportunities from verified portals and source pages.',
+        label: 'Gather opportunities',
+        description: 'Collect opportunities from trusted funding and partner pages.',
     },
     {
         key: 'verify',
-        label: 'Verify links and deadlines',
-        description: 'Normalize statuses, deduplicate, and validate live links.',
+        label: 'Confirm details',
+        description: 'Review dates, links, and listing details for clarity.',
     },
     {
         key: 'review',
-        label: 'Build review queue',
-        description: 'Flag lower-confidence records and artifact-heavy items for review.',
+        label: 'Prepare review list',
+        description: 'Separate ready-to-share opportunities from items needing a second look.',
     },
     {
         key: 'reload',
-        label: 'Refresh dashboard dataset',
-        description: 'Reload the newest JSON so the frontend shows the updated radar.',
+        label: 'Update live list',
+        description: 'Apply the latest opportunities to the live list.',
     },
 ];
 
@@ -123,17 +123,17 @@ const buildSyncSummary = (state) => {
     if (refreshSuccess) {
         const newCount = syncFindings?.newCount || 0;
         return {
-            title: newCount > 0 ? 'New Findings Loaded' : 'Sync Finished',
+            title: newCount > 0 ? 'Update Complete' : 'Refresh Complete',
             subtitle: newCount > 0
-                ? `${newCount} new finding${newCount === 1 ? '' : 's'} added to the live dataset.`
-                : 'No new findings were detected in this cycle.',
+                ? `${newCount} new opportunit${newCount === 1 ? 'y was' : 'ies were'} added to the opportunity list.`
+                : 'No new opportunities were added in this refresh.',
             tone: 'success',
         };
     }
 
     if (syncError) {
         return {
-            title: 'Sync Needs Attention',
+            title: 'Update Needs Review',
             subtitle: syncError,
             tone: 'error',
         };
@@ -141,17 +141,17 @@ const buildSyncSummary = (state) => {
 
     if (!syncRunId) {
         return {
-            title: 'Starting Sync',
+            title: 'Starting Refresh',
             subtitle: launchMode === 'github'
-                ? 'Waiting for the sync run to be started.'
-                : 'Submitting the sync request and waiting for confirmation.',
+                ? 'Waiting for the refresh to begin.'
+                : 'Sending the refresh request and waiting for confirmation.',
             tone: 'active',
         };
     }
 
     if (serverStatus === 'queued') {
         return {
-            title: 'Run Queued',
+            title: 'Refresh Queued',
             subtitle: 'The request was accepted and is waiting for processing capacity.',
             tone: 'active',
         };
@@ -159,31 +159,31 @@ const buildSyncSummary = (state) => {
 
     if (elapsedTime < 10) {
         return {
-            title: 'Collecting Sources',
-            subtitle: 'Pulling records from official portals and verified source pages.',
+            title: 'Gathering Opportunities',
+            subtitle: 'Collecting opportunities from trusted funding and partner pages.',
             tone: 'active',
         };
     }
 
     if (elapsedTime < 22) {
         return {
-            title: 'Verifying Records',
-            subtitle: 'Checking links, deadlines, and normalized opportunity states.',
+            title: 'Confirming Details',
+            subtitle: 'Checking dates, links, and listing details.',
             tone: 'active',
         };
     }
 
     if (elapsedTime < 36) {
         return {
-            title: 'Building Review Queue',
-            subtitle: 'Separating publishable records from items that need deeper review.',
+            title: 'Preparing Review List',
+            subtitle: 'Sorting ready-to-share opportunities from items that need review.',
             tone: 'active',
         };
     }
 
     return {
-        title: 'Refreshing Dashboard',
-        subtitle: 'Preparing the final dataset and waiting for the frontend to reload it.',
+        title: 'Updating Live List',
+        subtitle: 'Applying the latest results to the live opportunity list.',
         tone: 'active',
     };
 };
@@ -279,13 +279,13 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
                 setServerStatus(null);
                 setSyncError(
                     mode === 'github'
-                        ? 'No new sync run was detected. Please try again.'
-                        : 'The run took too long to confirm. You can close this panel and try again.'
+                        ? 'No new refresh activity was detected. Please try again.'
+                        : 'This refresh is taking longer than expected. You can keep this panel open and try again.'
                 );
                 addLog(
                     mode === 'github'
-                        ? 'No new sync run was detected.'
-                        : 'Sync status timed out before completion.',
+                        ? 'No new refresh activity was detected.'
+                        : 'Refresh took longer than expected.',
                     'error'
                 );
                 return;
@@ -307,7 +307,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
                     detectedRunId = statusData.run_id;
                     if (mode === 'github' && cooldown === 0) {
                         setCooldown(60);
-                        addLog('Sync run detected. Monitoring live run.', 'info');
+                        addLog('Refresh started. Tracking progress.', 'info');
                     }
                 }
 
@@ -323,17 +323,17 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
                         const refreshedOpportunities = await loadData(true);
 
                         if (!Array.isArray(refreshedOpportunities)) {
-                            setSyncError('The run finished, but the refreshed dataset could not be loaded.');
-                            addLog('Sync completed but the dashboard dataset could not be refreshed.', 'error');
+                            setSyncError('The refresh finished, but the updated opportunity list could not be shown yet.');
+                            addLog('Refresh finished, but the updated list could not be shown.', 'error');
                             setServerStatus('attention');
                             return;
                         }
 
                         setSyncFindings(summarizeSyncFindings(previousOpportunitiesRef.current, refreshedOpportunities));
                         setRefreshSuccess(true);
-                        addLog('Verified source sync completed successfully.', 'success');
+                        addLog('Opportunity list refreshed successfully.', 'success');
                     } else {
-                        const failureMessage = `Sync finished with conclusion: ${statusData.conclusion || 'unknown'}.`;
+                        const failureMessage = `Refresh finished with result: ${statusData.conclusion || 'unknown'}.`;
                         setSyncError(failureMessage);
                         addLog(failureMessage, 'error');
                         setServerStatus(statusData.conclusion || 'failed');
@@ -355,7 +355,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
 
         previousOpportunitiesRef.current = Array.isArray(opportunities) ? opportunities : [];
         initializeSyncState('github');
-        addLog('Opening sync console. Start the run in the new tab.', 'info');
+        addLog('Opening the update window. Start the refresh there.', 'info');
 
         ReactGA.event({
             category: "Operations",
@@ -374,7 +374,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
             }
 
             if (!workflowWindow) {
-                addLog('Sync console tab was blocked. Allow pop-ups and try again.', 'error');
+                addLog('The update window was blocked. Allow pop-ups and try again.', 'error');
             }
 
             startPolling(baselineRunId, 'github');
@@ -384,8 +384,8 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
             setCooldown(0);
             setServerStatus(null);
             setSyncFinishedAt(new Date().toISOString());
-            setSyncError(error.message || 'The sync console could not be opened.');
-            addLog(`Sync console launch failed: ${error.message || 'unknown error'}`, 'error');
+            setSyncError(error.message || 'The update window could not be opened.');
+            addLog(`Update window could not be opened: ${error.message || 'unknown error'}`, 'error');
         }
     };
 
@@ -396,7 +396,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
         let baselineRunId = null;
         previousOpportunitiesRef.current = Array.isArray(opportunities) ? opportunities : [];
         initializeSyncState('relay');
-        addLog('Initiating verified source sync...', 'info');
+        addLog('Refreshing the opportunity list...', 'info');
 
         ReactGA.event({
             category: "Operations",
@@ -420,7 +420,7 @@ export const useScraperSync = (addLog, loadData, opportunities = []) => {
             setCooldown(0);
             setServerStatus(null);
             setSyncFinishedAt(new Date().toISOString());
-            setSyncError(error.message || 'The sync request could not be started from the frontend.');
+            setSyncError(error.message || 'The refresh could not be started right now.');
             addLog(`Trigger failed: ${error.message || 'unknown error'}`, 'error');
         }
     };

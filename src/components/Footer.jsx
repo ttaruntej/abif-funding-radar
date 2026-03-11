@@ -18,7 +18,7 @@ const Footer = ({ lastUpdatedTs }) => {
         if (!rawTs) return 'INITIALIZING';
         try {
             const diff = Math.floor((Date.now() - parseInt(rawTs)) / 1000);
-            if (diff < 60) return 'SYNCHRONIZED';
+            if (diff < 60) return 'UP TO DATE';
             if (diff < 3600) return `${Math.floor(diff / 60)}M AGO`;
             if (diff < 86400) return `${Math.floor(diff / 3600)}H AGO`;
             return 'RECENT';
@@ -35,11 +35,11 @@ const Footer = ({ lastUpdatedTs }) => {
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
 
-                    {/* Column 1: Strategic Mandates */}
+                    {/* Column 1: Key Links */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
                             <Zap size={14} className="text-blue-500" />
-                            <h4 className="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">Strategic Mandates</h4>
+                            <h4 className="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">Key Links</h4>
                         </div>
                         <ul className="space-y-4">
                             <li>
@@ -70,9 +70,9 @@ const Footer = ({ lastUpdatedTs }) => {
                         <ul className="space-y-3">
                             {[
                                 { label: 'Portfolio Startups', url: 'https://abif.iitkgp.ac.in/startups' },
-                                { label: 'Strategic Mentor Pool', url: 'https://abif.iitkgp.ac.in/mentors' },
+                                { label: 'Mentor Network', url: 'https://abif.iitkgp.ac.in/mentors' },
                                 { label: 'Registered FPOs', url: 'https://abif.iitkgp.ac.in/fpo' },
-                                { label: 'Ecosystem Events', url: 'https://abif.iitkgp.ac.in/events' }
+                                { label: 'Events & Programs', url: 'https://abif.iitkgp.ac.in/events' }
                             ].map((link, i) => (
                                 <li key={i}>
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors uppercase tracking-widest flex items-center justify-between group">
@@ -84,48 +84,48 @@ const Footer = ({ lastUpdatedTs }) => {
                         </ul>
                     </div>
 
-                    {/* Column 3: Institutional Anchor */}
+                    {/* Column 3: Institutional Partners */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
                             <ShieldCheck size={14} className="text-slate-400" />
-                            <h4 className="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">Institutional Anchor</h4>
+                            <h4 className="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em]">Institutional Partners</h4>
                         </div>
                         <div className="space-y-5">
                             <div className="flex items-start gap-4">
                                 <img src="logos/iitkgp-logo.png" alt="IITKGP" className="w-8 h-8 object-contain opacity-90" />
                                 <div className="flex flex-col">
                                     <a href="http://www.iitkgp.ac.in/" target="_blank" rel="noopener noreferrer" className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-tighter hover:text-blue-500 transition-colors">IIT Kharagpur</a>
-                                    <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase font-bold mt-0.5">AgFE Department Host</span>
+                                    <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase font-bold mt-0.5">Host Institution</span>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4">
                                 <img src="logos/nabard-logo.png" alt="NABARD" className="w-8 h-8 object-contain" />
                                 <div className="flex flex-col">
                                     <a href="https://www.nabard.org/" target="_blank" rel="noopener noreferrer" className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-tighter hover:text-emerald-500 transition-colors">NABARD</a>
-                                    <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase font-bold mt-0.5">Strategic Funding Partner</span>
+                                    <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase font-bold mt-0.5">Funding Partner</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Column 4: Operational Pulse */}
+                    {/* Column 4: Activity Snapshot */}
                     <div className="space-y-6 lg:pl-4">
                         <div className="bg-white/50 dark:bg-slate-900/50 rounded-[24px] p-6 border border-slate-100 dark:border-white/5 shadow-sm">
                             <div className="flex items-center justify-between mb-4">
-                                <h4 className="text-[9px] font-black text-slate-800 dark:text-white uppercase tracking-widest">System Pulse</h4>
+                            <h4 className="text-[9px] font-black text-slate-800 dark:text-white uppercase tracking-widest">Activity Snapshot</h4>
                                 <Activity size={12} className="text-blue-500" />
                             </div>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-[9px] font-bold text-slate-400 uppercase">Radar Status</span>
+                                    <span className="text-[9px] font-bold text-slate-400 uppercase">List Status</span>
                                     <span className="text-[9px] font-black text-emerald-500 uppercase flex items-center gap-1.5">
                                         <div className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse" />
                                         {formatRelTime(lastUpdatedTs)}
                                     </span>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-[9px] font-bold text-slate-400 uppercase">Discovery Mode</span>
-                                    <span className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase italic">Verified Source</span>
+                                    <span className="text-[9px] font-bold text-slate-400 uppercase">Review Mode</span>
+                                    <span className="text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase italic">Source Checked</span>
                                 </div>
                             </div>
                             <div className="mt-5 pt-5 border-t border-slate-100 dark:border-white/5 flex gap-4">
@@ -150,7 +150,7 @@ const Footer = ({ lastUpdatedTs }) => {
                         </div>
                         <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-relaxed">
                             &copy; {currentYear} Agri Business Incubation Foundation IIT Kharagpur (ABIF).<br />
-                            Strategic Asset of the TBI Ecosystem.
+                            Opportunity support for founders, incubators, and accelerators.
                         </p>
                     </div>
 

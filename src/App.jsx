@@ -117,14 +117,14 @@ const App = () => {
     const handleSyncIntelligence = async () => {
         try {
             setIsSyncingReport(true);
-            addLog('Synching Neural Report...', 'info');
+            addLog('Refreshing the briefing view...', 'info');
             const freshReport = await fetchResearchReport();
             if (freshReport) {
                 setReport(freshReport);
-                addLog('Intelligence Refreshed from Data Core', 'success');
+                addLog('Briefing view refreshed.', 'success');
             }
         } catch (e) {
-            addLog('Report Sync Fault', 'error');
+            addLog('Briefing view could not be refreshed.', 'error');
         } finally {
             setTimeout(() => setIsSyncingReport(false), 2000);
         }
@@ -153,7 +153,7 @@ const App = () => {
     const handleWorkflowEmailLaunch = () => {
         if (!dispatchRecipients.trim()) {
             setEmailNotification({ type: 'error', message: 'Add at least one recipient email.' });
-            addLog('Recipient email required before opening dispatch console', 'error');
+            addLog('Add at least one recipient before opening the briefing window.', 'error');
             return;
         }
         openGitHubEmailWorkflow(dispatchRecipients, briefingMode, currentEmailFilters);
@@ -162,7 +162,7 @@ const App = () => {
     const handleDirectEmailRelay = () => {
         if (!dispatchRecipients.trim()) {
             setEmailNotification({ type: 'error', message: 'Add at least one recipient email.' });
-            addLog('Recipient email required before direct dispatch', 'error');
+            addLog('Add at least one recipient before sending the briefing.', 'error');
             return;
         }
         handleEmailTrigger(dispatchRecipients, briefingMode, currentEmailFilters);
@@ -175,12 +175,12 @@ const App = () => {
             <div className="w-12 h-1 bg-blue-500/20 rounded-full mb-4 overflow-hidden relative">
                 <div className="absolute inset-0 bg-blue-500 animate-scan"></div>
             </div>
-            Neural Link Active...
+            Preparing Opportunity List...
         </div>
     );
 
     const visibleSections = currentView === 'archive'
-        ? [{ key: 'vault', label: 'Vault Records', subtitle: 'Archive Database', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
+        ? [{ key: 'vault', label: 'Saved Records', subtitle: 'Archive', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
 
     return (
@@ -232,11 +232,11 @@ const App = () => {
                                     <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400 leading-relaxed">
                                         {refreshSuccess && syncFindings
                                             ? syncFindings.newCount > 0
-                                                ? `${syncFindings.newCount} new findings ready to review.`
-                                                : 'No new findings in this cycle.'
+                                                ? `${syncFindings.newCount} new opportunities ready to review.`
+                                                : 'No new opportunities in this update.'
                                             : syncError
                                                 ? 'Needs review. Restore this panel for details.'
-                                                : 'Sync remains active in the background.'}
+                                                : 'Refresh is still in progress.'}
                                     </p>
                                 </div>
                             </div>
@@ -343,7 +343,7 @@ const App = () => {
                                 </span>
                             </div>
                             <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
-                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Run</span>
+                                        <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Update</span>
                                 <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
                                     {syncRunId ? `#${String(syncRunId).slice(-6)}` : 'Starting'}
                                 </span>
@@ -361,12 +361,12 @@ const App = () => {
                         <div>
                             <div className="flex items-center justify-between mb-3">
                                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.24em]">
-                                    Live Cycle
-                                </span>
-                                <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                                    Estimated stages + run status
-                                </span>
-                            </div>
+                                        Progress Tracker
+                                    </span>
+                                    <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                        Current stage + progress
+                                    </span>
+                                </div>
 
                             <div className="space-y-2.5">
                                 {syncSteps.map((step) => (
@@ -409,13 +409,13 @@ const App = () => {
                             <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-4">
                                 <div className="flex items-center justify-between gap-3">
                                     <div>
-                                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Cycle Findings</p>
+                                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Update Summary</p>
                                         <p className="mt-1 text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.16em]">
-                                            {syncFindings?.newCount > 0 ? `${syncFindings.newCount} new findings detected` : 'No new findings detected'}
+                                            {syncFindings?.newCount > 0 ? `${syncFindings.newCount} new opportunities found` : 'No new opportunities found'}
                                         </p>
                                     </div>
                                     <span className="text-[9px] font-mono font-black text-slate-500 dark:text-slate-400">
-                                        {syncFindings ? `${syncFindings.totalBefore} -> ${syncFindings.totalAfter}` : 'Stable'}
+                                        {syncFindings ? `${syncFindings.totalBefore} to ${syncFindings.totalAfter}` : 'Stable'}
                                     </span>
                                 </div>
 
@@ -441,13 +441,13 @@ const App = () => {
                                         ))}
                                         {syncFindings.newCount > syncFindings.newItems.length && (
                                             <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                                                +{syncFindings.newCount - syncFindings.newItems.length} more new findings in this cycle
+                                                +{syncFindings.newCount - syncFindings.newItems.length} more new opportunities in this update
                                             </p>
                                         )}
                                     </div>
                                 ) : (
                                     <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                        The dataset refreshed successfully, but this cycle did not add any new findings.
+                                        The opportunity list refreshed successfully, but no new opportunities were added this time.
                                     </p>
                                 )}
                             </div>
@@ -461,13 +461,13 @@ const App = () => {
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-red-600 dark:text-red-400">
-                                            Sync Needs Attention
+                                            Update Needs Review
                                         </p>
                                         <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300 leading-relaxed">
                                             {syncError}
                                         </p>
                                         <p className="mt-3 text-[9px] font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                            The last published dataset remains available. You can retry without closing this panel.
+                                            The last published opportunity list remains available. You can try again without closing this panel.
                                         </p>
                                     </div>
                                 </div>
@@ -478,14 +478,14 @@ const App = () => {
                                         className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[9px] font-black uppercase tracking-[0.16em] disabled:opacity-50"
                                     >
                                         <RotateCcw size={12} />
-                                        {cooldown > 0 ? `Retry in ${cooldown}s` : 'Retry Sync'}
+                                        {cooldown > 0 ? `Try again in ${cooldown}s` : 'Try Again'}
                                     </button>
                                 </div>
                             </div>
                         )}
 
                         <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.18em]">
-                            This panel stays available until you close it. Minimize keeps the run visible without dismissing it.
+                            This panel stays available until you close it. Minimize keeps the update within reach while you continue working.
                         </p>
                         </div>
                     </div>
@@ -517,7 +517,7 @@ const App = () => {
                         </div>
 
                         <div className="flex-1 pr-4">
-                            <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest leading-none">Transmission</h3>
+                            <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest leading-none">Briefing</h3>
                             <p className="text-[8px] text-slate-500 font-bold uppercase mt-2">{emailNotification.message}</p>
                         </div>
 
@@ -568,7 +568,7 @@ const App = () => {
                     {filtered.length === 0 ? (
                         <EmptyState
                             title={currentView === 'archive' ? "Archives Empty" : "No Matches"}
-                            message="Adjust filters or refresh the ecosystem research."
+                            message="Adjust your filters or refresh the opportunity list."
                             actionLabel="View All Opportunities"
                             onAction={clearFilters}
                         />
@@ -613,7 +613,7 @@ const App = () => {
                     <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[32px] shadow-3xl border border-white/5 p-8 animate-shutter">
                         <div className="flex justify-between items-start mb-6">
                             <h3 className="font-black text-slate-900 dark:text-white text-[12px] uppercase flex items-center gap-3">
-                                Briefing Transmission
+                                Send Briefing
                             </h3>
                             <button onClick={() => setIsEmailModalOpen(false)} className="text-slate-400 hover:text-red-500 transition-colors">
                                 <X size={20} />
@@ -624,14 +624,14 @@ const App = () => {
                             <div className="mb-6 p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-white/5">
                                 <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
                                     <Activity size={12} className="text-emerald-500" />
-                                    Last Active Dispatch
+                                    Last Sent Briefing
                                 </h4>
                                 <div className="space-y-3">
                                     <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
                                         Subject: <span className="font-medium text-slate-500">{dispatchMeta.subject}</span>
                                     </p>
                                     <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                                        Sent To: <span className="font-medium text-slate-500 truncate block">{dispatchMeta.recipients}</span>
+                                        Recipients: <span className="font-medium text-slate-500 truncate block">{dispatchMeta.recipients}</span>
                                     </p>
                                     <div className="flex items-center gap-4 mt-2 mb-3">
                                         <div className="flex flex-col">
@@ -642,14 +642,14 @@ const App = () => {
                                         </div>
                                         <div className="w-px h-6 bg-slate-200 dark:bg-slate-700" />
                                         <div className="flex flex-col">
-                                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Volume</span>
-                                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{dispatchMeta.opportunityCount} Mandates</span>
+                                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Included</span>
+                                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{dispatchMeta.opportunityCount} Opportunities</span>
                                         </div>
                                     </div>
                                     <div className="pt-3 border-t border-slate-200 dark:border-slate-800">
                                         <details className="text-[10px] text-slate-500 cursor-pointer group">
                                             <summary className="font-black uppercase tracking-widest hover:text-blue-500 transition-colors flex items-center justify-between">
-                                                <span>View AI Sentiment Extract</span>
+                                                <span>View Opening Note</span>
                                                 <TrendingUp size={10} className="group-open:rotate-180 transition-transform" />
                                             </summary>
                                             <div className="mt-3 p-3 bg-white dark:bg-slate-900 rounded-lg italic leading-relaxed text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-white/5" dangerouslySetInnerHTML={{ __html: dispatchMeta.aiIntro }} />
@@ -661,11 +661,11 @@ const App = () => {
 
                         <div className="space-y-4">
                             <div className="flex justify-between items-center mb-1">
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block ml-1">New Recipient(s)</label>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block ml-1">Recipients</label>
                                 <span className="text-[10px] font-black text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-full uppercase tracking-tighter">
                                     {briefingMode === 'standard'
                                         ? filtered.filter(o => o.targetAudience?.includes('incubator') && o.status !== 'Closed').length
-                                        : filtered.length} Prospect Mandates
+                                        : filtered.length} Matching Opportunities
                                 </span>
                             </div>
 
@@ -689,7 +689,7 @@ const App = () => {
                                 <input
                                     type="text"
                                     value={dispatchRecipients}
-                                    placeholder="Enter emails separated by commas..."
+                                    placeholder="Enter recipient emails separated by commas..."
                                     className="w-full text-sm font-bold bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 dark:text-white"
                                     onChange={(e) => setDispatchRecipients(e.target.value)}
                                     onKeyDown={(e) => {
@@ -705,14 +705,14 @@ const App = () => {
                                     className="w-full bg-slate-950 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl active:scale-95 disabled:opacity-50"
                                     disabled={emailCooldown > 0 || dispatching}
                                 >
-                                    {dispatching ? 'Watching Dispatch Run' : 'Open Dispatch Console'}
+                                    {dispatching ? 'Preparing Briefing' : 'Prepare Briefing'}
                                 </button>
                                 <button
                                     onClick={handleDirectEmailRelay}
                                     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
                                     disabled={emailCooldown > 0 || (dispatching && emailLaunchMode !== 'github')}
                                 >
-                                    {emailCooldown > 0 ? `Cooling (${emailCooldown}s)` : 'Try Direct Relay'}
+                                    {emailCooldown > 0 ? `Ready in ${emailCooldown}s` : 'Send Now'}
                                 </button>
                             </div>
                         </div>

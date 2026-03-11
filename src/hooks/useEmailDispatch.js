@@ -19,10 +19,10 @@ export const useEmailDispatch = (addLog) => {
             const meta = await fetchDispatchMeta();
             if (meta) {
                 setDispatchMeta(meta);
-                if (isRefresh) addLog('Dispatch metadata synced', 'success');
+                if (isRefresh) addLog('Briefing history updated.', 'success');
             }
         } catch (e) {
-            console.warn('Dispatch meta not available');
+            console.warn('Briefing history not available');
         }
     };
 
@@ -61,10 +61,10 @@ export const useEmailDispatch = (addLog) => {
                 setEmailNotification({
                     type: 'error',
                     message: mode === 'github'
-                        ? 'No new email run detected. Open the dispatch console and start the run.'
-                        : 'Dispatch status unconfirmed.'
+                        ? 'No new briefing activity was detected. Please try again.'
+                        : 'Still checking briefing status.'
                 });
-                addLog(mode === 'github' ? 'No new email run detected.' : 'Dispatch Timeout', 'error');
+                addLog(mode === 'github' ? 'No new briefing activity was detected.' : 'Briefing status check timed out.', 'error');
                 setTimeout(() => setEmailNotification(null), 6000);
                 return;
             }
@@ -80,8 +80,8 @@ export const useEmailDispatch = (addLog) => {
                         setEmailNotification({
                             type: 'in_progress',
                             message: mode === 'github'
-                                ? 'Dispatch run detected. Monitoring...'
-                                : 'Synthesizing Strategic Briefing...'
+                                ? 'Briefing started. Tracking progress...'
+                                : 'Preparing briefing...'
                         });
                     }
 
@@ -95,8 +95,8 @@ export const useEmailDispatch = (addLog) => {
                             setLastEmailDispatchTs(nowTs);
                             try { localStorage.setItem('lastEmailDispatchTs', nowTs); } catch (e) { }
 
-                            setEmailNotification({ type: 'success', message: 'Intelligence briefing dispatched!' });
-                            addLog('Briefing dispatched successfully', 'success');
+                            setEmailNotification({ type: 'success', message: 'Briefing sent successfully!' });
+                            addLog('Briefing sent successfully', 'success');
                             loadDispatchMeta(true);
                             setTimeout(() => setEmailNotification(null), 30000);
                         } else {
@@ -117,7 +117,7 @@ export const useEmailDispatch = (addLog) => {
         if (dispatching || emailCooldown > 0) return;
         if (!hasRecipientInput(target_emails)) {
             setEmailNotification({ type: 'error', message: 'At least one recipient email is required.' });
-            addLog('Recipient email required before opening dispatch console', 'error');
+            addLog('Add at least one recipient before opening the briefing window.', 'error');
             return;
         }
         const workflowWindow = typeof window !== 'undefined'
@@ -126,8 +126,8 @@ export const useEmailDispatch = (addLog) => {
         try {
             setDispatching(true);
             setLaunchMode('github');
-            setEmailNotification({ type: 'initializing', message: 'Open the dispatch console and start the run.' });
-            addLog(`Opening ${mode} email dispatch console`, 'info');
+            setEmailNotification({ type: 'initializing', message: 'Opening the briefing window. Complete the send step there.' });
+            addLog(`Opening the ${mode} briefing window.`, 'info');
 
             ReactGA.event({
                 category: "Communication",
@@ -142,11 +142,11 @@ export const useEmailDispatch = (addLog) => {
             } catch (e) { }
 
             if (!workflowWindow) {
-                addLog('Dispatch console tab was blocked. Allow pop-ups and try again.', 'error');
+                addLog('The briefing window was blocked. Allow pop-ups and try again.', 'error');
             }
 
             if (mode === 'filtered') {
-                addLog('Paste the prepared filters JSON into the dispatch inputs.', 'info');
+                addLog('Use the prepared selection in the briefing form.', 'info');
             }
 
             monitorDispatch(baselineRunId, 'github');
@@ -154,8 +154,8 @@ export const useEmailDispatch = (addLog) => {
             setDispatching(false);
             setLaunchMode(null);
             setEmailCooldown(0);
-            setEmailNotification({ type: 'error', message: err.message || 'Failed to open dispatch console.' });
-            addLog(`Dispatch console launch failed: ${err.message || 'unknown error'}`, 'error');
+            setEmailNotification({ type: 'error', message: err.message || 'Unable to open the briefing window.' });
+            addLog(`Briefing window could not be opened: ${err.message || 'unknown error'}`, 'error');
             setTimeout(() => setEmailNotification(null), 5000);
         }
     };
@@ -165,15 +165,15 @@ export const useEmailDispatch = (addLog) => {
         if ((dispatching && !canSwitchFromGitHub) || emailCooldown > 0) return;
         if (!hasRecipientInput(target_emails)) {
             setEmailNotification({ type: 'error', message: 'At least one recipient email is required.' });
-            addLog('Recipient email required before direct dispatch', 'error');
+            addLog('Add at least one recipient before sending the briefing.', 'error');
             return;
         }
         try {
             setDispatching(true);
             setLaunchMode('relay');
 
-            setEmailNotification({ type: 'initializing', message: 'Connecting to direct relay...' });
-            addLog(`Initiating ${mode} dispatch relay to stakeholder`, 'info');
+            setEmailNotification({ type: 'initializing', message: 'Preparing secure delivery...' });
+            addLog(`Preparing the ${mode} briefing for delivery.`, 'info');
 
             ReactGA.event({
                 category: "Communication",
@@ -189,14 +189,14 @@ export const useEmailDispatch = (addLog) => {
 
             await triggerEmail(target_emails, mode, filters);
             startCooldownTicker();
-            setEmailNotification({ type: 'in_progress', message: 'Synthesizing Strategic Briefing...' });
+            setEmailNotification({ type: 'in_progress', message: 'Preparing briefing...' });
             monitorDispatch(baselineRunId, 'relay');
         } catch (err) {
             setDispatching(false);
             setLaunchMode(null);
             setEmailCooldown(0);
-            setEmailNotification({ type: 'error', message: err.message || 'Failed to initiate dispatch.' });
-            addLog(`Critical Dispatch Failure: ${err.message || 'unknown error'}`, 'error');
+            setEmailNotification({ type: 'error', message: err.message || 'Unable to start briefing.' });
+            addLog(`Briefing could not be started: ${err.message || 'unknown error'}`, 'error');
             setTimeout(() => setEmailNotification(null), 5000);
         }
     };

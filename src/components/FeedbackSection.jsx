@@ -25,13 +25,13 @@ const FeedbackSection = ({ addLog }) => {
             if (!response.ok) throw new Error('Failed to send feedback');
 
             setStatus('success');
-            addLog('Suggestion transmitted to ABIF management', 'success');
+            addLog('Suggestion shared with the team.', 'success');
             setFeedback('');
             setEmail('');
             setTimeout(() => setStatus('idle'), 5000);
         } catch (err) {
             setStatus('error');
-            addLog('Feedback transmission failed', 'error');
+            addLog('Suggestion could not be sent.', 'error');
             setTimeout(() => setStatus('idle'), 5000);
         }
     };
@@ -49,13 +49,13 @@ const FeedbackSection = ({ addLog }) => {
                             <div className="p-3 bg-blue-500/10 rounded-2xl">
                                 <MessageSquare className="text-blue-500" size={24} />
                             </div>
-                            <h3 className="text-[12px] font-black text-blue-500 uppercase tracking-[0.3em]">Ecosystem Feedback</h3>
+                            <h3 className="text-[12px] font-black text-blue-500 uppercase tracking-[0.3em]">Share Feedback</h3>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-6 leading-tight">
-                            Help us refine the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 italic">Strategic Radar.</span>
+                            Help us improve this <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 italic">opportunity tool.</span>
                         </h2>
                         <p className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
-                            Have a suggestion for a new funding source or a feature request? Your feedback directly reaches the TBI Management team at Agri Business Incubation Foundation (ABIF) IIT Kharagpur.
+                            Have a suggestion for a new opportunity source or a useful improvement? Your note is shared directly with the ABIF team at IIT Kharagpur.
                         </p>
                     </div>
 
@@ -95,7 +95,7 @@ const FeedbackSection = ({ addLog }) => {
                             ) : (
                                 <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             )}
-                            {status === 'sending' ? 'Transmitting...' : status === 'success' ? 'Suggestion Received' : 'Transmit Insight'}
+                            {status === 'sending' ? 'Sending...' : status === 'success' ? 'Suggestion Received' : 'Send Suggestion'}
                         </button>
                     </form>
                 </div>

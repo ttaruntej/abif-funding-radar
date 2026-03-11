@@ -5,31 +5,31 @@ import MarketVectorChart from './MarketVectorChart';
 const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) => {
     const highlights = useMemo(() => [
         {
-            label: 'Intelligence Scope',
+            label: 'Opportunity Scope',
             val: stats.total,
-            sub: 'MANDATES',
+            sub: 'OPPORTUNITIES',
             icon: Target,
             color: 'text-blue-500',
             bg: 'bg-blue-500/10',
-            desc: 'TOTAL RECORDS'
+            desc: 'TOTAL LISTED'
         },
         {
-            label: 'Liquidity Pool',
+            label: 'Open Now',
             val: stats.active,
-            sub: 'AVAILABLE',
+            sub: 'OPEN',
             icon: DollarSign,
             color: 'text-emerald-500',
             bg: 'bg-emerald-500/10',
-            desc: 'ELIGIBLE NOW'
+            desc: 'READY NOW'
         },
         {
-            label: 'Cycle Maturity',
+            label: 'Closing Soon',
             val: stats.closingSoon,
-            sub: 'CLOSING',
+            sub: 'DEADLINES',
             icon: TrendingUp,
             color: 'text-red-500',
             bg: 'bg-red-500/10',
-            desc: 'IMMINENT'
+            desc: 'ACTION SOON'
         }
     ], [stats]);
 
@@ -58,7 +58,7 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                                 <div className="relative z-10 flex items-baseline gap-3">
                                     <span className="text-4xl font-black text-slate-950 dark:text-white tracking-tighter tabular-nums leading-none drop-shadow-sm">{h.val}</span>
                                     <div className="flex flex-col">
-                                        <span className={`text-[10px] font-bold uppercase tracking-widest italic leading-none ${h.color} group-hover:translate-x-1 transition-transform`}>Units</span>
+                                        <span className={`text-[10px] font-bold uppercase tracking-widest italic leading-none ${h.color} group-hover:translate-x-1 transition-transform`}>Count</span>
                                         <span className="text-[8px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.1em] mt-1.5">{h.desc}</span>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
-                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">Strategic Intelligence</h3>
+                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">Quick Summary</h3>
                             </div>
                             <Activity size={16} className="text-blue-400" />
                         </div>
@@ -95,9 +95,9 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                         <div className="space-y-4 mb-6 relative">
                             <div className="absolute left-[7px] top-1 bottom-1 w-px bg-white/10" />
                             {[
-                                { label: 'Mandate Audit', val: `${stats.total} verified`, color: 'bg-blue-500' },
-                                { label: 'Liquidity Scan', val: `${stats.active} active`, color: 'bg-emerald-500' },
-                                { label: 'Vector Shift', val: 'Bullish focus', color: 'bg-amber-500' }
+                                { label: 'Opportunity Review', val: `${stats.total} listed`, color: 'bg-blue-500' },
+                                { label: 'Open Now', val: `${stats.active} open`, color: 'bg-emerald-500' },
+                                { label: 'Market Direction', val: 'High activity', color: 'bg-amber-500' }
                             ].map((log, i) => (
                                 <div key={i} className="flex items-center gap-4 relative z-10 transition-all hover:translate-x-1">
                                     <div className={`w-3.5 h-3.5 rounded-full border-2 border-slate-950 ${log.color}`} />
@@ -111,7 +111,7 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
 
                         <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/10">
                             <div>
-                                <p className="text-[8px] font-black text-white/30 uppercase tracking-widest leading-none mb-1.5">Market Sentiment</p>
+                                <p className="text-[8px] font-black text-white/30 uppercase tracking-widest leading-none mb-1.5">Activity Level</p>
                                 <div className={`text-[10px] font-black uppercase tracking-[0.1em] ${marketSentiment.color}`}>{marketSentiment.label.split(' / ')[0]}</div>
                             </div>
                             <button
@@ -119,16 +119,16 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                                 className="flex items-center gap-2 px-4 py-2 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer border border-blue-500/20"
                             >
                                 <FileText size={12} />
-                                Full Report
+                                View Brief
                             </button>
                         </div>
                     </div>
 
                     {/* Neural Shield Badge */}
-                    <div className="absolute top-4 right-4 z-20" title="Integrity Guard: All mandates are cross-referenced with institutional databases to ensure 100% URL validity and award accuracy.">
+                    <div className="absolute top-4 right-4 z-20" title="Source checked: entries are cross-checked against institution and funder pages for accuracy.">
                         <div className="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-lg backdrop-blur-md">
                             <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-[7px] font-black text-emerald-400 uppercase tracking-widest">Neural Shield Active</span>
+                            <span className="text-[7px] font-black text-emerald-400 uppercase tracking-widest">Source Checked</span>
                         </div>
                     </div>
 

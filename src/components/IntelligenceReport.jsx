@@ -22,9 +22,9 @@ const IntelligenceReport = ({
                         <div className="flex flex-col">
                             <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic leading-none">{report.title}</h2>
                             <div className="flex items-center gap-2 mt-2">
-                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Autonomous Research Cycle</span>
+                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Prepared On</span>
                                 <div className="px-2 py-0.5 bg-slate-200 dark:bg-slate-800 rounded-md text-[9px] font-bold text-slate-600 dark:text-slate-400">
-                                    {new Date(report.generatedAt).toLocaleDateString()} • {new Date(report.generatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                    {new Date(report.generatedAt).toLocaleDateString()} | {new Date(report.generatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ const IntelligenceReport = ({
                                 <img src="logos/abif-logo.png" alt="ABIF Logo" className="w-20 h-20 object-contain" />
                                 <div>
                                     <h1 className="text-3xl font-black text-slate-950 uppercase tracking-tighter">Agri Business Incubation Foundation</h1>
-                                    <p className="text-sm font-bold text-slate-600 uppercase tracking-widest">IIT Kharagpur • Strategic Funding Intelligence</p>
+                                    <p className="text-sm font-bold text-slate-600 uppercase tracking-widest">IIT Kharagpur | Funding Brief</p>
                                 </div>
                             </div>
                             <div className="text-right">
@@ -55,7 +55,7 @@ const IntelligenceReport = ({
                         <section>
                             <div className="flex items-center gap-2 mb-6">
                                 <div className="w-1 h-4 bg-blue-500 rounded-full" />
-                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Strategic Core</h3>
+                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Executive Summary</h3>
                             </div>
                             <p className="text-xl font-bold text-slate-800 dark:text-slate-200 leading-relaxed italic border-l-4 border-slate-100 dark:border-slate-800 pl-6">
                                 "{report.executiveSummary}"
@@ -65,7 +65,7 @@ const IntelligenceReport = ({
                         <section>
                             <div className="flex items-center gap-2 mb-8">
                                 <div className="w-1 h-4 bg-emerald-500 rounded-full" />
-                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Market Vector Analysis</h3>
+                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Market Signals</h3>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {report.keyTrends.map((trend, i) => (
@@ -87,7 +87,7 @@ const IntelligenceReport = ({
                         <section>
                             <div className="flex items-center gap-2 mb-8">
                                 <div className="w-1 h-4 bg-amber-500 rounded-full" />
-                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Execution Directives</h3>
+                                <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Recommended Actions</h3>
                             </div>
                             <div className="space-y-4">
                                 {report.actionableRecommendations.map((rec, i) => (
@@ -105,7 +105,7 @@ const IntelligenceReport = ({
 
                         <div className="hidden print:block pt-12 border-t border-slate-200 mt-12">
                             <p className="text-[9px] font-bold text-slate-400 leading-relaxed italic">
-                                Disclaimer: This intelligence report is synthesized by the ABIF IIT Kharagpur Neural Engine for strategic informational purposes. Real-time verification with original funder mandates is mandatory before capital engagement. All data corresponds to the research cycle recorded at the time of generation.
+                                Disclaimer: This briefing is prepared for planning support. Please confirm current funder information before acting. Details reflect the review time shown above.
                             </p>
                         </div>
                     </div>
@@ -123,7 +123,7 @@ const IntelligenceReport = ({
                             disabled={isSyncingReport}
                             className={`text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer ${isSyncingReport ? 'text-blue-500 animate-pulse' : 'text-slate-400 hover:text-blue-500'}`}
                         >
-                            {isSyncingReport ? 'Syncing...' : 'Sync Intelligence'}
+                            {isSyncingReport ? 'Refreshing...' : 'Refresh Brief'}
                         </button>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmptyState = ({ title, message, actionLabel, onAction, icon = '🔍' }) => {
+const EmptyState = ({ title, message, actionLabel, onAction, icon = '?' }) => {
     return (
         <div className="flex flex-col items-center justify-center text-center p-12 md:p-20 gap-4 text-slate-500 dark:text-slate-400 bg-slate-100/50 dark:bg-slate-800/30 border border-slate-300/50 dark:border-slate-700/50 border-dashed rounded-3xl mb-12 animate-in fade-in duration-500">
             <div className="text-5xl mb-2">{icon}</div>

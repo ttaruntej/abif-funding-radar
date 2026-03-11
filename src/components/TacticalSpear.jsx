@@ -32,7 +32,7 @@ const TacticalSpear = ({
         {
             id: 'sync',
             icon: refreshCooldown > 0 ? <span className="text-[10px] font-black">{refreshCooldown}s</span> : <RefreshCw size={20} className={isRefreshing ? 'animate-spin' : ''} />,
-            label: refreshCooldown > 0 ? `COOLDOWN: ${refreshCooldown}S` : 'START LIVE SYNC',
+            label: refreshCooldown > 0 ? `READY IN: ${refreshCooldown}S` : 'REFRESH OPPORTUNITIES',
             onClick: handleRefresh,
             disabled: isRefreshing || currentView === 'archive' || refreshCooldown > 0,
             color: refreshCooldown > 0 ? 'text-amber-500' : 'hover:text-blue-500 hover:bg-blue-500/10'
@@ -47,7 +47,7 @@ const TacticalSpear = ({
         {
             id: 'email',
             icon: emailCooldown > 0 ? <span className="text-[10px] font-black">{emailCooldown}s</span> : <Mail size={20} />,
-            label: emailCooldown > 0 ? `LINK COOLING: ${emailCooldown}S` : 'OPEN DISPATCH CONSOLE',
+            label: emailCooldown > 0 ? `READY IN: ${emailCooldown}S` : 'SEND BRIEFING',
             onClick: onEmailClick,
             disabled: emailCooldown > 0,
             color: emailCooldown > 0 ? 'text-amber-500' : 'hover:text-indigo-500 hover:bg-indigo-500/10'
@@ -62,7 +62,7 @@ const TacticalSpear = ({
         {
             id: 'view',
             icon: currentView === 'dashboard' ? <Archive size={20} /> : <LayoutGrid size={20} />,
-            label: currentView === 'dashboard' ? 'VIEW ARCHIVES' : 'LIVE MONITOR',
+            label: currentView === 'dashboard' ? 'VIEW ARCHIVE' : 'CURRENT LIST',
             onClick: () => setCurrentView(currentView === 'dashboard' ? 'archive' : 'dashboard'),
             color: 'hover:text-purple-500 hover:bg-purple-500/10'
         }
@@ -94,7 +94,7 @@ const TacticalSpear = ({
             {/* Spear Trigger */}
             <button
                 onClick={toggleOpen}
-                title="Strategic Control Center"
+                title="Quick Actions"
                 className={`w-16 h-16 rounded-[24px] shadow-3xl flex items-center justify-center transition-all duration-700 active:scale-90 ${isOpen
                     ? 'bg-red-500 text-white rotate-180'
                     : 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:shadow-blue-500/40'}`}
