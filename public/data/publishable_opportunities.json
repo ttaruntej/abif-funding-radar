@@ -21,7 +21,7 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:27:10.286Z"
+    "lastScraped": "2026-03-11T01:28:57.090Z"
   },
   {
     "name": "Atal Incubation Centre (AIC) Grant",
@@ -36,7 +36,7 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T15:25:42.386Z"
+    "lastScraped": "2026-03-11T01:28:34.009Z"
   },
   {
     "name": "BIRAC Announces Call for under Proposal Product Commercialization Program Fund...",
@@ -53,7 +53,7 @@
     "deadline": "BIRAC Announces Call for under Proposal Product Commercialization Program Fund... Call is open throughout the year",
     "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T15:25:00.039Z",
+    "lastScraped": "2026-03-11T01:27:58.068Z",
     "sectors": [
       "BioTech",
       "MedTech",
@@ -106,7 +106,7 @@
     "deadline": "30-06-2026",
     "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T15:25:01.077Z",
+    "lastScraped": "2026-03-11T01:27:58.120Z",
     "sectors": [
       "BioTech",
       "MedTech",
@@ -128,7 +128,7 @@
     "category": "international",
     "status": "Rolling",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:25:05.263Z",
+    "lastScraped": "2026-03-11T01:28:01.469Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -157,7 +157,7 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T15:25:34.660Z"
+    "lastScraped": "2026-03-11T01:28:26.672Z"
   },
   {
     "name": "IIG - CSR Opportunities Portal",
@@ -173,7 +173,7 @@
     "category": "csr",
     "linkStatus": "verified",
     "dataSource": "integrity-guard",
-    "lastScraped": "2026-03-10T15:27:04.094Z"
+    "lastScraped": "2026-03-11T01:28:49.875Z"
   },
   {
     "name": "India Netherlands Hydrogen Fellowship Programme",
@@ -185,7 +185,7 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:25:04.785Z",
+    "lastScraped": "2026-03-11T01:28:02.458Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -211,7 +211,7 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:25:04.351Z",
+    "lastScraped": "2026-03-11T01:28:01.969Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -250,7 +250,7 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:27:10.237Z"
+    "lastScraped": "2026-03-11T01:28:51.879Z"
   },
   {
     "name": "KSUM Idea Grant / Productization Grant",
@@ -273,7 +273,7 @@
       "Prototype"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:28:41.699Z"
+    "lastScraped": "2026-03-11T01:30:28.008Z"
   },
   {
     "name": "Mission सह-SANKALP",
@@ -285,7 +285,7 @@
     "category": "national",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:25:04.340Z",
+    "lastScraped": "2026-03-11T01:28:01.455Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -322,7 +322,7 @@
       "Seed"
     ],
     "linkStatus": "probable",
-    "lastScraped": "2026-03-10T15:27:03.032Z"
+    "lastScraped": "2026-03-11T01:28:50.521Z"
   },
   {
     "name": "SBI Foundation – Innovators for Bharat",
@@ -334,7 +334,7 @@
     "status": "Rolling",
     "linkStatus": "probable",
     "category": "csr",
-    "lastScraped": "2026-03-10T15:25:17.442Z",
+    "lastScraped": "2026-03-11T01:28:10.529Z",
     "dataSource": "scraper:sbif",
     "targetAudience": [
       "incubator",
@@ -395,7 +395,7 @@
       "MVP"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:28:41.727Z"
+    "lastScraped": "2026-03-11T01:30:28.554Z"
   },
   {
     "status": "Rolling",
@@ -409,7 +409,7 @@
     "linkStatus": "verified",
     "provider": "DPIIT",
     "amount": "Up to ₹50 Lakhs",
-    "lastScraped": "2026-03-10T15:25:13.778Z",
+    "lastScraped": "2026-03-11T01:28:06.809Z",
     "dataSource": "scraper:sisfs:incubator",
     "targetAudience": [
       "incubator"
@@ -442,6 +442,6 @@
       "Prototype"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-03-10T15:28:38.304Z"
+    "lastScraped": "2026-03-11T01:30:24.738Z"
   }
 ]
