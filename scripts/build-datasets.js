@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { getSourceBucket, parseDeadline } from './lib/record-governor.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -8,9 +9,6 @@ const DATA_FILE = path.join(__dirname, '../public/data/opportunities.json');
 const PUBLISHABLE_FILE = path.join(__dirname, '../public/data/publishable_opportunities.json');
 const REVIEW_QUEUE_FILE = path.join(__dirname, '../public/data/review_queue.json');
 
-const REVIEW_SOURCE_PREFIXES = ['research:', 'notebooklm:'];
-const CORE_SOURCE_PREFIXES = ['scraper:', 'manual:'];
-const CORE_SOURCE_EXACT = new Set(['integrity-guard']);
 const OPENISH_STATUSES = new Set(['open', 'closing soon', 'verify manually']);
 
 function normalizeName(name = '') {
@@ -20,36 +18,6 @@ function normalizeName(name = '') {
         .trim();
 }
 
-function parseDeadline(deadline) {
-    if (!deadline) return null;
-
-    const value = String(deadline).trim();
-    if (!value || /(rolling|varies|check portal|check source|cohort|cycle|fy|quarter|recurring|verify manually|open all year|removed)/i.test(value)) {
-        return null;
-    }
-
-    const dayMonthYear = value.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/);
-    if (dayMonthYear) {
-        const [, day, month, year] = dayMonthYear;
-        return new Date(`${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00+05:30`);
-    }
-
-    const parsed = new Date(value);
-    if (!Number.isNaN(parsed.getTime())) {
-        return parsed;
-    }
-
-    return null;
-}
-
-function getSourceBucket(dataSource = '') {
-    if (!dataSource) return 'unknown';
-    if (CORE_SOURCE_EXACT.has(dataSource)) return 'core';
-    if (CORE_SOURCE_PREFIXES.some((prefix) => dataSource.startsWith(prefix))) return 'core';
-    if (REVIEW_SOURCE_PREFIXES.some((prefix) => dataSource.startsWith(prefix))) return 'review';
-    return 'unknown';
-}
-
 function buildIssue(code, detail) {
     return { code, detail };
 }
@@ -57,8 +25,10 @@ function buildIssue(code, detail) {
 function reviewActionFor(issues) {
     if (issues.some((issue) => issue.code === 'duplicate-name')) return 'merge-or-deduplicate';
     if (issues.some((issue) => issue.code === 'source-review-required')) return 'verify-from-official-source';
+    if (issues.some((issue) => issue.code === 'inferred-provenance')) return 'confirm-provenance';
     if (issues.some((issue) => issue.code === 'past-deadline-status-mismatch')) return 'recompute-status-or-archive';
     if (issues.some((issue) => issue.code === 'broken-link')) return 'replace-link';
+    if (issues.some((issue) => issue.code === 'low-confidence')) return 'manual-confidence-review';
     return 'manual-review';
 }
 
@@ -69,6 +39,8 @@ function getReviewPriority(item, issues) {
     if (issues.some((issue) => issue.code === 'missing-critical-eligibility')) score += 20;
     if (issues.some((issue) => issue.code === 'past-deadline-status-mismatch')) score += 15;
     if (issues.some((issue) => issue.code === 'duplicate-name')) score += 10;
+    if (issues.some((issue) => issue.code === 'inferred-provenance')) score += 8;
+    if (issues.some((issue) => issue.code === 'low-confidence')) score += 6;
     if (issues.some((issue) => issue.code === 'broken-link')) score -= 15;
     if (item.linkStatus === 'verified') score += 10;
     if (String(item.dataSource || '').includes('notebook')) score += 10;
@@ -78,7 +50,7 @@ function getReviewPriority(item, issues) {
 
 function shouldRecommendArtifactReview(item, issues) {
     if (!item.link || item.linkStatus === 'broken') return false;
-    return issues.some((issue) => ['source-review-required', 'missing-critical-eligibility'].includes(issue.code));
+    return issues.some((issue) => ['source-review-required', 'missing-critical-eligibility', 'inferred-provenance'].includes(issue.code));
 }
 
 function getIssues(item, duplicateNames, now) {
@@ -94,6 +66,8 @@ function getIssues(item, duplicateNames, now) {
         issues.push(buildIssue('missing-data-source', 'Opportunity has no provenance tag.'));
     } else if (sourceBucket === 'review' || sourceBucket === 'unknown') {
         issues.push(buildIssue('source-review-required', `Source "${item.dataSource}" should pass through review before publication.`));
+    } else if (item.sourceMeta?.inferredDataSource) {
+        issues.push(buildIssue('inferred-provenance', `Source "${item.dataSource}" was inferred from ${item.sourceMeta.inferenceReason || 'URL/domain'} and should be confirmed.`));
     }
 
     if (duplicateNames.has(normalizedName)) {
@@ -110,6 +84,10 @@ function getIssues(item, duplicateNames, now) {
 
     if (String(item.dataSource || '').includes('notebook') && (!Array.isArray(item.criticalEligibility) || item.criticalEligibility.length === 0)) {
         issues.push(buildIssue('missing-critical-eligibility', 'Notebook-derived record does not yet include critical eligibility extraction.'));
+    }
+
+    if (typeof item.confidence === 'number' && item.confidence < 0.55) {
+        issues.push(buildIssue('low-confidence', `Confidence score ${item.confidence} is below the publishable threshold.`));
     }
 
     return issues;
@@ -152,7 +130,7 @@ function main() {
 
     const raw = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
     const opportunities = Array.isArray(raw) ? raw : [];
-    const now = new Date('2026-03-10T00:00:00+05:30');
+    const now = new Date();
 
     const duplicateTracker = new Map();
     for (const item of opportunities) {
@@ -188,6 +166,8 @@ function main() {
             reviewItems: reviewItems.length,
             duplicateGroups: duplicateNames.size,
             artifactReviewCandidates: reviewItems.filter((item) => item.artifactReviewRecommended).length,
+            inferredProvenanceItems: reviewItems.filter((item) => item.issues.some((issue) => issue.code === 'inferred-provenance')).length,
+            lowConfidenceItems: reviewItems.filter((item) => item.issues.some((issue) => issue.code === 'low-confidence')).length,
         },
         items: reviewItems,
     };

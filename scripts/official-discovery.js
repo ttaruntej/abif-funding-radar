@@ -16,6 +16,11 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import * as cheerio from 'cheerio';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
+import {
+    buildSourceHealthReport,
+    normalizeOpportunityRecord,
+    validateOpportunityRecord,
+} from './lib/record-governor.js';
 
 dotenv.config();
 
@@ -26,7 +31,385 @@ puppeteer.use(StealthPlugin());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DATA_FILE = path.join(__dirname, '../public/data/opportunities.json');
+const PUBLIC_DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_FILE = path.join(PUBLIC_DATA_DIR, 'opportunities.json');
+const SOURCE_HEALTH_FILE = path.join(PUBLIC_DATA_DIR, 'source_health.json');
+
+const RETIRED_RECORD_SIGNATURES = [
+    {
+        names: ['IDFC FIRST Bank IGNITE Accelerator'],
+        links: ['https://www.idfcfirstbank.com/csr'],
+    },
+    {
+        names: ['Infosys Social Innovation & Entrepreneurship CSR'],
+        links: ['https://www.infosys.com/infosys-foundation/grants.html'],
+    },
+    {
+        names: ['MeitY Blockchain India Challenge'],
+        links: ['https://www.msh.gov.in/'],
+    },
+    {
+        names: ['Rockefeller Foundation Global Impact Incubator'],
+        links: ['https://www.rockefellerfoundation.org/grant-opportunities/'],
+    },
+    {
+        names: ['SAREP Partnership Fund'],
+        links: ['https://www.sarepenergy.net/'],
+    },
+];
+
+const KNOWN_RECORD_REMEDIATIONS = [
+    {
+        names: ['TIDE 2.0'],
+        links: ['https://tide20.meity.gov.in/'],
+        patch: {
+            link: 'https://msh.meity.gov.in/assets/Administrative%20Approval_TIDE%202.0.pdf',
+            body: 'MeitY Startup Hub',
+            description: 'Official MeitY TIDE 2.0 approval document covering incubator support and ICT startup enablement.',
+            deadline: 'Check Website',
+            status: 'Check Website',
+            dataSource: 'manual:official:meity-startuphub',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['SAMRIDH Cohort 3'],
+        links: ['https://www.msh.gov.in/samridh'],
+        patch: {
+            name: 'SAMRIDH Scheme',
+            link: 'https://msh.meity.gov.in/assets/SAMRIDH%20guidelines.pdf',
+            body: 'MeitY Startup Hub',
+            description: 'Official SAMRIDH scheme guidelines for accelerator-led support and matched investment for startups.',
+            deadline: 'Check Website',
+            status: 'Check Website',
+            dataSource: 'manual:official:meity-startuphub',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['MSME Incubation Scheme'],
+        links: ['https://msme.gov.in/technology-incubation'],
+        patch: {
+            link: 'https://msme.gov.in/incubation',
+            description: 'Official Ministry of MSME incubation support page for innovators, host institutes, and incubation projects.',
+            deadline: 'Check Website',
+            status: 'Check Website',
+            dataSource: 'manual:official:msme',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['MeitY TIDE 2.0 (Incubator Support)'],
+        links: ['https://vc.meity.gov.in/tide2.0/'],
+        patch: {
+            link: 'https://msh.meity.gov.in/assets/Administrative%20Approval_TIDE%202.0.pdf',
+            body: 'MeitY Startup Hub',
+            description: 'Official MeitY TIDE 2.0 approval document outlining incubator support for ICT and electronics startups.',
+            deadline: 'Check Website',
+            status: 'Check Website',
+            dataSource: 'manual:official:meity-startuphub',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['STPI Next Generation Incubation Scheme (NGIS) / LEAP Ahead'],
+        links: ['https://www.stpi.in/en/next-generation-incubation-scheme'],
+        patch: {
+            link: 'https://stpi.in/index.php/en/schemes/ngis-scheme',
+            description: 'Official STPI NGIS scheme page for startup incubation, seed support, and LEAP Ahead challenge tracks.',
+            status: 'Check Website',
+            dataSource: 'manual:official:stpi',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['NABARD AgriSURE Fund (Direct Scheme)'],
+        links: ['https://nabventures.in/agrisure/'],
+        patch: {
+            link: 'https://nabventures.in/agrisure.aspx',
+            description: 'Official AgriSURE Fund page for NABVENTURES-backed investment support in agriculture and allied sectors.',
+            deadline: 'Check Website',
+            status: 'Check Website',
+            dataSource: 'manual:official:nabventures',
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['ADB FinTech Institute'],
+        links: ['https://www.adb.org/what-we-do/sectors/finance/fintech'],
+        patch: {
+            name: 'ADB Ventures',
+            link: 'https://ventures.adb.org/',
+            body: 'Asian Development Bank',
+            maxAward: 'Catalytic capital and venture support',
+            deadline: 'Check Website',
+            description: 'ADB Ventures supports climate and development-focused startups with catalytic capital, pilots, and ecosystem partnerships across Asia and the Pacific.',
+            category: 'international',
+            status: 'Check Website',
+            dataSource: 'manual:official:adb',
+            targetAudience: ['startup'],
+            sectors: ['ClimateTech', 'FinTech', 'AgriTech'],
+            stages: ['Seed', 'Early Traction', 'Scale-up'],
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['Clean Energy International Incubation Centre'],
+        links: ['https://socialalpha.org/ceiic/'],
+        patch: {
+            name: 'Clean Energy International Incubation Centre (CEIIC)',
+            link: 'https://ceiic.socialalpha.org/',
+            body: 'Social Alpha / Tata Trusts',
+            maxAward: 'Program support and venture access',
+            deadline: 'Check Website',
+            description: 'CEIIC supports clean energy innovators through venture building, pilot enablement, mentorship, and market access.',
+            category: 'csr',
+            status: 'Check Website',
+            dataSource: 'manual:official:socialalpha',
+            targetAudience: ['startup', 'incubator'],
+            sectors: ['CleanTech', 'Energy', 'ClimateTech'],
+            stages: ['Prototype', 'Seed', 'Early Traction'],
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['GIZ-FCDO StartUpWave', 'GIZ–FCDO StartUpWave', 'GIZâ€“FCDO StartUpWave'],
+        links: ['https://www.giz.de/en/worldwidegiz/india.html'],
+        patch: {
+            name: 'StartupWave Virtual Incubation Platform',
+            link: 'https://startupwave.co/',
+            body: 'StartupWave / Intellecap',
+            maxAward: 'Platform support and partner opportunities',
+            deadline: 'Rolling',
+            description: 'StartupWave is a virtual incubation platform connecting entrepreneurs with mentors, incubators, investors, and ecosystem programs.',
+            category: 'international',
+            status: 'Rolling',
+            dataSource: 'manual:official:startupwave',
+            targetAudience: ['startup'],
+            sectors: ['Agnostic'],
+            stages: ['Ideation', 'Prototype', 'Seed'],
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['Lemelson Foundation ASME iShow'],
+        links: ['https://ishow.asme.org/'],
+        patch: {
+            name: 'ASME iShow Accelerator',
+            link: 'https://www.asme.org/about-asme/media-inquiries/press-releases/social-ventures%2C-hardware-innovators%2C-and-mentors-worldwide-invited-to-apply-for-2025-asme-ishow-accelerator',
+            body: 'ASME',
+            maxAward: '$15,000 award package',
+            deadline: 'Check Website',
+            description: 'ASME iShow is a global hardware innovation accelerator for ventures building socially impactful products and engineering solutions.',
+            category: 'international',
+            status: 'Check Website',
+            dataSource: 'manual:official:asme',
+            targetAudience: ['startup'],
+            sectors: ['Hardware', 'Social Impact', 'DeepTech'],
+            stages: ['Prototype', 'Seed', 'Early Traction'],
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['World Bank Group Startup Financing'],
+        links: ['https://www.ifc.org/en/what-we-do/sector-expertise/disruptive-technologies-and-funds'],
+        patch: {
+            name: 'IFC Startup Catalyst',
+            link: 'https://www.ifc.org/en/what-we-do/sector-expertise/venture-capital/startup-catalyst',
+            body: 'IFC / World Bank Group',
+            maxAward: 'Fund and venture support',
+            deadline: 'Check Website',
+            description: 'IFC Startup Catalyst supports emerging-market startups and venture ecosystems through blended capital, fund backing, and ecosystem partnerships.',
+            category: 'international',
+            status: 'Check Website',
+            dataSource: 'manual:official:ifc',
+            targetAudience: ['startup'],
+            sectors: ['Agnostic', 'FinTech', 'ClimateTech'],
+            stages: ['Seed', 'Early Traction', 'Scale-up'],
+            linkStatus: 'probable',
+        },
+    },
+    {
+        names: ['HDFC Bank Parivartan Start-up Grants (FY26)'],
+        links: ['https://www.hdfcbank.com/personal/useful-links/social-initiatives/parivartan'],
+        patch: {
+            name: 'HDFC Bank Parivartan Start-up Grants',
+            link: 'https://www.hdfcbank.com/personal/about-us/news-room/press-release/2024/hdfc-bank-parivartan-announces-startup-grants-for-30-incubators',
+            body: 'HDFC Bank Parivartan',
+            deadline: 'Check Website',
+            description: 'HDFC Bank Parivartan startup grants support incubators and social-impact startups working across livelihood, healthcare, and education themes.',
+            status: 'Check Website',
+            dataSource: 'manual:csr:hdfc',
+            linkStatus: 'probable',
+        },
+    },
+];
+
+function normalizeRemediationName(value = '') {
+    return String(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function normalizeRemediationLink(value = '') {
+    return String(value).trim().toLowerCase();
+}
+
+function shouldRetireRecord(record) {
+    if (!record || typeof record !== 'object') return false;
+
+    const normalizedName = normalizeRemediationName(record.name);
+    const normalizedLink = normalizeRemediationLink(record.link);
+
+    return RETIRED_RECORD_SIGNATURES.some((candidate) =>
+        candidate.names?.some((name) => normalizeRemediationName(name) === normalizedName) ||
+        candidate.links?.some((link) => normalizeRemediationLink(link) === normalizedLink),
+    );
+}
+
+function applyRecordRemediation(record) {
+    if (!record || typeof record !== 'object') return record;
+
+    const normalizedName = normalizeRemediationName(record.name);
+    const normalizedLink = normalizeRemediationLink(record.link);
+    const match = KNOWN_RECORD_REMEDIATIONS.find((candidate) =>
+        candidate.names?.some((name) => normalizeRemediationName(name) === normalizedName) ||
+        candidate.links?.some((link) => normalizeRemediationLink(link) === normalizedLink),
+    );
+
+    if (!match) return record;
+
+    const remediated = {
+        ...record,
+        ...match.patch,
+    };
+
+    if (String(record.linkStatus || '').toLowerCase() === 'verified') {
+        remediated.linkStatus = 'verified';
+    }
+
+    return remediated;
+}
+
+function flattenValidationIssues(validation) {
+    return [...validation.errors, ...validation.warnings].map((issue) => ({
+        code: issue.code,
+        detail: issue.detail,
+    }));
+}
+
+function normalizeRecordBatch(records, context = {}) {
+    const accepted = [];
+    const rejected = [];
+    let warningCount = 0;
+
+    for (const rawRecord of records) {
+        if (shouldRetireRecord(rawRecord)) {
+            continue;
+        }
+
+        const record = applyRecordRemediation(rawRecord);
+        const normalized = normalizeOpportunityRecord(record, context);
+        const validation = validateOpportunityRecord(normalized);
+        warningCount += validation.warnings.length;
+
+        if (validation.isValid) {
+            accepted.push(normalized);
+            continue;
+        }
+
+        rejected.push({
+            name: normalized.name || null,
+            link: normalized.link || null,
+            dataSource: normalized.dataSource || null,
+            issues: flattenValidationIssues(validation),
+        });
+    }
+
+    return { accepted, rejected, warningCount };
+}
+
+function buildRunSummary({
+    sourceId,
+    datasetSourceId,
+    label,
+    collectionMode,
+    startedAt,
+    rawCount,
+    normalized,
+    error = null,
+}) {
+    const finishedAt = new Date().toISOString();
+
+    return {
+        sourceId,
+        datasetSourceId,
+        label,
+        collectionMode,
+        startedAt,
+        finishedAt,
+        durationMs: new Date(finishedAt).getTime() - new Date(startedAt).getTime(),
+        rawCount,
+        acceptedCount: normalized.accepted.length,
+        rejectedCount: normalized.rejected.length,
+        warningCount: normalized.warningCount,
+        error,
+        rejectedSamples: normalized.rejected.slice(0, 5),
+    };
+}
+
+async function collectSourceRecords({ browser, sourceId, datasetSourceId, label, collectionMode, collector }) {
+    const startedAt = new Date().toISOString();
+    let rawRecords = [];
+    let error = null;
+
+    try {
+        rawRecords = await collector(browser);
+    } catch (collectorError) {
+        error = collectorError.message;
+    }
+
+    const normalized = normalizeRecordBatch(rawRecords, {
+        sourceId,
+        collectionMode,
+        collectedAt: startedAt,
+    });
+
+    return {
+        records: normalized.accepted,
+        run: buildRunSummary({
+            sourceId,
+            datasetSourceId,
+            label,
+            collectionMode,
+            startedAt,
+            rawCount: rawRecords.length,
+            normalized,
+            error,
+        }),
+    };
+}
+
+function captureRecordSet({ sourceId, datasetSourceId, label, collectionMode, rawRecords, error = null }) {
+    const startedAt = new Date().toISOString();
+    const normalized = normalizeRecordBatch(rawRecords, {
+        sourceId,
+        collectionMode,
+        collectedAt: startedAt,
+    });
+
+    return {
+        records: normalized.accepted,
+        run: buildRunSummary({
+            sourceId,
+            datasetSourceId,
+            label,
+            collectionMode,
+            startedAt,
+            rawCount: rawRecords.length,
+            normalized,
+            error,
+        }),
+    };
+}
 
 // --- Core Execution Utilities (V3 Performance) ------------------------------
 
@@ -73,6 +456,27 @@ async function setupPageInterception(page) {
             req.continue();
         }
     });
+}
+
+async function probeDirectHttpLink(url) {
+    try {
+        const response = await fetch(url, {
+            redirect: 'follow',
+            headers: { 'User-Agent': 'Mozilla/5.0' },
+            signal: AbortSignal.timeout(15000),
+        });
+        return {
+            status: response.status,
+            ok: response.ok,
+            error: null,
+        };
+    } catch (error) {
+        return {
+            status: 0,
+            ok: false,
+            error: error.message,
+        };
+    }
 }
 
 // --- Date / Status Helpers --------------------------------------------------
@@ -166,6 +570,73 @@ function isUsableOpportunityName(name) {
     if (/project proposal format/i.test(name)) return false;
     if (/^(home|details|read more|apply now)$/i.test(name)) return false;
     return /[a-z]{3}/i.test(name);
+}
+
+function normalizeTextContent(text) {
+    return String(text || '').replace(/\s+/g, ' ').trim();
+}
+
+function clipText(text, maxLength = 280) {
+    const normalized = normalizeTextContent(text);
+    if (normalized.length <= maxLength) return normalized;
+
+    const clipped = normalized.slice(0, maxLength);
+    const sentenceEnd = Math.max(clipped.lastIndexOf('. '), clipped.lastIndexOf('; '));
+    if (sentenceEnd > maxLength * 0.55) {
+        return clipped.slice(0, sentenceEnd + 1).trim();
+    }
+
+    const wordEnd = clipped.lastIndexOf(' ');
+    return `${clipped.slice(0, wordEnd > 40 ? wordEnd : maxLength).trim()}...`;
+}
+
+function findLongestParagraph($, selectors = 'main p, article p, .entry-content p, .site-content p, p') {
+    const paragraphs = $(selectors)
+        .map((_, el) => normalizeTextContent($(el).text()))
+        .get()
+        .filter((text) => text.length > 80 && !/share on|facebook|twitter|linkedin|screen reader/i.test(text));
+
+    return paragraphs[0] || '';
+}
+
+function extractTextBlock(sourceText, startMarker, endMarkers = []) {
+    const normalized = normalizeTextContent(sourceText);
+    if (!normalized) return '';
+
+    const lower = normalized.toLowerCase();
+    const startIdx = lower.indexOf(startMarker.toLowerCase());
+    if (startIdx < 0) return '';
+
+    let endIdx = normalized.length;
+    for (const marker of endMarkers) {
+        const markerIdx = lower.indexOf(marker.toLowerCase(), startIdx + startMarker.length);
+        if (markerIdx > startIdx && markerIdx < endIdx) {
+            endIdx = markerIdx;
+        }
+    }
+
+    return normalizeTextContent(normalized.slice(startIdx, endIdx))
+        .replace(/&#8216;|&#8217;/g, "'")
+        .replace(/&amp;/g, '&');
+}
+
+function extractAnchorHref($, baseUrl, matcher) {
+    let resolved = null;
+
+    $('a[href]').each((_, el) => {
+        const href = $(el).attr('href') || '';
+        const text = normalizeTextContent($(el).text());
+        if (!matcher({ href, text })) return;
+
+        try {
+            resolved = new URL(href, baseUrl).toString();
+            return false;
+        } catch {
+            return null;
+        }
+    });
+
+    return resolved;
 }
 
 // --- TIER A: BIRAC -----------------------------------------------------------
@@ -474,6 +945,501 @@ async function scrapeSBIFoundation(browser) {
     }
 }
 
+// --- TIER B+: Official Policy / Scheme Collectors ---------------------------
+
+async function scrapeNidhiPrograms() {
+    console.log('\n--- [Tier B+] Scraping NIDHI Programme Pages ---');
+    const pages = [
+        {
+            url: 'https://nidhi.dst.gov.in/nidhitbi/',
+            name: 'NIDHI-TBI',
+            body: 'DST (MoST)',
+            maxAward: 'Incubator support via DST call-for-proposals',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['incubator'],
+            sectors: ['DeepTech', 'Agnostic'],
+            stages: ['All Stages'],
+            criticalEligibility: [
+                'Applications are invited for establishing NIDHI-TBIs through DST call-for-proposals',
+                'Typically hosted by academic, technical, or management institutions',
+                'Startups apply to participating TBIs after incubator selection',
+            ],
+        },
+        {
+            url: 'https://nidhi.dst.gov.in/nidhieir/',
+            name: 'NIDHI-EIR',
+            body: 'DST (via NSTEDB)',
+            maxAward: 'INR 10,000 - INR 30,000 / month',
+            status: 'Rolling',
+            deadline: 'Rolling (Centre-based intake)',
+            targetAudience: ['startup'],
+            sectors: ['Agnostic'],
+            stages: ['Ideation', 'Prototype'],
+            criticalEligibility: [
+                'Graduate students and innovators can apply through selected NIDHI-EIR Centres',
+                'Support is typically available for up to 12 months',
+                'Programme combines fellowship support with incubation and mentoring access',
+            ],
+        },
+        {
+            url: 'https://nidhi.dst.gov.in/nidhissp/',
+            name: 'NIDHI Seed Support Program (NIDHI-SSP)',
+            body: 'DST (MoST)',
+            maxAward: 'Up to INR 100 lakh for startups',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['startup', 'incubator'],
+            sectors: ['Agnostic'],
+            stages: ['Prototype', 'Seed', 'Early Traction'],
+            criticalEligibility: [
+                'Incubators receive support in phased releases based on capability and need',
+                'Deserving startups may receive up to INR 100 lakh through incubator channels',
+                'Applications are accepted through periodic calls announced on the official portal',
+            ],
+        },
+    ];
+
+    const results = [];
+
+    for (const pageConfig of pages) {
+        try {
+            const response = await fetch(pageConfig.url, { signal: AbortSignal.timeout(30000) });
+            const html = await response.text();
+            const $ = cheerio.load(html);
+            const paragraphs = $('p')
+                .map((_, el) => normalizeTextContent($(el).text()))
+                .get()
+                .filter((text) => text.length > 80);
+            const description = clipText(paragraphs.slice(0, 2).join(' '), 340) || clipText(findLongestParagraph($), 260);
+            const applyLink = extractAnchorHref($, pageConfig.url, ({ href, text }) =>
+                /nidhi-eir\.in|e-pms|program-thermometer|incubators\.php/i.test(href) ||
+                /click here|centres|apply|call-for-proposals/i.test(text),
+            ) || pageConfig.url;
+
+            results.push({
+                ...pageConfig,
+                link: pageConfig.url,
+                applicationLink: applyLink,
+                description,
+                category: 'national',
+                linkStatus: response.ok ? 'verified' : 'probable',
+                dataSource: 'scraper:nidhi',
+                lastScraped: new Date().toISOString(),
+            });
+            console.log(`  ? ${pageConfig.status.padEnd(12)} | ${pageConfig.name}`);
+        } catch (e) {
+            console.error(`  ? NIDHI collector failed for ${pageConfig.url}:`, e.message);
+        }
+    }
+
+    return results;
+}
+
+async function scrapeAIMAIC() {
+    console.log('\n--- [Tier B+] Scraping AIM AIC ---');
+    const url = 'https://aim.gov.in/aic.php';
+
+    try {
+        const response = await fetch(url, { signal: AbortSignal.timeout(30000) });
+        const html = await response.text();
+        const $ = cheerio.load(html);
+        const description = clipText(findLongestParagraph($), 260);
+
+        console.log('  ? Check Website | Atal Incubation Centre (AIC) Grant');
+        return [{
+            name: 'Atal Incubation Centre (AIC) Grant',
+            body: 'AIM (NITI Aayog)',
+            maxAward: 'Up to Rs. 10 Crores',
+            deadline: 'Check Website',
+            link: url,
+            description,
+            category: 'national',
+            status: 'Check Website',
+            linkStatus: response.ok ? 'verified' : 'probable',
+            dataSource: 'scraper:aim',
+            lastScraped: new Date().toISOString(),
+            targetAudience: ['incubator'],
+            sectors: ['Agnostic'],
+            stages: ['All Stages'],
+            criticalEligibility: [
+                'Targeted at institutions establishing or operating incubation capacity',
+                'Hosted through universities, institutions, corporates, and similar organizations',
+                'Applicants should track AIM guidance and official AIC documentation for active calls',
+            ],
+        }];
+    } catch (e) {
+        console.error('  ? AIM AIC scraper failed:', e.message);
+        return [];
+    }
+}
+
+async function scrapeStartupOdishaIncentives() {
+    console.log('\n--- [Tier B+] Scraping Startup Odisha Incentives ---');
+    const url = 'https://startupodisha.gov.in/startup-incentives/';
+
+    try {
+        const response = await fetch(url, { signal: AbortSignal.timeout(30000) });
+        const html = await response.text();
+        const bodyText = normalizeTextContent(
+            html
+                .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+                .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+                .replace(/<[^>]+>/g, ' ')
+                .replace(/&#8216;|&#8217;/g, "'")
+                .replace(/&amp;/g, '&'),
+        );
+
+        const monthlyAllowance = extractTextBlock(bodyText, 'Monthly allowance', [
+            'Product Development and Marketing/ Publicity assistance',
+            'Need based assistance',
+        ]);
+        const productSupport = extractTextBlock(bodyText, 'Product Development and Marketing/ Publicity assistance', [
+            'Need based assistance',
+            'Benefits to Startups working on Rural Impact',
+            'Additional benefits to Women led Startups',
+            'Fund Release Guideline',
+        ]);
+
+        const results = [
+            {
+                name: 'Startup Odisha – Monthly Sustenance Allowance',
+                body: 'MSME Dept, Odisha',
+                maxAward: 'Rs. 20,000 - Rs. 22,000 / month',
+                deadline: 'Rolling (Policy-linked incentive)',
+                link: url,
+                description: clipText(monthlyAllowance, 320),
+                category: 'state',
+                status: 'Rolling',
+                linkStatus: response.ok ? 'verified' : 'probable',
+                dataSource: 'scraper:startupodisha',
+                lastScraped: new Date().toISOString(),
+                targetAudience: ['startup'],
+                sectors: ['Agnostic'],
+                stages: ['Ideation', 'Prototype'],
+                criticalEligibility: [
+                    'Startup must be recognized under Startup Odisha',
+                    'Qualifies through funding, patent, government sanction letter, or revenue-run-rate conditions',
+                    'Support is available for one year under the monthly allowance policy',
+                ],
+            },
+            {
+                name: 'Startup Odisha – Product Development & Marketing Assistance',
+                body: 'MSME Dept, Odisha',
+                maxAward: 'Up to Rs. 15 Lakhs',
+                deadline: 'Rolling (Policy-linked incentive)',
+                link: url,
+                description: clipText(productSupport, 320),
+                category: 'state',
+                status: 'Rolling',
+                linkStatus: response.ok ? 'verified' : 'probable',
+                dataSource: 'scraper:startupodisha',
+                lastScraped: new Date().toISOString(),
+                targetAudience: ['startup'],
+                sectors: ['Agnostic'],
+                stages: ['Prototype', 'Seed'],
+                criticalEligibility: [
+                    'Startup must be recognized under Startup Odisha',
+                    'Requires equity financing, government grant support, or defined revenue run-rate proof',
+                    'Assistance is meant for introducing an innovated product in the market',
+                ],
+            },
+        ];
+
+        results.forEach((item) => {
+            console.log(`  ? ${item.status.padEnd(12)} | ${item.name}`);
+        });
+
+        return results;
+    } catch (e) {
+        console.error('  ? Startup Odisha scraper failed:', e.message);
+        return [];
+    }
+}
+
+async function scrapeManageCIA() {
+    console.log('\n--- [Tier B+] Scraping MANAGE-CIA Programmes ---');
+    const programs = [
+        {
+            url: 'https://www.manage.gov.in/managecia/RKVYProg.aspx',
+            name: 'MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation',
+            body: 'MANAGE / Dept of Agriculture',
+            maxAward: 'Up to Rs. 25 Lakhs (track dependent)',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['startup'],
+            sectors: ['AgriTech', 'Rural Development'],
+            stages: ['Ideation', 'Prototype', 'Seed'],
+            description:
+                'Official MANAGE-CIA RKVY-RAFTAAR programme hub covering agribusiness incubation support tracks such as SAIP, AOP, and SOP.',
+            criticalEligibility: [
+                'Agribusiness innovators should track the active MANAGE-CIA programme track and call details',
+                'Programme supports agriculture and allied sector ventures through staged incubation pathways',
+                'Applicants should use official MANAGE-CIA forms and cohort notices for the active intake',
+            ],
+        },
+        {
+            url: 'https://www.manage.gov.in/managecia/RKVYSAIP.aspx',
+            name: 'MANAGE-CIA Startup Agri-Business Incubation Program (SAIP)',
+            body: 'MANAGE / Dept of Agriculture',
+            maxAward: 'Up to Rs. 25 Lakhs',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['startup'],
+            sectors: ['AgriTech', 'Rural Development'],
+            stages: ['MVP', 'Seed', 'Early Traction'],
+            criticalEligibility: [
+                'Potential startups should already have a minimum viable product in agriculture or allied sectors',
+                'Funding is appraised against the business plan by the programme selection committee',
+                'Applicants are expected to commercialize and scale their product or service through incubation support',
+            ],
+        },
+        {
+            url: 'https://www.manage.gov.in/managecia/RKVYAOP.aspx',
+            name: 'MANAGE-CIA Agripreneurship Orientation Program (AOP)',
+            body: 'MANAGE / Dept of Agriculture',
+            maxAward: 'Up to Rs. 5 Lakhs',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['startup'],
+            sectors: ['AgriTech', 'Rural Development'],
+            stages: ['Ideation', 'Prototype'],
+            criticalEligibility: [
+                'Applicants should propose one innovative agribusiness idea based on technology, process, service, or business platform',
+                'Applicants are expected to pursue the entrepreneurial opportunity full time',
+                'An initial business plan or proposal is required for selection',
+            ],
+        },
+        {
+            url: 'https://www.manage.gov.in/managecia/RKVYSOP.aspx',
+            name: 'MANAGE-CIA Student Orientation Program (SOP)',
+            body: 'MANAGE / Dept of Agriculture',
+            maxAward: 'Up to Rs. 4 Lakhs',
+            status: 'Check Website',
+            deadline: 'Check Website',
+            targetAudience: ['startup'],
+            sectors: ['AgriTech', 'Rural Development'],
+            stages: ['Ideation', 'Prototype'],
+            criticalEligibility: [
+                'Only students currently enrolled in a recognized degree programme are eligible',
+                'Applicants should propose one innovative agribusiness idea',
+                'An initial business plan or proposal is expected at the application stage',
+            ],
+        },
+    ];
+
+    const results = [];
+
+    for (const program of programs) {
+        try {
+            const response = await fetch(program.url, { signal: AbortSignal.timeout(30000) });
+            const html = await response.text();
+            const $ = cheerio.load(html);
+            const descriptionSource = $('p')
+                .map((_, el) => normalizeTextContent($(el).text()))
+                .get()
+                .filter((text) => text.length > 120)
+                .slice(0, 3)
+                .join(' ');
+            const applyLink = extractAnchorHref($, program.url, ({ href }) => /forms\.gle|google/i.test(href));
+
+            results.push({
+                ...program,
+                link: program.url,
+                applicationLink: applyLink || program.url,
+                description: clipText(descriptionSource || program.description, 340),
+                category: 'national',
+                linkStatus: response.ok ? 'verified' : 'probable',
+                dataSource: 'scraper:manage',
+                lastScraped: new Date().toISOString(),
+            });
+            console.log(`  ? ${program.status.padEnd(12)} | ${program.name}`);
+        } catch (e) {
+            console.error(`  ? MANAGE-CIA collector failed for ${program.url}:`, e.message);
+        }
+    }
+
+    return results;
+}
+
+async function scrapeIIGCSR(browser) {
+    console.log('\n--- [Tier B+] Scraping IIG CSR Technology Incubators ---');
+    const portalUrl = 'https://indiainvestmentgrid.gov.in/opportunities/csr-projects';
+    const rawUrl = `${portalUrl}?rawData=true&page=0`;
+
+    function parseIIGDetailText(text) {
+        const normalized = normalizeTextContent(text);
+        const summaryMatch = normalized.match(/CSR ID:\s*\d+\s*(.+?)\s*Project Impact/i);
+        const impactMatch = normalized.match(/Project Impact\s*(.+?)\s*Project Snapshot/i);
+        const fundingMatch = normalized.match(/Funding Requirement \(in USD\)\s*([0-9.]+\s*(?:mn|bn|million|billion)?)/i);
+        const locationMatch = normalized.match(/Project Location\|\s*(.+?)\s*(?:Map Data Terms|Address 1:|Contact Summary)/i);
+        const statusMatch = normalized.match(/Funding Status\s*([A-Za-z ]+?)\s*(?:Other Funding Detail|Project Location\|)/i);
+        const csrIdMatch = normalized.match(/CSR ID:\s*(\d+)/i);
+
+        return {
+            csrId: csrIdMatch?.[1] || null,
+            summary: clipText(summaryMatch?.[1] || '', 340),
+            impact: clipText(impactMatch?.[1] || '', 140),
+            fundingRequirement: fundingMatch ? `USD ${fundingMatch[1].trim()}` : 'CSR Funding Requirement',
+            location: normalizeTextContent(locationMatch?.[1] || ''),
+            fundingStatus: normalizeTextContent(statusMatch?.[1] || ''),
+        };
+    }
+
+    const results = [
+        {
+            name: 'India Investment Grid (IIG) – CSR Opportunities Portal',
+            body: 'Invest India / Govt of India',
+            maxAward: 'Varies by CSR project',
+            deadline: 'Rolling (Portal listings)',
+            link: portalUrl,
+            description: 'Official Invest India CSR opportunity hub with live project listings across subsectors including technology incubators.',
+            category: 'csr',
+            status: 'Rolling',
+            linkStatus: 'verified',
+            dataSource: 'scraper:iig',
+            lastScraped: new Date().toISOString(),
+            targetAudience: ['incubator', 'startup'],
+            sectors: ['Social Impact', 'Agnostic'],
+            stages: ['All Stages'],
+        },
+    ];
+
+    try {
+        const projectLinks = new Map();
+
+        try {
+            const response = await fetch(rawUrl, {
+                signal: AbortSignal.timeout(30000),
+                headers: { 'User-Agent': 'Mozilla/5.0' },
+            });
+            const html = await response.text();
+            const $ = cheerio.load(html);
+            const sections = $('section.dg-project-cards').toArray();
+            let technologySection = null;
+
+            for (const section of sections) {
+                const title = normalizeTextContent($(section).find('.project-card-section small').first().text());
+                if (/technology incubators/i.test(title)) {
+                    technologySection = $(section);
+                    break;
+                }
+            }
+
+            if (technologySection) {
+                technologySection.find('a[href*="/opportunities/csr-project/"]').each((_, el) => {
+                    const href = $(el).attr('href') || '';
+                    const text = normalizeTextContent($(el).text());
+                    if (!href || !text || /view detail/i.test(text)) return;
+
+                    const absoluteHref = new URL(href, portalUrl).toString();
+                    const existing = projectLinks.get(absoluteHref);
+                    if (!existing || text.length > existing.length) {
+                        projectLinks.set(absoluteHref, text);
+                    }
+                });
+            }
+        } catch (rawFetchError) {
+            console.warn(`  ? IIG raw fetch fallback triggered: ${rawFetchError.message}`);
+        }
+
+        if (projectLinks.size === 0) {
+            let portalPage;
+            try {
+                portalPage = await browser.newPage();
+                await portalPage.goto(portalUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+
+                const renderedLinks = await portalPage.evaluate(() => {
+                    const normalize = (value = '') => value.replace(/\s+/g, ' ').trim();
+                    const sections = Array.from(document.querySelectorAll('section.dg-project-cards'));
+                    const technologySection = sections.find((section) => {
+                        const heading = section.querySelector('.project-card-section small');
+                        return heading && /technology incubators/i.test(normalize(heading.textContent || ''));
+                    });
+                    if (!technologySection) return [];
+
+                    const strongestByHref = new Map();
+                    Array.from(technologySection.querySelectorAll('a[href*="/opportunities/csr-project/"]')).forEach((anchor) => {
+                        const href = anchor.getAttribute('href') || '';
+                        const text = normalize(anchor.textContent || '');
+                        if (!href || !text || /view detail/i.test(text)) return;
+
+                        const current = strongestByHref.get(href);
+                        if (!current || text.length > current.length) {
+                            strongestByHref.set(href, text);
+                        }
+                    });
+
+                    return Array.from(strongestByHref.entries()).map(([href, text]) => ({ href, text }));
+                });
+
+                renderedLinks.forEach(({ href, text }) => {
+                    projectLinks.set(new URL(href, portalUrl).toString(), text);
+                });
+            } finally {
+                if (portalPage) await portalPage.close();
+            }
+        }
+
+        if (projectLinks.size === 0) {
+            console.warn('  ? IIG collector could not locate the Technology Incubators section.');
+            return results;
+        }
+
+        for (const [detailUrl, name] of [...projectLinks.entries()].slice(0, 10)) {
+            let detailPage;
+            try {
+                detailPage = await browser.newPage();
+                await setupPageInterception(detailPage);
+                await withRetry(() => detailPage.goto(detailUrl, { waitUntil: 'networkidle2', timeout: 45000 }));
+                const detailTitle = normalizeTextContent(await detailPage.title()).replace(/\|\s*IIG$/i, '').trim();
+                const detailText = await detailPage.evaluate(() => document.body.innerText.replace(/\s+/g, ' ').trim());
+                const parsed = parseIIGDetailText(detailText);
+                const detailDescription = clipText(
+                    [parsed.summary, parsed.impact ? `Impact: ${parsed.impact}` : '', parsed.location ? `Location: ${parsed.location}` : '']
+                        .filter(Boolean)
+                        .join(' '),
+                    360,
+                );
+                const canonicalName = detailTitle && !/error page/i.test(detailTitle) ? detailTitle : name;
+                const combinedText = `${canonicalName} ${parsed.summary}`.toLowerCase();
+                const sectors = [];
+                if (/agri|agricult|farm|crop|food/i.test(combinedText)) sectors.push('AgriTech');
+                if (/deep science|deeptech|research|innovation/i.test(combinedText)) sectors.push('DeepTech');
+                if (sectors.length === 0) sectors.push('Technology Incubators');
+
+                results.push({
+                    name: canonicalName,
+                    body: 'Invest India / IIG CSR',
+                    maxAward: parsed.fundingRequirement,
+                    deadline: 'Rolling (Portal listing)',
+                    link: detailUrl,
+                    description: detailDescription || `CSR project listed under Technology Incubators on India Investment Grid.`,
+                    category: 'csr',
+                    status: /unfunded/i.test(parsed.fundingStatus) ? 'Rolling' : 'Check Website',
+                    linkStatus: 'verified',
+                    dataSource: 'scraper:iig',
+                    lastScraped: new Date().toISOString(),
+                    targetAudience: ['incubator', 'startup'],
+                    sectors,
+                    stages: ['All Stages'],
+                    csrId: parsed.csrId,
+                    sourceLocation: parsed.location || null,
+                });
+                console.log(`  ? Rolling      | ${canonicalName}`);
+            } catch (detailError) {
+                console.warn(`    ? IIG detail page failed for "${name}": ${detailError.message}`);
+            } finally {
+                if (detailPage) await detailPage.close();
+            }
+        }
+    } catch (e) {
+        console.error('  ? IIG CSR scraper failed:', e.message);
+    }
+
+    return results;
+}
+
 // --- TIER B: Verify Static Records ------------------------------------------
 
 /**
@@ -487,12 +1453,14 @@ async function verifyStaticRecords(browser, staticRecords) {
     const chunks = chunkArray(staticRecords, 5);
 
     for (const chunk of chunks) {
-        await Promise.all(chunk.map(async (record) => {
+        const settled = await Promise.allSettled(chunk.map(async (record) => {
             let linkStatus = record.linkStatus || 'probable';
             let status = record.status;
+            let shouldTryDirectProbe = false;
+            let page = null;
 
             try {
-                const page = await browser.newPage();
+                page = await browser.newPage();
                 await setupPageInterception(page);
 
                 // Use a generous 30s timeout — many gov/intl sites are slow
@@ -501,17 +1469,14 @@ async function verifyStaticRecords(browser, staticRecords) {
                     waitUntil: 'domcontentloaded',
                     timeout: 30000,
                 }));
-                await page.close();
 
                 const httpStatus = response ? response.status() : 0;
 
                 if (httpStatus >= 200 && httpStatus < 400) {
                     linkStatus = 'verified';
                 } else if (httpStatus >= 400) {
-                    linkStatus = 'broken';
-                    // Only change status for entries where URL is truly 4xx dead
-                    status = 'Verify Manually';
-                    console.warn(`  ? HTTP ${httpStatus} for "${record.name}" ? marked broken`);
+                    shouldTryDirectProbe = true;
+                    console.warn(`  ? Browser HTTP ${httpStatus} for "${record.name}" ? retrying with direct probe`);
                 }
                 // Note: keep existing linkStatus if HTTP is unexpected (e.g. 0) — don't degrade
             } catch (e) {
@@ -522,8 +1487,33 @@ async function verifyStaticRecords(browser, staticRecords) {
                     status = 'Verify Manually';
                     console.warn(`  ? DNS failure: "${record.name}"`);
                 } else {
-                    // Timeout or other — keep existing status, just log
-                    console.warn(`  ? Slow/timeout: "${record.name}" — keeping existing status`);
+                    shouldTryDirectProbe = true;
+                    console.warn(`  ? Browser retry needed: "${record.name}" — ${e.message}`);
+                }
+            } finally {
+                if (page) {
+                    try {
+                        await page.close();
+                    } catch {
+                        // Ignore cleanup failures; the record-level result has already been determined.
+                    }
+                }
+            }
+
+            if (shouldTryDirectProbe) {
+                const directProbe = await probeDirectHttpLink(record.link);
+                if (directProbe.ok && directProbe.status < 400) {
+                    linkStatus = 'verified';
+                } else if (directProbe.status >= 400 || (directProbe.error && /dns|not\s+resolved|enotfound/i.test(directProbe.error))) {
+                    linkStatus = 'broken';
+                    status = 'Verify Manually';
+                    if (directProbe.status >= 400) {
+                        console.warn(`  ? Direct probe HTTP ${directProbe.status} for "${record.name}" ? marked broken`);
+                    } else {
+                        console.warn(`  ? Direct probe failed for "${record.name}" ? marked broken`);
+                    }
+                } else {
+                    console.warn(`  ? Direct probe inconclusive for "${record.name}" — keeping existing status`);
                 }
             }
 
@@ -543,6 +1533,12 @@ async function verifyStaticRecords(browser, staticRecords) {
             const icon = linkStatus === 'verified' ? '?' : '?';
             console.log(`  ${icon} ${linkStatus.padEnd(8)} | ${record.name.substring(0, 55)}`);
         }));
+
+        settled
+            .filter((result) => result.status === 'rejected')
+            .forEach((result) => {
+                console.warn(`  ? Static verification worker failed: ${result.reason?.message || result.reason}`);
+            });
     }
 
     return updated;
@@ -601,7 +1597,7 @@ function getStaticRecords() {
             body: 'DST (MoST)',
             maxAward: 'Grants & Operating Support',
             deadline: 'Varies',
-            link: 'https://nidhi.dst.gov.in/',
+            link: 'https://nidhi.dst.gov.in/nidhitbi/',
             description: 'Funding to set up TBIs and establish Seed Support Systems (SSS) which give incubators up to ?10 Cr to invest in their portfolio.',
             category: 'national',
             status: 'Check Website',
@@ -614,14 +1610,28 @@ function getStaticRecords() {
             name: 'MeitY TIDE 2.0 (Incubator Support)',
             body: 'MeitY Startup Hub',
             maxAward: 'Grants & Investment Support',
-            deadline: 'Varies',
-            link: 'https://vc.meity.gov.in/tide2.0/',
-            description: 'Technology Incubation and Development of Entrepreneurs providing financial/technical support to incubators supporting ICT startups.',
+            deadline: 'Check Website',
+            link: 'https://msh.meity.gov.in/assets/Administrative%20Approval_TIDE%202.0.pdf',
+            description: 'Official MeitY TIDE 2.0 approval document outlining incubator support for ICT and electronics startups.',
             category: 'national',
             status: 'Check Website',
-            dataSource: 'manual:incubator',
+            dataSource: 'manual:official:meity-startuphub',
             targetAudience: ['incubator'],
             sectors: ['IT', 'Electronics', 'Tech'],
+            stages: ['All Stages']
+        },
+        {
+            name: 'SAMRIDH Scheme',
+            body: 'MeitY Startup Hub',
+            maxAward: 'Matched Funding Support',
+            deadline: 'Check Website',
+            link: 'https://msh.meity.gov.in/assets/SAMRIDH%20guidelines.pdf',
+            description: 'Official SAMRIDH scheme guidelines for accelerator-led support and matched investment for startups.',
+            category: 'national',
+            status: 'Check Website',
+            dataSource: 'manual:official:meity-startuphub',
+            targetAudience: ['startup'],
+            sectors: ['Digital', 'Hardware', 'Agnostic'],
             stages: ['All Stages']
         },
         {
@@ -629,14 +1639,28 @@ function getStaticRecords() {
             body: 'STPI (MeitY)',
             maxAward: 'Up to ?25 Lakhs',
             deadline: 'Varies by Challenge',
-            link: 'https://www.stpi.in/en/next-generation-incubation-scheme',
-            description: 'Incubation facilities, seed funding edge, and mentorship for startups in Tier II/III cities via local STPI centers.',
+            link: 'https://stpi.in/index.php/en/schemes/ngis-scheme',
+            description: 'Official STPI NGIS scheme page for startup incubation, seed support, and LEAP Ahead challenge tracks.',
             category: 'national',
             status: 'Check Website',
-            dataSource: 'manual:incubator',
+            dataSource: 'manual:official:stpi',
             targetAudience: ['incubator', 'startup'],
             sectors: ['Software', 'IT'],
             stages: ['Seed', 'Early Traction']
+        },
+        {
+            name: 'MSME Incubation Scheme',
+            body: 'Ministry of MSME',
+            maxAward: 'Up to ?1 Crore',
+            deadline: 'Check Website',
+            link: 'https://msme.gov.in/incubation',
+            description: 'Official Ministry of MSME incubation support page for innovators, host institutes, and incubation projects.',
+            category: 'national',
+            status: 'Check Website',
+            dataSource: 'manual:official:msme',
+            targetAudience: ['incubator', 'startup'],
+            sectors: ['Manufacturing', 'Innovation', 'Agnostic'],
+            stages: ['Prototype', 'Seed', 'Early Traction']
         },
         // CSR
         {
@@ -673,7 +1697,7 @@ function getStaticRecords() {
             body: 'MSME Dept, Odisha',
             maxAward: '?20,000 - ?22,000 / month',
             deadline: 'Rolling (Open All Year)',
-            link: 'https://startupodisha.gov.in/',
+            link: 'https://startupodisha.gov.in/startup-incentives/',
             description: 'One-year sustenance allowance for recognized startups. Additional 10% for women/SC/ST/PH founders.',
             category: 'state',
             status: 'Rolling',
@@ -687,7 +1711,7 @@ function getStaticRecords() {
             body: 'MSME Dept, Odisha',
             maxAward: 'Up to ?15 Lakhs',
             deadline: 'Rolling (Open All Year)',
-            link: 'https://startupodisha.gov.in/',
+            link: 'https://startupodisha.gov.in/startup-incentives/',
             description: 'Financial assistance for product development and marketing/publicity for recognized Odisha startups.',
             category: 'state',
             status: 'Rolling',
@@ -754,6 +1778,20 @@ function getStaticRecords() {
             stages: ['Early Traction', 'Growth']
         },
         {
+            name: 'NABARD AgriSURE Fund (Direct Scheme)',
+            body: 'NABVENTURES / MoA&FW',
+            maxAward: 'Up to ?25 Crores',
+            deadline: 'Check Website',
+            link: 'https://nabventures.in/agrisure.aspx',
+            description: 'Official AgriSURE Fund page for NABVENTURES-backed investment support in agriculture and allied sectors.',
+            category: 'national',
+            status: 'Check Website',
+            dataSource: 'manual:official:nabventures',
+            targetAudience: ['startup'],
+            sectors: ['AgriTech', 'DeepTech'],
+            stages: ['Seed', 'Early Traction', 'Scale-up']
+        },
+        {
             name: 'Startup Gujarat – Srujan Seed Support (S4)',
             body: 'i-Hub Gujarat',
             maxAward: '?2.5 Lakhs - ?10 Lakhs',
@@ -796,59 +1834,190 @@ function getStaticRecords() {
  */
 function mergeData(existingData, scrapedData, verifiedStatic) {
     console.log('\n--- Merging data ---');
+    const RETIRED_ALIAS_GROUPS = [
+        {
+            canonical: 'Atal Incubation Centre (AIC) Grant',
+            aliases: ['Atal Incubation Centre (AIC) Establishment Grant'],
+        },
+        {
+            canonical: 'NIDHI-TBI',
+            aliases: ['DST NIDHI - TBI Support', 'DST NIDHI - Technology Business Incubator (TBI)'],
+        },
+        {
+            canonical: 'India Investment Grid (IIG) – CSR Opportunities Portal',
+            aliases: ['IIG - CSR Opportunities Portal'],
+        },
+        {
+            canonical: 'MANAGE-CIA RKVY-RAFTAAR Agribusiness Incubation',
+            aliases: ['MANAGE-CIA Agri-Business Incubation'],
+        },
+        {
+            canonical: 'Startup Odisha – Product Development & Marketing Assistance',
+            aliases: ['Startup Odisha – Product Development and Marketing / Publicity Assistance'],
+        },
+        {
+            canonical: 'MeitY TIDE 2.0 (Incubator Support)',
+            aliases: ['TIDE 2.0'],
+        },
+        {
+            canonical: 'SAMRIDH Scheme',
+            aliases: ['SAMRIDH Cohort 3'],
+        },
+    ];
 
-    // Build map from existing — skip legacy wrong-schema entries
+    const getMergeKey = (item) => item.recordFingerprint || `${item.name || 'unknown'}::${item.body || 'unknown'}::${item.link || 'nolink'}`;
+    const normalizeMergeName = (value = '') => String(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+    function getPreferenceScore(item) {
+        const sourceType = item.sourceMeta?.sourceType || '';
+        const sourceBoost = {
+            live: 50,
+            manual: 35,
+            integrity: 30,
+            legacy: 15,
+            review: 5,
+            unknown: 0,
+        }[sourceType] ?? 0;
+        const statusBoost = item.status === 'Closed' ? -10 : item.status === 'Verify Manually' ? -6 : 4;
+        const linkBoost = item.linkStatus === 'verified' ? 8 : item.linkStatus === 'probable' ? 2 : item.linkStatus === 'broken' ? -12 : 0;
+        const confidenceBoost = Math.round((item.confidence || 0) * 10);
+
+        return sourceBoost + statusBoost + linkBoost + confidenceBoost;
+    }
+
+    function findExistingMatch(store, candidate) {
+        return Object.values(store).find((item) =>
+            (item.recordFingerprint && candidate.recordFingerprint && item.recordFingerprint === candidate.recordFingerprint) ||
+            (item.name === candidate.name && item.body === candidate.body) ||
+            (item.link === candidate.link && item.name === candidate.name),
+        );
+    }
+
     const merged = {};
     existingData.forEach(item => {
-        if (item.provider && !item.body) return; // drop old schema
-        merged[item.link] = { ...item };
+        merged[getMergeKey(item)] = { ...item };
     });
 
     // Apply Tier-A/C scraped entries (full update except curated fields)
     const CURATED_FIELDS = ['name', 'body', 'maxAward', 'description', 'category'];
     scrapedData.forEach(newItem => {
-        const existByLink = merged[newItem.link];
-        const existByName = Object.values(merged).find(x => x.name === newItem.name);
+        const existingMatch = findExistingMatch(merged, newItem);
 
-        if (existByLink) {
+        if (existingMatch && existingMatch.link === newItem.link) {
             // Preserve manually curated fields if they exist and are non-empty
             const preserved = {};
             CURATED_FIELDS.forEach(f => {
-                if (existByLink[f]) preserved[f] = existByLink[f];
+                if (existingMatch[f]) preserved[f] = existingMatch[f];
             });
-            merged[newItem.link] = { ...existByLink, ...newItem, ...preserved };
-        } else if (existByName) {
+            if (getMergeKey(existingMatch) !== getMergeKey(newItem)) {
+                delete merged[getMergeKey(existingMatch)];
+            }
+            merged[getMergeKey(newItem)] = { ...existingMatch, ...newItem, ...preserved };
+        } else if (existingMatch) {
             // Link changed — rekey
-            delete merged[existByName.link];
+            delete merged[getMergeKey(existingMatch)];
             const preserved = {};
             CURATED_FIELDS.forEach(f => {
-                if (existByName[f]) preserved[f] = existByName[f];
+                if (existingMatch[f]) preserved[f] = existingMatch[f];
             });
-            merged[newItem.link] = { ...existByName, ...newItem, ...preserved };
+            merged[getMergeKey(newItem)] = { ...existingMatch, ...newItem, ...preserved };
         } else {
-            merged[newItem.link] = newItem;
+            merged[getMergeKey(newItem)] = newItem;
         }
     });
 
     // Apply Tier-B verified status (only update linkStatus, status, lastScraped)
     verifiedStatic.forEach(v => {
-        if (merged[v.link]) {
-            merged[v.link].linkStatus = v.linkStatus;
-            merged[v.link].status = v.status;
-            merged[v.link].lastScraped = v.lastScraped;
+        const existingMatch = findExistingMatch(merged, v);
+        if (existingMatch) {
+            merged[getMergeKey(existingMatch)] = {
+                ...existingMatch,
+                linkStatus: v.linkStatus,
+                status: v.status,
+                lastScraped: v.lastScraped,
+                sourceMeta: v.sourceMeta || existingMatch.sourceMeta,
+                confidence: v.confidence ?? existingMatch.confidence,
+            };
         }
     });
 
     // -- GHOST DATA KILLER (Strict Sync) --
     // If a record was historically sourced by a live scraper (e.g. scraper:birac),
     // but the scraper ran today and didn't return it, it means the call was removed from the live site.
-    const activeScrapedLinks = new Set(scrapedData.map(x => x.link));
+    const activeScrapedKeys = new Set(scrapedData.map((item) => getMergeKey(item)));
     Object.values(merged).forEach(item => {
-        if (item.dataSource && item.dataSource.startsWith('scraper:') && !activeScrapedLinks.has(item.link)) {
+        if (item.dataSource && item.dataSource.startsWith('scraper:') && !activeScrapedKeys.has(getMergeKey(item))) {
             // The item has vanished from the source portal.
             item.status = 'Closed';
             item.deadline = 'Expired / Removed from source';
         }
+    });
+
+    // Collapse known legacy aliases once a canonical live/offical record exists.
+    RETIRED_ALIAS_GROUPS.forEach((group) => {
+        const records = Object.values(merged);
+        const canonicalRecord = records.find((item) => item.name === group.canonical);
+        if (!canonicalRecord) return;
+
+        group.aliases.forEach((alias) => {
+            const aliasRecord = records.find((item) => item.name === alias);
+            if (!aliasRecord) return;
+
+            const canonicalSourceType = canonicalRecord.sourceMeta?.sourceType || '';
+            if (canonicalSourceType === 'live' || canonicalSourceType === 'manual' || canonicalRecord.dataSource?.startsWith('scraper:')) {
+                delete merged[getMergeKey(aliasRecord)];
+            }
+        });
+    });
+
+    // Collapse same-link title variants caused by punctuation/ellipsis differences.
+    const groupedKeys = new Map();
+    Object.entries(merged).forEach(([key, item]) => {
+        const normalizedName = normalizeMergeName(item.name);
+        const groupKey = `${item.link || 'nolink'}::${item.body || 'nobody'}::${normalizedName}`;
+        if (!groupedKeys.has(groupKey)) {
+            groupedKeys.set(groupKey, []);
+        }
+        groupedKeys.get(groupKey).push({ key, item });
+    });
+
+    groupedKeys.forEach((entries) => {
+        if (entries.length < 2) return;
+
+        entries.sort((a, b) => getPreferenceScore(b.item) - getPreferenceScore(a.item));
+        const winner = entries[0];
+
+        entries.slice(1).forEach(({ key }) => {
+            if (key !== winner.key) {
+                delete merged[key];
+            }
+        });
+    });
+
+    // If a core/live record exists for a normalized opportunity name, drop weaker review/legacy shadows.
+    const nameGroups = new Map();
+    Object.entries(merged).forEach(([key, item]) => {
+        const normalizedName = normalizeMergeName(item.name);
+        if (!normalizedName) return;
+        if (!nameGroups.has(normalizedName)) {
+            nameGroups.set(normalizedName, []);
+        }
+        nameGroups.get(normalizedName).push({ key, item });
+    });
+
+    nameGroups.forEach((entries) => {
+        if (entries.length < 2) return;
+
+        const preferred = [...entries].sort((a, b) => getPreferenceScore(b.item) - getPreferenceScore(a.item))[0];
+        const preferredType = preferred.item.sourceMeta?.sourceType || '';
+        if (!['live', 'manual', 'integrity'].includes(preferredType)) return;
+
+        entries.forEach(({ key, item }) => {
+            const sourceType = item.sourceMeta?.sourceType || '';
+            if (key !== preferred.key && ['review', 'legacy', 'unknown'].includes(sourceType)) {
+                delete merged[key];
+            }
+        });
     });
 
     return Object.values(merged);
@@ -971,6 +2140,7 @@ async function runScrapers() {
     console.log(`  ${new Date().toISOString()}`);
     console.log('-----------------------------------------------');
 
+    const healthRuns = [];
     let browser;
     try {
         browser = await puppeteer.launch({
@@ -983,20 +2153,106 @@ async function runScrapers() {
     }
 
     // -- Tier A: Real live scrapers --
-    const biracData = await scrapeBirac(browser);
-    const dstData = await scrapeDST(browser);
-    const allScraped = [...biracData, ...dstData];
+    const biracRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:birac',
+        datasetSourceId: 'scraper:birac',
+        label: 'BIRAC live collector',
+        collectionMode: 'live_dom',
+        collector: scrapeBirac,
+    });
+    const dstRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:dst',
+        datasetSourceId: 'scraper:dst',
+        label: 'DST live collector',
+        collectionMode: 'live_dom',
+        collector: scrapeDST,
+    });
+    healthRuns.push(biracRun.run, dstRun.run);
+    const allScraped = [...biracRun.records, ...dstRun.records];
 
     // -- Tier C: React SPA scrapers --
-    const sisfsData = await scrapeSISFS(browser);
-    const sbifData = await scrapeSBIFoundation(browser);
-    allScraped.push(...sisfsData, ...sbifData);
+    const sisfsRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:sisfs',
+        datasetSourceId: 'scraper:sisfs',
+        label: 'SISFS SPA collector',
+        collectionMode: 'live_spa',
+        collector: scrapeSISFS,
+    });
+    const sbifRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:sbif',
+        datasetSourceId: 'scraper:sbif',
+        label: 'SBI Foundation SPA collector',
+        collectionMode: 'live_spa',
+        collector: scrapeSBIFoundation,
+    });
+    healthRuns.push(sisfsRun.run, sbifRun.run);
+    allScraped.push(...sisfsRun.records, ...sbifRun.records);
+
+    const nidhiRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:nidhi',
+        datasetSourceId: 'scraper:nidhi',
+        label: 'NIDHI programme collector',
+        collectionMode: 'official_scheme_page',
+        collector: scrapeNidhiPrograms,
+    });
+    const aimRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:aim',
+        datasetSourceId: 'scraper:aim',
+        label: 'AIM AIC collector',
+        collectionMode: 'official_scheme_page',
+        collector: scrapeAIMAIC,
+    });
+    const startupOdishaRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:startupodisha',
+        datasetSourceId: 'scraper:startupodisha',
+        label: 'Startup Odisha incentives collector',
+        collectionMode: 'official_policy_page',
+        collector: scrapeStartupOdishaIncentives,
+    });
+    const manageRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:manage',
+        datasetSourceId: 'scraper:manage',
+        label: 'MANAGE-CIA programme collector',
+        collectionMode: 'official_program_page',
+        collector: scrapeManageCIA,
+    });
+    const iigRun = await collectSourceRecords({
+        browser,
+        sourceId: 'scraper:iig',
+        datasetSourceId: 'scraper:iig',
+        label: 'IIG CSR collector',
+        collectionMode: 'official_portal_page',
+        collector: scrapeIIGCSR,
+    });
+    healthRuns.push(nidhiRun.run, aimRun.run, startupOdishaRun.run, manageRun.run, iigRun.run);
+    allScraped.push(
+        ...nidhiRun.records,
+        ...aimRun.records,
+        ...startupOdishaRun.records,
+        ...manageRun.records,
+        ...iigRun.records,
+    );
 
     // -- Add SIDBI static records NOW — before building scrapedLinks --
     // This ensures SIDBI is explicitly excluded from Tier-B URL verification
     // (since its URLs are stable and we don't need to ping them).
-    const sidbiRecords = getStaticRecords().filter(r => r.dataSource === 'scraper:sidbi');
-    allScraped.push(...sidbiRecords);
+    const sidbiSeedRun = captureRecordSet({
+        sourceId: 'seed:sidbi',
+        datasetSourceId: 'scraper:sidbi',
+        label: 'SIDBI seeded records',
+        collectionMode: 'static_seed',
+        rawRecords: getStaticRecords().filter(r => r.dataSource === 'scraper:sidbi'),
+    });
+    healthRuns.push(sidbiSeedRun.run);
+    allScraped.push(...sidbiSeedRun.records);
 
     await browser.close();
     console.log(`\n  Tier A+C scraped: ${allScraped.length} entries`);
@@ -1011,12 +2267,32 @@ async function runScrapers() {
             console.error('  Could not parse existing data. Starting fresh.', e.message);
         }
     }
+    const existingNormalizationRun = captureRecordSet({
+        sourceId: 'dataset:existing',
+        label: 'Existing dataset normalization',
+        collectionMode: 'existing_dataset',
+        rawRecords: existingData,
+    });
+    healthRuns.push(existingNormalizationRun.run);
+    existingData = existingNormalizationRun.records;
+
     // -- Inject Incubator/CSR static targets into existingData so Tier B verifies them --
-    const targetStaticRecords = getStaticRecords().filter(r => r.dataSource !== 'scraper:sidbi');
+    const targetStaticSeedRun = captureRecordSet({
+        sourceId: 'seed:manual-static',
+        label: 'Manual official seed records',
+        collectionMode: 'static_seed',
+        rawRecords: getStaticRecords().filter(r => r.dataSource !== 'scraper:sidbi'),
+    });
+    healthRuns.push(targetStaticSeedRun.run);
+    const targetStaticRecords = targetStaticSeedRun.records;
 
     // Merge new static records into existingData if they aren't already there
     targetStaticRecords.forEach(tsr => {
-        if (!existingData.some(e => e.link === tsr.link)) {
+        if (!existingData.some(e =>
+            e.recordFingerprint === tsr.recordFingerprint ||
+            (e.name === tsr.name && e.body === tsr.body) ||
+            (e.link === tsr.link && e.name === tsr.name),
+        )) {
             existingData.push(tsr);
         }
     });
@@ -1024,7 +2300,6 @@ async function runScrapers() {
     // -- Tier B: Verify all static records (those without lastScraped or not covered by Tier A/C) --
     const scrapedLinks = new Set(allScraped.map(x => x.link));
     const staticToVerify = existingData.filter(item => {
-        if (item.provider && !item.body) return false; // skip old schema
         if (item.dataSource?.startsWith('scraper:') && item.dataSource !== 'scraper:sidbi') return false;
         return !scrapedLinks.has(item.link);
     });
@@ -1032,42 +2307,71 @@ async function runScrapers() {
     // Launch a new browser instance for link verification
     let verifyBrowser;
     let verifiedStatic = [];
+    let verifyError = null;
     try {
         verifyBrowser = await puppeteer.launch({
             headless: 'new',
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
         });
         verifiedStatic = await verifyStaticRecords(verifyBrowser, staticToVerify);
-        await verifyBrowser.close();
     } catch (e) {
         console.error('  ? Link verification browser failed:', e.message);
+        verifyError = e.message;
         verifiedStatic = staticToVerify; // keep as-is
+    } finally {
+        if (verifyBrowser) await verifyBrowser.close();
     }
+    const verifiedStaticRun = captureRecordSet({
+        sourceId: 'verify:static-links',
+        label: 'Static record link verification',
+        collectionMode: 'link_verification',
+        rawRecords: verifiedStatic,
+        error: verifyError,
+    });
+    healthRuns.push(verifiedStaticRun.run);
+    verifiedStatic = verifiedStaticRun.records;
 
     // -- Merge everything --
     if (allScraped.length < 5) {
+        const failureHealth = buildSourceHealthReport({ runs: healthRuns, finalData: [] });
+        fs.writeFileSync(SOURCE_HEALTH_FILE, JSON.stringify(failureHealth, null, 2));
         console.error(`\n  ? CRITICAL FAILURE: Scrapers only yielded ${allScraped.length} entries (expected 5+).`);
         console.error('  This indicates a fundamental block (firewall, layout change, headless detection).');
         console.error('  Failing the CI/CD run to prevent silent data rot.');
         process.exit(1);
     }
 
-    const finalData = mergeData(existingData, allScraped, verifiedStatic);
+    const mergedData = mergeData(existingData, allScraped, verifiedStatic);
+    const finalNormalizationRun = captureRecordSet({
+        sourceId: 'dataset:final',
+        label: 'Final dataset normalization',
+        collectionMode: 'merged_dataset',
+        rawRecords: mergedData,
+    });
+    healthRuns.push(finalNormalizationRun.run);
+    const finalData = finalNormalizationRun.records;
 
     // -- Generate AI Strategic Report --
-    const reportPath = path.join(process.cwd(), 'public', 'data', 'research_report.json');
+    const reportPath = path.join(PUBLIC_DATA_DIR, 'research_report.json');
     const strategicReport = await generateStrategicReport(finalData);
     fs.writeFileSync(reportPath, JSON.stringify(strategicReport, null, 2));
+
+    // -- Write source health artifact --
+    const sourceHealth = buildSourceHealthReport({ runs: healthRuns, finalData });
+    fs.writeFileSync(SOURCE_HEALTH_FILE, JSON.stringify(sourceHealth, null, 2));
 
     // -- Write output --
     fs.writeFileSync(DATA_FILE, JSON.stringify(finalData, null, 2));
     const broken = finalData.filter(x => x.linkStatus === 'broken').length;
     const verified = finalData.filter(x => x.linkStatus === 'verified').length;
     const closing = finalData.filter(x => x.status === 'Closing Soon').length;
+    const inferred = finalData.filter(x => x.sourceMeta?.inferredDataSource).length;
+    const lowConfidence = finalData.filter(x => typeof x.confidence === 'number' && x.confidence < 0.55).length;
 
     console.log('\n-----------------------------------------------');
     console.log(`  ? Done! Saved ${finalData.length} opportunities.`);
     console.log(`    Verified links: ${verified} | Broken: ${broken} | Closing Soon: ${closing}`);
+    console.log(`    Inferred provenance: ${inferred} | Low confidence: ${lowConfidence}`);
     console.log('-----------------------------------------------\n');
 }
 
