@@ -1,7 +1,7 @@
 {
   "title": "ABIF Strategic Funding Analysis 2026",
-  "generatedAt": "2026-03-11T10:20:45.231Z",
-  "executiveSummary": "As of Mar 11, 2026, the Indian funding ecosystem shows a robust activity level with 72 active programs identified. There is a significant tactical focus on Incubator / Scaling, which accounts for 42% of current open calls. ",
+  "generatedAt": "2026-03-12T05:01:00.076Z",
+  "executiveSummary": "As of Mar 12, 2026, the Indian funding ecosystem shows a robust activity level with 71 active programs identified. There is a significant tactical focus on Incubator / Scaling, which accounts for 45% of current open calls. ",
   "keyTrends": [
     {
       "trend": "Sectoral Dominance",
@@ -9,7 +9,7 @@
     },
     {
       "trend": "Capital Concentration",
-      "detail": "42 premium programs are currently active in the high-impact (?50L - ?5Cr) tier."
+      "detail": "41 premium programs are currently active in the high-impact (?50L - ?5Cr) tier."
     },
     {
       "trend": "Strategic Shifts",
@@ -21,5 +21,5 @@
     "Review SMILE and SIDBI eligibility for high-value soft loan scaling.",
     "Conduct technical readiness audits (TRL 4-7) for impending deep-tech calls."
   ],
-  "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 10:20 AM"
+  "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 10:30 AM"
 }
