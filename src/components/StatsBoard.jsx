@@ -114,6 +114,13 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                                 <p className="text-[8px] font-black text-white/30 uppercase tracking-widest leading-none mb-1.5">Activity Level</p>
                                 <div className={`text-[10px] font-black uppercase tracking-[0.1em] ${marketSentiment.color}`}>{marketSentiment.label.split(' / ')[0]}</div>
                             </div>
+                            <button
+                                onClick={onReportClick}
+                                className="flex items-center gap-2 px-4 py-2 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer border border-blue-500/20"
+                            >
+                                <FileText size={12} />
+                                View Brief
+                            </button>
                         </div>
                     </div>
 

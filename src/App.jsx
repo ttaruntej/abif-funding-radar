@@ -190,27 +190,27 @@ const App = () => {
                 <div className="fixed top-24 right-4 sm:right-8 z-[110] animate-in scale-95 origin-right">
                     {isSyncPanelMinimized ? (
                         <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[24px] px-4 py-3 w-[280px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
-                                ? 'border-emerald-500/30'
-                                : syncSummary.tone === 'error'
-                                    ? 'border-red-500/30'
-                                    : 'border-blue-500/20'
+                            ? 'border-emerald-500/30'
+                            : syncSummary.tone === 'error'
+                                ? 'border-red-500/30'
+                                : 'border-blue-500/20'
                             }`}>
                             <div className="absolute bottom-0 left-0 h-1 bg-slate-200/60 dark:bg-white/5 w-full" />
                             <div
                                 className={`absolute bottom-0 left-0 h-1 transition-all duration-1000 ease-out ${syncSummary.tone === 'success'
-                                        ? 'bg-emerald-500'
-                                        : syncSummary.tone === 'error'
-                                            ? 'bg-red-500'
-                                            : 'bg-blue-500'
+                                    ? 'bg-emerald-500'
+                                    : syncSummary.tone === 'error'
+                                        ? 'bg-red-500'
+                                        : 'bg-blue-500'
                                     }`}
                                 style={{ width: `${syncProgress}%` }}
                             />
                             <div className="flex items-start gap-3 pr-14">
                                 <div className={`w-9 h-9 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
-                                        ? 'bg-emerald-500 border-emerald-500'
-                                        : syncSummary.tone === 'error'
-                                            ? 'bg-red-500 border-red-500'
-                                            : 'border-blue-500/40 bg-blue-500/10'
+                                    ? 'bg-emerald-500 border-emerald-500'
+                                    : syncSummary.tone === 'error'
+                                        ? 'bg-red-500 border-red-500'
+                                        : 'border-blue-500/40 bg-blue-500/10'
                                     }`}>
                                     {syncSummary.tone === 'success' ? (
                                         <CheckCircle2 size={16} className="text-white" />
@@ -258,237 +258,237 @@ const App = () => {
                             </div>
                         </div>
                     ) : (
-                    <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
+                        <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
                             ? 'border-emerald-500/30'
                             : syncSummary.tone === 'error'
                                 ? 'border-red-500/30'
                                 : 'border-blue-500/20'
-                        }`}>
-                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                        <div className="absolute bottom-0 left-0 h-1 bg-slate-200/60 dark:bg-white/5 w-full" />
-                        <div
-                            className={`absolute bottom-0 left-0 h-1 transition-all duration-1000 ease-out ${syncSummary.tone === 'success'
+                            }`}>
+                            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 h-1 bg-slate-200/60 dark:bg-white/5 w-full" />
+                            <div
+                                className={`absolute bottom-0 left-0 h-1 transition-all duration-1000 ease-out ${syncSummary.tone === 'success'
                                     ? 'bg-emerald-500'
                                     : syncSummary.tone === 'error'
                                         ? 'bg-red-500'
                                         : 'bg-blue-500'
-                                }`}
-                            style={{ width: `${syncProgress}%` }}
-                        />
+                                    }`}
+                                style={{ width: `${syncProgress}%` }}
+                            />
 
-                        <div className="absolute top-3 right-3 flex items-center gap-1">
-                            <button
-                                onClick={toggleSyncPanelMinimized}
-                                className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                                aria-label="Minimize sync panel"
-                            >
-                                <Minus size={14} />
-                            </button>
-                            <button
-                                onClick={dismissSyncPanel}
-                                className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                                aria-label="Close sync panel"
-                            >
-                                <X size={14} />
-                            </button>
-                        </div>
+                            <div className="absolute top-3 right-3 flex items-center gap-1">
+                                <button
+                                    onClick={toggleSyncPanelMinimized}
+                                    className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                    aria-label="Minimize sync panel"
+                                >
+                                    <Minus size={14} />
+                                </button>
+                                <button
+                                    onClick={dismissSyncPanel}
+                                    className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                    aria-label="Close sync panel"
+                                >
+                                    <X size={14} />
+                                </button>
+                            </div>
 
-                        <div className="flex items-start gap-4 mb-5 pr-10">
-                            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
+                            <div className="flex items-start gap-4 mb-5 pr-10">
+                                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border transition-all ${syncSummary.tone === 'success'
                                     ? 'bg-emerald-500 border-emerald-500'
                                     : syncSummary.tone === 'error'
                                         ? 'bg-red-500 border-red-500'
                                         : 'border-blue-500/40 bg-blue-500/10'
-                                }`}>
-                                {syncSummary.tone === 'success' ? (
-                                    <CheckCircle2 size={18} className="text-white" />
-                                ) : syncSummary.tone === 'error' ? (
-                                    <X size={18} className="text-white" />
-                                ) : (
-                                    <Activity size={16} className="text-blue-500 animate-pulse" />
-                                )}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between gap-3">
-                                    <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.22em]">
-                                        {syncSummary.title}
-                                    </h3>
-                                    <span className={`text-[9px] font-mono font-black px-2 py-1 rounded-full uppercase ${syncSummary.tone === 'success'
+                                    }`}>
+                                    {syncSummary.tone === 'success' ? (
+                                        <CheckCircle2 size={18} className="text-white" />
+                                    ) : syncSummary.tone === 'error' ? (
+                                        <X size={18} className="text-white" />
+                                    ) : (
+                                        <Activity size={16} className="text-blue-500 animate-pulse" />
+                                    )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between gap-3">
+                                        <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.22em]">
+                                            {syncSummary.title}
+                                        </h3>
+                                        <span className={`text-[9px] font-mono font-black px-2 py-1 rounded-full uppercase ${syncSummary.tone === 'success'
                                             ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
                                             : syncSummary.tone === 'error'
                                                 ? 'bg-red-500/10 text-red-600 dark:text-red-400'
                                                 : 'bg-blue-500/10 text-blue-600 dark:text-blue-400'
-                                        }`}>
-                                        {Math.round(syncProgress)}%
-                                    </span>
+                                            }`}>
+                                            {Math.round(syncProgress)}%
+                                        </span>
+                                    </div>
+                                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase mt-2 leading-relaxed">
+                                        {syncSummary.subtitle}
+                                    </p>
                                 </div>
-                                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase mt-2 leading-relaxed">
-                                    {syncSummary.subtitle}
-                                </p>
                             </div>
-                        </div>
 
-                        <div className="min-h-0 flex-1 overflow-y-auto pr-1 -mr-1 space-y-5">
-                        <div className="grid grid-cols-2 gap-3">
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
-                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
-                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
-                                    {formatSyncDuration(elapsedTime)}
-                                </span>
-                            </div>
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
-                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Cooldown</span>
-                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
-                                    {cooldown > 0 ? `${cooldown}s` : 'Ready'}
-                                </span>
-                            </div>
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                            <div className="min-h-0 flex-1 overflow-y-auto pr-1 -mr-1 space-y-5">
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                        <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
+                                        <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                            {formatSyncDuration(elapsedTime)}
+                                        </span>
+                                    </div>
+                                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                        <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Cooldown</span>
+                                        <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                            {cooldown > 0 ? `${cooldown}s` : 'Ready'}
+                                        </span>
+                                    </div>
+                                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
                                         <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Update</span>
-                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
-                                    {syncRunId ? `#${String(syncRunId).slice(-6)}` : 'Starting'}
-                                </span>
-                            </div>
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
-                                <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">
-                                    {refreshSuccess || syncError ? 'Finished' : 'Updated'}
-                                </span>
-                                <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
-                                    {formatSyncStamp(syncFinishedAt || syncUpdatedAt || syncStartTime)}
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className="flex items-center justify-between mb-3">
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.24em]">
-                                        Progress Tracker
-                                    </span>
-                                    <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                                        Current stage + progress
-                                    </span>
+                                        <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                            {syncRunId ? `#${String(syncRunId).slice(-6)}` : 'Starting'}
+                                        </span>
+                                    </div>
+                                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
+                                        <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                            {refreshSuccess || syncError ? 'Finished' : 'Updated'}
+                                        </span>
+                                        <span className="block mt-1 text-[12px] font-black text-slate-900 dark:text-white">
+                                            {formatSyncStamp(syncFinishedAt || syncUpdatedAt || syncStartTime)}
+                                        </span>
+                                    </div>
                                 </div>
 
-                            <div className="space-y-2.5">
-                                {syncSteps.map((step) => (
-                                    <div
-                                        key={step.key}
-                                        className={`flex items-start gap-3 rounded-2xl border px-3 py-3 transition-all ${step.status === 'complete'
-                                                ? 'border-emerald-500/20 bg-emerald-500/5'
-                                                : step.status === 'active'
-                                                    ? 'border-blue-500/20 bg-blue-500/5'
-                                                    : step.status === 'error'
-                                                        ? 'border-red-500/20 bg-red-500/5'
-                                                        : 'border-slate-100 dark:border-white/5 bg-slate-50/80 dark:bg-slate-800/40'
-                                            }`}
-                                    >
-                                        <div className={`mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0 ${step.status === 'complete'
-                                                ? 'bg-emerald-500'
-                                                : step.status === 'active'
-                                                    ? 'bg-blue-500 animate-pulse'
-                                                    : step.status === 'error'
-                                                        ? 'bg-red-500'
-                                                        : 'bg-slate-300 dark:bg-slate-700'
-                                            }`} />
-                                        <div className="min-w-0">
-                                            <p className={`text-[10px] font-black uppercase tracking-[0.18em] ${step.status === 'pending'
-                                                    ? 'text-slate-500 dark:text-slate-400'
-                                                    : 'text-slate-900 dark:text-white'
-                                                }`}>
-                                                {step.label}
-                                            </p>
-                                            <p className="text-[9px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                                                {step.description}
-                                            </p>
-                                        </div>
+                                <div>
+                                    <div className="flex items-center justify-between mb-3">
+                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.24em]">
+                                            Progress Tracker
+                                        </span>
+                                        <span className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                                            Current stage + progress
+                                        </span>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
 
-                        {(refreshSuccess || syncFindings) && (
-                            <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-4">
-                                <div className="flex items-center justify-between gap-3">
-                                    <div>
-                                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Update Summary</p>
-                                        <p className="mt-1 text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.16em]">
-                                            {syncFindings?.newCount > 0 ? `${syncFindings.newCount} new opportunities found` : 'No new opportunities found'}
-                                        </p>
-                                    </div>
-                                    <span className="text-[9px] font-mono font-black text-slate-500 dark:text-slate-400">
-                                        {syncFindings ? `${syncFindings.totalBefore} to ${syncFindings.totalAfter}` : 'Stable'}
-                                    </span>
-                                </div>
-
-                                {syncFindings?.newCount > 0 ? (
-                                    <div className="mt-3 space-y-2.5">
-                                        {syncFindings.newItems.map((item) => (
-                                            <div key={`${item.name}-${item.deadline}`} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
-                                                <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.14em] leading-relaxed">
-                                                    {item.name}
-                                                </p>
-                                                <div className="mt-2 flex items-center justify-between gap-3">
-                                                    <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em] truncate">
-                                                        {item.body}
-                                                    </span>
-                                                    <span className="text-[8px] font-black px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 uppercase tracking-[0.14em]">
-                                                        {item.status}
-                                                    </span>
+                                    <div className="space-y-2.5">
+                                        {syncSteps.map((step) => (
+                                            <div
+                                                key={step.key}
+                                                className={`flex items-start gap-3 rounded-2xl border px-3 py-3 transition-all ${step.status === 'complete'
+                                                    ? 'border-emerald-500/20 bg-emerald-500/5'
+                                                    : step.status === 'active'
+                                                        ? 'border-blue-500/20 bg-blue-500/5'
+                                                        : step.status === 'error'
+                                                            ? 'border-red-500/20 bg-red-500/5'
+                                                            : 'border-slate-100 dark:border-white/5 bg-slate-50/80 dark:bg-slate-800/40'
+                                                    }`}
+                                            >
+                                                <div className={`mt-1 w-2.5 h-2.5 rounded-full flex-shrink-0 ${step.status === 'complete'
+                                                    ? 'bg-emerald-500'
+                                                    : step.status === 'active'
+                                                        ? 'bg-blue-500 animate-pulse'
+                                                        : step.status === 'error'
+                                                            ? 'bg-red-500'
+                                                            : 'bg-slate-300 dark:bg-slate-700'
+                                                    }`} />
+                                                <div className="min-w-0">
+                                                    <p className={`text-[10px] font-black uppercase tracking-[0.18em] ${step.status === 'pending'
+                                                        ? 'text-slate-500 dark:text-slate-400'
+                                                        : 'text-slate-900 dark:text-white'
+                                                        }`}>
+                                                        {step.label}
+                                                    </p>
+                                                    <p className="text-[9px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                                                        {step.description}
+                                                    </p>
                                                 </div>
-                                                <p className="mt-2 text-[9px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em]">
-                                                    {item.deadline}
-                                                </p>
                                             </div>
                                         ))}
-                                        {syncFindings.newCount > syncFindings.newItems.length && (
-                                            <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                                                +{syncFindings.newCount - syncFindings.newItems.length} more new opportunities in this update
+                                    </div>
+                                </div>
+
+                                {(refreshSuccess || syncFindings) && (
+                                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-4">
+                                        <div className="flex items-center justify-between gap-3">
+                                            <div>
+                                                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Update Summary</p>
+                                                <p className="mt-1 text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.16em]">
+                                                    {syncFindings?.newCount > 0 ? `${syncFindings.newCount} new opportunities found` : 'No new opportunities found'}
+                                                </p>
+                                            </div>
+                                            <span className="text-[9px] font-mono font-black text-slate-500 dark:text-slate-400">
+                                                {syncFindings ? `${syncFindings.totalBefore} to ${syncFindings.totalAfter}` : 'Stable'}
+                                            </span>
+                                        </div>
+
+                                        {syncFindings?.newCount > 0 ? (
+                                            <div className="mt-3 space-y-2.5">
+                                                {syncFindings.newItems.map((item) => (
+                                                    <div key={`${item.name}-${item.deadline}`} className="rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 p-3">
+                                                        <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-[0.14em] leading-relaxed">
+                                                            {item.name}
+                                                        </p>
+                                                        <div className="mt-2 flex items-center justify-between gap-3">
+                                                            <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em] truncate">
+                                                                {item.body}
+                                                            </span>
+                                                            <span className="text-[8px] font-black px-2 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 uppercase tracking-[0.14em]">
+                                                                {item.status}
+                                                            </span>
+                                                        </div>
+                                                        <p className="mt-2 text-[9px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.14em]">
+                                                            {item.deadline}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                                {syncFindings.newCount > syncFindings.newItems.length && (
+                                                    <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                                                        +{syncFindings.newCount - syncFindings.newItems.length} more new opportunities in this update
+                                                    </p>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                                The opportunity list refreshed successfully, but no new opportunities were added this time.
                                             </p>
                                         )}
                                     </div>
-                                ) : (
-                                    <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                        The opportunity list refreshed successfully, but no new opportunities were added this time.
-                                    </p>
                                 )}
-                            </div>
-                        )}
 
-                        {syncError && (
-                            <div className="rounded-2xl bg-red-500/5 border border-red-500/20 p-4">
-                                <div className="flex items-start gap-3">
-                                    <div className="w-8 h-8 rounded-xl bg-red-500 text-white flex items-center justify-center flex-shrink-0">
-                                        <AlertTriangle size={15} />
+                                {syncError && (
+                                    <div className="rounded-2xl bg-red-500/5 border border-red-500/20 p-4">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-8 h-8 rounded-xl bg-red-500 text-white flex items-center justify-center flex-shrink-0">
+                                                <AlertTriangle size={15} />
+                                            </div>
+                                            <div className="min-w-0">
+                                                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-red-600 dark:text-red-400">
+                                                    Update Needs Review
+                                                </p>
+                                                <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                    {syncError}
+                                                </p>
+                                                <p className="mt-3 text-[9px] font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
+                                                    The last published opportunity list remains available. You can try again without closing this panel.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            <button
+                                                onClick={handleRefresh}
+                                                disabled={cooldown > 0 || isRefreshing}
+                                                className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[9px] font-black uppercase tracking-[0.16em] disabled:opacity-50"
+                                            >
+                                                <RotateCcw size={12} />
+                                                {cooldown > 0 ? `Try again in ${cooldown}s` : 'Try Again'}
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="min-w-0">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-red-600 dark:text-red-400">
-                                            Update Needs Review
-                                        </p>
-                                        <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-300 leading-relaxed">
-                                            {syncError}
-                                        </p>
-                                        <p className="mt-3 text-[9px] font-medium uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400 leading-relaxed">
-                                            The last published opportunity list remains available. You can try again without closing this panel.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-wrap gap-2 mt-4">
-                                    <button
-                                        onClick={handleRefresh}
-                                        disabled={cooldown > 0 || isRefreshing}
-                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[9px] font-black uppercase tracking-[0.16em] disabled:opacity-50"
-                                    >
-                                        <RotateCcw size={12} />
-                                        {cooldown > 0 ? `Try again in ${cooldown}s` : 'Try Again'}
-                                    </button>
-                                </div>
-                            </div>
-                        )}
+                                )}
 
-                        <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.18em]">
-                            This panel stays available until you close it. Minimize keeps the update within reach while you continue working.
-                        </p>
+                                <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.18em]">
+                                    This panel stays available until you close it. Minimize keeps the update within reach while you continue working.
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     )}
                 </div>
             )}
@@ -699,20 +699,13 @@ const App = () => {
                                     }}
                                 />
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <button
-                                    onClick={handleWorkflowEmailLaunch}
-                                    className="w-full bg-slate-950 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl active:scale-95 disabled:opacity-50"
-                                    disabled={emailCooldown > 0 || dispatching}
-                                >
-                                    {dispatching ? 'Preparing Briefing' : 'Prepare Briefing'}
-                                </button>
+                            <div className="flex flex-col gap-3">
                                 <button
                                     onClick={handleDirectEmailRelay}
                                     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] uppercase tracking-[0.18em] py-5 rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
                                     disabled={emailCooldown > 0 || (dispatching && emailLaunchMode !== 'github')}
                                 >
-                                    {emailCooldown > 0 ? `Ready in ${emailCooldown}s` : 'Send Now'}
+                                    {emailCooldown > 0 ? `Ready in ${emailCooldown}s` : 'Send Briefing Now'}
                                 </button>
                             </div>
                         </div>
