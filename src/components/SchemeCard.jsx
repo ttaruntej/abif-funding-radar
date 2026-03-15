@@ -34,13 +34,13 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
             )}
 
             {/* Top Tactical Layer */}
-            <div className="flex justify-between items-start mb-6 relative z-10">
+            <div className="flex flex-col sm:flex-row justify-between items-start mb-6 relative z-10 gap-3 sm:gap-0">
                 <div className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border shadow-sm ${statusStyle} ${isArchivedMode ? 'grayscale opacity-50' : ''}`}>
                     {scheme.status}
                 </div>
 
-                <div className="flex flex-col items-end gap-2">
-                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm ${isArchivedMode ? 'bg-slate-100 dark:bg-slate-900/50' : 'bg-white/80 dark:bg-slate-800/80'}`}>
+                <div className="flex flex-col sm:items-end gap-2 text-right">
+                    <div className={`flex flex-row items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm ${isArchivedMode ? 'bg-slate-100 dark:bg-slate-900/50' : 'bg-white/80 dark:bg-slate-800/80'}`}>
                         <DollarSign size={12} className={isArchivedMode ? 'text-slate-400' : 'text-emerald-500'} />
                         <span className={`text-[12px] font-black tracking-tight ${isArchivedMode ? 'text-slate-500' : 'text-slate-900 dark:text-white'}`}>{scheme.maxAward}</span>
                     </div>
@@ -109,7 +109,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
             </div>
 
             {/* Bottom action area */}
-            <div className={`mt-auto pt-6 border-t relative z-10 flex items-center justify-between ${isArchivedMode ? 'border-slate-300 dark:border-slate-800/50' : 'border-slate-100 dark:border-slate-800/50'
+            <div className={`mt-auto pt-6 border-t relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 ${isArchivedMode ? 'border-slate-300 dark:border-slate-800/50' : 'border-slate-100 dark:border-slate-800/50'
                 }`}>
                 <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
@@ -138,7 +138,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                     target="_blank"
                     rel="noopener noreferrer"
                     title={isArchivedMode ? "View Historical Record" : "Visit Official Portal"}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${isArchivedMode
+                    className={`flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest transition-all duration-500 w-full sm:w-auto ${isArchivedMode
                         ? 'bg-slate-300/30 dark:bg-slate-900/50 text-slate-500 border border-slate-400/20'
                         : 'bg-white dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-slate-950 dark:text-white hover:bg-slate-950 dark:hover:bg-white hover:text-white dark:hover:text-slate-950 shadow-xl'}`}
                 >

@@ -69,13 +69,13 @@ const TacticalSpear = ({
     ];
 
     return (
-        <div className="fixed bottom-8 right-8 z-[150] flex flex-col items-center">
+        <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[150] flex flex-col items-center">
             {/* Spear Extended Cluster */}
             <div className={`flex flex-col gap-3 mb-4 transition-all duration-500 transform ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
                 {actions.map((action, idx) => (
                     <div key={action.id} className="group relative flex items-center justify-end">
                         {/* Hover Metadata */}
-                        <span className="absolute right-16 px-3 py-1 bg-slate-900/90 dark:bg-white/90 backdrop-blur-md text-[10px] font-black text-white dark:text-slate-900 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl border border-white/10">
+                        <span className="absolute right-16 px-3 py-1 bg-slate-900/90 dark:bg-white/90 backdrop-blur-md text-[10px] font-black text-white dark:text-slate-900 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl border border-white/10 whitespace-nowrap hidden sm:block">
                             {action.label}
                         </span>
 

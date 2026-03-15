@@ -53,7 +53,7 @@ const Header = ({
                     </div>
                 </div>
 
-                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden sm:block"></div>
+                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden md:block"></div>
 
                 {/* Main filters */}
                 <div className="flex-1 flex items-center gap-2 sm:gap-4 overflow-hidden">
@@ -99,7 +99,7 @@ const Header = ({
                     </div>
                 </div>
 
-                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden xl:block"></div>
+                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden md:block"></div>
 
                 {/* Feedback Anchor */}
                 <button
@@ -117,10 +117,10 @@ const Header = ({
                     <span className="hidden sm:inline">Share Suggestion</span>
                 </button>
 
-                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden xl:block"></div>
+                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden md:block"></div>
 
                 {/* Audience switcher */}
-                <div className="hidden md:flex bg-slate-100 dark:bg-slate-950 p-1 rounded-2xl border border-slate-200 dark:border-white/10 shrink-0 shadow-inner overflow-hidden">
+                <div className="flex bg-slate-100 dark:bg-slate-950 p-1 rounded-2xl border border-slate-200 dark:border-white/10 shrink-0 shadow-inner overflow-hidden">
                     <div className="relative flex">
                         <div className={`absolute inset-y-0 h-full w-1/2 bg-blue-600 shadow-[0_4px_15px_rgba(37,99,235,0.4)] rounded-xl transition-all duration-500 ease-out ${activeAudience === 'incubator' ? 'translate-x-full' : 'translate-x-0'}`} />
                         <button

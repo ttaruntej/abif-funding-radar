@@ -38,7 +38,7 @@ const FeedbackSection = ({ addLog }) => {
 
     return (
         <section id="feedback" className="max-w-7xl mx-auto px-4 sm:px-8 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
-            <div className="relative overflow-hidden rounded-[40px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-2xl p-8 md:p-12">
+            <div className="relative overflow-hidden rounded-[40px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-2xl p-6 md:p-12">
                 {/* Background Accents */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -57,7 +57,7 @@ const FeedbackSection = ({ addLog }) => {
                         <p className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
                             Have a suggestion for a new opportunity source or a useful improvement? Your note is shared directly with the ABIF team at IIT Kharagpur.
                         </p>
-                    </div>
+                    </div >
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid grid-cols-1 gap-4">
@@ -98,9 +98,9 @@ const FeedbackSection = ({ addLog }) => {
                             {status === 'sending' ? 'Sending...' : status === 'success' ? 'Suggestion Received' : 'Send Suggestion'}
                         </button>
                     </form>
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     );
 };
 

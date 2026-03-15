@@ -494,7 +494,7 @@ const App = () => {
             )}
 
             {emailNotification && (
-                <div className="fixed bottom-28 right-28 z-[110] animate-in slide-in-from-right-8">
+                <div className="fixed bottom-24 right-4 sm:bottom-28 sm:right-28 z-[110] animate-in slide-in-from-right-8">
                     <div className={`backdrop-blur-2xl border shadow-2xl rounded-2xl p-4 flex items-center gap-4 w-[300px] bg-white/90 dark:bg-slate-900/90 relative ${emailNotification.type === 'success' ? 'border-emerald-500/50' :
                         emailNotification.type === 'error' ? 'border-red-500/50' : 'border-blue-500/50'
                         }`}>
@@ -610,7 +610,7 @@ const App = () => {
             {isEmailModalOpen && (
                 <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm animate-in fade-in" onClick={() => setIsEmailModalOpen(false)} />
-                    <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[32px] shadow-3xl border border-white/5 p-8 animate-shutter">
+                    <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[32px] shadow-3xl border border-white/5 p-5 sm:p-8 animate-shutter">
                         <div className="flex justify-between items-start mb-6">
                             <h3 className="font-black text-slate-900 dark:text-white text-[12px] uppercase flex items-center gap-3">
                                 Send Briefing
@@ -633,14 +633,14 @@ const App = () => {
                                     <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
                                         Recipients: <span className="font-medium text-slate-500 truncate block">{dispatchMeta.recipients}</span>
                                     </p>
-                                    <div className="flex items-center gap-4 mt-2 mb-3">
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-2 mb-3">
                                         <div className="flex flex-col">
                                             <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Timestamp</span>
                                             <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">
                                                 {new Date(dispatchMeta.timestamp).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
                                             </span>
                                         </div>
-                                        <div className="w-px h-6 bg-slate-200 dark:bg-slate-700" />
+                                        <div className="hidden sm:block w-px h-6 bg-slate-200 dark:bg-slate-700" />
                                         <div className="flex flex-col">
                                             <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Included</span>
                                             <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{dispatchMeta.opportunityCount} Opportunities</span>
@@ -740,7 +740,7 @@ const App = () => {
                                     setActiveStatus(s.key);
                                     scrollToFilters();
                                 }}
-                                className={`px-5 py-2.5 rounded-full transition-all text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-3 ${activeStatus === s.key ? 'bg-white text-slate-900 shadow-xl scale-105' : 'text-white/40 hover:text-white hover:bg-white/5'
+                                className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-2 sm:gap-3 ${activeStatus === s.key ? 'bg-white text-slate-900 shadow-xl scale-105' : 'text-white/40 hover:text-white hover:bg-white/5'
                                     }`}
                             >
                                 <div className={`w-1 h-1 rounded-full ${s.color} ${activeStatus === s.key ? 'animate-pulse' : 'opacity-40'}`} />
