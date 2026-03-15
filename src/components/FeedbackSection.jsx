@@ -37,7 +37,7 @@ const FeedbackSection = ({ addLog }) => {
     };
 
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-8 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
+        <section id="feedback" className="max-w-7xl mx-auto px-4 sm:px-8 mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
             <div className="relative overflow-hidden rounded-[40px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-2xl p-8 md:p-12">
                 {/* Background Accents */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />

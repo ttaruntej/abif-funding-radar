@@ -1,6 +1,6 @@
 import React from 'react';
 import { CATEGORIES } from '../constants/tracker';
-import { Search, Globe, Landmark, Handshake, Database, Cpu, History, Radar } from 'lucide-react';
+import { Search, Globe, Landmark, Handshake, Database, Cpu, History, Radar, MessageSquare } from 'lucide-react';
 
 const Header = ({
     currentView,
@@ -98,6 +98,24 @@ const Header = ({
                         </div>
                     </div>
                 </div>
+
+                <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden xl:block"></div>
+
+                {/* Feedback Anchor */}
+                <button
+                    onClick={() => {
+                        const el = document.getElementById('feedback');
+                        if (el) {
+                            const yOffset = -120; // Account for fixed header
+                            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                    }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-600 text-blue-600 hover:text-white transition-all duration-500 font-black text-[9px] uppercase tracking-widest border border-blue-500/10 hover:border-blue-600 shadow-sm active:scale-90 cursor-pointer shrink-0"
+                >
+                    <MessageSquare size={12} />
+                    <span className="hidden sm:inline">Share Suggestion</span>
+                </button>
 
                 <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0 hidden xl:block"></div>
 
