@@ -113,21 +113,23 @@ async function sendEmail() {
                 : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
             const today = new Date().toLocaleString('en-IN', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
-            const prompt = `Current Timestamp: ${today}. You are the personalized AI Agent of Tarun Tej Thadana, TBI Manager of ABIF IIT Kharagpur. 
+            const prompt = `Current Timestamp: ${today}. You are the ABIF AI Intelligence Agent. 
             Greeting Requirements:
-            1. Introduce yourself as Tarun's AI Agent.
-            2. ${filterContext}
-            3. Share some relevant latest catchy info or insight about the Indian AgriTech/Incubator ecosystem. Provide insights relevant to the current moment in 2026.
-            4. Summarize the changes: ${newItems.length} new opportunities found, ${closedItems.length} items recently closed/removed.
-            5. Current opportunities: ${JSON.stringify(targetOpps.map(o => o.name))}.
+            1. Introduce yourself as the ABIF AI Intelligence Agent. 
+            2. DO NOT address any individual by name (e.g., do not say "Greetings Tarun"). Use a professional, collective greeting or simply start the briefing.
+            3. ${filterContext}
+            4. State that you have completed a comprehensive deep-scan of the entire Indian Funding and AgriTech Ecosystem for ${today.split(' ')[1]} ${today.split(' ')[2]}.
+            5. Share a relevant latest catchy info or insight about the broader Indian startup ecosystem.
+            6. Summarize the changes: ${newItems.length} new opportunities found, ${closedItems.length} items recently closed/removed.
+            7. Current opportunities: ${JSON.stringify(targetOpps.map(o => o.name))}.
             
             Format your response as a JSON object:
             {
-              "subject": "A catchy, short, urgent subject line reflecting the updates",
-              "intro": "The professional intro text (HTML allowed for breaks, 3-4 sentences)"
+              "subject": "A professional, ecosystem-wide subject line reflecting the updates",
+              "intro": "The professional intro text (HTML allowed for breaks, 3-4 sentences). Do not use placeholders or personal names."
             }
             
-            Tone: Professional, premium, insight-driven, and slightly urgent. Do not use generic greetings like "Dear Managers".`;
+            Tone: Professional, premium, insight-driven, and authoritative. Do not use generic greetings like "Dear Managers".`;
 
             const result = await model.generateContent(prompt);
             const responseText = result.response.text();
