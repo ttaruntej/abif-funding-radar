@@ -49,19 +49,29 @@ export const generateBriefing = (data, { categoryLabel = '', search = '', active
     const sortedProviders = Object.entries(providerCounts).sort(([, a], [, b]) => b - a);
     const mainSource = sortedProviders[0]?.[0] || 'Public funding portals';
 
-    const contextPrefix = search
-        ? `Search results for "${search}"`
-        : categoryLabel && categoryLabel !== 'All'
-            ? `Current view for ${categoryLabel}`
-            : `Current view of ${data.length} active opportunities`;
+    const targetLabel = activeAudience === 'incubator' ? 'Incubator & Ecosystem' : 'Startup';
 
-    const summaryBase = `${contextPrefix} shows ${topSector} activity as the primary sector.`;
-    const incubatorHighlight = (activeAudience === 'incubator' && incubatorCount > 0)
-        ? ` ${incubatorCount} grants actively support Section 8 incubators/ecosystem enablers.`
-        : '';
+    const contextPrefix = search
+        ? `Search results for "${search}" in ${targetLabel} funding`
+        : categoryLabel && categoryLabel !== 'All'
+            ? `Current ${categoryLabel} view for ${targetLabel}s`
+            : `Current view of ${data.length} active ${targetLabel} opportunities`;
+
+    const summaryBase = `${contextPrefix} shows ${topSector} activity as the primary focus.`;
+
+    let audienceSpecificHighlight = '';
+    if (activeAudience === 'incubator') {
+        audienceSpecificHighlight = incubatorCount > 0
+            ? ` Notably, ${incubatorCount} grants actively support Section 8 operational and capacity building.`
+            : ' These grants provide ecosystem-level support rather than direct portfolio funding.';
+    } else {
+        audienceSpecificHighlight = highValueCount > 0
+            ? ` Capital is highly concentrated, with ${highValueCount} active programs providing ₹1Cr+ funding.`
+            : '';
+    }
 
     return {
-        summary: summaryBase + incubatorHighlight,
+        summary: summaryBase + audienceSpecificHighlight,
         insights: [
             `Top source: ${mainSource} appears most often in this set.`,
             `Funding size: ${highValueCount} active programs provide capital in the crore-plus tier.`,
