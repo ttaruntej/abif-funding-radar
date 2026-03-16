@@ -13,9 +13,17 @@ jobs:
     steps:
       - name: Check Key
         run: |
-          if [ "${{ github.event.inputs.password }}" == "${{ secrets.SITE_PASSWORD }}" ]; then
-            echo "✅ Access Granted"
+          ENTRY="${{ github.event.inputs.password }}"
+          MASTER="${{ secrets.SITE_PASSWORD }}"
+          
+          if [ -z "$MASTER" ]; then
+            echo "❌ Error: SITE_PASSWORD secret is not set in GitHub Repository Secrets."
+            exit 1
+          fi
+          
+          if [ "$ENTRY" == "$MASTER" ]; then
+            echo "✅ AUTH_STATUS: GRANTED"
           else
-            echo "❌ Access Denied"
+            echo "❌ AUTH_STATUS: DENIED"
             exit 1
           fi
