@@ -1745,7 +1745,7 @@ function getStaticRecords() {
             name: 'StartupTN Agri-Tech Grant',
             body: 'StartupTN / Govt of Tamil Nadu',
             maxAward: '?10 Lakhs - ?25 Lakhs',
-            deadline: '31-12-2025',
+            deadline: '31-12-2026',
             link: 'https://startuptn.in/',
             description: 'Financial support for Agri-Tech startups focused on market expansion, innovation, or agricultural process improvement.',
             category: 'state',

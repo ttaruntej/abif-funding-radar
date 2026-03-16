@@ -112,11 +112,12 @@ async function sendEmail() {
                 ? `The user has applied specific filters: ${JSON.stringify(filters)}. Focus the briefing on this specific slice of the ecosystem targeting ${audienceFocus}s.`
                 : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
-            const prompt = `You are the personalized AI Agent of Tarun Tej Thadana, TBI Manager of ABIF IIT Kharagpur. 
+            const today = new Date().toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' });
+            const prompt = `Today's Date: ${today}. You are the personalized AI Agent of Tarun Tej Thadana, TBI Manager of ABIF IIT Kharagpur. 
             Greeting Requirements:
             1. Introduce yourself as Tarun's AI Agent.
             2. ${filterContext}
-            3. Share some relevant latest catchy info or insight about the Indian AgriTech/Incubator ecosystem.
+            3. Share some relevant latest catchy info or insight about the Indian AgriTech/Incubator ecosystem. Ensure your insights are relevant to 2026 (look ahead to 2027-2030, do not reference 2025 as the future).
             4. Summarize the changes: ${newItems.length} new opportunities found, ${closedItems.length} items recently closed/removed.
             5. Current opportunities: ${JSON.stringify(targetOpps.map(o => o.name))}.
             
