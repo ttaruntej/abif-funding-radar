@@ -16,10 +16,15 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
         setIsChecking(true);
         setError(false);
 
-        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+        // Smart Detection: Use local relay if available, otherwise fallback to configured API
+        let apiBase = import.meta.env.VITE_API_BASE_URL || '/';
+        try {
+            const localPing = await fetch('http://localhost:3000/api/verify-access', { method: 'OPTIONS' }).catch(() => null);
+            if (localPing && localPing.ok) apiBase = 'http://localhost:3000';
+        } catch (e) { }
 
         try {
-            const response = await fetch(`${apiBase}/api/verify-access`, {
+            const response = await fetch(`${apiBase}/api/verify-access`.replace('//api', '/api'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })
@@ -36,7 +41,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
             }
         } catch (err) {
             console.error('Auth error:', err);
-            setError('System connection unavailable. Please ensure access relay is active.');
+            setError('Access check unavailable. Please retry shortly.');
         } finally {
             setIsChecking(false);
         }
