@@ -95,19 +95,39 @@ export const fetchDispatchMeta = async () => {
     return null;
 };
 
+const getDirectAuthToken = () => import.meta.env.VITE_GH_TOKEN || localStorage.getItem('ABIF_GH_PAT');
+
 /**
  * Trigger & Status for Verified Source Sync
  */
 export const triggerScraper = async () => {
     console.log('Triggering Scraper...');
+    const token = getDirectAuthToken();
 
+    // Strategy: Try Vercel first, fallback to Direct GitHub if token exists
     try {
         const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-sync`, { method: 'POST' });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Failed to start verified source sync');
-        return data;
+        if (res.ok) return data;
+        // If not OK, but we have a token, we might try direct if it's a connectivity error
     } catch (err) {
-        throw new Error('Failed to start verified source sync. Please try again when the relay is reachable.');
+        if (!token) throw new Error('Failed to start sync. Relay unreachable and no Direct Token configured.');
+        console.warn('[API] Relay unreachable, attempting Direct GitHub trigger...');
+    }
+
+    if (token) {
+        const res = await fetchJsonWithTimeout(`${GITHUB_WORKFLOW_API_BASE}/source-sync.yml/dispatches`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28'
+            },
+            body: JSON.stringify({ ref: 'main' })
+        });
+        if (res.status === 204) return { message: 'Verified source sync triggered (Direct Mode)' };
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Direct GitHub trigger failed');
     }
 };
 
@@ -126,7 +146,7 @@ export const getScraperStatus = async () => {
  */
 export const triggerEmail = async (target_emails, mode = 'standard', filters = {}) => {
     console.log(`[API] Attempting to trigger email dispatch (${mode}) via backend relay...`);
-    console.log(`Target URL: ${API_BASE_URL}/api/trigger-email`);
+    const token = getDirectAuthToken();
 
     try {
         const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email`, {
@@ -136,17 +156,34 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
         });
 
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Email trigger declined by server');
-
-        console.log('[API] Trigger response received:', data);
-        return data;
+        if (res.ok) {
+            console.log('[API] Trigger response received:', data);
+            return data;
+        }
     } catch (err) {
-        console.error('[Detailed Error Log]:', {
-            message: err.message,
-            url: `${API_BASE_URL}/api/trigger-email`,
-            stack: err.stack
+        if (!token) {
+            console.error('[Detailed Error Log]:', { message: err.message, url: `${API_BASE_URL}/api/trigger-email` });
+            throw new Error(`Connection Error: ${err.message}. Please try again when the relay is reachable or configure Direct Mode.`);
+        }
+        console.warn('[API] Relay unreachable, attempting Direct GitHub trigger...');
+    }
+
+    if (token) {
+        const res = await fetchJsonWithTimeout(`${GITHUB_WORKFLOW_API_BASE}/send-email.yml/dispatches`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28'
+            },
+            body: JSON.stringify({
+                ref: 'main',
+                inputs: { target_emails, mode, filters: JSON.stringify(filters) }
+            })
         });
-        throw new Error(`Connection Error: ${err.message}. Please try again when the relay is reachable.`);
+        if (res.status === 204) return { message: 'Email Action Triggered (Direct Mode)' };
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Direct GitHub trigger failed');
     }
 };
 

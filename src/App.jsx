@@ -92,6 +92,7 @@ const App = () => {
 
     // 5. UI Local State
     const [showReport, setShowReport] = useState(false);
+    const [showEmailModal, setShowEmailModal] = useState(false);
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [isSyncingReport, setIsSyncingReport] = useState(false);
     const [briefingMode, setBriefingMode] = useState('standard');
