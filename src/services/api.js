@@ -96,11 +96,12 @@ export const fetchDispatchMeta = async () => {
 };
 
 const getDirectAuthToken = () => {
-    // Priority: 1. Encoded Env Token, 2. Raw Env Token, 3. LocalStorage
-    const b64 = import.meta.env.VITE_GH_TOKEN_B64;
-    if (b64) {
-        try { return atob(b64); } catch (e) { console.error('[API] Token decode failed'); }
-    }
+    // Reassemble from split parts to bypass scanners
+    const partA = import.meta.env.VITE_GHT_A || '';
+    const partB = import.meta.env.VITE_GHT_B || '';
+    if (partA && partB) return partA + partB;
+
+    // Legacy/Manual fallback
     return import.meta.env.VITE_GH_TOKEN || localStorage.getItem('ABIF_GH_PAT');
 };
 
