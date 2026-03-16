@@ -100,6 +100,11 @@ const App = () => {
     const [briefingMode, setBriefingMode] = useState('standard');
     const [dispatchRecipients, setDispatchRecipients] = useState('');
     const [showFloatingBar, setShowFloatingBar] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        try {
+            return sessionStorage.getItem('site_auth') === 'true';
+        } catch (e) { return false; }
+    });
 
     const sectionRefs = useRef({});
     const categoryNavRef = useRef(null);
@@ -116,6 +121,12 @@ const App = () => {
     }, []);
 
     const handleDownloadPDF = () => window.print();
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('site_auth');
+        setIsAuthenticated(false);
+        addLog('Logged out successfully.', 'info');
+    };
 
     const handleSyncIntelligence = async () => {
         try {
@@ -187,7 +198,12 @@ const App = () => {
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
 
     return (
-        <PasswordGate>
+        <PasswordGate
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+            theme={theme}
+            toggleTheme={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
+        >
             <div className={`min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 ${currentView === 'archive' ? 'bg-slate-100 dark:bg-slate-900 arclight-gradient' : 'bg-slate-50 dark:bg-slate-950'}`}>
 
 
@@ -612,6 +628,7 @@ const App = () => {
                     toggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                     currentView={currentView}
                     setCurrentView={setCurrentView}
+                    handleLogout={handleLogout}
                 />
 
                 {isEmailModalOpen && (

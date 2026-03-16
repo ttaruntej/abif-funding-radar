@@ -9,7 +9,8 @@ import {
     Archive,
     LayoutGrid,
     X,
-    ChevronUp
+    ChevronUp,
+    LogOut
 } from 'lucide-react';
 
 const TacticalSpear = ({
@@ -22,7 +23,8 @@ const TacticalSpear = ({
     theme,
     toggleTheme,
     currentView,
-    setCurrentView
+    setCurrentView,
+    handleLogout
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -65,6 +67,13 @@ const TacticalSpear = ({
             label: currentView === 'dashboard' ? 'VIEW ARCHIVE' : 'CURRENT LIST',
             onClick: () => setCurrentView(currentView === 'dashboard' ? 'archive' : 'dashboard'),
             color: 'hover:text-purple-500 hover:bg-purple-500/10'
+        },
+        {
+            id: 'logout',
+            icon: <LogOut size={20} />,
+            label: 'TERMINATE SESSION',
+            onClick: handleLogout,
+            color: 'hover:text-red-500 hover:bg-red-500/10'
         }
     ];
 

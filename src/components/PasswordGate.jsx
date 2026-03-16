@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Lock, Cpu, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 
-const PasswordGate = ({ children }) => {
+const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, toggleTheme }) => {
     const [password, setPassword] = useState('');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [error, setError] = useState(false);
-    const [isChecking, setIsChecking] = useState(true);
+    const [isChecking, setIsChecking] = useState(!isAuthenticated);
 
 
     useEffect(() => {
-        // Check session storage for existing authentication
-        const authStatus = sessionStorage.getItem('site_auth');
-        if (authStatus === 'true') {
-            setIsAuthenticated(true);
-        }
         setIsChecking(false);
-    }, []);
+    }, [isAuthenticated]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -65,7 +59,16 @@ const PasswordGate = ({ children }) => {
     }
 
     return (
-        <div className="min-h-screen bg-slate-950 selection:bg-blue-500/30 font-sans relative overflow-hidden flex items-center justify-center p-4">
+        <div className={`min-h-screen ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} selection:bg-blue-500/30 font-sans relative overflow-hidden flex items-center justify-center p-4 transition-colors duration-500`}>
+            {/* Theme Toggle in Password Gate */}
+            <div className="absolute top-8 right-8 z-[100]">
+                <button
+                    onClick={toggleTheme}
+                    className={`p-4 rounded-2xl ${theme === 'dark' ? 'bg-white/10 text-amber-500 border-white/10' : 'bg-slate-200 text-slate-600 border-slate-300'} border backdrop-blur-xl transition-all active:scale-95 shadow-2xl`}
+                >
+                    {theme === 'dark' ? <Cpu size={20} className="animate-pulse" /> : <Lock size={20} />}
+                </button>
+            </div>
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] animate-glow" />
@@ -88,7 +91,7 @@ const PasswordGate = ({ children }) => {
                 </div>
 
                 {/* Password Card */}
-                <div className="bg-slate-900/40 backdrop-blur-3xl border border-white/5 rounded-[40px] p-8 sm:p-10 shadow-3xl relative group overflow-hidden">
+                <div className={`${theme === 'dark' ? 'bg-slate-900/40 border-white/5' : 'bg-white/80 border-slate-200'} backdrop-blur-3xl border rounded-[40px] p-8 sm:p-10 shadow-3xl relative group overflow-hidden transition-colors duration-500`}>
                     {/* Decorative Scan Line */}
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent animate-scan" />
 
@@ -109,7 +112,7 @@ const PasswordGate = ({ children }) => {
                                         if (error) setError(false);
                                     }}
                                     placeholder="Enter access code..."
-                                    className={`w-full bg-slate-950/50 border ${error ? 'border-red-500/50' : 'border-white/10'} rounded-2xl px-6 py-5 text-white font-bold placeholder:text-slate-600 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 shadow-inner group-hover:border-white/20`}
+                                    className={`w-full ${theme === 'dark' ? 'bg-slate-950/50 border-white/10 text-blue-500' : 'bg-white border-slate-200 text-blue-600'} border rounded-2xl px-6 py-5 font-black text-lg placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 shadow-inner group-hover:border-blue-500/40 text-center tracking-[0.5em]`}
                                     required
                                 />
                                 {error && (
@@ -141,8 +144,8 @@ const PasswordGate = ({ children }) => {
                 </div>
 
                 {/* System Message */}
-                <div className="mt-8 text-center p-4 bg-blue-500/5 border border-blue-500/10 rounded-2xl backdrop-blur-md">
-                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">
+                <div className={`mt-8 text-center p-4 ${theme === 'dark' ? 'bg-blue-500/5 border-blue-500/10' : 'bg-blue-50 border-blue-100'} border rounded-2xl backdrop-blur-md transition-colors duration-500`}>
+                    <p className={`text-[9px] font-bold ${theme === 'dark' ? 'text-slate-500' : 'text-slate-600'} uppercase tracking-widest leading-relaxed`}>
                         Authorized personnel only. Your access activity is being logged for institutional security compliance.
                     </p>
                 </div>
