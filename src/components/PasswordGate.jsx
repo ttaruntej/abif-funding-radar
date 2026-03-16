@@ -7,7 +7,6 @@ const PasswordGate = ({ children }) => {
     const [error, setError] = useState(false);
     const [isChecking, setIsChecking] = useState(true);
 
-    const sitePassword = import.meta.env.VITE_SITE_PASSWORD || 'abif2026';
 
     useEffect(() => {
         // Check session storage for existing authentication
@@ -18,21 +17,37 @@ const PasswordGate = ({ children }) => {
         setIsChecking(false);
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password === sitePassword) {
-            sessionStorage.setItem('site_auth', 'true');
-            setIsAuthenticated(true);
-            setError(false);
-        } else {
+        setIsChecking(true);
+        try {
+            const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+            const response = await fetch(`${apiBase}/api/verify-access`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                sessionStorage.setItem('site_auth', 'true');
+                setIsAuthenticated(true);
+                setError(false);
+            } else {
+                setError(true);
+                setPassword('');
+                const input = document.getElementById('password-input');
+                input?.classList.add('animate-bounce');
+                setTimeout(() => input?.classList.remove('animate-bounce'), 500);
+            }
+        } catch (err) {
+            console.error('Auth error:', err);
             setError(true);
-            setPassword('');
-            // Shake effect or feedback
-            const input = document.getElementById('password-input');
-            input?.classList.add('animate-bounce');
-            setTimeout(() => input?.classList.remove('animate-bounce'), 500);
+        } finally {
+            setIsChecking(false);
         }
     };
+
 
     if (isChecking) {
         return (

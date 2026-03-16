@@ -129,7 +129,7 @@ const server = http.createServer(async (req, res) => {
         else if (pathname === '/api/trigger-sync' && req.method === 'POST') {
             const ghReq = https.request({
                 hostname: 'api.github.com',
-                    path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/source-sync.yml/dispatches`,
+                path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/source-sync.yml/dispatches`,
                 method: 'POST',
                 headers: ghHeaders
             }, (ghRes) => {
@@ -171,7 +171,26 @@ const server = http.createServer(async (req, res) => {
             });
         }
 
+        // --- 5. VERIFY ACCESS (POST) ---
+        else if (pathname === '/api/verify-access' && req.method === 'POST') {
+            let body = '';
+            req.on('data', chunk => body += chunk);
+            req.on('end', () => {
+                const { password } = JSON.parse(body);
+                const SITE_PASSWORD = process.env.SITE_PASSWORD || 'abif2026';
+
+                if (password === SITE_PASSWORD) {
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: true, message: 'Authenticated (via Local Proxy)' }));
+                } else {
+                    res.writeHead(401, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'Unauthorized' }));
+                }
+            });
+        }
+
         else {
+
             res.writeHead(404);
             res.end('Not Found');
         }
