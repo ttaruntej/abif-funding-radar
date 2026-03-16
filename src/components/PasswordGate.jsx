@@ -14,29 +14,29 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsChecking(true);
+        setError(false);
+
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
         try {
-            const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
             const response = await fetch(`${apiBase}/api/verify-access`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })
             });
+
             const data = await response.json();
 
             if (data.success) {
                 sessionStorage.setItem('site_auth', 'true');
                 setIsAuthenticated(true);
-                setError(false);
             } else {
-                setError(true);
+                setError('Invalid Access Key');
                 setPassword('');
-                const input = document.getElementById('password-input');
-                input?.classList.add('animate-bounce');
-                setTimeout(() => input?.classList.remove('animate-bounce'), 500);
             }
         } catch (err) {
             console.error('Auth error:', err);
-            setError(true);
+            setError('System connection unavailable. Please ensure access relay is active.');
         } finally {
             setIsChecking(false);
         }
@@ -118,7 +118,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
                                 {error && (
                                     <div className="absolute -bottom-6 left-1 flex items-center gap-2 text-red-500 animate-in fade-in duration-300">
                                         <AlertCircle size={12} />
-                                        <span className="text-[9px] font-black uppercase tracking-wider">Access Denied: Invalid Key</span>
+                                        <span className="text-[9px] font-black uppercase tracking-wider">{error}</span>
                                     </div>
                                 )}
                             </div>

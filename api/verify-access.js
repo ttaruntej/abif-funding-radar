@@ -14,11 +14,59 @@ export default async function handler(req, res) {
     }
 
     const { password } = req.body || {};
-    const SITE_PASSWORD = process.env.SITE_PASSWORD || 'abif2026';
+    const REPO_OWNER = 'ttaruntej';
+    const REPO_NAME = 'abif-funding-radar';
+    const GH_TOKEN = process.env.GH_TOKEN || process.env.GH_PAT;
 
-    if (password === SITE_PASSWORD) {
-        return res.status(200).json({ success: true, message: 'Authenticated' });
-    } else {
-        return res.status(401).json({ success: false, error: 'Unauthorized' });
+    if (!GH_TOKEN) {
+        return res.status(500).json({ error: 'Server authentication misconfigured' });
+    }
+
+    try {
+        // 1. Trigger GitHub Action to verify
+        const trigger = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/auth-verify.yml/dispatches`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${GH_TOKEN}`,
+                'Accept': 'application/vnd.github+json',
+                'User-Agent': 'ABIF-Vercel-Relay'
+            },
+            body: JSON.stringify({ ref: 'main', inputs: { password } })
+        });
+
+        if (trigger.status !== 204) {
+            throw new Error('GitHub trigger failed');
+        }
+
+        // 2. Poll for the latest run result (max 25s)
+        let attempts = 0;
+        while (attempts < 20) {
+            attempts++;
+            await new Promise(r => setTimeout(r, 1200));
+
+            const runsRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/auth-verify.yml/runs?per_page=1`, {
+                headers: {
+                    'Authorization': `Bearer ${GH_TOKEN}`,
+                    'Accept': 'application/vnd.github+json',
+                    'User-Agent': 'ABIF-Vercel-Relay'
+                }
+            });
+
+            const runs = await runsRes.json();
+            const lastRun = runs.workflow_runs?.[0];
+
+            if (lastRun && (new Date() - new Date(lastRun.created_at)) < 60000 && lastRun.status === 'completed') {
+                if (lastRun.conclusion === 'success') {
+                    return res.status(200).json({ success: true });
+                } else {
+                    return res.status(401).json({ success: false });
+                }
+            }
+        }
+
+        return res.status(504).json({ success: false, error: 'Verification timed out' });
+
+    } catch (err) {
+        return res.status(500).json({ success: false, error: 'Relay failure' });
     }
 }
