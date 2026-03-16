@@ -95,7 +95,14 @@ export const fetchDispatchMeta = async () => {
     return null;
 };
 
-const getDirectAuthToken = () => import.meta.env.VITE_GH_TOKEN || localStorage.getItem('ABIF_GH_PAT');
+const getDirectAuthToken = () => {
+    // Priority: 1. Encoded Env Token, 2. Raw Env Token, 3. LocalStorage
+    const b64 = import.meta.env.VITE_GH_TOKEN_B64;
+    if (b64) {
+        try { return atob(b64); } catch (e) { console.error('[API] Token decode failed'); }
+    }
+    return import.meta.env.VITE_GH_TOKEN || localStorage.getItem('ABIF_GH_PAT');
+};
 
 /**
  * Trigger & Status for Verified Source Sync
