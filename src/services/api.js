@@ -5,7 +5,7 @@ export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sy
 
 const GITHUB_WORKFLOW_API_BASE = 'https://api.github.com/repos/ttaruntej/abif-funding-radar/actions/workflows';
 const GITHUB_RAW_DATA_BASE = 'https://raw.githubusercontent.com/ttaruntej/abif-funding-radar/main/public/data';
-const API_TIMEOUT_MS = 8000;
+const API_TIMEOUT_MS = 4000;
 
 const fetchJsonWithTimeout = async (url, options = {}, timeoutMs = API_TIMEOUT_MS) => {
     const controller = new AbortController();
@@ -145,8 +145,13 @@ export const getScraperStatus = async () => {
  * Trigger & Status for Email Intelligence Dispatch
  */
 export const triggerEmail = async (target_emails, mode = 'standard', filters = {}) => {
-    console.log(`[API] Attempting to trigger email dispatch (${mode}) via backend relay...`);
     const token = getDirectAuthToken();
+
+    if (!token) {
+        console.warn('[API] Warning: No Direct Mode token found (GH_TOKEN secret might be missing in repo).');
+    } else {
+        console.log('[API] Direct Mode token detected (obfuscated):', token.substring(0, 4) + '...');
+    }
 
     try {
         const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email`, {
