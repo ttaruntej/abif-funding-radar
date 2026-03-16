@@ -119,19 +119,18 @@ async function sendEmail() {
             const prompt = `[ROLE] You are the ABIF AI Intelligence Agent. You provide neutral, ecosystem-wide intelligence.
             [MANDATORY OPENING] Your intro MUST start with the phrase: "Ecosystem Intelligence Update:"
             [FORBIDDEN] DO NOT MENTION "Tarun", "Thadana", or "Personalized Agent".
-            [FORBIDDEN] DO NOT USE THE WORD "Your" when referring to the agent (e.g., do not say "I am your agent"). Say "I am the ABIF AI Intelligence Agent".
-            [TASK] Generate a briefing for the month of ${month} ${year}.
-            [SCOPE] The entire Indian Funding and AgriTech Ecosystem.
+            [FORBIDDEN] DO NOT USE THE WORD "Your" when referring to the agent.
+            [TASK] Provide a high-level briefing on the entire Indian Funding and AgriTech Ecosystem for the month of ${month} ${year}.
             [CONTEXT] ${filterContext}. Changes: ${newItems.length} new, ${closedItems.length} closed.
             [DATA] ${JSON.stringify(targetOpps.map(o => o.name))}.
             
             Format your response as a JSON object:
             {
-              "subject": "Ecosystem Update: [Catchy Insight] ([Month] [Year])",
-              "intro": "The professional intro text (HTML allowed). MUST start with 'Ecosystem Intelligence Update:'. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem. NO PERSONAL NAMES."
+              "subject": "Ecosystem Intel: [Brief Insight] ([Month] [Year])",
+              "intro": "The professional intro text. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem."
             }
             
-            [TONE] Authoritative, objective, and data-driven.`;
+            [TONE] Authoritative and objective.`;
 
             const result = await model.generateContent(prompt);
             const responseText = result.response.text();
@@ -139,10 +138,25 @@ async function sendEmail() {
             const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
             const aiData = JSON.parse(cleanJson);
 
-            aiSubject = aiData.subject;
-            aiIntro = `<div style="font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;">${aiData.intro}</div>`;
+            // --- Programmatic Sanitization (Second Layer of Defense) ---
+            let sanitizedIntro = aiData.intro || '';
 
-            console.log('  ✓ AI generation successful.');
+            // Ensure mandatory opening
+            if (!sanitizedIntro.startsWith('Ecosystem Intelligence Update:')) {
+                sanitizedIntro = 'Ecosystem Intelligence Update: ' + sanitizedIntro.replace(/^(Greetings|Hello|Hi)([^,.]*)[,.]/i, '').trim();
+            }
+
+            // Strip forbidden personal identifiers or scope-limiting phrases
+            sanitizedIntro = sanitizedIntro
+                .replace(/Tarun|Thadana/gi, 'ABIF Strategic Teams')
+                .replace(/your dedicated AI Agent|Tarun's AI Agent|your personalized AI Agent/gi, 'the ABIF AI Intelligence Agent')
+                .replace(/Greetings[,.]/gi, 'Ecosystem Intelligence Update:')
+                .replace(/of the ABIF[^.]*ecosystem/gi, 'of the Indian Funding and AgriTech Ecosystem');
+
+            aiSubject = aiData.subject;
+            aiIntro = `<div style="font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;">${sanitizedIntro}</div>`;
+
+            console.log('  ✓ AI generation & sanitization successful.');
         } catch (e) {
             console.warn('  ⚠ AI generation failed. Falling back to default.', e.message);
         }
