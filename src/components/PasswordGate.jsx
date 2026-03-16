@@ -16,26 +16,29 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
         setIsChecking(true);
         setError(false);
 
-        const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app';
+        const apiBase = (import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app').replace(/\/$/, '');
 
         try {
-            const response = await fetch(`${apiBase}/api/verify-access`.replace('//api', '/api'), {
+            const response = await fetch(`${apiBase}/api/verify-access`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })
             });
 
-            const data = await response.json();
+            // Extract result - even for 401/403/500 errors
+            const data = await response.json().catch(() => ({ success: false, error: 'Malformed response' }));
+
             if (data.success) {
                 sessionStorage.setItem('site_auth', 'true');
                 setIsAuthenticated(true);
             } else {
-                setError('Invalid Access Key');
+                // Specific message based on backend result
+                setError(data.error || 'Invalid Access Key');
                 setPassword('');
             }
         } catch (err) {
             console.error('Auth error:', err);
-            setError('Access check unavailable. Please retry shortly.');
+            setError('System Relay Unreachable. Please retry.');
         } finally {
             setIsChecking(false);
         }
