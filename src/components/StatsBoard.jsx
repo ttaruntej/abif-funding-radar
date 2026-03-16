@@ -2,36 +2,52 @@ import React, { useMemo } from 'react';
 import { TrendingUp, Target, DollarSign, Activity, FileText, Radar } from 'lucide-react';
 import MarketVectorChart from './MarketVectorChart';
 
-const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) => {
-    const highlights = useMemo(() => [
-        {
-            label: 'Opportunity Scope',
-            val: stats.total,
-            sub: 'OPPORTUNITIES',
-            icon: Target,
-            color: 'text-blue-500',
-            bg: 'bg-blue-500/10',
-            desc: 'TOTAL LISTED'
-        },
-        {
-            label: 'Open Now',
-            val: stats.active,
-            sub: 'OPEN',
-            icon: DollarSign,
-            color: 'text-emerald-500',
-            bg: 'bg-emerald-500/10',
-            desc: 'READY NOW'
-        },
-        {
-            label: 'Incubator Grants',
-            val: stats.incubatorFunds || 0,
-            sub: 'ELIGIBILITY',
-            icon: Target,
-            color: 'text-purple-500',
-            bg: 'bg-purple-500/10',
-            desc: 'ECOSYSTEM SUPPORT'
+const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, activeAudience }) => {
+    const highlights = useMemo(() => {
+        const h = [
+            {
+                label: 'Opportunity Scope',
+                val: stats.total,
+                sub: 'OPPORTUNITIES',
+                icon: Target,
+                color: 'text-blue-500',
+                bg: 'bg-blue-500/10',
+                desc: 'TOTAL LISTED'
+            },
+            {
+                label: 'Open Now',
+                val: stats.active,
+                sub: 'OPEN',
+                icon: DollarSign,
+                color: 'text-emerald-500',
+                bg: 'bg-emerald-500/10',
+                desc: 'READY NOW'
+            }
+        ];
+
+        if (activeAudience === 'incubator') {
+            h.push({
+                label: 'Incubator Grants',
+                val: stats.incubatorFunds || 0,
+                sub: 'ELIGIBILITY',
+                icon: Target,
+                color: 'text-purple-500',
+                bg: 'bg-purple-500/10',
+                desc: 'ECOSYSTEM SUPPORT'
+            });
+        } else {
+            h.push({
+                label: 'Closing Soon',
+                val: stats.closingSoon || 0,
+                sub: 'URGENCY',
+                icon: Activity,
+                color: 'text-rose-500',
+                bg: 'bg-rose-500/10',
+                desc: 'ACTION REQUIRED'
+            });
         }
-    ], [stats]);
+        return h;
+    }, [stats, activeAudience]);
 
     const briefingText = typeof stats.briefing === 'object' ? stats.briefing.summary : stats.briefing;
 
@@ -97,7 +113,9 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                             {[
                                 { label: 'Opportunity Review', val: `${stats.total} listed`, color: 'bg-blue-500' },
                                 { label: 'Total Value', val: `${stats.totalFunds}`, color: 'bg-emerald-500' },
-                                { label: 'Incubator Support', val: `${stats.incubatorFunds} open`, color: 'bg-purple-500' }
+                                activeAudience === 'incubator'
+                                    ? { label: 'Incubator Support', val: `${stats.incubatorFunds} open`, color: 'bg-purple-500' }
+                                    : { label: 'Closing Soon', val: `${stats.closingSoon} imminent`, color: 'bg-rose-500' }
                             ].map((log, i) => (
                                 <div key={i} className="flex items-center gap-4 relative z-10 transition-all hover:translate-x-1">
                                     <div className={`w-3.5 h-3.5 rounded-full border-2 border-slate-950 ${log.color}`} />

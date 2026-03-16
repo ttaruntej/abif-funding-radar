@@ -550,6 +550,7 @@ const App = () => {
                         marketSentiment={dynamicSentiment}
                         onReportClick={() => setShowReport(true)}
                         opportunities={filtered}
+                        activeAudience={activeAudience}
                     />
                 </div>
 
@@ -586,6 +587,7 @@ const App = () => {
                                         items={section.items}
                                         showCategoryBadge={activeCategory === 'all'}
                                         isArchivedMode={currentView === 'archive'}
+                                        activeAudience={activeAudience}
                                     />
                                 </div>
                             ))}

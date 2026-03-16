@@ -2,7 +2,7 @@ import React from 'react';
 import { CATEGORIES, STATUS_COLORS } from '../constants/tracker';
 import { ExternalLink, ShieldCheck, AlertTriangle, Target, DollarSign, Calendar, Lock } from 'lucide-react';
 
-const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) => {
+const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode, activeAudience }) => {
     const isVerified = scheme.linkStatus === 'verified';
     const isProbable = scheme.linkStatus === 'probable';
     const isArchived = scheme.status === 'Closed' || scheme.status === 'Verify Manually' || isArchivedMode;
@@ -83,7 +83,7 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                         <span key={s} className={`px-2.5 py-1 rounded-lg border text-[9px] font-bold uppercase tracking-widest ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-blue-500/5 border-blue-500/20 text-blue-500'
                             }`}>{s}</span>
                     ))}
-                    {(scheme.targetAudience && scheme.targetAudience.includes('incubator')) && (
+                    {(scheme.targetAudience && scheme.targetAudience.includes('incubator') && activeAudience === 'incubator') && (
                         <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-1 ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-purple-500/5 border-purple-500/20 text-purple-600 dark:text-purple-400'
                             }`}>
                             <Target size={10} />

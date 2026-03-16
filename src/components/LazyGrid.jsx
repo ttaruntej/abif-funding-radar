@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SchemeCard from './SchemeCard';
 
-const LazyGrid = ({ items, showCategoryBadge, isArchivedMode }) => {
+const LazyGrid = ({ items, showCategoryBadge, isArchivedMode, activeAudience }) => {
     const [visibleCount, setVisibleCount] = useState(12);
     const observerTarget = useRef(null);
 
@@ -40,6 +40,7 @@ const LazyGrid = ({ items, showCategoryBadge, isArchivedMode }) => {
                         scheme={scheme}
                         showCategoryBadge={showCategoryBadge}
                         isArchivedMode={isArchivedMode}
+                        activeAudience={activeAudience}
                     />
                 ))}
             </div>

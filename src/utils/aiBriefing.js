@@ -1,4 +1,4 @@
-export const generateBriefing = (data, { categoryLabel = '', search = '' } = {}) => {
+export const generateBriefing = (data, { categoryLabel = '', search = '', activeAudience = 'startup' } = {}) => {
     if (!data || data.length === 0) {
         return {
             summary: search
@@ -56,7 +56,7 @@ export const generateBriefing = (data, { categoryLabel = '', search = '' } = {})
             : `Current view of ${data.length} active opportunities`;
 
     const summaryBase = `${contextPrefix} shows ${topSector} activity as the primary sector.`;
-    const incubatorHighlight = incubatorCount > 0
+    const incubatorHighlight = (activeAudience === 'incubator' && incubatorCount > 0)
         ? ` ${incubatorCount} grants actively support Section 8 incubators/ecosystem enablers.`
         : '';
 

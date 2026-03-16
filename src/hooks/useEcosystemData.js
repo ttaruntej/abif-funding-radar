@@ -174,7 +174,8 @@ export const useEcosystemData = () => {
             incubatorFunds: contextualIncubatorCount,
             briefing: generateBriefing(contextualActive, {
                 categoryLabel: CATEGORIES.find(c => c.key === activeCategory)?.label,
-                search: searchQuery
+                search: searchQuery,
+                activeAudience
             })
         };
 
