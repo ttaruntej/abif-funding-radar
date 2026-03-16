@@ -35,36 +35,52 @@ async function generatePreview() {
     const closedItems = historyOpps.filter(hist => !currentData.some(curr => curr.name === hist.name && curr.status !== 'Closed'));
 
     // --- AI GENERATION ---
-    let aiIntro = `<p style="font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px;">Greetings! I am the <strong>AI Agent of Tarun Tej Thadana (TBI Manager, ABIF)</strong>. I have compiled the latest deep-scan across the Indian funding ecosystem for you. Here are the active mandates relevant for our incubator and portfolio initiatives:</p>`;
-    let aiSubject = `📡 [ABIF Intelligence] ${newItems.length > 0 ? `NEW: ${newItems[0].name.slice(0, 20)}... + ` : ''}${incubatorOpps.length} Mandates for Tarun Tej`;
+    let aiIntro = `<p style="font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px;">The ABIF AI Intelligence Agent is currently scanning the ecosystem. Here are the active mandates identified during our comprehensive search across the Indian funding landscape:</p>`;
+    let aiSubject = `📡 [Ecosystem Intelligence] ${incubatorOpps.length} Active Funding Mandates Detected`;
 
     if (GEMINI_API_KEY) {
         try {
             const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-            const prompt = `You are the personalized AI Agent of Tarun Tej Thadana, TBI Manager of ABIF IIT Kharagpur. 
-            Greeting Requirements:
-            1. Introduce yourself as Tarun's AI Agent.
-            2. Share some relevant latest catchy info or insight about the Indian AgriTech/Incubator ecosystem.
-            3. Summarize the changes: ${newItems.length} new opportunities found, ${closedItems.length} items recently closed/removed.
-            4. Current opportunities: ${JSON.stringify(incubatorOpps.map(o => o.name).slice(0, 10))}.
+            const today = new Date().toLocaleString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            const prompt = `[ROLE] You are the ABIF AI Intelligence Agent. You provide neutral, ecosystem-wide intelligence.
+            [MANDATORY OPENING] Your intro MUST start with: "Ecosystem Intelligence Update:"
+            [FORBIDDEN] DO NOT MENTION "Tarun", "Thadana", or "Personalized Agent".
+            [FORBIDDEN] DO NOT USE THE WORD "Your" when referring to the agent.
+            [TASK] Provide a high-level briefing on the entire Indian Funding and AgriTech Ecosystem for ${today}.
+            [CONTEXT] Standard broad-spectrum scan results for incubator-level mandates. Changes: ${newItems.length} new, ${closedItems.length} closed.
+            [DATA] ${JSON.stringify(incubatorOpps.map(o => o.name).slice(0, 10))}.
             
             Format your response as a JSON object:
             {
-              "subject": "A catchy, short, urgent subject line reflecting the updates",
-              "intro": "The professional intro text (HTML allowed for breaks, 3-4 sentences)"
+              "subject": "Ecosystem Intel: [Brief Insight] ([Date])",
+              "intro": "The professional intro text. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem."
             }
             
-            Tone: Professional, premium, insight-driven, and slightly urgent. Do not use generic greetings like "Dear Managers".`;
+            [TONE] Authoritative and objective.`;
 
             const result = await model.generateContent(prompt);
             const responseText = result.response.text();
             const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
             const aiData = JSON.parse(cleanJson);
 
+            // --- Programmatic Sanitization (Second Layer of Defense) ---
+            let sanitizedIntro = aiData.intro || '';
+
+            if (!sanitizedIntro.startsWith('Ecosystem Intelligence Update:')) {
+                sanitizedIntro = 'Ecosystem Intelligence Update: ' + sanitizedIntro.replace(/^(Greetings|Hello|Hi)([^,.]*)[,.]/i, '').trim();
+            }
+
+            sanitizedIntro = sanitizedIntro
+                .replace(/Tarun|Thadana/gi, 'ABIF Strategic Teams')
+                .replace(/your dedicated AI Agent|Tarun's AI Agent|your personalized AI Agent/gi, 'the ABIF AI Intelligence Agent')
+                .replace(/Greetings[,.]/gi, 'Ecosystem Intelligence Update:')
+                .replace(/of the ABIF[^.]*ecosystem/gi, 'of the Indian Funding and AgriTech Ecosystem');
+
             aiSubject = aiData.subject;
-            aiIntro = `<div style="font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;">${aiData.intro}</div>`;
+            aiIntro = `<div style="font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;">${sanitizedIntro}</div>`;
         } catch (e) {
             console.warn('AI failed:', e.message);
         }
