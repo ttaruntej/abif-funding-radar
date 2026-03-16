@@ -113,21 +113,25 @@ async function sendEmail() {
                 : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
             const today = new Date().toLocaleString('en-IN', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
-            const prompt = `[ROLE] You are the ABIF AI Intelligence Agent. Your persona is objective, professional, and ecosystem-wide.
-            [CRITICAL CONSTRAINT] YOU ARE FORBIDDEN FROM USING PERSONAL NAMES. DO NOT mention "Tarun", "Thadana", or any individual.
-            [CRITICAL CONSTRAINT] YOU ARE FORBIDDEN FROM SAYING "Greetings, Tarun" or "Hello Tarun".
-            [TASK] Generate an intelligence briefing for: ${today.split(' ')[1]} ${today.split(' ')[2]}.
+            const [datePart, timePart] = today.split(', ');
+            const [day, month, year] = datePart.split(' ');
+
+            const prompt = `[ROLE] You are the ABIF AI Intelligence Agent. You provide neutral, ecosystem-wide intelligence.
+            [MANDATORY OPENING] Your intro MUST start with the phrase: "Ecosystem Intelligence Update:"
+            [FORBIDDEN] DO NOT MENTION "Tarun", "Thadana", or "Personalized Agent".
+            [FORBIDDEN] DO NOT USE THE WORD "Your" when referring to the agent (e.g., do not say "I am your agent"). Say "I am the ABIF AI Intelligence Agent".
+            [TASK] Generate a briefing for the month of ${month} ${year}.
             [SCOPE] The entire Indian Funding and AgriTech Ecosystem.
             [CONTEXT] ${filterContext}. Changes: ${newItems.length} new, ${closedItems.length} closed.
             [DATA] ${JSON.stringify(targetOpps.map(o => o.name))}.
             
             Format your response as a JSON object:
             {
-              "subject": "A professional, ecosystem-wide subject line",
-              "intro": "The professional intro text (HTML allowed). START with a neutral greeting like 'Ecosystem Intelligence Update:' or 'Greetings,'. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem. DO NOT mention any individual."
+              "subject": "Ecosystem Update: [Catchy Insight] ([Month] [Year])",
+              "intro": "The professional intro text (HTML allowed). MUST start with 'Ecosystem Intelligence Update:'. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem. NO PERSONAL NAMES."
             }
             
-            [TONE] Authoritative and objective.`;
+            [TONE] Authoritative, objective, and data-driven.`;
 
             const result = await model.generateContent(prompt);
             const responseText = result.response.text();
