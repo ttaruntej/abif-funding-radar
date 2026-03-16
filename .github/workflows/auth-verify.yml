@@ -1,0 +1,21 @@
+name: Security - Verify Access Key
+
+on:
+  workflow_dispatch:
+    inputs:
+      password:
+        description: 'Key to verify'
+        required: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Key
+        run: |
+          if [ "${{ github.event.inputs.password }}" == "${{ secrets.SITE_PASSWORD }}" ]; then
+            echo "✅ Access Granted"
+          else
+            echo "❌ Access Denied"
+            exit 1
+          fi
