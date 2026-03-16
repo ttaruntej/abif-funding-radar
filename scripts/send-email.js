@@ -113,24 +113,21 @@ async function sendEmail() {
                 : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
             const today = new Date().toLocaleString('en-IN', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
-            const prompt = `Current Timestamp: ${today}. You are the ABIF AI Intelligence Agent. 
-            Greeting Requirements:
-            1. Introduce yourself as the ABIF AI Intelligence Agent.
-            2. MANDATORY: DO NOT mention any personal names (e.g., Tarun, Thadana, etc.). 
-            3. MANDATORY: DO NOT use the phrase "Hello Tarun" or "Greetings Tarun". Use neutral greetings like "Greetings," or "Ecosystem Intelligence Update:".
-            4. ${filterContext}
-            5. State that you have completed a comprehensive deep-scan of the entire Indian Funding and AgriTech Ecosystem for the month of ${today.split(' ')[1]} ${today.split(' ')[2]}.
-            6. Share a relevant latest catchy info or insight about the broader Indian startup ecosystem.
-            7. Summarize the changes: ${newItems.length} new opportunities found, ${closedItems.length} items recently closed/removed.
-            8. Current opportunities: ${JSON.stringify(targetOpps.map(o => o.name))}.
+            const prompt = `[ROLE] You are the ABIF AI Intelligence Agent. Your persona is objective, professional, and ecosystem-wide.
+            [CRITICAL CONSTRAINT] YOU ARE FORBIDDEN FROM USING PERSONAL NAMES. DO NOT mention "Tarun", "Thadana", or any individual.
+            [CRITICAL CONSTRAINT] YOU ARE FORBIDDEN FROM SAYING "Greetings, Tarun" or "Hello Tarun".
+            [TASK] Generate an intelligence briefing for: ${today.split(' ')[1]} ${today.split(' ')[2]}.
+            [SCOPE] The entire Indian Funding and AgriTech Ecosystem.
+            [CONTEXT] ${filterContext}. Changes: ${newItems.length} new, ${closedItems.length} closed.
+            [DATA] ${JSON.stringify(targetOpps.map(o => o.name))}.
             
             Format your response as a JSON object:
             {
-              "subject": "A professional, ecosystem-wide subject line (Max 60 chars)",
-              "intro": "The professional intro text (HTML allowed). STRICTLY NO PERSONAL NAMES. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem."
+              "subject": "A professional, ecosystem-wide subject line",
+              "intro": "The professional intro text (HTML allowed). START with a neutral greeting like 'Ecosystem Intelligence Update:' or 'Greetings,'. Describe the scan as covering the entire Indian Funding and AgriTech Ecosystem. DO NOT mention any individual."
             }
             
-            Tone: Professional, premium, and authoritative.`;
+            [TONE] Authoritative and objective.`;
 
             const result = await model.generateContent(prompt);
             const responseText = result.response.text();
