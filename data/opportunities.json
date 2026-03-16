@@ -9,7 +9,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:30.261Z",
+=======
+    "lastScraped": "2026-03-16T07:43:39.862Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -27,13 +31,21 @@
       "Specific focus on used water and urban flooding governance",
       "Open to officially recognized Indian startups only"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-03-21T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-03-22T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:mygov",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "innovateindia.mygov.in",
       "canonicalSourceUrl": "https://innovateindia.mygov.in/",
       "inferredDataSource": false,
@@ -52,7 +64,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:29.856Z",
+=======
+    "lastScraped": "2026-03-16T07:43:39.957Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -70,13 +86,21 @@
       "Grant tranches tied strictly to Fund Utilisation Certificates at each milestone",
       "Usage restricted to solution augmentation and city pilot costs"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-03-21T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-03-22T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:mygov",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "innovateindia.mygov.in",
       "canonicalSourceUrl": "https://innovateindia.mygov.in/ipps-startup/",
       "inferredDataSource": false,
@@ -95,7 +119,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:26.712Z",
+=======
+    "lastScraped": "2026-03-16T07:43:40.772Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator"
     ],
@@ -118,7 +146,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "lichousing.com",
       "canonicalSourceUrl": "https://www.lichousing.com/csr",
       "inferredDataSource": false,
@@ -137,7 +169,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:26.250Z",
+=======
+    "lastScraped": "2026-03-16T07:43:44.069Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator"
     ],
@@ -161,7 +197,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "kotak.com",
       "canonicalSourceUrl": "https://www.kotak.com/en/about-us/corporate-responsibility.html",
       "inferredDataSource": false,
@@ -180,7 +220,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:29.334Z",
+=======
+    "lastScraped": "2026-03-16T07:43:39.281Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup",
       "student"
@@ -198,13 +242,21 @@
       "Parental consent mandatory for participants under 18",
       "Aligned with BioE3 policy pillars"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-03-10T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-03-11T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:mygov",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "innovateindia.mygov.in",
       "canonicalSourceUrl": "https://innovateindia.mygov.in/bioe3/",
       "inferredDataSource": false,
@@ -223,7 +275,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:39.045Z",
+=======
+    "lastScraped": "2026-03-16T07:43:46.706Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -242,13 +298,21 @@
       "Must have functional R&D lab or be physically incubated in a recognized Incubator",
       "Cannot be basic research; must have clear commercial prospects"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-06-21T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-06-22T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:birac",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/big.php",
       "inferredDataSource": false,
@@ -286,7 +350,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -305,7 +373,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:39.146Z",
+=======
+    "lastScraped": "2026-03-16T07:43:46.965Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -321,13 +393,21 @@
       "Lead applicant must be a DPIIT-recognized startup",
       "Previous awardees of BIRAC-Social Alpha cannot apply"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-09-20T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-09-21T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:birac",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp.php",
       "inferredDataSource": false,
@@ -346,7 +426,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:33.902Z",
+=======
+    "lastScraped": "2026-03-16T07:43:46.197Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -356,14 +440,22 @@
     "stages": [
       "All Stages"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-04-10T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-04-11T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:official:dst",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/",
       "inferredDataSource": false,
@@ -382,9 +474,14 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:35.591Z",
+=======
+    "lastScraped": "2026-03-16T07:43:51.767Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
-      "startup"
+      "startup",
+      "incubator"
     ],
     "sectors": [
       "Agnostic"
@@ -399,7 +496,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "msh.meity.gov.in",
       "canonicalSourceUrl": "https://msh.meity.gov.in/assets/SAMRIDH%20guidelines.pdf",
       "inferredDataSource": false,
@@ -418,9 +519,14 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:39.123Z",
+=======
+    "lastScraped": "2026-03-16T07:43:46.639Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
-      "startup"
+      "startup",
+      "incubator"
     ],
     "sectors": [
       "Agnostic"
@@ -435,7 +541,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/bionest.php",
       "inferredDataSource": false,
@@ -454,7 +564,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:42.809Z",
+=======
+    "lastScraped": "2026-03-16T07:43:55.284Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -471,7 +585,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "startupindia.gov.in",
       "canonicalSourceUrl": "https://www.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -490,7 +608,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:42.769Z",
+=======
+    "lastScraped": "2026-03-16T07:43:56.627Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -507,7 +629,11 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "neat.aicte-india.org",
       "canonicalSourceUrl": "https://neat.aicte-india.org/",
       "inferredDataSource": false,
@@ -520,7 +646,7 @@
     "name": "Atal Incubation Centre (AIC) Grant",
     "body": "AIM (NITI Aayog)",
     "maxAward": "Up to ₹10 Crores",
-    "deadline": "Check Website",
+    "deadline": "Expired / Removed from source",
     "link": "https://aim.gov.in/aic.php",
     "description": "Establishment grant for new incubation centres to support the Indian innovation ecosystem.",
     "targetAudience": [
@@ -531,7 +657,7 @@
     "dataSource": "scraper:aim",
     "lastScraped": "2026-03-16T01:57:39.572Z",
     "deadlineIso": null,
-    "status": "Check Website",
+    "status": "Closed",
     "sectors": [
       "Agnostic"
     ],
@@ -547,14 +673,18 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aim.gov.in",
       "canonicalSourceUrl": "https://aim.gov.in/aic.php",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.99,
-    "recordFingerprint": "f10da4b722f3bd08"
+    "recordFingerprint": "ec531ee2b63b5cfe"
   },
   {
     "name": "MSME Incubation Scheme",
@@ -566,9 +696,14 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:44.800Z",
+=======
+    "lastScraped": "2026-03-16T07:43:56.157Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
-      "incubator"
+      "incubator",
+      "startup"
     ],
     "sectors": [
       "Agnostic"
@@ -583,7 +718,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "msme.gov.in",
       "canonicalSourceUrl": "https://msme.gov.in/incubation",
       "inferredDataSource": false,
@@ -602,7 +741,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:39.808Z",
+=======
+    "lastScraped": "2026-03-16T07:43:54.487Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -612,14 +755,22 @@
     "stages": [
       "All Stages"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2025-12-22T18:30:00.000Z",
+=======
+    "deadlineIso": "2025-12-23T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "legacy:unclassified",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "youthcolab.org",
       "canonicalSourceUrl": "https://www.youthcolab.org/",
       "inferredDataSource": false,
@@ -638,7 +789,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:42.126Z",
+=======
+    "lastScraped": "2026-03-16T07:43:55.132Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -659,7 +814,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "ventures.adb.org",
       "canonicalSourceUrl": "https://ventures.adb.org/",
       "inferredDataSource": false,
@@ -678,7 +837,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:45.733Z",
+=======
+    "lastScraped": "2026-03-16T07:44:00.485Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator"
     ],
@@ -695,7 +858,11 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "gatesfoundation.org",
       "canonicalSourceUrl": "https://www.gatesfoundation.org/",
       "inferredDataSource": false,
@@ -714,7 +881,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:48.898Z",
+=======
+    "lastScraped": "2026-03-16T07:43:59.570Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -733,7 +904,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "startupwave.co",
       "canonicalSourceUrl": "https://startupwave.co/",
       "inferredDataSource": false,
@@ -752,7 +927,11 @@
     "status": "Verify Manually",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:47.134Z",
+=======
+    "lastScraped": "2026-03-16T07:43:59.726Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -762,14 +941,22 @@
     "stages": [
       "All Stages"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-06-20T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-06-21T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "legacy:unclassified",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "unido.org",
       "canonicalSourceUrl": "https://www.unido.org/cleantech",
       "inferredDataSource": false,
@@ -788,7 +975,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:45.568Z",
+=======
+    "lastScraped": "2026-03-16T07:43:58.974Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -809,7 +1000,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "ifc.org",
       "canonicalSourceUrl": "https://www.ifc.org/en/what-we-do/sector-expertise/venture-capital/startup-catalyst",
       "inferredDataSource": false,
@@ -828,7 +1023,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:48.538Z",
+=======
+    "lastScraped": "2026-03-16T07:43:58.847Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup",
       "incubator"
@@ -850,7 +1049,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "ceiic.socialalpha.org",
       "canonicalSourceUrl": "https://ceiic.socialalpha.org/",
       "inferredDataSource": false,
@@ -869,7 +1072,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:50.814Z",
+=======
+    "lastScraped": "2026-03-16T07:44:04.841Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -887,7 +1094,11 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "nasscomfoundation.org",
       "canonicalSourceUrl": "https://nasscomfoundation.org/thingqbator/",
       "inferredDataSource": false,
@@ -906,7 +1117,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:52.686Z",
+=======
+    "lastScraped": "2026-03-16T07:44:04.879Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -924,7 +1139,11 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "socialalpha.org",
       "canonicalSourceUrl": "https://socialalpha.org/krishi-mangal/",
       "inferredDataSource": false,
@@ -943,7 +1162,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:49.850Z",
+=======
+    "lastScraped": "2026-03-16T07:44:04.269Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -964,7 +1187,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "asme.org",
       "canonicalSourceUrl": "https://www.asme.org/about-asme/media-inquiries/press-releases/social-ventures%2C-hardware-innovators%2C-and-mentors-worldwide-invited-to-apply-for-2025-asme-ishow-accelerator",
       "inferredDataSource": false,
@@ -983,7 +1210,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:49.557Z",
+=======
+    "lastScraped": "2026-03-16T07:44:02.148Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -1000,7 +1231,11 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "fordfoundation.org",
       "canonicalSourceUrl": "https://www.fordfoundation.org/work/our-grants/",
       "inferredDataSource": false,
@@ -1019,7 +1254,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:51.900Z",
+=======
+    "lastScraped": "2026-03-16T07:44:07.083Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -1029,14 +1268,22 @@
     "stages": [
       "All Stages"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-03-22T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-03-23T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "legacy:unclassified",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "skoll.org",
       "canonicalSourceUrl": "https://skoll.org/skoll-award/",
       "inferredDataSource": false,
@@ -1077,7 +1324,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
       "inferredDataSource": false,
@@ -1116,7 +1367,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/srijan",
       "inferredDataSource": false,
@@ -1134,7 +1389,11 @@
     "category": "national",
     "status": "Rolling",
     "linkStatus": "unknown",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:24.258Z",
+=======
+    "lastScraped": "2026-03-16T07:43:35.995Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "description": "Soft loan fund for MSMEs seeking to expand or modernize under the Make in India initiative.",
     "dataSource": "scraper:sidbi",
     "targetAudience": [
@@ -1154,7 +1413,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/smile",
       "inferredDataSource": false,
@@ -1194,7 +1457,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx",
       "inferredDataSource": false,
@@ -1213,7 +1480,11 @@
     "category": "national",
     "status": "Open",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:24.320Z",
+=======
+    "lastScraped": "2026-03-16T07:42:47.372Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1234,7 +1505,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2373",
       "inferredDataSource": false,
@@ -1253,7 +1528,11 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:24.700Z",
+=======
+    "lastScraped": "2026-03-16T07:42:47.505Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1274,7 +1553,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2380",
       "inferredDataSource": false,
@@ -1293,7 +1576,11 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:25.203Z",
+=======
+    "lastScraped": "2026-03-16T07:42:47.912Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1314,7 +1601,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2381",
       "inferredDataSource": false,
@@ -1333,7 +1624,11 @@
     "category": "international",
     "status": "Rolling",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:25.710Z",
+=======
+    "lastScraped": "2026-03-16T07:42:47.349Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1354,7 +1649,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2232",
       "inferredDataSource": false,
@@ -1374,9 +1673,14 @@
     "status": "Check Website",
     "dataSource": "manual:official:meity-startuphub",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:53.168Z",
+=======
+    "lastScraped": "2026-03-16T07:44:07.423Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
-      "incubator"
+      "incubator",
+      "startup"
     ],
     "sectors": [
       "Agnostic"
@@ -1390,7 +1694,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "msh.meity.gov.in",
       "canonicalSourceUrl": "https://msh.meity.gov.in/assets/Administrative%20Approval_TIDE%202.0.pdf",
       "inferredDataSource": false,
@@ -1410,9 +1718,14 @@
     "status": "Check Website",
     "dataSource": "manual:official:stpi",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:56.786Z",
+=======
+    "lastScraped": "2026-03-16T07:44:12.061Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
-      "incubator"
+      "incubator",
+      "startup"
     ],
     "sectors": [
       "Agnostic"
@@ -1426,7 +1739,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "stpi.in",
       "canonicalSourceUrl": "https://stpi.in/index.php/en/schemes/ngis-scheme",
       "inferredDataSource": false,
@@ -1458,14 +1775,22 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:53.639Z",
+=======
+    "lastScraped": "2026-03-16T07:44:12.412Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "nabventures.in",
       "canonicalSourceUrl": "https://nabventures.in/agrisure.aspx",
       "inferredDataSource": false,
@@ -1495,14 +1820,22 @@
       "Seed"
     ],
     "linkStatus": "probable",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:00.126Z",
+=======
+    "lastScraped": "2026-03-16T07:44:13.379Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "rkvy.nic.in",
       "canonicalSourceUrl": "https://rkvy.nic.in/",
       "inferredDataSource": false,
@@ -1533,14 +1866,22 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:58.217Z",
+=======
+    "lastScraped": "2026-03-16T07:44:15.827Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aidea.naarm.org.in",
       "canonicalSourceUrl": "https://aidea.naarm.org.in/",
       "inferredDataSource": false,
@@ -1572,14 +1913,23 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:01.243Z",
     "deadlineIso": "2026-02-14T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:35.773Z",
+    "deadlineIso": "2026-02-15T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "missionstartupkarnataka.org",
       "canonicalSourceUrl": "https://www.missionstartupkarnataka.org/elevate-karnataka",
       "inferredDataSource": false,
@@ -1609,14 +1959,23 @@
       "Early Traction"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:01.938Z",
     "deadlineIso": "2025-12-21T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:44:19.630Z",
+    "deadlineIso": "2025-12-22T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "startuptn.in",
       "canonicalSourceUrl": "https://startuptn.in/",
       "inferredDataSource": false,
@@ -1647,22 +2006,37 @@
       "MVP",
       "Scale-up"
     ],
+<<<<<<< HEAD
     "linkStatus": "broken",
     "lastScraped": "2026-03-16T01:59:00.578Z",
     "deadlineIso": "2026-02-18T18:30:00.000Z",
+=======
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-16T07:44:18.132Z",
+    "deadlineIso": "2026-02-19T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aic.snu.edu.in",
       "canonicalSourceUrl": "https://aic.snu.edu.in/",
       "inferredDataSource": false,
       "inferenceReason": null
     },
+<<<<<<< HEAD
     "confidence": 0.5,
     "recordFingerprint": "ff595b9b8fd5af53"
+=======
+    "confidence": 0.85,
+    "recordFingerprint": "65ad1c94802fe2a5"
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
   },
   {
     "name": "AFI Agri Cohort 25-26",
@@ -1675,7 +2049,8 @@
     "status": "Open",
     "dataSource": "manual:agritech",
     "targetAudience": [
-      "startup"
+      "startup",
+      "incubator"
     ],
     "sectors": [
       "AgriTech",
@@ -1686,14 +2061,23 @@
       "Growth"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:01.207Z",
     "deadlineIso": "2026-01-05T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:44:21.102Z",
+    "deadlineIso": "2026-01-06T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "actionforindia.org",
       "canonicalSourceUrl": "https://actionforindia.org/",
       "inferredDataSource": false,
@@ -1723,14 +2107,23 @@
       "MVP"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:03.205Z",
     "deadlineIso": "2026-12-21T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:44:18.157Z",
+    "deadlineIso": "2026-12-22T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "ihubgujarat.in",
       "canonicalSourceUrl": "https://ihubgujarat.in/srujan",
       "inferredDataSource": false,
@@ -1760,14 +2153,22 @@
       "Prototype"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:07.064Z",
+=======
+    "lastScraped": "2026-03-16T07:45:41.273Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "grants.startupmission.in",
       "canonicalSourceUrl": "https://grants.startupmission.in/",
       "inferredDataSource": false,
@@ -1786,7 +2187,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:05.173Z",
+=======
+    "lastScraped": "2026-03-16T07:45:38.465Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "manual:csr:hdfc",
     "targetAudience": [
       "startup",
@@ -1808,7 +2213,11 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "hdfcbank.com",
       "canonicalSourceUrl": "https://www.hdfcbank.com/personal/about-us/news-room/press-release/2024/hdfc-bank-parivartan-announces-startup-grants-for-30-incubators",
       "inferredDataSource": false,
@@ -1827,7 +2236,11 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:04.717Z",
+=======
+    "lastScraped": "2026-03-16T07:45:36.362Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "research:notebooklm",
     "targetAudience": [
       "startup"
@@ -1841,13 +2254,21 @@
       "Ideation",
       "Proof of Concept"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-08-05T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-08-06T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/desc_new.php?id=217",
       "inferredDataSource": false,
@@ -1871,8 +2292,13 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.955Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:04.050Z",
     "deadlineIso": "2026-01-05T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:38.076Z",
+    "deadlineIso": "2026-01-06T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -1880,7 +2306,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "climatecurve.org",
       "canonicalSourceUrl": "https://www.climatecurve.org/kcp",
       "inferredDataSource": false,
@@ -1899,13 +2329,19 @@
     "category": "international",
     "status": "Open",
     "targetAudience": [
-      "startup"
+      "startup",
+      "incubator"
     ],
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.955Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:05.895Z",
     "deadlineIso": "2026-03-12T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:43.179Z",
+    "deadlineIso": "2026-03-13T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -1913,7 +2349,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "riseaccelerator.org",
       "canonicalSourceUrl": "https://riseaccelerator.org/",
       "inferredDataSource": false,
@@ -1937,8 +2377,13 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.956Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:07.745Z",
     "deadlineIso": "2026-02-14T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:45.348Z",
+    "deadlineIso": "2026-02-15T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -1946,7 +2391,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aws.amazon.com",
       "canonicalSourceUrl": "https://aws.amazon.com/activate/",
       "inferredDataSource": false,
@@ -1970,8 +2419,13 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.957Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:09.024Z",
     "deadlineIso": "2026-03-20T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:46.451Z",
+    "deadlineIso": "2026-03-21T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -1979,7 +2433,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "ai4good.org",
       "canonicalSourceUrl": "https://ai4good.org/",
       "inferredDataSource": false,
@@ -2003,8 +2461,13 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.958Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:10.493Z",
     "deadlineIso": "2026-02-15T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:55.764Z",
+    "deadlineIso": "2026-02-16T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -2012,7 +2475,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "startupindia.gov.in",
       "canonicalSourceUrl": "https://startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2036,7 +2503,11 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.959Z",
     "linkStatus": "probable",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:11.823Z",
+=======
+    "lastScraped": "2026-03-16T07:45:50.136Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sectors": [],
     "stages": [],
@@ -2045,7 +2516,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aiforall.org",
       "canonicalSourceUrl": "https://aiforall.org/",
       "inferredDataSource": false,
@@ -2069,8 +2544,13 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.959Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:08.239Z",
     "deadlineIso": "2026-03-29T18:30:00.000Z",
+=======
+    "lastScraped": "2026-03-16T07:45:49.291Z",
+    "deadlineIso": "2026-03-30T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sectors": [],
     "stages": [],
     "criticalEligibility": [],
@@ -2078,7 +2558,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "aspire.org",
       "canonicalSourceUrl": "https://aspire.org/",
       "inferredDataSource": false,
@@ -2102,7 +2586,11 @@
     "dataSource": "notebooklm:fast_research",
     "lastScanned": "2026-03-07T16:21:14.960Z",
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:59:13.329Z",
+=======
+    "lastScraped": "2026-03-16T07:45:59.410Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sectors": [],
     "stages": [],
@@ -2111,7 +2599,11 @@
       "sourceId": "dataset:final",
       "sourceType": "review",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "revithaca.com",
       "canonicalSourceUrl": "https://revithaca.com/",
       "inferredDataSource": false,
@@ -2130,7 +2622,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:36.673Z",
+=======
+    "lastScraped": "2026-03-16T07:43:02.178Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator"
     ],
@@ -2152,7 +2648,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhitbi/",
       "inferredDataSource": false,
@@ -2164,6 +2664,7 @@
     "applicationLink": "https://nidhi.dst.gov.in/nidhicoe/"
   },
   {
+<<<<<<< HEAD
     "name": "Startup Odisha – Monthly Sustenance Allowance",
     "body": "MSME Dept, Odisha",
     "maxAward": "₹20,000 - ₹22,000 / month",
@@ -2205,6 +2706,8 @@
     "recordFingerprint": "0be839e9bfec8c03"
   },
   {
+=======
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "name": "NIDHI-EIR",
     "body": "DST (via NSTEDB)",
     "maxAward": "₹30 Lakhs",
@@ -2214,7 +2717,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:36.990Z",
+=======
+    "lastScraped": "2026-03-16T07:43:02.365Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -2236,7 +2743,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhieir/",
       "inferredDataSource": false,
@@ -2277,13 +2788,21 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:nidhi",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:37.551Z",
+=======
+    "lastScraped": "2026-03-16T07:43:02.559Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhissp/",
       "inferredDataSource": false,
@@ -2303,7 +2822,11 @@
     "status": "Rolling",
     "linkStatus": "probable",
     "dataSource": "scraper:birac",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:20.594Z",
+=======
+    "lastScraped": "2026-03-16T07:42:45.079Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -2323,7 +2846,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=117&scheme_type=29",
       "inferredDataSource": false,
@@ -2343,7 +2870,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:sisfs",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:30.196Z",
+=======
+    "lastScraped": "2026-03-16T07:42:55.074Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -2361,7 +2892,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2381,7 +2916,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:sisfs:incubator",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:30.197Z",
+=======
+    "lastScraped": "2026-03-16T07:42:55.074Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator"
     ],
@@ -2397,7 +2936,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2407,6 +2950,7 @@
     "recordFingerprint": "765581870e42a0ea"
   },
   {
+<<<<<<< HEAD
     "name": "Startup Odisha – Product Development & Marketing Assistance",
     "body": "MSME Dept, Odisha",
     "maxAward": "Up to ?15 Lakhs",
@@ -2448,6 +2992,8 @@
     "recordFingerprint": "e755ab9c00ebfc49"
   },
   {
+=======
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "name": "SIDBI Revolving Fund for Technology Innovation (SRIJAN)",
     "body": "SIDBI",
     "maxAward": "Up to ?1 Crore",
@@ -2472,12 +3018,20 @@
     "deadlineIso": null,
     "linkStatus": "unknown",
     "criticalEligibility": [],
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:24.258Z",
+=======
+    "lastScraped": "2026-03-16T07:43:35.995Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/srijan",
       "inferredDataSource": false,
@@ -2509,7 +3063,11 @@
       "Seed"
     ],
     "linkStatus": "verified",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:51.957Z",
+=======
+    "lastScraped": "2026-03-16T07:43:15.650Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "criticalEligibility": [
       "Agribusiness innovators should track the active MANAGE-CIA programme track and call details",
@@ -2520,7 +3078,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYProg.aspx",
       "inferredDataSource": false,
@@ -2561,13 +3123,21 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:52.224Z",
+=======
+    "lastScraped": "2026-03-16T07:43:15.788Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYSAIP.aspx",
       "inferredDataSource": false,
@@ -2605,13 +3175,21 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:52.483Z",
+=======
+    "lastScraped": "2026-03-16T07:43:15.888Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYAOP.aspx",
       "inferredDataSource": false,
@@ -2649,13 +3227,21 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:52.741Z",
+=======
+    "lastScraped": "2026-03-16T07:43:15.974Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYSOP.aspx",
       "inferredDataSource": false,
@@ -2688,12 +3274,20 @@
     "deadlineIso": null,
     "linkStatus": "verified",
     "criticalEligibility": [],
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:52.742Z",
+=======
+    "lastScraped": "2026-03-16T07:43:15.979Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-projects",
       "inferredDataSource": false,
@@ -2733,7 +3327,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10038",
       "inferredDataSource": false,
@@ -2772,7 +3370,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10037",
       "inferredDataSource": false,
@@ -2811,7 +3413,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10051",
       "inferredDataSource": false,
@@ -2831,7 +3437,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:18.828Z",
+=======
+    "lastScraped": "2026-03-16T07:43:28.388Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -2851,7 +3461,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10038",
       "inferredDataSource": false,
@@ -2871,7 +3485,11 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:21.459Z",
+=======
+    "lastScraped": "2026-03-16T07:43:32.497Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -2890,7 +3508,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10037",
       "inferredDataSource": false,
@@ -2910,7 +3532,11 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:58:24.248Z",
+=======
+    "lastScraped": "2026-03-16T07:43:35.929Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "incubator",
       "startup"
@@ -2929,7 +3555,11 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10051",
       "inferredDataSource": false,
@@ -2942,14 +3572,22 @@
     "name": "DBT-BIRAC Joint Call for Proposals on ‘Bio AI’ for Fostering High Performance Biomanufacturing under BioE3 Policy",
     "body": "BIRAC (DBT)",
     "maxAward": "Grant (competitive scale)",
+<<<<<<< HEAD
     "deadline": "28-06-2026",
+=======
+    "deadline": "30-06-2026",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "link": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
     "description": "BIRAC Call for Proposal. Visit the link to see full details and eligibility.",
     "category": "national",
     "status": "Open",
     "linkStatus": "probable",
     "dataSource": "scraper:birac",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:20.505Z",
+=======
+    "lastScraped": "2026-03-16T07:42:44.659Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "targetAudience": [
       "startup"
     ],
@@ -2963,32 +3601,52 @@
       "Seed",
       "Early Traction"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-06-28T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-06-29T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.99,
+<<<<<<< HEAD
     "recordFingerprint": "d7ce8a9ebf46e94e"
+=======
+    "recordFingerprint": "96be4fc32c41e9ea"
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
   },
   {
     "name": "SBI Foundation – Innovators for Bharat",
     "body": "SBI Foundation CSR",
     "maxAward": "₹25 Lakhs",
+<<<<<<< HEAD
     "deadline": "29-05-2026",
+=======
+    "deadline": "31-05-2026",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "link": "https://sbifoundation.in/",
     "description": "Innovators for Bharat supports social innovators with funding, mentorship, and market linkages.",
     "status": "Rolling",
     "linkStatus": "probable",
     "category": "csr",
+<<<<<<< HEAD
     "lastScraped": "2026-03-16T01:57:34.237Z",
+=======
+    "lastScraped": "2026-03-16T07:43:00.629Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "dataSource": "scraper:sbif",
     "targetAudience": [
       "incubator",
@@ -3003,19 +3661,113 @@
       "Seed",
       "Scale-up"
     ],
+<<<<<<< HEAD
     "deadlineIso": "2026-05-29T18:30:00.000Z",
+=======
+    "deadlineIso": "2026-05-30T18:30:00.000Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
+<<<<<<< HEAD
       "collectedAt": "2026-03-16T01:59:13.462Z",
+=======
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
       "sourceDomain": "sbifoundation.in",
       "canonicalSourceUrl": "https://sbifoundation.in/",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.99,
+<<<<<<< HEAD
     "recordFingerprint": "f46007650e425f57"
+=======
+    "recordFingerprint": "01cefde3c0194e02"
+  },
+  {
+    "name": "Startup Odisha – Monthly Sustenance Allowance",
+    "body": "MSME Dept, Odisha",
+    "maxAward": "₹20,000 - ₹22,000 / month",
+    "deadline": "Rolling (Policy-linked incentive)",
+    "link": "https://startupodisha.gov.in/startup-incentives/",
+    "description": "One-year sustenance allowance for recognized startups. Additional 10% for women/SC/ST/PH founders.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "scraper:startupodisha",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Ideation",
+      "Prototype"
+    ],
+    "linkStatus": "verified",
+    "lastScraped": "2026-03-16T07:43:14.534Z",
+    "deadlineIso": null,
+    "criticalEligibility": [
+      "Startup must be recognized under Startup Odisha",
+      "Qualifies through funding, patent, government sanction letter, or revenue-run-rate conditions",
+      "Support is available for one year under the monthly allowance policy"
+    ],
+    "sourceMeta": {
+      "sourceId": "dataset:final",
+      "sourceType": "live",
+      "collectionMode": "merged_dataset",
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+      "sourceDomain": "startupodisha.gov.in",
+      "canonicalSourceUrl": "https://startupodisha.gov.in/startup-incentives/",
+      "inferredDataSource": false,
+      "inferenceReason": null
+    },
+    "confidence": 0.99,
+    "recordFingerprint": "c75930c893cc30e1"
+  },
+  {
+    "name": "Startup Odisha – Product Development & Marketing Assistance",
+    "body": "MSME Dept, Odisha",
+    "maxAward": "Up to ?15 Lakhs",
+    "deadline": "Rolling (Policy-linked incentive)",
+    "link": "https://startupodisha.gov.in/startup-incentives/",
+    "description": "Financial assistance for product development and marketing/publicity for recognized Odisha startups.",
+    "category": "state",
+    "status": "Rolling",
+    "dataSource": "scraper:startupodisha",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "Agnostic"
+    ],
+    "stages": [
+      "Prototype",
+      "Seed"
+    ],
+    "deadlineIso": null,
+    "linkStatus": "verified",
+    "criticalEligibility": [
+      "Startup must be recognized under Startup Odisha",
+      "Requires equity financing, government grant support, or defined revenue run-rate proof",
+      "Assistance is meant for introducing an innovated product in the market"
+    ],
+    "lastScraped": "2026-03-16T07:43:14.534Z",
+    "sourceMeta": {
+      "sourceId": "dataset:final",
+      "sourceType": "live",
+      "collectionMode": "merged_dataset",
+      "collectedAt": "2026-03-16T07:45:59.875Z",
+      "sourceDomain": "startupodisha.gov.in",
+      "canonicalSourceUrl": "https://startupodisha.gov.in/startup-incentives/",
+      "inferredDataSource": false,
+      "inferenceReason": null
+    },
+    "confidence": 0.99,
+    "recordFingerprint": "2a629051d81facba"
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
   }
 ]

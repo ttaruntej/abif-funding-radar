@@ -1,25 +1,35 @@
 {
+<<<<<<< HEAD
   "title": "ABIF Strategic Funding Analysis 2026",
   "generatedAt": "2026-03-16T01:59:13.668Z",
   "executiveSummary": "As of Mar 16, 2026, the Indian funding ecosystem shows a robust activity level with 69 active programs identified. There is a significant tactical focus on Incubator / Scaling, which accounts for 46% of current open calls. ",
+=======
+  "title": "ABIF Incubator Funding Analysis 2026",
+  "generatedAt": "2026-03-16T07:46:00.818Z",
+  "executiveSummary": "As of Mar 16, 2026, the Indian incubator funding ecosystem shows a robust activity level with 23 open programs directly supporting Section 8 operations. There is a significant tactical focus on General Tech / Startups, which accounts for a major portion of current open calls. ",
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
   "keyTrends": [
     {
-      "trend": "Sectoral Dominance",
-      "detail": "Incubator / Scaling remains a primary driver of new capital calls in this current cycle."
+      "trend": "Section 8 Operational Support",
+      "detail": "23 active programs currently offer direct support for incubator operations, HR, or cohort management."
     },
     {
-      "trend": "Capital Concentration",
-      "detail": "40 premium programs are currently active in the high-impact (?50L - ?5Cr) tier."
+      "trend": "Sectoral Dominance",
+      "detail": "General Tech / Startups remains a primary driver of new capital calls in this current cycle."
     },
     {
       "trend": "Strategic Shifts",
-      "detail": "Expansion noted in central government calls (BIRAC/DST) for deep-science R&D."
+      "detail": "Expansion noted in central government calls (BIRAC/DST/MeitY) for deep-science R&D infrastructure."
     }
   ],
   "actionableRecommendations": [
-    "Begin drafting concept notes for the upcoming summer Q2 funding cycles.",
-    "Review SMILE and SIDBI eligibility for high-value soft loan scaling.",
-    "Conduct technical readiness audits (TRL 4-7) for impending deep-tech calls."
+    "Begin drafting concept notes for the upcoming summer Q2 capability expansion cycles.",
+    "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
+    "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
   ],
+<<<<<<< HEAD
   "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:59 AM"
+=======
+  "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:15 PM"
+>>>>>>> b08143e (feat: Shift focus from startup funding to Incubator Support & Efficiency grants)
 }
