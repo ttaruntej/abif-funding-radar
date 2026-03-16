@@ -16,49 +16,9 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
         setIsChecking(true);
         setError(false);
 
-        const getAuthToken = () => (import.meta.env.VITE_GHT_A || '') + (import.meta.env.VITE_GHT_B || '');
-        const token = getAuthToken();
         const apiBase = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app';
 
         try {
-            // Path A: Direct GitHub Cloud Handshake (Most Robust - Bypasses WiFi Filters)
-            if (token) {
-                console.log('🛡️ [Security] Initiating direct cloud verification...');
-                const trigger = await fetch('https://api.github.com/repos/ttaruntej/abif-funding-radar/actions/workflows/auth-verify.yml/dispatches', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github+json',
-                    },
-                    body: JSON.stringify({ ref: 'main', inputs: { password } })
-                });
-
-                if (trigger.status === 204) {
-                    let attempts = 0;
-                    while (attempts < 15) {
-                        attempts++;
-                        await new Promise(r => setTimeout(r, 1500));
-                        const runs = await fetch('https://api.github.com/repos/ttaruntej/abif-funding-radar/actions/workflows/auth-verify.yml/runs?per_page=1', {
-                            headers: { 'Authorization': `Bearer ${token}` }
-                        }).then(r => r.json());
-
-                        const lastRun = runs.workflow_runs?.[0];
-                        if (lastRun && (new Date() - new Date(lastRun.created_at)) < 60000 && lastRun.status === 'completed') {
-                            if (lastRun.conclusion === 'success') {
-                                sessionStorage.setItem('site_auth', 'true');
-                                setIsAuthenticated(true);
-                                return;
-                            } else {
-                                setError('Invalid Access Key');
-                                setPassword('');
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Path B: Standard Relay Backup
             const response = await fetch(`${apiBase}/api/verify-access`.replace('//api', '/api'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -75,7 +35,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
             }
         } catch (err) {
             console.error('Auth error:', err);
-            setError('Verification system unreachable. Please check connectivity.');
+            setError('Access check unavailable. Please retry shortly.');
         } finally {
             setIsChecking(false);
         }
