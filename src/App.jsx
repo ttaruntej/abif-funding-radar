@@ -148,7 +148,7 @@ const App = () => {
 
     const currentEmailFilters = briefingMode === 'filtered'
         ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
-        : {};
+        : { activeAudience };
 
     const handleWorkflowEmailLaunch = () => {
         if (!dispatchRecipients.trim()) {
@@ -677,7 +677,7 @@ const App = () => {
                                     onClick={() => setBriefingMode('standard')}
                                     className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${briefingMode === 'standard' ? 'bg-white dark:bg-slate-700 text-blue-600 shadow-sm' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'}`}
                                 >
-                                    Standard (Incubator)
+                                    Standard ({activeAudience === 'startup' ? 'Startup' : 'Incubator'})
                                 </button>
                                 <button
                                     onClick={() => setBriefingMode('filtered')}
@@ -718,11 +718,14 @@ const App = () => {
             {showReport && report && (
                 <Suspense fallback={null}>
                     <IntelligenceReport
-                        report={report}
+                        report={report[activeAudience] || report}
                         onClose={() => setShowReport(false)}
-                        onDownloadPDF={handleDownloadPDF}
-                        onSyncIntelligence={handleSyncIntelligence}
-                        isSyncingReport={isSyncingReport}
+                        onDownloadPDF={() => { /* Implement PDF generation if needed */ }}
+                        onSyncIntelligence={() => {
+                            setShowReport(false);
+                            handleRefresh();
+                        }}
+                        isSyncingReport={isRefreshing}
                     />
                 </Suspense>
             )}

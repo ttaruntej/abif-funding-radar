@@ -1,25 +1,52 @@
 {
-  "title": "ABIF Incubator Funding Analysis 2026",
-  "generatedAt": "2026-03-16T07:46:00.818Z",
-  "executiveSummary": "As of Mar 16, 2026, the Indian incubator funding ecosystem shows a robust activity level with 23 open programs directly supporting Section 8 operations. There is a significant tactical focus on General Tech / Startups, which accounts for a major portion of current open calls. ",
-  "keyTrends": [
-    {
-      "trend": "Section 8 Operational Support",
-      "detail": "23 active programs currently offer direct support for incubator operations, HR, or cohort management."
-    },
-    {
-      "trend": "Sectoral Dominance",
-      "detail": "General Tech / Startups remains a primary driver of new capital calls in this current cycle."
-    },
-    {
-      "trend": "Strategic Shifts",
-      "detail": "Expansion noted in central government calls (BIRAC/DST/MeitY) for deep-science R&D infrastructure."
-    }
-  ],
-  "actionableRecommendations": [
-    "Begin drafting concept notes for the upcoming summer Q2 capability expansion cycles.",
-    "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
-    "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
-  ],
-  "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:15 PM"
+  "incubator": {
+    "title": "ABIF Incubator Funding Analysis 2026",
+    "generatedAt": "2026-03-16T08:06:08.911Z",
+    "executiveSummary": "As of Mar 16, 2026, the Indian incubator funding ecosystem shows a robust activity level with 24 open programs directly supporting Section 8 operations. There is a significant tactical focus on General Tech / Startups, which accounts for a major portion of current open calls. ",
+    "keyTrends": [
+      {
+        "trend": "Section 8 Operational Support",
+        "detail": "24 active programs currently offer direct support for incubator operations, HR, or cohort management."
+      },
+      {
+        "trend": "Sectoral Dominance",
+        "detail": "General Tech / Startups remains a primary driver of new capital calls in this current cycle."
+      },
+      {
+        "trend": "Strategic Shifts",
+        "detail": "Expansion noted in central government calls (BIRAC/DST/MeitY) for deep-science R&D infrastructure."
+      }
+    ],
+    "actionableRecommendations": [
+      "Begin drafting concept notes for the upcoming summer Q2 capability expansion cycles.",
+      "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
+      "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
+    ],
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:36 PM"
+  },
+  "startup": {
+    "title": "ABIF Startup Funding Analysis 2026",
+    "generatedAt": "2026-03-16T08:06:09.262Z",
+    "executiveSummary": "As of Mar 16, 2026, the Indian startup funding ecosystem maintains a steady pace with 65 active opportunities. A major concentration of capital is directed towards General Tech / Startups. ",
+    "keyTrends": [
+      {
+        "trend": "Capital Concentration",
+        "detail": "65 active programs provide direct equity free capital or seed support to startups."
+      },
+      {
+        "trend": "Sectoral Focus",
+        "detail": "General Tech / Startups dominates current funding priorities for startups."
+      },
+      {
+        "trend": "Ecosystem Velocity",
+        "detail": "Steady state funding; rolling grants provide continuous application windows."
+      }
+    ],
+    "actionableRecommendations": [
+      "Prepare investor readiness dossiers for upcoming state grants.",
+      "Match startup stage with grant requirements carefully to prevent high rejection rates.",
+      "Leverage rolling state grants as a constant baseline for early-stage portfolio companies."
+    ],
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:36 PM"
+  }
 }

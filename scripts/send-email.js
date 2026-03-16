@@ -54,10 +54,15 @@ async function sendEmail() {
             return matchesAudience && matchesSector && matchesCategory && matchesStatus && matchesSearch;
         });
     } else {
-        // Default Standard Mode: Incubator Focus
-        targetOpps = currentData.filter(x =>
-            x.targetAudience && x.targetAudience.includes('incubator') && x.status !== 'Closed'
-        );
+        // Default Standard Mode: Target Audience Focus
+        const targetAudience = filters.activeAudience || 'incubator';
+        if (targetAudience === 'all') {
+            targetOpps = currentData.filter(x => x.status !== 'Closed');
+        } else {
+            targetOpps = currentData.filter(x =>
+                x.targetAudience && x.targetAudience.includes(targetAudience) && x.status !== 'Closed'
+            );
+        }
     }
 
     if (targetOpps.length === 0) {
@@ -100,11 +105,12 @@ async function sendEmail() {
         try {
             console.log('  🧠 Generating AI Briefing & Subject Line...');
             const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
+            const audienceFocus = filters.activeAudience === 'startup' ? 'Startup' : 'Incubator';
             const filterContext = mode === 'filtered'
-                ? `The user has applied specific filters: ${JSON.stringify(filters)}. Focus the briefing on this specific slice of the ecosystem.`
-                : "This is a standard broad scan for the ABIF Incubator ecosystem.";
+                ? `The user has applied specific filters: ${JSON.stringify(filters)}. Focus the briefing on this specific slice of the ecosystem targeting ${audienceFocus}s.`
+                : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
             const prompt = `You are the personalized AI Agent of Tarun Tej Thadana, TBI Manager of ABIF IIT Kharagpur. 
             Greeting Requirements:

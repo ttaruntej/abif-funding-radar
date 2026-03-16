@@ -34,7 +34,7 @@ async function generatePreview() {
     if (GEMINI_API_KEY) {
         try {
             const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
             const prompt = `You are the ABIF Funding Intelligence Agent. Write a short, genuine, and encouraging 2-sentence email introduction addressed to Indian Incubator and Accelerator Managers. 
             Summarize the state of these active funding opportunities: ${JSON.stringify(incubatorOpps.map(o => o.name))}. 
             Make it sound professional, premium, and highlight the value of acting on these grants. Do not use generic greetings like "Dear XYZ". Start directly with the insight.`;
