@@ -69,6 +69,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             deadline: 'Check Website',
             status: 'Check Website',
             dataSource: 'manual:official:meity-startuphub',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -83,6 +84,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             deadline: 'Check Website',
             status: 'Check Website',
             dataSource: 'manual:official:meity-startuphub',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -95,6 +97,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             deadline: 'Check Website',
             status: 'Check Website',
             dataSource: 'manual:official:msme',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -108,6 +111,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             deadline: 'Check Website',
             status: 'Check Website',
             dataSource: 'manual:official:meity-startuphub',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -119,6 +123,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             description: 'Official STPI NGIS scheme page for startup incubation, seed support, and LEAP Ahead challenge tracks.',
             status: 'Check Website',
             dataSource: 'manual:official:stpi',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -240,6 +245,7 @@ const KNOWN_RECORD_REMEDIATIONS = [
             description: 'HDFC Bank Parivartan startup grants support incubators and social-impact startups working across livelihood, healthcare, and education themes.',
             status: 'Check Website',
             dataSource: 'manual:csr:hdfc',
+            targetAudience: ['incubator', 'startup'],
             linkStatus: 'probable',
         },
     },
@@ -2032,41 +2038,41 @@ async function generateStrategicReport(data) {
     // -- Logic-based analytical summary (The Heuristic Fallback) --
     const analyzeLogic = () => {
         const sectors = {
-            'Deep Tech / AI': active.filter(x => /ai|deeptech|quantum|semiconductor/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
-            'AgriTech / Biotech': active.filter(x => /agri|farm|bio|seed|plant/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
-            'Sustainability / ESG': active.filter(x => /green|eco|carbon|waste|solar/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
-            'Incubator / Scaling': active.filter(x => /incubator|accelerator|scale|grant/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length
+            'Incubator R&D Hubs': active.filter(x => /nidhi|tide|samridh|bionest/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
+            'Ecosystem Enablers': active.filter(x => /ecosystem|accelerator|scale|grant/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
+            'CSR / Institutional': active.filter(x => /csr|foundation|hdfc|sbi/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length,
+            'General Tech / Startups': active.filter(x => /startup|seed/i.test((x.name || '') + (x.body || '') + (x.description || ''))).length
         };
         const topSector = Object.entries(sectors).sort((a, b) => b[1] - a[1])[0];
-        const highValueCount = active.filter(x => /crore|cr|lakh|50[,\.]?000/i.test(x.maxAward || x.value || '')).length;
+        const incubatorCount = active.filter(x => x.targetAudience?.includes('incubator')).length;
         const closingSoon = active.filter(x => x.status === 'Closing Soon').length;
 
-        let executiveSummary = `As of ${dateStr}, the Indian funding ecosystem shows a ${active.length > 25 ? 'robust' : 'moderate'} activity level with ${active.length} active programs identified. `;
-        if (topSector[1] > 2) executiveSummary += `There is a significant tactical focus on ${topSector[0]}, which accounts for ${Math.round((topSector[1] / active.length) * 100)}% of current open calls. `;
-        if (closingSoon > 0) executiveSummary += `Urgency is currently elevated with ${closingSoon} programs entering their final week of application. `;
+        let executiveSummary = `As of ${dateStr}, the Indian incubator funding ecosystem shows a ${incubatorCount > 5 ? 'robust' : 'moderate'} activity level with ${incubatorCount} open programs directly supporting Section 8 operations. `;
+        if (topSector[1] > 2) executiveSummary += `There is a significant tactical focus on ${topSector[0]}, which accounts for a major portion of current open calls. `;
+        if (closingSoon > 0) executiveSummary += `Urgency is currently elevated with ${closingSoon} ecosystem programs entering their final week of application. `;
 
         return {
-            title: `ABIF Strategic Funding Analysis ${new Date().getFullYear()}`,
+            title: `ABIF Incubator Funding Analysis ${new Date().getFullYear()}`,
             generatedAt: new Date().toISOString(),
             executiveSummary,
             keyTrends: [
+                {
+                    trend: "Section 8 Operational Support",
+                    detail: `${incubatorCount} active programs currently offer direct support for incubator operations, HR, or cohort management.`
+                },
                 {
                     trend: "Sectoral Dominance",
                     detail: `${topSector[0]} remains a primary driver of new capital calls in this current cycle.`
                 },
                 {
-                    trend: "Capital Concentration",
-                    detail: `${highValueCount} premium programs are currently active in the high-impact (?50L - ?5Cr) tier.`
-                },
-                {
                     trend: "Strategic Shifts",
-                    detail: active.length > 30 ? "Expansion noted in central government calls (BIRAC/DST) for deep-science R&D." : "Stable funding landscape with a pivot toward CSR and State-specific rolling grants."
+                    detail: incubatorCount > 5 ? "Expansion noted in central government calls (BIRAC/DST/MeitY) for deep-science R&D infrastructure." : "Stable funding landscape with a pivot toward CSR and State-specific rolling grants for enablers."
                 }
             ],
             actionableRecommendations: [
-                closingSoon > 0 ? `Immediately prioritize "Closing Soon" calls from ${active.find(x => x.status === 'Closing Soon')?.body || 'Government Providers'}.` : "Begin drafting concept notes for the upcoming summer Q2 funding cycles.",
-                highValueCount > 2 ? "Review SMILE and SIDBI eligibility for high-value soft loan scaling." : "Monitor SISFS rolling grants for early-stage seed support.",
-                "Conduct technical readiness audits (TRL 4-7) for impending deep-tech calls."
+                closingSoon > 0 ? `Immediately prioritize "Closing Soon" calls from ${active.find(x => x.status === 'Closing Soon' && x.targetAudience?.includes('incubator'))?.body || 'Government Providers'}.` : "Begin drafting concept notes for the upcoming summer Q2 capability expansion cycles.",
+                "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
+                "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
             ],
             briefingFooter: `Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified ${timestamp}`
         };
@@ -2091,28 +2097,29 @@ async function generateStrategicReport(data) {
                 status: o.status
             })).slice(0, 50);
 
-            const prompt = `You are a strategic funding analyst for ABIF, a top Indian incubator.
+            const prompt = `You are a strategic intelligence analyst for ABIF, advising Section 8 Incubators and Host Institutes in India.
+            Your goal is to identify funding that supports INCREASING INCUBATOR EFFICIENCY, OPERATIONAL RELIABILITY, and ECOSYSTEM IMPACT, not just standalone startup funding.
             Analyze these ${subset.length} active funding opportunities: ${JSON.stringify(subset)}
             
-            Generate a Strategic Research Report for startup founders.
+            Generate a Strategic Research Report expressly for Incubator Managers and Section 8 Directors.
             Your response must be a JSON object with this EXACT schema:
             {
-                "title": "ABIF Strategic Funding Analysis ${new Date().getFullYear()}",
+                "title": "ABIF Incubator Funding Analysis ${new Date().getFullYear()}",
                 "generatedAt": "ISO Timestamp",
-                "executiveSummary": "A human-like, professional 2-3 sentence overview of the current funding climate based on these specific programs.",
+                "executiveSummary": "A human-like, professional 2-3 sentence overview of the current funding climate specifically highlighting opportunities for incubator capacity building, operational grants, and ecosystem support programs (like NIDHI, BioNEST, TIDE 2.0).",
                 "keyTrends": [
-                    {"trend": "Trend Name", "detail": "Detailed insight about what the providers like BIRAC/DST/SIDBI are currently looking for."}
+                    {"trend": "Trend Name", "detail": "Detailed insight about what providers like BIRAC/DST/MeitY are offering to incubators for infrastructure, operational support, or HR."}
                 ],
                 "actionableRecommendations": [
-                    "Recommendation 1 starting with a verb",
+                    "Recommendation 1 starting with a verb (e.g. Audit your NIDHI PRAYAS eligibility to maintain operational influx)",
                     "Recommendation 2 starting with a verb",
                     "Recommendation 3 starting with a verb"
                 ],
                 "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified ${timestamp}"
             }
             
-            Be insightful. Mention specific providers like SIDBI or BIRAC if they have major calls. 
-            Highlight sectors that seem dominant. Ensure actionableRecommendations are distinct and professional.`;
+            Be insightful. Mention specific incubator support programs like MeitY TIDE, DST NIDHI, or BIRAC BioNEST if they are active. 
+            Prioritize highlighting opportunities that provide direct operational funding to setup Section 8 infrastructure.`;
 
             const result = await model.generateContent(prompt);
             const rawResponse = result.response.text();

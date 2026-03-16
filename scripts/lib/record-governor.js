@@ -318,6 +318,37 @@ export function getSourceBucket(dataSource = '') {
     return 'unknown';
 }
 
+function inferTargetAudience(record) {
+    let audiences = normalizeArrayField(record.targetAudience || []);
+    const searchString = `${record.name || ''} ${record.description || ''} ${record.body || ''}`.toLowerCase();
+
+    // If the text heavily implies operational support for ecosystems/incubators
+    const incubatorKeywords = [
+        'setting up of incubator',
+        'host institute',
+        'section 8',
+        'ecosystem enabler',
+        'accelerator program',
+        'incubation centre',
+        'nidhi-itbi',
+        'nidhi-step',
+        'bionest',
+        'tide 2.0',
+        'samridh'
+    ];
+
+    if (incubatorKeywords.some(keyword => searchString.includes(keyword))) {
+        audiences.push('incubator');
+    }
+
+    // Default to startup if nothing else is provided and it doesn't look purely like an incubator grant
+    if (audiences.length === 0) {
+        audiences.push('startup');
+    }
+
+    return dedupeArray(audiences);
+}
+
 export function normalizeOpportunityRecord(record, context = {}) {
     const inferredSource = inferDataSource(record);
     const link = normalizeUrl(record.link);
@@ -337,7 +368,7 @@ export function normalizeOpportunityRecord(record, context = {}) {
         status: canonicalizeStatus(record.status, record.deadline, linkStatus),
         linkStatus,
         dataSource: inferredSource.dataSource,
-        targetAudience: normalizeArrayField(record.targetAudience),
+        targetAudience: inferTargetAudience(record),
         sectors: normalizeArrayField(record.sectors),
         stages: normalizeArrayField(record.stages),
         criticalEligibility: normalizeArrayField(record.criticalEligibility),

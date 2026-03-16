@@ -131,10 +131,47 @@ export const useEcosystemData = () => {
             }
         });
 
+        // 3. Optional Total Funds Calculation (Simplified for this hook)
+        const calculateTotalFundMass = (ops) => {
+            let total = 0;
+            ops.forEach(op => {
+                if (!op.maxAward) return;
+                const matches = op.maxAward.match(/[\d,.]+/g);
+                if (matches) {
+                    let num = parseFloat(matches[0].replace(/,/g, ''));
+                    if (op.maxAward.toLowerCase().includes('crore') || op.maxAward.toLowerCase().includes('cr')) {
+                        total += num * 10000000;
+                    } else if (op.maxAward.toLowerCase().includes('lakh')) {
+                        total += num * 100000;
+                    }
+                }
+            });
+            const formatter = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumSignificantDigits: 3
+            });
+            return {
+                numeric: total,
+                totalStr: total > 0 ? formatter.format(total) : 'Undisclosed'
+            };
+        };
+
+        const totalFundsObj = calculateTotalFundMass(contextualActive);
+
+        let contextualIncubatorCount = 0;
+        contextualActive.forEach(o => {
+            if (o.targetAudience && o.targetAudience.includes('incubator')) {
+                contextualIncubatorCount++;
+            }
+        });
+
         const statsObj = {
             total: contextualTotalCount,
             active: contextualOpenCount,
             closingSoon: contextualClosingSoonCount,
+            totalFunds: totalFundsObj.totalStr,
+            incubatorFunds: contextualIncubatorCount,
             briefing: generateBriefing(contextualActive, {
                 categoryLabel: CATEGORIES.find(c => c.key === activeCategory)?.label,
                 search: searchQuery

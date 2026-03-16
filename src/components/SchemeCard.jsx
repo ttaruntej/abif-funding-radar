@@ -83,6 +83,13 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode }) =>
                         <span key={s} className={`px-2.5 py-1 rounded-lg border text-[9px] font-bold uppercase tracking-widest ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-blue-500/5 border-blue-500/20 text-blue-500'
                             }`}>{s}</span>
                     ))}
+                    {(scheme.targetAudience && scheme.targetAudience.includes('incubator')) && (
+                        <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-1 ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-purple-500/5 border-purple-500/20 text-purple-600 dark:text-purple-400'
+                            }`}>
+                            <Target size={10} />
+                            INCUBATOR ELIGIBLE
+                        </span>
+                    )}
                 </div>
 
                 <p className={`text-[13px] leading-relaxed line-clamp-3 mb-8 font-medium italic ${isArchivedMode ? 'text-slate-400 dark:text-slate-600' : 'text-slate-700 dark:text-slate-400'

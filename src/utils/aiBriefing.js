@@ -14,6 +14,7 @@ export const generateBriefing = (data, { categoryLabel = '', search = '' } = {})
 
     const sectorCounts = {};
     const providerCounts = {};
+    let incubatorCount = 0;
     let highValueCount = 0;
     let closingSoonCount = 0;
     let topAward = null;
@@ -30,6 +31,7 @@ export const generateBriefing = (data, { categoryLabel = '', search = '' } = {})
         }
 
         if (item.status === 'Closing Soon') closingSoonCount += 1;
+        if (item.targetAudience && item.targetAudience.includes('incubator')) incubatorCount += 1;
 
         if (item.maxAward && /(Crore|Cr)/i.test(item.maxAward)) {
             highValueCount += 1;
@@ -53,8 +55,13 @@ export const generateBriefing = (data, { categoryLabel = '', search = '' } = {})
             ? `Current view for ${categoryLabel}`
             : `Current view of ${data.length} active opportunities`;
 
+    const summaryBase = `${contextPrefix} shows ${topSector} activity as the primary sector.`;
+    const incubatorHighlight = incubatorCount > 0
+        ? ` ${incubatorCount} grants actively support Section 8 incubators/ecosystem enablers.`
+        : '';
+
     return {
-        summary: `${contextPrefix} shows the strongest activity in ${topSector} opportunities.`,
+        summary: summaryBase + incubatorHighlight,
         insights: [
             `Top source: ${mainSource} appears most often in this set.`,
             `Funding size: ${highValueCount} active programs provide capital in the crore-plus tier.`,

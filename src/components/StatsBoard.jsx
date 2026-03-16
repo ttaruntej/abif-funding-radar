@@ -23,13 +23,13 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
             desc: 'READY NOW'
         },
         {
-            label: 'Closing Soon',
-            val: stats.closingSoon,
-            sub: 'DEADLINES',
-            icon: TrendingUp,
-            color: 'text-red-500',
-            bg: 'bg-red-500/10',
-            desc: 'ACTION SOON'
+            label: 'Incubator Grants',
+            val: stats.incubatorFunds || 0,
+            sub: 'ELIGIBILITY',
+            icon: Target,
+            color: 'text-purple-500',
+            bg: 'bg-purple-500/10',
+            desc: 'ECOSYSTEM SUPPORT'
         }
     ], [stats]);
 
@@ -96,8 +96,8 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities }) =>
                             <div className="absolute left-[7px] top-1 bottom-1 w-px bg-white/10" />
                             {[
                                 { label: 'Opportunity Review', val: `${stats.total} listed`, color: 'bg-blue-500' },
-                                { label: 'Open Now', val: `${stats.active} open`, color: 'bg-emerald-500' },
-                                { label: 'Market Direction', val: 'High activity', color: 'bg-amber-500' }
+                                { label: 'Total Value', val: `${stats.totalFunds}`, color: 'bg-emerald-500' },
+                                { label: 'Incubator Support', val: `${stats.incubatorFunds} open`, color: 'bg-purple-500' }
                             ].map((log, i) => (
                                 <div key={i} className="flex items-center gap-4 relative z-10 transition-all hover:translate-x-1">
                                     <div className={`w-3.5 h-3.5 rounded-full border-2 border-slate-950 ${log.color}`} />
