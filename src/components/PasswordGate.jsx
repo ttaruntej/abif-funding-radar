@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Lock, Cpu, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Lock, Cpu, ArrowRight, ShieldCheck, AlertCircle, Fingerprint } from 'lucide-react';
+import Footer from './Footer';
 
 const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, toggleTheme }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [isChecking, setIsChecking] = useState(!isAuthenticated);
-
 
     useEffect(() => {
         setIsChecking(false);
@@ -41,7 +41,6 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
         }
     };
 
-
     if (isChecking) {
         return (
             <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center font-black tracking-[0.5em] uppercase text-blue-500">
@@ -58,97 +57,116 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
     }
 
     return (
-        <div className={`min-h-screen ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} selection:bg-blue-500/30 font-sans relative overflow-hidden flex items-center justify-center p-4 transition-colors duration-500`}>
-            {/* Theme Toggle in Password Gate */}
-            <div className="absolute top-8 right-8 z-[100]">
-                <button
-                    onClick={toggleTheme}
-                    className={`p-4 rounded-2xl ${theme === 'dark' ? 'bg-white/10 text-amber-500 border-white/10' : 'bg-slate-200 text-slate-600 border-slate-300'} border backdrop-blur-xl transition-all active:scale-95 shadow-2xl`}
-                >
-                    {theme === 'dark' ? <Cpu size={20} className="animate-pulse" /> : <Lock size={20} />}
-                </button>
-            </div>
-            {/* Background Effects */}
-            <div className="absolute top-0 left-0 w-full h-full">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] animate-glow" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-600/10 rounded-full blur-[120px] animate-glow" style={{ animationDelay: '1s' }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
-            </div>
+        <div className={`flex flex-col min-h-screen ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} transition-colors duration-1000`}>
+            {/* Main Auth View */}
+            <div className="flex-grow relative flex items-center justify-center p-4 sm:p-8 overflow-hidden">
 
-            <div className="relative w-full max-w-md animate-in duration-700">
-                {/* Brand Header */}
-                <div className="text-center mb-8">
-                    <div className="inline-flex p-4 rounded-3xl bg-blue-500/10 border border-blue-500/20 mb-6 shadow-2xl backdrop-blur-xl group hover:border-blue-500/40 transition-all duration-500">
-                        <Lock className="text-blue-500 group-hover:scale-110 transition-transform duration-500" size={32} />
-                    </div>
-                    <h1 className="text-4xl font-black text-white uppercase tracking-tighter italic leading-none mb-3">
-                        ABIF <span className="text-blue-500">Radar</span>
-                    </h1>
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">
-                        Funding Intelligence Portal v2.0
-                    </p>
+                {/* Theme Toggle - Repositioned */}
+                <div className="absolute top-6 right-6 z-[100]">
+                    <button
+                        onClick={toggleTheme}
+                        className={`p-3 rounded-xl ${theme === 'dark' ? 'bg-white/5 text-amber-500 border-white/10 hover:bg-white/10' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'} border backdrop-blur-xl transition-all active:scale-95 shadow-lg group`}
+                    >
+                        {theme === 'dark' ? <Cpu size={18} className="group-hover:rotate-12 transition-transform" /> : <Lock size={18} />}
+                    </button>
                 </div>
 
-                {/* Password Card */}
-                <div className={`${theme === 'dark' ? 'bg-slate-900/40 border-white/5' : 'bg-white/80 border-slate-200'} backdrop-blur-3xl border rounded-[40px] p-8 sm:p-10 shadow-3xl relative group overflow-hidden transition-colors duration-500`}>
-                    {/* Decorative Scan Line */}
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent animate-scan" />
+                {/* Background Dynamic Gradients */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px] animate-glow" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[120px] animate-glow" style={{ animationDelay: '2s' }} />
+                    <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,${theme === 'dark' ? 'rgba(15,23,42,0.8)' : 'rgba(255,255,255,0.5)'}_100%)]`} />
+                </div>
 
-                    <div className="relative z-10">
-                        <div className="flex items-center gap-3 mb-8">
-                            <ShieldCheck className="text-emerald-500" size={18} />
-                            <h2 className="text-[11px] font-black text-white uppercase tracking-[0.2em]">Restricted Access</h2>
+                <div className="relative w-full max-w-[440px] z-10">
+                    {/* Minimalist Top Logo */}
+                    <div className="text-center mb-10 flex flex-col items-center">
+                        <div className="mb-6 relative">
+                            <div className="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full scale-150 animate-pulse" />
+                            <div className={`w-14 h-14 rounded-2xl ${theme === 'dark' ? 'bg-slate-900 border-white/5' : 'bg-white border-slate-200'} border flex items-center justify-center shadow-2xl relative z-10`}>
+                                <Fingerprint className="text-blue-500" size={28} />
+                            </div>
+                        </div>
+                        <h1 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic leading-none mb-2">
+                            ABIF <span className="text-blue-500">Radar</span>
+                        </h1>
+                        <div className="flex items-center gap-3">
+                            <div className="h-px w-8 bg-slate-300 dark:bg-slate-800" />
+                            <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em]">Intelligence Portal</p>
+                            <div className="h-px w-8 bg-slate-300 dark:bg-slate-800" />
+                        </div>
+                    </div>
+
+                    {/* Main Card */}
+                    <div className={`${theme === 'dark' ? 'bg-slate-900/60 border-white/5' : 'bg-white/90 border-slate-200'} backdrop-blur-2xl border rounded-[48px] p-8 sm:p-12 shadow-2xl relative group transition-all duration-500 hover:shadow-blue-500/5`}>
+                        {/* Status Bar */}
+                        <div className="flex items-center justify-between mb-10 pb-6 border-b border-slate-100 dark:border-white/5">
+                            <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Secure Server Active</span>
+                            </div>
+                            <ShieldCheck size={14} className="text-blue-500 opacity-60" />
                         </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="relative">
-                                <input
-                                    id="password-input"
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => {
-                                        setPassword(e.target.value);
-                                        if (error) setError(false);
-                                    }}
-                                    placeholder="Enter access code..."
-                                    className={`w-full ${theme === 'dark' ? 'bg-slate-950/50 border-white/10 text-blue-500' : 'bg-white border-slate-200 text-blue-600'} border rounded-2xl px-6 py-5 font-black text-lg placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 shadow-inner group-hover:border-blue-500/40 text-center tracking-[0.5em]`}
-                                    required
-                                />
-                                {error && (
-                                    <div className="absolute -bottom-6 left-1 flex items-center gap-2 text-red-500 animate-in fade-in duration-300">
-                                        <AlertCircle size={12} />
-                                        <span className="text-[9px] font-black uppercase tracking-wider">{error}</span>
-                                    </div>
-                                )}
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            <div className="space-y-3">
+                                <label className="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">Identity Confirmation</label>
+                                <div className="relative">
+                                    <input
+                                        id="password-input"
+                                        type="password"
+                                        value={password}
+                                        onChange={(e) => {
+                                            setPassword(e.target.value);
+                                            if (error) setError(false);
+                                        }}
+                                        placeholder="Enter Access Key"
+                                        className={`w-full ${theme === 'dark' ? 'bg-slate-950/40 border-white/10 text-white' : 'bg-slate-100/50 border-slate-200 text-slate-900'} border rounded-3xl px-8 py-5 font-bold text-base placeholder:text-slate-400/50 focus:ring-2 focus:ring-blue-500/30 outline-none transition-all duration-300 shadow-inner text-center tracking-[0.2em]`}
+                                        required
+                                    />
+                                    {error && (
+                                        <div className="absolute -bottom-6 left-2 flex items-center gap-2 text-red-500 animate-in fade-in duration-300">
+                                            <AlertCircle size={10} />
+                                            <span className="text-[10px] font-bold uppercase tracking-tighter">{error}</span>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black text-[11px] uppercase tracking-[0.25em] py-5 rounded-2xl transition-all duration-300 shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 group/btn active:scale-95"
+                                disabled={isChecking}
+                                className="w-full relative overflow-hidden bg-blue-600 hover:bg-blue-500 text-white font-black text-[11px] uppercase tracking-[0.3em] py-5 rounded-3xl transition-all duration-300 shadow-xl shadow-blue-600/10 flex items-center justify-center gap-3 group/btn active:scale-[0.98] disabled:opacity-50"
                             >
-                                Authenticate Access
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
+                                {isChecking ? 'Verifying...' : 'Unlock Portal'}
                                 <ArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={16} />
                             </button>
                         </form>
-                    </div>
 
-                    {/* Footer Info */}
-                    <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <Cpu size={12} className="text-slate-500" />
-                            <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Neural Link Encrypted</span>
+                        {/* Card Meta */}
+                        <div className="mt-12 pt-8 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <Cpu size={12} className="text-slate-400" />
+                                <span className="text-[8px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">AES-256 Encrypted</span>
+                            </div>
+                            <div className="px-2 py-0.5 rounded-full border border-slate-200 dark:border-white/10">
+                                <span className="text-[7px] font-black text-slate-400 uppercase tracking-widest italic">V2.4.0_STABLE</span>
+                            </div>
                         </div>
-                        <span className="text-[8px] font-black text-slate-700 uppercase tracking-widest">© 2026 ABIF IIT KGP</span>
                     </div>
-                </div>
 
-                {/* System Message */}
-                <div className={`mt-8 text-center p-4 ${theme === 'dark' ? 'bg-blue-500/5 border-blue-500/10' : 'bg-blue-50 border-blue-100'} border rounded-2xl backdrop-blur-md transition-colors duration-500`}>
-                    <p className={`text-[9px] font-bold ${theme === 'dark' ? 'text-slate-500' : 'text-slate-600'} uppercase tracking-widest leading-relaxed`}>
-                        Authorized personnel only. Your access activity is being logged for institutional security compliance.
-                    </p>
+                    {/* Security Subtext */}
+                    <div className="mt-10 px-6 text-center">
+                        <p className="text-[10px] font-bold text-slate-400 dark:text-slate-700 uppercase tracking-[0.1em] leading-relaxed italic">
+                            Strictly for ABIF Authorized Personnel. Access is monitored and logged under IIT Kharagpur security protocols.
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            {/* Usual Footer */}
+            <Footer lastUpdatedTs={null} />
         </div>
     );
 };
