@@ -1,5 +1,6 @@
 export const CATEGORIES = [
     { key: 'all', label: 'All', icon: 'ALL' },
+    { key: 'ecosystem', label: 'Ecosystem Support', icon: 'ECO' },
     { key: 'national', label: 'National', icon: 'IN' },
     { key: 'international', label: 'International', icon: 'GL' },
     { key: 'state', label: 'State Specific', icon: 'ST' },
@@ -17,6 +18,7 @@ export const STATUS_COLORS = {
 
 export const CAT_STYLES = {
     all: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
+    ecosystem: 'border-fuchsia-500/50 text-fuchsia-400 bg-fuchsia-500/10',
     national: 'border-blue-500/50 text-blue-400 bg-blue-500/10',
     international: 'border-purple-500/50 text-purple-400 bg-purple-500/10',
     state: 'border-orange-500/50 text-orange-400 bg-orange-500/10',
@@ -24,6 +26,7 @@ export const CAT_STYLES = {
 };
 
 export const CAT_COLORS = {
+    ecosystem: { bg: 'bg-fuchsia-900/40', border: 'border-fuchsia-500/50', text: 'text-fuchsia-400' },
     national: { bg: 'bg-blue-900/40', border: 'border-blue-500/50', text: 'text-blue-400' },
     international: { bg: 'bg-purple-900/40', border: 'border-purple-500/50', text: 'text-purple-400' },
     state: { bg: 'bg-orange-900/40', border: 'border-orange-500/50', text: 'text-orange-400' },

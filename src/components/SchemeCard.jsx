@@ -1,11 +1,13 @@
 import React from 'react';
 import { CATEGORIES, STATUS_COLORS } from '../constants/tracker';
+import { isEcosystemSupportOpportunity } from '../utils/opportunityFilters';
 import { ExternalLink, ShieldCheck, AlertTriangle, Target, DollarSign, Calendar, Lock } from 'lucide-react';
 
 const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode, activeAudience }) => {
     const isVerified = scheme.linkStatus === 'verified';
     const isProbable = scheme.linkStatus === 'probable';
     const isArchived = scheme.status === 'Closed' || scheme.status === 'Verify Manually' || isArchivedMode;
+    const isEcosystemSupport = isEcosystemSupportOpportunity(scheme);
 
     const catMeta = CATEGORIES.find(c => c.key === scheme.category);
     const statusStyle = STATUS_COLORS[scheme.status] || 'bg-slate-800 text-slate-400 border-slate-700';
@@ -83,11 +85,11 @@ const SchemeCard = React.memo(({ scheme, showCategoryBadge, isArchivedMode, acti
                         <span key={s} className={`px-2.5 py-1 rounded-lg border text-[9px] font-bold uppercase tracking-widest ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-blue-500/5 border-blue-500/20 text-blue-500'
                             }`}>{s}</span>
                     ))}
-                    {(scheme.targetAudience && scheme.targetAudience.includes('incubator') && activeAudience === 'incubator') && (
+                    {isEcosystemSupport && (
                         <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-1 ${isArchivedMode ? 'border-slate-300 dark:border-slate-800 text-slate-400' : 'bg-purple-500/5 border-purple-500/20 text-purple-600 dark:text-purple-400'
                             }`}>
                             <Target size={10} />
-                            INCUBATOR ELIGIBLE
+                            {activeAudience === 'incubator' ? 'INCUBATOR ELIGIBLE' : 'ECOSYSTEM SUPPORT'}
                         </span>
                     )}
                 </div>

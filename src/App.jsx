@@ -53,7 +53,8 @@ const App = () => {
         currentView, setCurrentView,
         addLog,
         filtered, catCounts, activeStats, availableSectors, dynamicSentiment,
-        clearFilters
+        clearFilters,
+        activateEcosystemPreset
     } = useEcosystemData();
 
     // 3. Scraper Sync Engine (via Custom Hook)
@@ -580,6 +581,7 @@ const App = () => {
                     catCounts={catCounts}
                     activeAudience={activeAudience} setActiveAudience={setActiveAudience}
                     setActiveSector={setActiveSector}
+                    onActivateEcosystemPreset={activateEcosystemPreset}
                 />
 
                 <main className="max-w-7xl mx-auto px-4 sm:px-8 pt-32 pb-20">
@@ -590,6 +592,7 @@ const App = () => {
                             onReportClick={() => setShowReport(true)}
                             opportunities={filtered}
                             activeAudience={activeAudience}
+                            activeCategory={activeCategory}
                         />
                     </div>
 
@@ -639,7 +642,7 @@ const App = () => {
                     handleRefresh={handleRefresh}
                     isRefreshing={isRefreshing}
                     refreshCooldown={cooldown}
-                    handleExportCSV={() => exportToCSV(filtered)}
+                    handleExportCSV={() => exportToCSV(filtered, { activeCategory, activeAudience })}
                     onEmailClick={() => setIsEmailModalOpen(true)}
                     emailCooldown={emailCooldown}
                     theme={theme}

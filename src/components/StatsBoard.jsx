@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { TrendingUp, Target, DollarSign, Activity, FileText, Radar } from 'lucide-react';
 import MarketVectorChart from './MarketVectorChart';
 
-const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, activeAudience }) => {
+const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, activeAudience, activeCategory }) => {
     const highlights = useMemo(() => {
         const h = [
             {
@@ -25,7 +25,17 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, acti
             }
         ];
 
-        if (activeAudience === 'incubator') {
+        if (activeCategory === 'ecosystem') {
+            h.push({
+                label: 'Ecosystem Support',
+                val: stats.ecosystemSupport || 0,
+                sub: 'INTERMEDIARY',
+                icon: Radar,
+                color: 'text-fuchsia-500',
+                bg: 'bg-fuchsia-500/10',
+                desc: 'OPERATIONS + COHORTS'
+            });
+        } else if (activeAudience === 'incubator') {
             h.push({
                 label: 'Incubator Grants',
                 val: stats.incubatorFunds || 0,
@@ -47,7 +57,7 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, acti
             });
         }
         return h;
-    }, [stats, activeAudience]);
+    }, [stats, activeAudience, activeCategory]);
 
     const briefingText = typeof stats.briefing === 'object' ? stats.briefing.summary : stats.briefing;
 
@@ -113,7 +123,9 @@ const StatsBoard = ({ stats, marketSentiment, onReportClick, opportunities, acti
                             {[
                                 { label: 'Opportunity Review', val: `${stats.total} listed`, color: 'bg-blue-500' },
                                 { label: 'Total Value', val: `${stats.totalFunds}`, color: 'bg-emerald-500' },
-                                activeAudience === 'incubator'
+                                activeCategory === 'ecosystem'
+                                    ? { label: 'Ecosystem Support', val: `${stats.ecosystemSupport || 0} open`, color: 'bg-fuchsia-500' }
+                                    : activeAudience === 'incubator'
                                     ? { label: 'Incubator Support', val: `${stats.incubatorFunds} open`, color: 'bg-purple-500' }
                                     : { label: 'Closing Soon', val: `${stats.closingSoon} imminent`, color: 'bg-rose-500' }
                             ].map((log, i) => (

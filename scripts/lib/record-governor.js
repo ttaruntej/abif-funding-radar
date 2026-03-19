@@ -44,6 +44,10 @@ const DOMAIN_SOURCE_HINTS = [
     { pattern: /(^|\.)ventures\.adb\.org$/i, dataSource: 'manual:official:adb' },
     { pattern: /(^|\.)adb\.org$/i, dataSource: 'manual:official:adb' },
     { pattern: /(^|\.)ifc\.org$/i, dataSource: 'manual:official:ifc' },
+    { pattern: /(^|\.)undp\.org$/i, dataSource: 'manual:official:undp' },
+    { pattern: /(^|\.)youthcolab\.org$/i, dataSource: 'manual:official:undp' },
+    { pattern: /(^|\.)unido\.org$/i, dataSource: 'manual:official:unido' },
+    { pattern: /(^|\.)worldbank\.org$/i, dataSource: 'manual:official:worldbank' },
     { pattern: /(^|\.)socialalpha\.org$/i, dataSource: 'manual:official:socialalpha' },
     { pattern: /(^|\.)startupwave\.co$/i, dataSource: 'manual:official:startupwave' },
     { pattern: /(^|\.)asme\.org$/i, dataSource: 'manual:official:asme' },
@@ -222,8 +226,8 @@ function canonicalizeStatus(status, deadline, linkStatus) {
 
 function canonicalizeCategory(category, name, body, link) {
     const combined = [category, name, body, link].map((value) => normalizeWhitespace(value).toLowerCase()).join(' ');
+    if (/\bundp\b|\badb\b|asian development bank|\bifc\b|world bank|united nations|multilateral|global|international|bilateral|france|netherlands|australia|europe|us |usa|uk /.test(combined)) return 'international';
     if (/\bcsr\b|corporate social responsibility|foundation|philanthropy/.test(combined)) return 'csr';
-    if (/indo-|international|global|bilateral|multilateral|france|netherlands|australia|europe|us |usa|uk |united nations/.test(combined)) return 'international';
     if (/odisha|karnataka|kerala|tamil nadu|gujarat|state|startuptn|startup odisha|ksum|mission startup karnataka/.test(combined)) return 'state';
     return 'national';
 }
@@ -328,7 +332,14 @@ function inferTargetAudience(record) {
         'host institute',
         'section 8',
         'ecosystem enabler',
+        'ecosystem partner',
+        'ecosystem partners',
+        'innovation ecosystem',
+        'entrepreneurship ecosystem',
+        'venture ecosystem',
+        'venture ecosystems',
         'accelerator program',
+        'accelerator-led',
         'incubation centre',
         'nidhi-itbi',
         'nidhi-step',

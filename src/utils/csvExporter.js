@@ -1,13 +1,31 @@
-export const exportToCSV = (filteredOpportunities) => {
-    const headers = ['Name', 'Provider', 'Category', 'Target Audience', 'Sectors', 'Stages', 'Max Award', 'Deadline', 'Status', 'Link'];
+import { isEcosystemSupportOpportunity } from './opportunityFilters';
+
+export const exportToCSV = (
+    filteredOpportunities,
+    { activeCategory = 'all', activeAudience = 'startup' } = {}
+) => {
+    const headers = [
+        'Name',
+        'Provider',
+        'Category',
+        'Target Audience',
+        'Ecosystem Support',
+        'Sectors',
+        'Stages',
+        'Max Award',
+        'Deadline',
+        'Status',
+        'Link'
+    ];
     const csvRows = [headers.join(',')];
 
-    filteredOpportunities.forEach(o => {
+    filteredOpportunities.forEach((o) => {
         const row = [
             `"${(o.name || '').replace(/"/g, '""')}"`,
             `"${(o.body || '').replace(/"/g, '""')}"`,
             o.category || '',
             `"${(o.targetAudience || []).join(', ')}"`,
+            isEcosystemSupportOpportunity(o) ? 'Yes' : 'No',
             `"${(o.sectors || []).join(', ')}"`,
             `"${(o.stages || []).join(', ')}"`,
             `"${(o.maxAward || '').replace(/"/g, '""')}"`,
@@ -18,12 +36,16 @@ export const exportToCSV = (filteredOpportunities) => {
         csvRows.push(row.join(','));
     });
 
+    const exportTag = activeCategory === 'ecosystem' ? 'ecosystem_support' : 'funding_export';
+    const audienceTag = activeAudience === 'incubator' ? 'incubator' : activeAudience === 'all' ? 'all_audience' : 'startup';
+    const filename = `abif_${audienceTag}_${exportTag}_${new Date().toISOString().split('T')[0]}.csv`;
+
     const blob = new Blob([csvRows.join('\n')], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.setAttribute('hidden', '');
     a.setAttribute('href', url);
-    a.setAttribute('download', `abif_funding_export_${new Date().toISOString().split('T')[0]}.csv`);
+    a.setAttribute('download', filename);
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { fetchOpportunities, fetchResearchReport } from '../services/api';
 import { generateBriefing } from '../utils/aiBriefing';
+import { isEcosystemSupportOpportunity, matchesOpportunityCategory } from '../utils/opportunityFilters';
 import { CATEGORIES } from '../constants/tracker';
 
 export const useEcosystemData = () => {
@@ -98,21 +99,27 @@ export const useEcosystemData = () => {
         let contextualTotalCount = 0;
         let contextualOpenCount = 0;
         let contextualClosingSoonCount = 0;
+        let contextualEcosystemCount = 0;
 
         opportunities.forEach(o => {
             const q = getMatchQualifiers(o);
             const oCat = (o.category || '').toLowerCase();
+            const isEcosystemSupport = isEcosystemSupportOpportunity(o);
 
             // 1. Calculate Category Counts (independent of current activeCategory filter)
             if (q.matchesView && q.matchesAudience && q.matchesSector && q.matchesStatus && q.matchesSearch) {
+                counts.all += 1;
                 if (counts.hasOwnProperty(oCat)) {
                     counts[oCat]++;
+                }
+                if (isEcosystemSupport) {
+                    counts.ecosystem += 1;
                 }
             }
 
             // 2. Primary Filtered Result & Contextual Stats
             if (q.matchesView && q.matchesAudience && q.matchesSector && q.matchesStatus && q.matchesSearch &&
-                (activeCategory === 'all' || oCat === activeCategory)) {
+                matchesOpportunityCategory(o, activeCategory)) {
 
                 result.push(o);
 
@@ -120,6 +127,9 @@ export const useEcosystemData = () => {
                 if (['Open', 'Rolling', 'Closing Soon'].includes(o.status)) {
                     contextualOpenCount++;
                     contextualActive.push(o);
+                    if (isEcosystemSupport) {
+                        contextualEcosystemCount++;
+                    }
                 }
                 if (o.status === 'Closing Soon') contextualClosingSoonCount++;
             }
@@ -172,6 +182,7 @@ export const useEcosystemData = () => {
             closingSoon: contextualClosingSoonCount,
             totalFunds: totalFundsObj.totalStr,
             incubatorFunds: contextualIncubatorCount,
+            ecosystemSupport: contextualEcosystemCount,
             briefing: generateBriefing(contextualActive, {
                 categoryLabel: CATEGORIES.find(c => c.key === activeCategory)?.label,
                 search: searchQuery,
@@ -200,6 +211,16 @@ export const useEcosystemData = () => {
         addLog('Filters cleared.', 'info');
     };
 
+    const activateEcosystemPreset = () => {
+        setCurrentView('dashboard');
+        setSearchQuery('');
+        setActiveAudience('incubator');
+        setActiveCategory('ecosystem');
+        setActiveSector('All Sectors');
+        setActiveStatus('all');
+        addLog('Ecosystem preset activated.', 'success');
+    };
+
     return {
         opportunities, loading, error, report, setReport, lastUpdatedTs, loadData,
         activeAudience, setActiveAudience,
@@ -210,6 +231,7 @@ export const useEcosystemData = () => {
         currentView, setCurrentView,
         operationalLogs, addLog,
         filtered, catCounts, activeStats, availableSectors, dynamicSentiment,
-        clearFilters
+        clearFilters,
+        activateEcosystemPreset
     };
 };

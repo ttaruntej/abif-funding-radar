@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-19T11:12:15.975Z",
+  "generatedAt": "2026-03-19T12:53:17.922Z",
   "summary": {
     "totalSourceItems": 78,
     "publishableItems": 62,
@@ -7,7 +7,7 @@
     "duplicateGroups": 0,
     "artifactReviewCandidates": 9,
     "inferredProvenanceItems": 0,
-    "lowConfidenceItems": 2
+    "lowConfidenceItems": 1
   },
   "items": [
     {
@@ -36,7 +36,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:38.976Z"
+      "lastScraped": "2026-03-19T12:52:20.263Z"
     },
     {
       "name": "Amazon Devices Climate Tech Accelerator 2026",
@@ -64,7 +64,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:38.087Z"
+      "lastScraped": "2026-03-19T12:52:11.350Z"
     },
     {
       "name": "Aspire Climatetech Program Spring 2026",
@@ -92,7 +92,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:38.532Z"
+      "lastScraped": "2026-03-19T12:52:14.587Z"
     },
     {
       "name": "Greenovation Agrivoltaics Challenge",
@@ -120,7 +120,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:41.569Z"
+      "lastScraped": "2026-03-19T12:52:19.378Z"
     },
     {
       "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
@@ -148,7 +148,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:36.692Z"
+      "lastScraped": "2026-03-19T12:52:09.507Z"
     },
     {
       "name": "Keeling Curve Prize 2026",
@@ -176,7 +176,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:34.686Z"
+      "lastScraped": "2026-03-19T12:52:07.181Z"
     },
     {
       "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
@@ -204,7 +204,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 86,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:43.560Z"
+      "lastScraped": "2026-03-19T12:52:24.472Z"
     },
     {
       "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
@@ -228,7 +228,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:35.393Z"
+      "lastScraped": "2026-03-19T12:52:06.826Z"
     },
     {
       "name": "AI for ALL: Global Impact Challenge",
@@ -252,7 +252,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 70,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-19T11:11:41.815Z"
+      "lastScraped": "2026-03-19T12:52:16.927Z"
     },
     {
       "name": "AFI Agri Cohort 25-26",
@@ -272,7 +272,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:31.960Z"
+      "lastScraped": "2026-03-19T12:50:50.071Z"
     },
     {
       "name": "AMRUT 2.0 Water Pitch Challenge",
@@ -292,7 +292,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:02.364Z"
+      "lastScraped": "2026-03-19T12:50:23.095Z"
     },
     {
       "name": "D.E.S.I.G.N for BioE3 Challenge",
@@ -312,7 +312,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:02.327Z"
+      "lastScraped": "2026-03-19T12:50:22.669Z"
     },
     {
       "name": "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
@@ -332,7 +332,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:02.345Z"
+      "lastScraped": "2026-03-19T12:50:23.139Z"
     },
     {
       "name": "Skoll Foundation Awards",
@@ -352,7 +352,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:23.548Z"
+      "lastScraped": "2026-03-19T12:50:39.045Z"
     },
     {
       "name": "StartupTN Agri-Tech Grant",
@@ -372,7 +372,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:33.010Z"
+      "lastScraped": "2026-03-19T12:50:49.027Z"
     },
     {
       "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
@@ -382,25 +382,17 @@
       "status": "Verify Manually",
       "dataSource": "manual:incubator",
       "category": "national",
-      "linkStatus": "broken",
+      "linkStatus": "verified",
       "issues": [
-        {
-          "code": "broken-link",
-          "detail": "Stored application/source link is currently marked broken."
-        },
         {
           "code": "past-deadline-status-mismatch",
           "detail": "Status is \"Verify Manually\" even though the deadline has passed."
-        },
-        {
-          "code": "low-confidence",
-          "detail": "Confidence score 0.5 is below the publishable threshold."
         }
       ],
       "recommendedAction": "recompute-status-or-archive",
-      "reviewPriority": 6,
+      "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-19T11:11:31.313Z"
+      "lastScraped": "2026-03-19T12:50:48.785Z"
     }
   ]
 }

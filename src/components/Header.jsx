@@ -11,11 +11,13 @@ const Header = ({
     catCounts,
     activeAudience,
     setActiveAudience,
-    setActiveSector
+    setActiveSector,
+    onActivateEcosystemPreset
 }) => {
 
     const getCatIcon = (key) => {
         switch (key) {
+            case 'ecosystem': return <Radar size={12} />;
             case 'national': return <Landmark size={12} />;
             case 'international': return <Globe size={12} />;
             case 'state': return <Landmark size={12} />;
@@ -98,6 +100,24 @@ const Header = ({
                                         </button>
                                     );
                                 })}
+                                <button
+                                    onClick={onActivateEcosystemPreset}
+                                    className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl transition-all duration-500 whitespace-nowrap group relative active:scale-95 cursor-pointer border ${currentView === 'dashboard' && activeAudience === 'incubator' && activeCategory === 'ecosystem'
+                                        ? 'bg-fuchsia-600 text-white border-fuchsia-500 shadow-md'
+                                        : 'bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300 border-fuchsia-500/20 hover:bg-fuchsia-500/15'
+                                        }`}
+                                >
+                                    <Radar size={12} />
+                                    <span className="text-[9px] font-black uppercase tracking-widest">Ecosystem Lens</span>
+                                    {catCounts.ecosystem > 0 && (
+                                        <span className={`text-[8px] font-mono font-black px-1 rounded ${currentView === 'dashboard' && activeAudience === 'incubator' && activeCategory === 'ecosystem'
+                                            ? 'bg-white/15 text-white'
+                                            : 'bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-200'
+                                            }`}>
+                                            {catCounts.ecosystem}
+                                        </span>
+                                    )}
+                                </button>
                             </div>
                         </div>
                     </div>

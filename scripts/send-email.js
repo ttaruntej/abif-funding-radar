@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { matchesOpportunityCategory } from '../src/utils/opportunityFilters.js';
 
 dotenv.config();
 
@@ -58,7 +59,7 @@ async function sendEmail() {
         targetOpps = currentData.filter(o => {
             const matchesAudience = !filters.activeAudience || filters.activeAudience === 'all' || (o.targetAudience || []).includes(filters.activeAudience);
             const matchesSector = !filters.activeSector || filters.activeSector === 'All Sectors' || (o.sectors || []).includes(filters.activeSector);
-            const matchesCategory = !filters.activeCategory || filters.activeCategory === 'all' || (o.category || '').toLowerCase() === filters.activeCategory.toLowerCase();
+            const matchesCategory = !filters.activeCategory || matchesOpportunityCategory(o, filters.activeCategory);
             const matchesStatus = !filters.activeStatus || filters.activeStatus === 'all' || (filters.activeStatus === 'Open' ? ['Open', 'Closing Soon'].includes(o.status) : o.status === filters.activeStatus);
             const matchesSearch = !filters.searchQuery ||
                 (o.name || '').toLowerCase().includes(filters.searchQuery.toLowerCase()) ||
@@ -77,6 +78,15 @@ async function sendEmail() {
             );
         }
     }
+
+    const isEcosystemFocus = mode === 'filtered' && filters.activeCategory === 'ecosystem';
+    const ecosystemSubjectPrefix = '[Ecosystem Support] ';
+    const applyEcosystemSubjectPrefix = (subject) => {
+        if (!isEcosystemFocus) return subject;
+        return String(subject || '').startsWith(ecosystemSubjectPrefix)
+            ? subject
+            : `${ecosystemSubjectPrefix}${subject}`;
+    };
 
     if (targetOpps.length === 0) {
         console.log(`  ℹ No matching opportunities found for mode: ${mode}. Skipping email.`);
@@ -112,7 +122,7 @@ async function sendEmail() {
 
     // --- AI GENERATION ---
     let aiIntro = `<p style="font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px;">Greetings! I am the <strong>AI Agent of Tarun Tej Thadana (TBI Manager, ABIF)</strong>. I have compiled the latest deep-scan across the Indian funding ecosystem for you. Here are the active mandates relevant for our incubator and portfolio initiatives:</p>`;
-    let aiSubject = `📡 [ABIF Intelligence] ${newItems.length > 0 ? `NEW: ${newItems[0].name.slice(0, 20)}... + ` : ''}${targetOpps.length} Mandates for Tarun Tej`;
+    let aiSubject = applyEcosystemSubjectPrefix(`📡 [ABIF Intelligence] ${newItems.length > 0 ? `NEW: ${newItems[0].name.slice(0, 20)}... + ` : ''}${targetOpps.length} Mandates for Tarun Tej`);
 
     if (GEMINI_API_KEY) {
         try {
@@ -121,8 +131,11 @@ async function sendEmail() {
             const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
             const audienceFocus = filters.activeAudience === 'startup' ? 'Startup' : 'Incubator';
+            const ecosystemFocusContext = isEcosystemFocus
+                ? 'This filtered briefing is specifically for ecosystem-support opportunities where incubators, accelerators, and ecosystem enablers can apply to support operations, startup cohorts, venture building, or platform delivery.'
+                : '';
             const filterContext = mode === 'filtered'
-                ? `The user has applied specific filters: ${JSON.stringify(filters)}. Focus the briefing on this specific slice of the ecosystem targeting ${audienceFocus}s.`
+                ? `The user has applied specific filters: ${JSON.stringify(filters)}. Focus the briefing on this specific slice of the ecosystem targeting ${audienceFocus}s. ${ecosystemFocusContext}`.trim()
                 : `This is a standard broad scan for the ABIF ${audienceFocus} ecosystem.`;
 
             const today = new Date().toLocaleString('en-IN', { month: 'long', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
@@ -166,7 +179,7 @@ async function sendEmail() {
                 .replace(/Greetings[,.]/gi, 'Ecosystem Intelligence Update:')
                 .replace(/of the ABIF[^.]*ecosystem/gi, 'of the Indian Funding and AgriTech Ecosystem');
 
-            aiSubject = aiData.subject;
+            aiSubject = applyEcosystemSubjectPrefix(aiData.subject);
             aiIntro = `<div style="font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;">${sanitizedIntro}</div>`;
 
             console.log('  ✓ AI generation & sanitization successful.');
@@ -305,3 +318,6 @@ async function sendEmail() {
 }
 
 sendEmail();
+
+
+
