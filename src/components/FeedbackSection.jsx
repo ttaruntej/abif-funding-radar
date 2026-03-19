@@ -15,19 +15,38 @@ const FeedbackSection = ({ addLog }) => {
             const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
             const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
             const apiCandidates = Array.from(new Set([configuredApiBase, prodApiBase]));
+            const accessToken = (() => {
+                try { return sessionStorage.getItem('site_access_token') || ''; } catch (e) { return ''; }
+            })();
             let response = null;
 
             for (const apiBase of apiCandidates) {
                 try {
                     response = await fetch(`${apiBase}/api/send-feedback`, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {})
+                        },
                         body: JSON.stringify({
                             feedback,
                             userEmail: email || 'Anonymous',
                             timestamp: new Date().toISOString()
                         })
                     });
+                    if (response.status === 401 || response.status === 403) {
+                        const payload = await response.json().catch(() => ({}));
+                        try {
+                            sessionStorage.removeItem('site_auth');
+                            sessionStorage.removeItem('site_access_token');
+                        } catch (e) { }
+                        if (typeof window !== 'undefined') {
+                            window.dispatchEvent(new CustomEvent('abif-auth-expired', {
+                                detail: { message: payload.error || 'Session expired. Please sign in again.' }
+                            }));
+                        }
+                        throw new Error(payload.error || 'Session expired. Please sign in again.');
+                    }
                     if (response.ok) break;
                 } catch (err) {
                     response = null;

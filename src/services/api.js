@@ -1,7 +1,26 @@
 const PROD_API_BASE_URL = 'https://abif-funding-radar-api.vercel.app';
-const CONFIGURED_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || PROD_API_BASE_URL).replace(/\/$/, '');
-const API_BASE_CANDIDATES = Array.from(new Set([CONFIGURED_API_BASE_URL, PROD_API_BASE_URL]));
-export const API_BASE_URL = CONFIGURED_API_BASE_URL;
+const RAW_CONFIGURED_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').trim();
+const CONFIGURED_API_BASE_URL = (RAW_CONFIGURED_API_BASE_URL || PROD_API_BASE_URL).replace(/\/$/, '');
+const PREFER_LOCAL_API = import.meta.env.VITE_PREFER_LOCAL_API === 'true';
+const LOCAL_API_BASE_PATTERN = /^https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?$/i;
+
+const API_BASE_CANDIDATES = (() => {
+    const orderedBases = [PROD_API_BASE_URL];
+    const configuredIsLocal = LOCAL_API_BASE_PATTERN.test(CONFIGURED_API_BASE_URL);
+
+    if (CONFIGURED_API_BASE_URL !== PROD_API_BASE_URL) {
+        // Local API endpoints are opt-in during frontend dev to avoid noisy connection-refused errors.
+        if (configuredIsLocal && !PREFER_LOCAL_API) {
+            orderedBases.push(CONFIGURED_API_BASE_URL);
+        } else {
+            orderedBases.unshift(CONFIGURED_API_BASE_URL);
+        }
+    }
+
+    return Array.from(new Set(orderedBases.map((base) => base.replace(/\/$/, ''))));
+})();
+
+export const API_BASE_URL = API_BASE_CANDIDATES[0];
 export const GITHUB_REPO_URL = 'https://github.com/ttaruntej/abif-funding-radar';
 export const EMAIL_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/send-email.yml`;
 export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sync.yml`;
@@ -9,6 +28,59 @@ export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sy
 const GITHUB_WORKFLOW_API_BASE = 'https://api.github.com/repos/ttaruntej/abif-funding-radar/actions/workflows';
 const GITHUB_RAW_DATA_BASE = 'https://raw.githubusercontent.com/ttaruntej/abif-funding-radar/main/public/data';
 const API_TIMEOUT_MS = 4000;
+const ACCESS_TOKEN_STORAGE_KEY = 'site_access_token';
+const AUTH_FLAG_STORAGE_KEY = 'site_auth';
+const AUTH_EXPIRED_EVENT = 'abif-auth-expired';
+let authExpiredNotified = false;
+
+export const getAccessToken = () => {
+    try {
+        return sessionStorage.getItem(ACCESS_TOKEN_STORAGE_KEY) || '';
+    } catch (e) {
+        return '';
+    }
+};
+
+const buildAuthHeaders = (headers = {}) => {
+    const token = getAccessToken();
+    if (!token) {
+        return { ...(headers || {}) };
+    }
+
+    return {
+        ...(headers || {}),
+        Authorization: `Bearer ${token}`
+    };
+};
+
+const clearAuthSession = () => {
+    try {
+        sessionStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+        sessionStorage.removeItem(AUTH_FLAG_STORAGE_KEY);
+    } catch (e) { }
+};
+
+const authError = (message = 'Session expired. Please sign in again.') => {
+    clearAuthSession();
+
+    if (!authExpiredNotified && typeof window !== 'undefined') {
+        authExpiredNotified = true;
+        window.dispatchEvent(new CustomEvent(AUTH_EXPIRED_EVENT, {
+            detail: { message }
+        }));
+        setTimeout(() => {
+            authExpiredNotified = false;
+        }, 500);
+    }
+
+    const error = new Error(message);
+    error.code = 'AUTH';
+    return error;
+};
+
+const isAuthError = (error) => error && error.code === 'AUTH';
+
+const parseJsonSafe = async (response) => response.json().catch(() => ({}));
 
 const fetchJsonWithTimeout = async (url, options = {}, timeoutMs = API_TIMEOUT_MS) => {
     const controller = new AbortController();
@@ -65,6 +137,15 @@ const fetchLatestWorkflowRunFromGitHub = async (workflowId) => {
     };
 };
 
+const ensureAuthorizedOrThrow = async (response) => {
+    if (response.status !== 401 && response.status !== 403) {
+        return;
+    }
+
+    const payload = await parseJsonSafe(response);
+    throw authError(payload.error || 'Session expired. Please sign in again.');
+};
+
 /**
  * Fetch local data files
  */
@@ -95,9 +176,15 @@ export const fetchResearchReport = async () => {
 
 export const fetchDispatchMeta = async () => {
     try {
-        const liveRes = await fetchFromApiWithFallback(`/api/trigger-email?action=fetch_meta`, { method: 'GET' });
+        const liveRes = await fetchFromApiWithFallback(`/api/trigger-email?action=fetch_meta`, {
+            method: 'GET',
+            headers: buildAuthHeaders()
+        });
+        await ensureAuthorizedOrThrow(liveRes);
         if (liveRes.ok) return await liveRes.json();
-    } catch (err) { }
+    } catch (err) {
+        if (isAuthError(err)) throw err;
+    }
 
     try {
         const githubRes = await fetchJsonWithTimeout(`${GITHUB_RAW_DATA_BASE}/last_dispatch_meta.json`, { method: 'GET' });
@@ -112,56 +199,44 @@ export const fetchDispatchMeta = async () => {
     return null;
 };
 
-const getDirectAuthToken = () => {
-    // Reassemble from split parts to bypass scanners
-    const partA = import.meta.env.VITE_GHT_A || '';
-    const partB = import.meta.env.VITE_GHT_B || '';
-    if (partA && partB) return partA + partB;
-
-    // Legacy/Manual fallback
-    return import.meta.env.VITE_GH_TOKEN || localStorage.getItem('ABIF_GH_PAT');
-};
-
 /**
  * Trigger & Status for Verified Source Sync
  */
 export const triggerScraper = async () => {
     console.log('Triggering Scraper...');
-    const token = getDirectAuthToken();
-
-    // Strategy: Try Vercel first, fallback to Direct GitHub if token exists
+    let res;
     try {
-        const res = await fetchFromApiWithFallback(`/api/trigger-sync`, { method: 'POST' });
-        const data = await res.json();
-        if (res.ok) return data;
-        // If not OK, but we have a token, we might try direct if it's a connectivity error
+        res = await fetchFromApiWithFallback(`/api/trigger-sync`, {
+            method: 'POST',
+            headers: buildAuthHeaders()
+        });
     } catch (err) {
-        if (!token) throw new Error('Failed to start sync. Relay unreachable and no Direct Token configured.');
-        console.warn('[API] Relay unreachable, attempting Direct GitHub trigger...');
+        throw new Error(`Failed to start sync: relay unreachable (${err.message || 'request failed'})`);
     }
 
-    if (token) {
-        const res = await fetchJsonWithTimeout(`${GITHUB_WORKFLOW_API_BASE}/source-sync.yml/dispatches`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/vnd.github+json',
-                'X-GitHub-Api-Version': '2022-11-28'
-            },
-            body: JSON.stringify({ ref: 'main' })
-        });
-        if (res.status === 204) return { message: 'Verified source sync triggered (Direct Mode)' };
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.message || 'Direct GitHub trigger failed');
+    const data = await parseJsonSafe(res);
+    if (res.ok) return data;
+    if (res.status === 401 || res.status === 403) {
+        throw authError(data.error || 'Session expired. Please sign in again.');
     }
+    throw new Error(data.message || data.error || `Failed to start sync via relay (${res.status})`);
 };
 
 export const getScraperStatus = async () => {
     try {
-        const res = await fetchFromApiWithFallback(`/api/trigger-sync`, { method: 'GET' });
+        const res = await fetchFromApiWithFallback(`/api/trigger-sync`, {
+            method: 'GET',
+            headers: buildAuthHeaders()
+        });
+
+        await ensureAuthorizedOrThrow(res);
+
         if (!res.ok) throw new Error('Sync status unreachable');
         return await res.json();
     } catch (err) {
+        if (isAuthError(err)) {
+            throw err;
+        }
         return await fetchLatestWorkflowRunFromGitHub('source-sync.yml');
     }
 };
@@ -170,59 +245,46 @@ export const getScraperStatus = async () => {
  * Trigger & Status for Email Intelligence Dispatch
  */
 export const triggerEmail = async (target_emails, mode = 'standard', filters = {}) => {
-    const token = getDirectAuthToken();
-
-    if (!token) {
-        console.warn('[API] Warning: No Direct Mode token found (GH_TOKEN secret might be missing in repo).');
-    } else {
-        console.log('[API] Direct Mode token detected (obfuscated):', token.substring(0, 4) + '...');
-    }
-
+    let res;
     try {
-        const res = await fetchFromApiWithFallback(`/api/trigger-email`, {
+        res = await fetchFromApiWithFallback(`/api/trigger-email`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: buildAuthHeaders({ 'Content-Type': 'application/json' }),
             body: JSON.stringify({ target_emails, mode, filters })
         });
-
-        const data = await res.json();
-        if (res.ok) {
-            console.log('[API] Trigger response received:', data);
-            return data;
-        }
     } catch (err) {
-        if (!token) {
-            console.error('[Detailed Error Log]:', { message: err.message, url: `${API_BASE_URL}/api/trigger-email` });
-            throw new Error(`Connection Error: ${err.message}. Please try again when the relay is reachable or configure Direct Mode.`);
-        }
-        console.warn('[API] Relay unreachable, attempting Direct GitHub trigger...');
+        console.error('[Detailed Error Log]:', { message: err.message, url: `${API_BASE_URL}/api/trigger-email` });
+        throw new Error(`Failed to trigger email: relay unreachable (${err.message || 'request failed'})`);
     }
 
-    if (token) {
-        const res = await fetchJsonWithTimeout(`${GITHUB_WORKFLOW_API_BASE}/send-email.yml/dispatches`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/vnd.github+json',
-                'X-GitHub-Api-Version': '2022-11-28'
-            },
-            body: JSON.stringify({
-                ref: 'main',
-                inputs: { target_emails, mode, filters: JSON.stringify(filters) }
-            })
-        });
-        if (res.status === 204) return { message: 'Email Action Triggered (Direct Mode)' };
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.message || 'Direct GitHub trigger failed');
+    const data = await parseJsonSafe(res);
+    if (res.ok) {
+        console.log('[API] Trigger response received:', data);
+        return data;
     }
+
+    if (res.status === 401 || res.status === 403) {
+        throw authError(data.error || 'Session expired. Please sign in again.');
+    }
+
+    throw new Error(data.message || data.error || `Failed to trigger email via relay (${res.status})`);
 };
 
 export const getEmailStatus = async () => {
     try {
-        const res = await fetchFromApiWithFallback(`/api/trigger-email`, { method: 'GET' });
+        const res = await fetchFromApiWithFallback(`/api/trigger-email`, {
+            method: 'GET',
+            headers: buildAuthHeaders()
+        });
+
+        await ensureAuthorizedOrThrow(res);
+
         if (!res.ok) throw new Error(`Status check failed: ${res.status}`);
         return await res.json();
     } catch (err) {
+        if (isAuthError(err)) {
+            throw err;
+        }
         return await fetchLatestWorkflowRunFromGitHub('send-email.yml');
     }
 };

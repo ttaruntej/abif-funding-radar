@@ -124,9 +124,20 @@ const App = () => {
 
     const handleLogout = () => {
         sessionStorage.removeItem('site_auth');
+        sessionStorage.removeItem('site_access_token');
         setIsAuthenticated(false);
         addLog('Logged out successfully.', 'info');
     };
+
+    useEffect(() => {
+        const handleAuthExpired = (event) => {
+            setIsAuthenticated(false);
+            addLog(event?.detail?.message || 'Session expired. Please sign in again.', 'error');
+        };
+
+        window.addEventListener('abif-auth-expired', handleAuthExpired);
+        return () => window.removeEventListener('abif-auth-expired', handleAuthExpired);
+    }, [addLog]);
 
     const handleSyncIntelligence = async () => {
         try {
@@ -163,6 +174,13 @@ const App = () => {
     const currentEmailFilters = briefingMode === 'filtered'
         ? { activeAudience, activeCategory, activeSector, activeStatus, searchQuery }
         : { activeAudience };
+
+    const dispatchRecipientSummary = dispatchMeta
+        ? dispatchMeta.recipientsSummary
+            || (typeof dispatchMeta.recipientCount === 'number'
+                ? `${dispatchMeta.recipientCount} recipient${dispatchMeta.recipientCount === 1 ? '' : 's'}`
+                : dispatchMeta.recipients || 'Confidential')
+        : 'Confidential';
 
     const handleWorkflowEmailLaunch = () => {
         if (!dispatchRecipients.trim()) {
@@ -655,7 +673,7 @@ const App = () => {
                                             Subject: <span className="font-medium text-slate-500">{dispatchMeta.subject}</span>
                                         </p>
                                         <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                                            Recipients: <span className="font-medium text-slate-500 truncate block">{dispatchMeta.recipients}</span>
+                                            Recipients: <span className="font-medium text-slate-500 truncate block">{dispatchRecipientSummary}</span>
                                         </p>
                                         <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-2 mb-3">
                                             <div className="flex flex-col">

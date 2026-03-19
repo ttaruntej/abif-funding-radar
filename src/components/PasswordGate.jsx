@@ -43,8 +43,13 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
 
             if (data.success) {
                 sessionStorage.setItem('site_auth', 'true');
+                if (typeof data.token === 'string' && data.token.trim() !== '') {
+                    sessionStorage.setItem('site_access_token', data.token.trim());
+                }
                 setIsAuthenticated(true);
             } else {
+                sessionStorage.removeItem('site_auth');
+                sessionStorage.removeItem('site_access_token');
                 setError(data.error || 'Invalid Access Key');
                 setPassword('');
             }

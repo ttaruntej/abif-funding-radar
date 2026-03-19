@@ -13,6 +13,19 @@ const DATA_FILE = path.join(process.cwd(), 'public', 'data', 'opportunities.json
 const HISTORY_FILE = path.join(process.cwd(), 'public', 'data', 'last_email_sent.json');
 const PUBLIC_SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ttaruntej.github.io/abif-funding-radar/';
 
+const summarizeRecipients = (rawRecipients) => {
+    const recipientList = String(rawRecipients || '')
+        .split(',')
+        .map((value) => value.trim())
+        .filter(Boolean);
+
+    const recipientCount = recipientList.length;
+    return {
+        recipientCount,
+        recipientsSummary: `${recipientCount} recipient${recipientCount === 1 ? '' : 's'}`
+    };
+};
+
 async function sendEmail() {
     const {
         SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM,
@@ -255,6 +268,7 @@ async function sendEmail() {
 
     try {
         const recipients = finalRecipients.split(',').map(e => e.trim()).filter(e => e).join(', ');
+        const recipientSummary = summarizeRecipients(recipients);
 
         const info = await transporter.sendMail({
             from: SMTP_FROM || '"ABIF AI Agent" <abif.tbimanager@gmail.com>',
@@ -267,7 +281,8 @@ async function sendEmail() {
         // --- PERSISTENCE: Save current batch and metadata to history ---
         const dispatchMeta = {
             timestamp: new Date().toISOString(),
-            recipients: recipients,
+            recipientCount: recipientSummary.recipientCount,
+            recipientsSummary: recipientSummary.recipientsSummary,
             subject: aiSubject,
             aiIntro: aiIntro,
             opportunityCount: targetOpps.length,
