@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import UserManual from './UserManual.jsx'
 import './index.css'
 import ReactGA from "react-ga4";
 
@@ -9,13 +10,16 @@ import ReactGA from "react-ga4";
 ReactGA.initialize("G-03BZC683SZ");
 
 const Root = () => {
+    const path = window.location.pathname.toLowerCase();
+    const isUserManualPage = path === '/user_manual' || path === '/user-manual';
+
     useEffect(() => {
         ReactGA.send({ hitType: "pageview", page: window.location.pathname });
     }, []);
 
     return (
         <React.StrictMode>
-            <App />
+            {isUserManualPage ? <UserManual /> : <App />}
         </React.StrictMode>
     );
 };

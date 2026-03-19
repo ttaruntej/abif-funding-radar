@@ -58,6 +58,14 @@ const Footer = ({ lastUpdatedTs }) => {
                                     <span className="text-[9px] text-slate-400 dark:text-slate-500 font-medium mt-1 uppercase tracking-wider">MeitY matching fund program</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/user_manual" className="group flex flex-col">
+                                    <span className="text-[12px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-500 transition-colors flex items-center gap-2">
+                                        User Manual <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-all" />
+                                    </span>
+                                    <span className="text-[9px] text-slate-400 dark:text-slate-500 font-medium mt-1 uppercase tracking-wider">How startup and incubator teams use the platform</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
