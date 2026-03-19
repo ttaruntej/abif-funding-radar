@@ -16,16 +16,30 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
         setIsChecking(true);
         setError(false);
 
-        const apiBase = (import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app').replace(/\/$/, '');
+        const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
+        const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
+        const apiCandidates = Array.from(new Set([configuredApiBase, prodApiBase]));
+        let data = null;
 
         try {
-            const response = await fetch(`${apiBase}/api/verify-access`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password })
-            });
+            for (const apiBase of apiCandidates) {
+                try {
+                    const response = await fetch(`${apiBase}/api/verify-access`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ password })
+                    });
 
-            const data = await response.json().catch(() => ({ success: false, error: 'Malformed response' }));
+                    data = await response.json().catch(() => ({ success: false, error: 'Malformed response' }));
+                    break;
+                } catch (err) {
+                    data = null;
+                }
+            }
+
+            if (!data) {
+                throw new Error('No API endpoint reachable');
+            }
 
             if (data.success) {
                 sessionStorage.setItem('site_auth', 'true');

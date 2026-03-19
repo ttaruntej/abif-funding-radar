@@ -12,17 +12,29 @@ const FeedbackSection = ({ addLog }) => {
 
         try {
             setStatus('sending');
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-tracker.vercel.app'}/api/send-feedback`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    feedback,
-                    userEmail: email || 'Anonymous',
-                    timestamp: new Date().toISOString()
-                })
-            });
+            const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
+            const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
+            const apiCandidates = Array.from(new Set([configuredApiBase, prodApiBase]));
+            let response = null;
 
-            if (!response.ok) throw new Error('Failed to send feedback');
+            for (const apiBase of apiCandidates) {
+                try {
+                    response = await fetch(`${apiBase}/api/send-feedback`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            feedback,
+                            userEmail: email || 'Anonymous',
+                            timestamp: new Date().toISOString()
+                        })
+                    });
+                    if (response.ok) break;
+                } catch (err) {
+                    response = null;
+                }
+            }
+
+            if (!response || !response.ok) throw new Error('Failed to send feedback');
 
             setStatus('success');
             addLog('Suggestion shared with the team.', 'success');

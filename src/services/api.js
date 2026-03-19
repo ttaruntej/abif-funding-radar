@@ -1,4 +1,7 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://abif-funding-radar-api.vercel.app';
+const PROD_API_BASE_URL = 'https://abif-funding-radar-api.vercel.app';
+const CONFIGURED_API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || PROD_API_BASE_URL).replace(/\/$/, '');
+const API_BASE_CANDIDATES = Array.from(new Set([CONFIGURED_API_BASE_URL, PROD_API_BASE_URL]));
+export const API_BASE_URL = CONFIGURED_API_BASE_URL;
 export const GITHUB_REPO_URL = 'https://github.com/ttaruntej/abif-funding-radar';
 export const EMAIL_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/send-email.yml`;
 export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sync.yml`;
@@ -22,6 +25,20 @@ const fetchJsonWithTimeout = async (url, options = {}, timeoutMs = API_TIMEOUT_M
     } finally {
         clearTimeout(timer);
     }
+};
+
+const fetchFromApiWithFallback = async (path, options = {}, timeoutMs = API_TIMEOUT_MS) => {
+    let lastError = null;
+
+    for (const base of API_BASE_CANDIDATES) {
+        try {
+            return await fetchJsonWithTimeout(`${base}${path}`, options, timeoutMs);
+        } catch (err) {
+            lastError = err;
+        }
+    }
+
+    throw lastError || new Error(`Unable to reach API route: ${path}`);
 };
 
 const fetchLatestWorkflowRunFromGitHub = async (workflowId) => {
@@ -78,7 +95,7 @@ export const fetchResearchReport = async () => {
 
 export const fetchDispatchMeta = async () => {
     try {
-        const liveRes = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email?action=fetch_meta`, { method: 'GET' });
+        const liveRes = await fetchFromApiWithFallback(`/api/trigger-email?action=fetch_meta`, { method: 'GET' });
         if (liveRes.ok) return await liveRes.json();
     } catch (err) { }
 
@@ -114,7 +131,7 @@ export const triggerScraper = async () => {
 
     // Strategy: Try Vercel first, fallback to Direct GitHub if token exists
     try {
-        const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-sync`, { method: 'POST' });
+        const res = await fetchFromApiWithFallback(`/api/trigger-sync`, { method: 'POST' });
         const data = await res.json();
         if (res.ok) return data;
         // If not OK, but we have a token, we might try direct if it's a connectivity error
@@ -141,7 +158,7 @@ export const triggerScraper = async () => {
 
 export const getScraperStatus = async () => {
     try {
-        const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-sync`, { method: 'GET' });
+        const res = await fetchFromApiWithFallback(`/api/trigger-sync`, { method: 'GET' });
         if (!res.ok) throw new Error('Sync status unreachable');
         return await res.json();
     } catch (err) {
@@ -162,7 +179,7 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
     }
 
     try {
-        const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email`, {
+        const res = await fetchFromApiWithFallback(`/api/trigger-email`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ target_emails, mode, filters })
@@ -202,7 +219,7 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
 
 export const getEmailStatus = async () => {
     try {
-        const res = await fetchJsonWithTimeout(`${API_BASE_URL}/api/trigger-email`, { method: 'GET' });
+        const res = await fetchFromApiWithFallback(`/api/trigger-email`, { method: 'GET' });
         if (!res.ok) throw new Error(`Status check failed: ${res.status}`);
         return await res.json();
     } catch (err) {
