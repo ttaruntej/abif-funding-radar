@@ -1,0 +1,22 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var parts = window.location.pathname.split('/').filter(Boolean);
+        var base = parts.length > 1 ? '/' + parts[0] + '/' : '/';
+        var relative = parts.length > 1 ? parts.slice(1).join('/') : (parts[0] || '');
+        var hashRoute = relative ? '/' + relative : '/';
+        var target = base + '#' + hashRoute + (window.location.search || '');
+
+        if (window.location.href !== target) {
+          window.location.replace(target);
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
