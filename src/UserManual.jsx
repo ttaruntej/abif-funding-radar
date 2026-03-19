@@ -37,7 +37,7 @@ const UserManual = () => {
         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-700">
             <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10 sm:py-14">
                 <a
-                    href="#/"
+                    href="./"
                     className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.18em] text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
                 >
                     <ArrowLeft size={14} />
@@ -130,4 +130,5 @@ const UserManual = () => {
 };
 
 export default UserManual;
+
 

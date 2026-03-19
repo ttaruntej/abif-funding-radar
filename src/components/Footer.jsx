@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import {
     ExternalLink,
     Linkedin,
@@ -59,7 +59,7 @@ const Footer = ({ lastUpdatedTs }) => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#/user_manual" className="group flex flex-col">
+                                <a href="?page=user_manual" className="group flex flex-col">
                                     <span className="text-[12px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-500 transition-colors flex items-center gap-2">
                                         User Manual <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-all" />
                                     </span>
@@ -179,3 +179,4 @@ const Footer = ({ lastUpdatedTs }) => {
 };
 
 export default Footer;
+

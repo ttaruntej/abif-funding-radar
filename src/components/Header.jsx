@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { CATEGORIES } from '../constants/tracker';
 import { Search, Globe, Landmark, Handshake, Database, Cpu, History, Radar, MessageSquare, BookOpen } from 'lucide-react';
 
@@ -121,7 +121,7 @@ const Header = ({
                     </button>
 
                     <a
-                        href="#/user_manual"
+                        href="?page=user_manual"
                         className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-600 text-emerald-700 hover:text-white dark:text-emerald-400 transition-all duration-500 font-black text-[9px] uppercase tracking-widest border border-emerald-500/10 hover:border-emerald-600 shadow-sm active:scale-90 cursor-pointer shrink-0"
                     >
                         <BookOpen size={12} />
@@ -175,3 +175,4 @@ const Header = ({
 };
 
 export default Header;
+
