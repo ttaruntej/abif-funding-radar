@@ -650,9 +650,9 @@ const App = () => {
                 />
 
                 {isEmailModalOpen && (
-                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+                    <div className="fixed inset-0 z-[200] flex items-start sm:items-center justify-center p-4 overflow-y-auto">
                         <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm animate-in fade-in" onClick={() => setIsEmailModalOpen(false)} />
-                        <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[32px] shadow-3xl border border-white/5 p-5 sm:p-8 animate-shutter">
+                        <div className="relative my-2 sm:my-0 w-full max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain bg-white dark:bg-slate-900 rounded-[32px] shadow-3xl border border-white/5 p-5 sm:p-8 animate-shutter">
                             <div className="flex justify-between items-start mb-6">
                                 <h3 className="font-black text-slate-900 dark:text-white text-[12px] uppercase flex items-center gap-3">
                                     Send Briefing
