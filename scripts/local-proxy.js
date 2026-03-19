@@ -188,54 +188,73 @@ const server = http.createServer(async (req, res) => {
                         headers: ghHeaders
                     }, (ghRes) => {
                         if (ghRes.statusCode !== 204) {
+                            console.error('❌ [Auth Relay] GitHub trigger failed with status:', ghRes.statusCode);
+                            if (!res.writableEnded) {
+                                res.writeHead(500);
+                                res.end(JSON.stringify({ success: false, error: 'GitHub trigger failed' }));
+                            }
+                            return;
+                        }
+
+                        // 2. Poll only if trigger succeeded
+                        let attempts = 0;
+                        const pollInterval = setInterval(() => {
+                            attempts++;
+                            https.get({
+                                hostname: 'api.github.com',
+                                path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/auth-verify.yml/runs?per_page=1`,
+                                headers: ghHeaders
+                            }, (pRes) => {
+                                let data = '';
+                                pRes.on('data', chunk => data += chunk);
+                                pRes.on('end', () => {
+                                    if (res.writableEnded) {
+                                        clearInterval(pollInterval);
+                                        return;
+                                    }
+
+                                    const json = JSON.parse(data);
+                                    const lastRun = json.workflow_runs?.[0];
+                                    const isRecent = lastRun && (new Date() - new Date(lastRun.created_at)) < 60000;
+
+                                    if (isRecent && lastRun.status === 'completed') {
+                                        clearInterval(pollInterval);
+                                        if (lastRun.conclusion === 'success') {
+                                            console.log('✅ [Auth Relay] Access Granted by GitHub');
+                                            res.writeHead(200, { 'Content-Type': 'application/json' });
+                                            res.end(JSON.stringify({ success: true }));
+                                        } else {
+                                            console.log('❌ [Auth Relay] Access Denied by GitHub');
+                                            res.writeHead(401, { 'Content-Type': 'application/json' });
+                                            res.end(JSON.stringify({ success: false, error: 'Invalid Access Key' }));
+                                        }
+                                    } else if (attempts > 20) {
+                                        clearInterval(pollInterval);
+                                        console.warn('⚠️ [Auth Relay] Polling Timed Out');
+                                        res.writeHead(504, { 'Content-Type': 'application/json' });
+                                        res.end(JSON.stringify({ success: false, error: 'Verification timed out' }));
+                                    }
+                                });
+                            });
+                        }, 1000);
+                    });
+
+                    triggerGh.on('error', (e) => {
+                        console.error('❌ [Auth Relay] Trigger error:', e);
+                        if (!res.writableEnded) {
                             res.writeHead(500);
-                            res.end(JSON.stringify({ success: false, error: 'GitHub trigger failed' }));
+                            res.end(JSON.stringify({ success: false, error: 'Relay link failed' }));
                         }
                     });
+
                     triggerGh.write(JSON.stringify({ ref: 'main', inputs: { password } }));
                     triggerGh.end();
 
-                    // 2. Poll for the latest run result (max 20 seconds)
-                    let attempts = 0;
-                    const pollInterval = setInterval(() => {
-                        attempts++;
-                        https.get({
-                            hostname: 'api.github.com',
-                            path: `/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/auth-verify.yml/runs?per_page=1`,
-                            headers: ghHeaders
-                        }, (ghRes) => {
-                            let data = '';
-                            ghRes.on('data', chunk => data += chunk);
-                            ghRes.on('end', () => {
-                                const json = JSON.parse(data);
-                                const lastRun = json.workflow_runs?.[0];
-
-                                // Check if the run belongs to the last minute and has finished
-                                const isRecent = lastRun && (new Date() - new Date(lastRun.created_at)) < 60000;
-
-                                if (isRecent && lastRun.status === 'completed') {
-                                    clearInterval(pollInterval);
-                                    if (lastRun.conclusion === 'success') {
-                                        console.log('✅ [Auth Relay] Access Granted by GitHub');
-                                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                                        res.end(JSON.stringify({ success: true }));
-                                    } else {
-                                        console.log('❌ [Auth Relay] Access Denied by GitHub');
-                                        res.writeHead(401, { 'Content-Type': 'application/json' });
-                                        res.end(JSON.stringify({ success: false }));
-                                    }
-                                } else if (attempts > 20) {
-                                    clearInterval(pollInterval);
-                                    res.writeHead(504);
-                                    res.end(JSON.stringify({ success: false, error: 'Verification timed out' }));
-                                }
-                            });
-                        });
-                    }, 1000);
-
                 } catch (e) {
-                    res.writeHead(500);
-                    res.end(JSON.stringify({ success: false, error: 'Relay failure' }));
+                    if (!res.writableEnded) {
+                        res.writeHead(500);
+                        res.end(JSON.stringify({ success: false, error: 'Relay failure' }));
+                    }
                 }
             });
         }

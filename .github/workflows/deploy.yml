@@ -26,13 +26,7 @@ jobs:
         run: npm install
 
       - name: Build Project
-        run: |
-          # Split token into two parts to bypass push-protection regex scanning
-          FULL_TOKEN="${{ secrets.GH_TOKEN }}"
-          HALF=$(( ${#FULL_TOKEN} / 2 ))
-          export VITE_GHT_A=${FULL_TOKEN:0:$HALF}
-          export VITE_GHT_B=${FULL_TOKEN:$HALF}
-          npm run build
+        run: npm run build
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
