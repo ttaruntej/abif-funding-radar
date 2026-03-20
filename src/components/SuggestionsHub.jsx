@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, MessageSquare, Clock, User, RefreshCw, AlertCircle, Database, Search, Filter } from 'lucide-react';
-import { fetchSuggestions } from '../services/api';
+import { X, MessageSquare, Clock, User, RefreshCw, AlertCircle, Database, Search, Filter, Trash2 } from 'lucide-react';
+import { fetchSuggestions, deleteSuggestion } from '../services/api';
 
 const SuggestionsHub = ({ onClose, addLog, theme }) => {
     const [suggestions, setSuggestions] = useState([]);
@@ -8,6 +8,8 @@ const SuggestionsHub = ({ onClose, addLog, theme }) => {
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [filter, setFilter] = useState('all'); // all, recent, anonymous
+    const [deletingId, setDeletingId] = useState(null);
+    const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
     const loadSuggestions = async (silent = false) => {
         try {
@@ -43,6 +45,20 @@ const SuggestionsHub = ({ onClose, addLog, theme }) => {
         const date = new Date(isoStr);
         return date.toLocaleDateString([], { day: '2-digit', month: 'short', year: 'numeric' }) + ' | ' +
             date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            setDeletingId(id);
+            await deleteSuggestion(id);
+            setSuggestions(prev => prev.filter(s => s.id !== id));
+            addLog(`Suggestion deleted successfully.`, 'info');
+            setConfirmDeleteId(null);
+        } catch (err) {
+            addLog('Failed to delete suggestion.', 'error');
+        } finally {
+            setDeletingId(null);
+        }
     };
 
     return (
@@ -173,6 +189,34 @@ const SuggestionsHub = ({ onClose, addLog, theme }) => {
                                             <span>ID: {item.id.slice(-8)}</span>
                                             <div className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full" />
                                             <span className="text-blue-500/60">Repository Synced</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            {confirmDeleteId === item.id ? (
+                                                <div className="flex items-center gap-2 animate-in slide-in-from-right-2">
+                                                    <span className="text-[8px] font-black text-red-500 uppercase tracking-widest mr-1">Confirm?</span>
+                                                    <button
+                                                        onClick={() => handleDelete(item.id)}
+                                                        disabled={deletingId === item.id}
+                                                        className="px-3 py-1 bg-red-500 text-white rounded-lg text-[8px] font-black uppercase tracking-widest hover:bg-red-600 active:scale-95 transition-all"
+                                                    >
+                                                        {deletingId === item.id ? 'Deleting...' : 'Yes, Delete'}
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setConfirmDeleteId(null)}
+                                                        className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-lg text-[8px] font-black uppercase tracking-widest hover:text-slate-600 transition-all"
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    onClick={() => setConfirmDeleteId(item.id)}
+                                                    className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50/50 dark:hover:bg-red-500/10 rounded-xl transition-all active:scale-90"
+                                                    title="Delete Suggestion"
+                                                >
+                                                    <Trash2 size={14} />
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

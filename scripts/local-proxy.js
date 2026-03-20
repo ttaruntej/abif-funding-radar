@@ -287,6 +287,52 @@ const server = http.createServer(async (req, res) => {
                     res.writeHead(400);
                     res.end(JSON.stringify({ error: 'Invalid action' }));
                 }
+            } else if (req.method === 'DELETE') {
+                const id = parsedUrl.searchParams.get('id');
+                if (!id) {
+                    res.writeHead(400);
+                    res.end(JSON.stringify({ error: 'ID required' }));
+                    return;
+                }
+
+                // 1. Fetch current file
+                https.get({
+                    hostname: 'api.github.com',
+                    path: `/repos/${REPO_OWNER}/${REPO_NAME}/contents/public/data/suggestions.json`,
+                    headers: ghHeaders
+                }, (ghRes) => {
+                    let data = '';
+                    ghRes.on('data', chunk => data += chunk);
+                    ghRes.on('end', () => {
+                        try {
+                            const json = JSON.parse(data);
+                            const sha = json.sha;
+                            const currentList = JSON.parse(Buffer.from(json.content, 'base64').toString('utf-8'));
+                            const newList = currentList.filter(item => item.id !== id);
+
+                            // 2. Push back
+                            const ghReq = https.request({
+                                hostname: 'api.github.com',
+                                path: `/repos/${REPO_OWNER}/${REPO_NAME}/contents/public/data/suggestions.json`,
+                                method: 'PUT',
+                                headers: { ...ghHeaders, 'Content-Type': 'application/json' }
+                            }, (putRes) => {
+                                res.writeHead(200, { 'Content-Type': 'application/json' });
+                                res.end(JSON.stringify({ message: 'Suggestion deleted (Local Proxy)' }));
+                            });
+
+                            ghReq.write(JSON.stringify({
+                                message: `feat: delete ecosystem suggestion ${id}`,
+                                content: Buffer.from(JSON.stringify(newList, null, 2)).toString('base64'),
+                                sha
+                            }));
+                            ghReq.end();
+                        } catch (e) {
+                            res.writeHead(500);
+                            res.end(JSON.stringify({ error: 'Deletion failed' }));
+                        }
+                    });
+                });
             } else if (req.method === 'POST') {
                 let body = '';
                 req.on('data', chunk => body += chunk);

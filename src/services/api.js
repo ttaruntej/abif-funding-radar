@@ -316,3 +316,24 @@ export const fetchSuggestions = async () => {
 
     return [];
 };
+
+export const deleteSuggestion = async (id) => {
+    const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
+    const localApiBase = 'http://localhost:3000';
+    const apiCandidates = [localApiBase, prodApiBase];
+
+    let lastError = null;
+    for (const apiBase of apiCandidates) {
+        try {
+            const response = await fetch(`${apiBase}/api/send-feedback?id=${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) return { ok: true };
+            const err = await response.json();
+            lastError = err.error || 'Server error';
+        } catch (err) {
+            lastError = err.message || 'Network error';
+        }
+    }
+    throw new Error(lastError || 'Failed to delete');
+};
