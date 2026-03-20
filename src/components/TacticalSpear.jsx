@@ -10,7 +10,8 @@ import {
     LayoutGrid,
     X,
     ChevronUp,
-    LogOut
+    LogOut,
+    Lightbulb
 } from 'lucide-react';
 
 const TacticalSpear = ({
@@ -24,13 +25,21 @@ const TacticalSpear = ({
     toggleTheme,
     currentView,
     setCurrentView,
-    handleLogout
+    handleLogout,
+    onSuggestionsClick
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = () => setIsOpen(!isOpen);
 
     const actions = [
+        {
+            id: 'suggestions',
+            icon: <Lightbulb size={20} />,
+            label: 'ECOSYSTEM SUGGESTIONS',
+            onClick: onSuggestionsClick,
+            color: 'hover:text-amber-400 hover:bg-amber-400/10'
+        },
         {
             id: 'sync',
             icon: refreshCooldown > 0 ? <span className="text-[10px] font-black">{refreshCooldown}s</span> : <RefreshCw size={20} className={isRefreshing ? 'animate-spin' : ''} />,

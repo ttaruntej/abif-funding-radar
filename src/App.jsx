@@ -21,6 +21,7 @@ import FeedbackSection from './components/FeedbackSection';
 import TacticalSpear from './components/TacticalSpear';
 import EcosystemTicker from './components/EcosystemTicker';
 import LazyGrid from './components/LazyGrid';
+import SuggestionsHub from './components/SuggestionsHub';
 import { Activity, X, TrendingUp, CheckCircle2, Minus, Maximize2, AlertTriangle, RotateCcw } from 'lucide-react';
 
 const IntelligenceReport = lazy(() => import('./components/IntelligenceReport'));
@@ -96,6 +97,7 @@ const App = () => {
     // 5. UI Local State
     const [showReport, setShowReport] = useState(false);
     const [showEmailModal, setShowEmailModal] = useState(false);
+    const [showSuggestions, setShowSuggestions] = useState(false);
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [isSyncingReport, setIsSyncingReport] = useState(false);
     const [briefingMode, setBriefingMode] = useState('standard');
@@ -178,9 +180,9 @@ const App = () => {
 
     const dispatchRecipientSummary = dispatchMeta
         ? dispatchMeta.recipientsSummary
-            || (typeof dispatchMeta.recipientCount === 'number'
-                ? `${dispatchMeta.recipientCount} recipient${dispatchMeta.recipientCount === 1 ? '' : 's'}`
-                : dispatchMeta.recipients || 'Confidential')
+        || (typeof dispatchMeta.recipientCount === 'number'
+            ? `${dispatchMeta.recipientCount} recipient${dispatchMeta.recipientCount === 1 ? '' : 's'}`
+            : dispatchMeta.recipients || 'Confidential')
         : 'Confidential';
 
     const handleWorkflowEmailLaunch = () => {
@@ -644,6 +646,7 @@ const App = () => {
                     refreshCooldown={cooldown}
                     handleExportCSV={() => exportToCSV(filtered, { activeCategory, activeAudience })}
                     onEmailClick={() => setIsEmailModalOpen(true)}
+                    onSuggestionsClick={() => setShowSuggestions(true)}
                     emailCooldown={emailCooldown}
                     theme={theme}
                     toggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -651,6 +654,14 @@ const App = () => {
                     setCurrentView={setCurrentView}
                     handleLogout={handleLogout}
                 />
+
+                {showSuggestions && (
+                    <SuggestionsHub
+                        onClose={() => setShowSuggestions(false)}
+                        addLog={addLog}
+                        theme={theme}
+                    />
+                )}
 
                 {isEmailModalOpen && (
                     <div className="fixed inset-0 z-[200] flex items-start sm:items-center justify-center p-4 overflow-y-auto">

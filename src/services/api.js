@@ -288,3 +288,31 @@ export const getEmailStatus = async () => {
         return await fetchLatestWorkflowRunFromGitHub('send-email.yml');
     }
 };
+
+/**
+ * Fetch Ecosystem Suggestions
+ */
+export const fetchSuggestions = async () => {
+    try {
+        const liveRes = await fetchFromApiWithFallback(`/api/send-feedback?action=fetch_suggestions`, {
+            method: 'GET',
+            headers: buildAuthHeaders()
+        });
+        await ensureAuthorizedOrThrow(liveRes);
+        if (liveRes.ok) return await liveRes.json();
+    } catch (err) {
+        if (isAuthError(err)) throw err;
+    }
+
+    try {
+        const githubRes = await fetchJsonWithTimeout(`${GITHUB_RAW_DATA_BASE}/suggestions.json`, { method: 'GET' });
+        if (githubRes.ok) return await githubRes.json();
+    } catch (err) { }
+
+    try {
+        const staticRes = await fetchJsonWithTimeout(`./data/suggestions.json`, { method: 'GET' });
+        if (staticRes.ok) return await staticRes.json();
+    } catch (err) { }
+
+    return [];
+};

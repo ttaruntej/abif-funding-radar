@@ -259,8 +259,90 @@ const server = http.createServer(async (req, res) => {
             });
         }
 
-        else {
+        // --- 6. SEND FEEDBACK / SUGGESTIONS (POST/GET) ---
+        else if (pathname === '/api/send-feedback') {
+            if (req.method === 'GET') {
+                const action = parsedUrl.searchParams.get('action');
+                if (action === 'fetch_suggestions') {
+                    https.get({
+                        hostname: 'api.github.com',
+                        path: `/repos/${REPO_OWNER}/${REPO_NAME}/contents/public/data/suggestions.json`,
+                        headers: ghHeaders
+                    }, (ghRes) => {
+                        let data = '';
+                        ghRes.on('data', chunk => data += chunk);
+                        ghRes.on('end', () => {
+                            try {
+                                const json = JSON.parse(data);
+                                const content = Buffer.from(json.content, 'base64').toString('utf-8');
+                                res.writeHead(200, { 'Content-Type': 'application/json' });
+                                res.end(content);
+                            } catch (e) {
+                                res.writeHead(404, { 'Content-Type': 'application/json' });
+                                res.end(JSON.stringify({ error: 'Suggestions not found' }));
+                            }
+                        });
+                    });
+                } else {
+                    res.writeHead(400);
+                    res.end(JSON.stringify({ error: 'Invalid action' }));
+                }
+            } else if (req.method === 'POST') {
+                let body = '';
+                req.on('data', chunk => body += chunk);
+                req.on('end', async () => {
+                    const { feedback, userEmail } = JSON.parse(body);
+                    const safeEmail = userEmail || 'Anonymous';
 
+                    // 1. Fetch current file
+                    https.get({
+                        hostname: 'api.github.com',
+                        path: `/repos/${REPO_OWNER}/${REPO_NAME}/contents/public/data/suggestions.json`,
+                        headers: ghHeaders
+                    }, (ghRes) => {
+                        let data = '';
+                        ghRes.on('data', chunk => data += chunk);
+                        ghRes.on('end', () => {
+                            let sha = null;
+                            let currentList = [];
+                            try {
+                                const json = JSON.parse(data);
+                                sha = json.sha;
+                                currentList = JSON.parse(Buffer.from(json.content, 'base64').toString('utf-8'));
+                            } catch (e) { /* file might not exist */ }
+
+                            // 2. Add new entry
+                            currentList.push({
+                                id: Date.now().toString(),
+                                email: safeEmail,
+                                feedback,
+                                timestamp: new Date().toISOString()
+                            });
+
+                            // 3. Push back
+                            const ghReq = https.request({
+                                hostname: 'api.github.com',
+                                path: `/repos/${REPO_OWNER}/${REPO_NAME}/contents/public/data/suggestions.json`,
+                                method: 'PUT',
+                                headers: { ...ghHeaders, 'Content-Type': 'application/json' }
+                            }, (putRes) => {
+                                res.writeHead(200, { 'Content-Type': 'application/json' });
+                                res.end(JSON.stringify({ message: 'Feedback recorded (Local Proxy)' }));
+                            });
+
+                            ghReq.write(JSON.stringify({
+                                message: `feat: add ecosystem suggestion from ${safeEmail}`,
+                                content: Buffer.from(JSON.stringify(currentList, null, 2)).toString('base64'),
+                                sha
+                            }));
+                            ghReq.end();
+                        });
+                    });
+                });
+            }
+        }
+
+        else {
             res.writeHead(404);
             res.end('Not Found');
         }
