@@ -1,6 +1,7 @@
 {
   "incubator": {
     "title": "ABIF Incubator Funding Analysis 2026",
+<<<<<<< HEAD
     "generatedAt": "2024-07-30T10:30:00Z",
     "executiveSummary": "The current funding environment presents significant opportunities for Section 8 Incubators to enhance their operational efficiency, infrastructure, and ecosystem influence. Key national programs such as BIRAC BioNEST, MeitY TIDE 2.0 (Incubator Support), DST NIDHI-TBI, and AIM's Atal Incubation Centre (AIC) Grant are actively providing substantial direct grants for capacity building and operational reliability. Additionally, strategic CSR and international collaborations are emerging to support sector-specific incubation networks and centres of excellence, crucial for specialized growth.",
     "keyTrends": [
@@ -50,5 +51,71 @@
       "Prepare compelling pitch decks that clearly articulate your solution's deep-tech innovation or agritech impact, aligning with the specific thematic focus of grants related to AI, climate, biotech, or water solutions, especially for upcoming deadlines like AMRUT 2.0 (Feb 2026) and D.E.S.I.G.N for BioE3 (Feb 2026)."
     ],
     "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 07:07 AM"
+=======
+    "generatedAt": "2024-05-15T10:48:30Z",
+    "executiveSummary": "The current funding landscape for Indian incubators is robust, with significant opportunities aimed at strengthening operational capabilities, enhancing infrastructure, and expanding ecosystem impact. National schemes from DST, MeitY, and BIRAC provide substantial grants directly for incubator establishment, enhancement, and specialized support, moving beyond mere startup funding.",
+    "keyTrends": [
+      {
+        "trend": "Dedicated National Grants for Incubator Infrastructure & Operations",
+        "detail": "Government bodies like DST (NIDHI-TBI), MeitY (TIDE 2.0, NGIS/LEAP Ahead), AIM (Atal Incubation Centre Grant), and BIRAC (BioNEST) are actively offering substantial grants (up to ₹10 Crores) directly to incubators for establishing new facilities, upgrading existing infrastructure, and bolstering operational reliability and capacity, rather than solely funding startups."
+      },
+      {
+        "trend": "Incubators as Key Seed Fund Partners & Managers",
+        "detail": "Schemes such as the DPIIT's SISFS Incubator Grant are explicitly designed to empower incubators as seed fund partners, providing them with capital (up to ₹5 Crores) to disburse and manage. This not only enhances an incubator's ecosystem impact by providing critical early-stage capital to startups but also strengthens its operational model through management fees and increased visibility."
+      },
+      {
+        "trend": "Sector-Specific Incubator Development & CoE Establishment",
+        "detail": "There's a growing emphasis on creating specialized incubation centers and 'Centres of Excellence' in critical sectors like AgriTech, Deep Science, and BioTech. Opportunities like the India Agritech Incubation Network, BIRAC BioNEST, MeitY TIDE 2.0, and Invest India/IIG CSR's CoE initiatives offer targeted funding for incubators focusing on specific technological domains, fostering deeper ecosystem impact."
+      },
+      {
+        "trend": "Leveraging CSR for Incubation Ecosystem Building",
+        "detail": "Corporate Social Responsibility (CSR) initiatives, often facilitated through platforms like the India Investment Grid (IIG) CSR portal, are emerging as a viable channel for funding specialized incubator infrastructure and operational support, particularly for Centres of Excellence in areas like Agricultural Innovation and Deep Science Incubation."
+      }
+    ],
+    "actionableRecommendations": [
+      "Strategically map your incubator's current operational gaps and planned growth initiatives against dedicated national grants such as NIDHI-TBI, Atal Incubation Centre (AIC) Grant, and BIRAC BioNEST to secure significant funding for infrastructure and sustained operations.",
+      "Actively pursue accreditation and grants to become a designated Seed Fund Partner under schemes like DPIIT’s SISFS, enhancing your incubator's financial sustainability through fund management and significantly increasing your ecosystem impact by deploying early-stage capital.",
+      "Align your incubator's specialization with sector-specific government and CSR funding calls, particularly for areas like AgriTech (e.g., India Agritech Incubation Network, relevant IIG CSR CoEs), Deep Science (e.g., SID - Deep Science Incubation), and BioTech (e.g., BIRAC BioNEST), to access targeted support.",
+      "Proactively engage with the Invest India / IIG CSR Opportunities Portal to identify and secure corporate partnerships willing to fund the establishment or enhancement of specialized Centers of Excellence and incubation infrastructure.",
+      "Develop comprehensive proposals that explicitly detail how requested funds will directly enhance the incubator’s operational efficiency, reliability metrics, and measurable ecosystem impact, rather than solely focusing on the number of startups supported."
+    ],
+    "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 12:33 PM"
+  },
+  "startup": {
+    "title": "ABIF Startup Funding Analysis 2026",
+    "generatedAt": "2024-07-30T10:00:00Z",
+    "executiveSummary": "The Indian deep-tech and agritech landscape is ripe with diverse funding opportunities in 2026, offering crucial seed capital, equity-free grants, and robust accelerator support. Founders can strategically leverage national and international programs to fuel product development, secure operational runway, and execute successful market entry strategies, with a clear focus on innovation in key sectors like bio-E3, cleantech, and AI.",
+    "keyTrends": [
+      {
+        "trend": "Strong Government & Institutional Non-Dilutive Capital",
+        "detail": "National agencies like BIRAC, DST, MeitY, and the Ministry of MSME are significant providers of grants (e.g., BIRAC BIG, SAMRIDH, MSME Incubation, NIDHI-SSP) crucial for early-stage product development and startup runway. These non-dilutive funds mitigate early equity dilution and enable focused R&D."
+      },
+      {
+        "trend": "Sector-Specific Focus on Deep-Tech & Agritech",
+        "detail": "A clear trend towards specialized funding in areas like Bio-E3 (DBT), Water Management (AMRUT 2.0), Agritech (RKVY-RAFTAAR, NABARD AgriSURE, AGRI UDAAN, Krishi Mangal), Climate Tech (Keeling Curve Prize, Amazon, Greenovation), and AI (India-France AI, AI4Good) indicates targeted support for specific deep-tech and agritech innovations."
+      },
+      {
+        "trend": "Prevalence of Accelerator and Incubation Models",
+        "detail": "Numerous opportunities offer program support, mentorship, and ecosystem access rather than just direct cash. Initiatives like BIRAC BioNEST, MeitY TIDE 2.0, AGRI UDAAN, India Australia RISE Accelerator, and Aspire Climatetech provide strategic guidance, market access, and often lead to further investment for scaling."
+      },
+      {
+        "trend": "Growing International Collaborations and Global Market Access",
+        "detail": "Several international calls (India-France AI, ADB Ventures, UNIDO, IFC, ASME iShow, AI4Good, Greenovation Agrivoltaics) present significant capital and pathways for global market entry. These often require cross-border collaboration and offer larger funding envelopes for scaling beyond India."
+      },
+      {
+        "trend": "Increasing State-Level Support for Early-Stage Startups",
+        "detail": "States like Karnataka (Elevate NXT), Tamil Nadu (StartupTN Agri-Tech), Gujarat (Srujan Seed Support), and Kerala (KSUM Idea/Productization Grant) are actively supporting local innovation with grants and incubation. These are excellent for localized product development and initial market validation."
+      }
+    ],
+    "actionableRecommendations": [
+      "Prioritize applications for significant rolling grants such as BIRAC Biotechnology Ignition Grant (BIG, ₹50 Lakhs) and NIDHI Seed Support Program (Up to ₹100 Lakhs) for immediate runway and product development, given their continuous intake.",
+      "Actively pursue sector-specific grants like RKVY-RAFTAAR Seed Grants (Up to ₹25 Lakhs) for agritech, AMRUT 2.0 Challenges (₹20 Lakhs) for water tech, and the India-France AI Call (€500,000+) for advanced AI solutions to align with deep-tech specializations.",
+      "Leverage accelerator programs like AGRI UDAAN 8.0, India Australia RISE Accelerator, and Aspire Climatetech Program for strategic mentorship, ecosystem access, and potential market entry, especially as product development matures.",
+      "Explore state-level funding opportunities (e.g., Karnataka Elevate NXT, StartupTN Agri-Tech Grant, Startup Gujarat – Srujan Seed Support) for localized market entry and initial scale-up, which often have less competition than national schemes.",
+      "Prepare compelling proposals for larger international grants and challenges like AI4Good AgriTech Farmer Solutions ($360,000) and the AI for ALL: Global Impact Challenge (₹2.5 Crores) to secure substantial capital for market expansion and global ambition.",
+      "Monitor and apply promptly to opportunities with approaching deadlines, such as StartupTN Agri-Tech Grant (Dec 2025), Amazon Devices Climate Tech Accelerator (Jan 2026), and AI4Good AgriTech Farmer Solutions (Mar 2026), to maximize immediate funding prospects."
+    ],
+    "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 10:00 AM"
+>>>>>>> 996d20a (feat: migrate scrapers to micro-agent architecture and orchestrator)
   }
 }

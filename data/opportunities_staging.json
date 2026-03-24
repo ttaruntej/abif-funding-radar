@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Equity-free seed grant for early-stage DeepTech startups building AI models",
+    "body": "The Ministry of AI",
+    "description": "The Ministry of AI has announced a ?1 Crore equity-free seed grant for early-stage DeepTech startups building AI models.",
+    "maxAward": "?1 Crore equity-free seed grant",
+    "deadline": "15-12-2026",
+    "targetAudience": [
+      "startup",
+      "incubator"
+    ],
+    "sectors": [
+      "DeepTech"
+    ],
+    "stages": [
+      "Seed"
+    ],
+    "criticalEligibility": [
+      "early-stage DeepTech startups building AI models"
+    ],
+    "link": "email://news%40inc42.com",
+    "dataSource": "email_webhook",
+    "linkStatus": "probable",
+    "status": "Check Website"
+  },
+  {
+    "name": "Ministry of AI Deep-Tech Grant",
+    "body": "Ministry of AI",
+    "description": "The Ministry of AI announced a ₹1 Crore grant specifically for deep-tech startups.",
+    "maxAward": "₹1 Crore",
+    "deadline": "15-12-2026",
+    "targetAudience": [
+      "startup"
+    ],
+    "sectors": [
+      "DeepTech"
+    ],
+    "stages": [],
+    "criticalEligibility": [
+      "Deep-tech startups"
+    ],
+    "link": "email://news%40inc42.com",
+    "dataSource": "email_webhook",
+    "linkStatus": "probable",
+    "status": "Check Website"
+  }
+]
