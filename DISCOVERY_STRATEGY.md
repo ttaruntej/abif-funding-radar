@@ -11,7 +11,7 @@ The current discovery stack moves away from broad notebook-led publishing and to
 
 ## Scripts
 
-- `npm run discover:official`: runs the restored source-led collector.
+- `npm run discover:official`: runs the discovery orchestrator at `scripts/discovery/orchestrator.js`.
 - `npm run curate:datasets`: builds the publishable dataset and review queue.
 - `npm run review:artifacts -- --limit=5`: inspects the highest-priority review items, discovers PDF/image/document artifacts, and optionally runs Gemini extraction on them.
 - `npm run sync`: runs both steps in sequence.

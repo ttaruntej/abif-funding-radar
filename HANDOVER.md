@@ -5,9 +5,9 @@
 This codebase is a highly customized, "lean-and-mean" automation machine designed for **Agri Business Incubation Foundation IIT Kharagpur**. It is NOT a standard enterprise CRUD app.
 
 ### 1. Collectors are Fragile
-The heart of the data collection is `scripts/official-discovery.js`. It depends on **cheerio** and **puppeteer** to crawl government and institutional portals.
+The heart of the data collection is `scripts/discovery/orchestrator.js`. It depends on **cheerio** and **puppeteer** to crawl government and institutional portals.
 - **The Problem:** These websites change their HTML structure frequently. If a collector fails, it's almost certainly because a selector in the script is now obsolete.
-- **Task:** You will periodically need to update selectors and source adapters in `scripts/official-discovery.js`.
+- **Task:** You will periodically need to update selectors and source adapters under `scripts/discovery/`.
 
 ### 2. GitHub Actions "Backend"
 There is no traditional database. The "database" is a static JSON file at `public/data/opportunities.json`.
@@ -48,7 +48,7 @@ Users can toggle "Low-Perf Mode" via the **Zap** icon in the `TacticalSpear` men
 ---
 
 ## 🛠️ Key Files & their Secrets
-- `scripts/official-discovery.js`: Data extraction logic.
+- `scripts/discovery/orchestrator.js`: Data extraction orchestrator.
 - `scripts/send-email.js`: AI-enhanced email dispatch.
 - `src/App.jsx`: Main UI logic, theme management, and performance toggles.
 - `src/utils/aiBriefing.js`: Reactive AI synthesis generator.
@@ -63,7 +63,7 @@ Users can toggle "Low-Perf Mode" via the **Zap** icon in the `TacticalSpear` men
 ## 🚀 Common Maintenance Tasks
 
 ### Adding a New Funding Source
-1. Go to `scripts/official-discovery.js`.
+1. Go to `scripts/discovery/orchestrator.js`.
 2. Map the new portal's HTML to the normalized opportunity structure.
 3. Update the collector flow to include the new source and rerun `npm run sync`.
 
