@@ -341,7 +341,7 @@ const App = () => {
                                 </div>
                             </div>
                         ) : (
-                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] h-[min(70vh,42rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
+                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] h-[min(calc(100dvh-8rem),42rem)] max-h-[calc(100dvh-8rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
                                 ? 'border-emerald-500/30'
                                 : syncSummary.tone === 'error'
                                     ? 'border-red-500/30'
@@ -415,7 +415,7 @@ const App = () => {
                                     </div>
                                 </div>
 
-                                <div className="min-h-0 flex-1 overflow-y-auto pr-1 -mr-1 space-y-5">
+                                <div className="min-h-0 flex-1 overflow-y-scroll overscroll-contain pr-1 -mr-1 space-y-5">
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
                                             <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
