@@ -6,19 +6,60 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [isChecking, setIsChecking] = useState(!isAuthenticated);
+    const [relayStatus, setRelayStatus] = useState('checking');
+
+    const apiCandidates = React.useMemo(() => {
+        const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
+        const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
+        return Array.from(new Set([configuredApiBase, prodApiBase]));
+    }, []);
 
     useEffect(() => {
         setIsChecking(false);
     }, [isAuthenticated]);
 
+    useEffect(() => {
+        let isMounted = true;
+
+        const fetchWithTimeout = async (url, options = {}, timeoutMs = 5000) => {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+            try {
+                return await fetch(url, {
+                    ...options,
+                    signal: controller.signal
+                });
+            } finally {
+                clearTimeout(timer);
+            }
+        };
+
+        const checkRelayHealth = async () => {
+            for (const apiBase of apiCandidates) {
+                try {
+                    const response = await fetchWithTimeout(`${apiBase}/api/health`, { method: 'GET' });
+                    if (response.ok) {
+                        if (isMounted) setRelayStatus('ready');
+                        return;
+                    }
+                } catch (err) { }
+            }
+
+            if (isMounted) setRelayStatus('offline');
+        };
+
+        checkRelayHealth();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [apiCandidates]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsChecking(true);
         setError(false);
-
-        const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
-        const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
-        const apiCandidates = Array.from(new Set([configuredApiBase, prodApiBase]));
         let data = null;
 
         try {
@@ -42,6 +83,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
             }
 
             if (data.success) {
+                setRelayStatus('ready');
                 sessionStorage.setItem('site_auth', 'true');
                 if (typeof data.token === 'string' && data.token.trim() !== '') {
                     sessionStorage.setItem('site_access_token', data.token.trim());
@@ -55,6 +97,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
             }
         } catch (err) {
             console.error('Auth error:', err);
+            setRelayStatus('offline');
             setError('System Relay Unreachable. Please retry.');
         } finally {
             setIsChecking(false);
@@ -130,8 +173,19 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
                         {/* Status Bar */}
                         <div className="px-8 py-3 bg-slate-100/30 dark:bg-white/5 border-b border-slate-100 dark:border-white/5 flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Relay Link Active</span>
+                                <div className={`w-1.5 h-1.5 rounded-full ${relayStatus === 'ready'
+                                    ? 'bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]'
+                                    : relayStatus === 'offline'
+                                        ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.45)]'
+                                        : 'bg-amber-500 animate-pulse shadow-[0_0_8px_rgba(245,158,11,0.45)]'
+                                    }`} />
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                                    {relayStatus === 'ready'
+                                        ? 'Relay Link Active'
+                                        : relayStatus === 'offline'
+                                            ? 'Relay Link Unreachable'
+                                            : 'Checking Relay Link'}
+                                </span>
                             </div>
                             <ShieldCheck size={12} className="text-blue-500 opacity-60" />
                         </div>
@@ -151,6 +205,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
                                                 if (error) setError(false);
                                             }}
                                             placeholder="Enter Admin Token..."
+                                            autoComplete="current-password"
                                             className={`w-full ${theme === 'dark' ? 'bg-slate-950/60 border-white/10 text-white focus:border-blue-500/50' : 'bg-slate-50 border-slate-200 text-slate-900 focus:border-blue-500/50'} border rounded-2xl px-6 py-4 font-bold text-base placeholder:text-slate-400/40 outline-none transition-all duration-300 shadow-inner text-center tracking-[0.2em] focus:ring-4 focus:ring-blue-500/10 focus:scale-[1.01]`}
                                             required
                                         />

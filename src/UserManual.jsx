@@ -32,6 +32,8 @@ const incubatorTips = [
     'Track recurring sources with regular refresh checks before team meetings.'
 ];
 
+const overviewPdfPath = './downloads/abif-funding-radar-app-summary.pdf';
+
 const UserManual = () => {
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-700">
@@ -55,6 +57,35 @@ const UserManual = () => {
                                 This guide helps startup and incubator teams quickly discover opportunities, filter by relevance, and circulate decision-ready briefings.
                             </p>
                         </div>
+                    </div>
+                </section>
+
+                <section className="mt-8 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="max-w-2xl">
+                            <h2 className="text-lg font-black">Quick Overview PDF</h2>
+                            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                A visitor-friendly one-page overview is embedded below inside the existing manual, with a download option if you want to keep a copy offline.
+                            </p>
+                        </div>
+                        <a
+                            href={overviewPdfPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-white hover:bg-blue-700 transition-colors shadow-lg"
+                        >
+                            <FileDown size={14} />
+                            Download PDF
+                        </a>
+                    </div>
+
+                    <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-950">
+                        <iframe
+                            src={`${overviewPdfPath}#view=FitH`}
+                            title="ABIF Funding Radar overview PDF"
+                            className="h-[720px] w-full"
+                        />
                     </div>
                 </section>
 

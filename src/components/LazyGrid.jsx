@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SchemeCard from './SchemeCard';
 
-const LazyGrid = ({ items, showCategoryBadge, isArchivedMode, activeAudience }) => {
+const LazyGrid = ({ items, showCategoryBadge, isArchivedMode, activeAudience, forceAllItems = false }) => {
     const [visibleCount, setVisibleCount] = useState(12);
     const observerTarget = useRef(null);
 
     useEffect(() => {
+        if (forceAllItems) {
+            setVisibleCount(items.length);
+            return undefined;
+        }
+
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting && visibleCount < items.length) {
@@ -22,14 +27,14 @@ const LazyGrid = ({ items, showCategoryBadge, isArchivedMode, activeAudience }) 
         return () => {
             if (observerTarget.current) observer.unobserve(observerTarget.current);
         };
-    }, [visibleCount, items.length]);
+    }, [forceAllItems, visibleCount, items.length]);
 
     // Reset visible count when items change (e.g. search/filter)
     useEffect(() => {
-        setVisibleCount(12);
-    }, [items]);
+        setVisibleCount(forceAllItems ? items.length : 12);
+    }, [forceAllItems, items]);
 
-    const visibleItems = items.slice(0, visibleCount);
+    const visibleItems = forceAllItems ? items : items.slice(0, visibleCount);
 
     return (
         <div className="space-y-12">
@@ -44,7 +49,7 @@ const LazyGrid = ({ items, showCategoryBadge, isArchivedMode, activeAudience }) 
                     />
                 ))}
             </div>
-            {visibleCount < items.length && (
+            {!forceAllItems && visibleCount < items.length && (
                 <div ref={observerTarget} className="h-20 flex items-center justify-center">
                     <div className="w-8 h-8 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
                 </div>

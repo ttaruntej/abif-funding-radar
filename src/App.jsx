@@ -103,6 +103,8 @@ const App = () => {
     const [briefingMode, setBriefingMode] = useState('standard');
     const [dispatchRecipients, setDispatchRecipients] = useState('');
     const [showFloatingBar, setShowFloatingBar] = useState(false);
+    const [expandAllCards, setExpandAllCards] = useState(false);
+    const [pendingScrollTarget, setPendingScrollTarget] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         try {
             return sessionStorage.getItem('site_auth') === 'true';
@@ -166,6 +168,11 @@ const App = () => {
         }
     };
 
+    const scrollToFeedback = () => {
+        setExpandAllCards(true);
+        setPendingScrollTarget('feedback');
+    };
+
     const isFiltered = searchQuery !== '' || activeCategory !== 'all' || activeSector !== 'All Sectors' || activeStatus !== 'all';
     const shouldShowSyncPanel = isSyncPanelVisible && Boolean(syncStartTime || isRefreshing || refreshSuccess || syncError || syncFindings);
 
@@ -217,6 +224,22 @@ const App = () => {
     const visibleSections = currentView === 'archive'
         ? [{ key: 'vault', label: 'Saved Records', subtitle: 'Archive', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
+
+    useEffect(() => {
+        if (pendingScrollTarget !== 'feedback') return;
+
+        const timer = setTimeout(() => {
+            const el = document.getElementById('feedback');
+            if (!el) return;
+
+            const yOffset = -120;
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+            setPendingScrollTarget(null);
+        }, 120);
+
+        return () => clearTimeout(timer);
+    }, [pendingScrollTarget, visibleSections.length]);
 
     return (
         <PasswordGate
@@ -584,6 +607,7 @@ const App = () => {
                     activeAudience={activeAudience} setActiveAudience={setActiveAudience}
                     setActiveSector={setActiveSector}
                     onActivateEcosystemPreset={activateEcosystemPreset}
+                    onSuggestionClick={scrollToFeedback}
                 />
 
                 <main className="max-w-7xl mx-auto px-4 sm:px-8 pt-32 pb-20">
@@ -632,6 +656,7 @@ const App = () => {
                                             showCategoryBadge={activeCategory === 'all'}
                                             isArchivedMode={currentView === 'archive'}
                                             activeAudience={activeAudience}
+                                            forceAllItems={expandAllCards}
                                         />
                                     </div>
                                 ))}

@@ -10,6 +10,7 @@
         "preview": "vite preview",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
+        "pdf:app-summary": "python scripts/generate-app-summary-pdf.py",
         "discover:official": "node scripts/official-discovery.js",
         "curate:datasets": "node scripts/build-datasets.js",
         "review:artifacts": "node scripts/review-artifacts.js",
