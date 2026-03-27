@@ -341,7 +341,7 @@ const App = () => {
                                 </div>
                             </div>
                         ) : (
-                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
+                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] h-[min(70vh,42rem)] max-h-[calc(100vh-7rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
                                 ? 'border-emerald-500/30'
                                 : syncSummary.tone === 'error'
                                     ? 'border-red-500/30'
