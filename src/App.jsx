@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { createPortal } from 'react-dom';
 import './index.css';
 
 import { exportToCSV } from './utils/csvExporter';
@@ -264,9 +265,11 @@ const App = () => {
             <div className={`min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 ${currentView === 'archive' ? 'bg-slate-100 dark:bg-slate-900 arclight-gradient' : 'bg-slate-50 dark:bg-slate-950'}`}>
 
 
-                <div className="fixed top-24 right-4 sm:right-8 z-[130] flex flex-col gap-3 pointer-events-auto">
+                {typeof document !== 'undefined' && createPortal(
+                    <>
+                        <div className="fixed top-24 right-4 sm:right-8 z-[210] flex flex-col gap-3 pointer-events-none">
                     {shouldShowSyncPanel && (
-                        <div className="animate-in scale-95 origin-right pointer-events-auto">
+                        <div className="animate-in origin-right pointer-events-auto">
                         {isSyncPanelMinimized ? (
                                 <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[24px] px-4 py-3 w-[280px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
                                 ? 'border-emerald-500/30'
@@ -624,7 +627,7 @@ const App = () => {
                 </div>
 
                 {emailNotification && (
-                    <div className="fixed bottom-24 right-4 z-[120] sm:hidden animate-in slide-in-from-right-8">
+                    <div className="fixed bottom-24 right-4 z-[210] sm:hidden animate-in slide-in-from-right-8 pointer-events-auto">
                         <div className={`backdrop-blur-2xl border shadow-2xl rounded-2xl p-4 flex items-center gap-4 w-[300px] bg-white/90 dark:bg-slate-900/90 relative ${emailNotification.type === 'success' ? 'border-emerald-500/50' :
                             emailNotification.type === 'error' ? 'border-red-500/50' : 'border-blue-500/50'
                             }`}>
@@ -660,6 +663,9 @@ const App = () => {
                             </button>
                         </div>
                     </div>
+                )}
+                    </>,
+                    document.body
                 )}
 
                 <EcosystemTicker opportunities={filtered} lastUpdatedTs={lastUpdatedTs} />
