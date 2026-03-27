@@ -27,7 +27,8 @@ export const SYNC_WORKFLOW_URL = `${GITHUB_REPO_URL}/actions/workflows/source-sy
 
 const GITHUB_WORKFLOW_API_BASE = 'https://api.github.com/repos/ttaruntej/abif-funding-radar/actions/workflows';
 const GITHUB_RAW_DATA_BASE = 'https://raw.githubusercontent.com/ttaruntej/abif-funding-radar/main/public/data';
-const API_TIMEOUT_MS = 4000;
+const API_TIMEOUT_MS = 12000;
+const FEEDBACK_TIMEOUT_MS = 15000;
 const ACCESS_TOKEN_STORAGE_KEY = 'site_access_token';
 const AUTH_FLAG_STORAGE_KEY = 'site_auth';
 const AUTH_EXPIRED_EVENT = 'abif-auth-expired';
@@ -79,8 +80,27 @@ const authError = (message = 'Session expired. Please sign in again.') => {
 };
 
 const isAuthError = (error) => error && error.code === 'AUTH';
+const isTimeoutError = (error) => error && error.code === 'TIMEOUT';
 
 const parseJsonSafe = async (response) => response.json().catch(() => ({}));
+
+const createTimeoutError = (timeoutMs) => {
+    const error = new Error(`Request timed out after ${Math.ceil(timeoutMs / 1000)} seconds`);
+    error.code = 'TIMEOUT';
+    return error;
+};
+
+const formatRelayFailure = (label, error) => {
+    if (isAuthError(error)) {
+        return error.message;
+    }
+
+    if (isTimeoutError(error)) {
+        return `${label}: the secure relay is responding slowly. Please try again in a few seconds.`;
+    }
+
+    return `${label}: relay unreachable (${error?.message || 'request failed'})`;
+};
 
 const fetchJsonWithTimeout = async (url, options = {}, timeoutMs = API_TIMEOUT_MS) => {
     const controller = new AbortController();
@@ -94,6 +114,12 @@ const fetchJsonWithTimeout = async (url, options = {}, timeoutMs = API_TIMEOUT_M
                 ...(options.headers || {})
             }
         });
+    } catch (error) {
+        if (error?.name === 'AbortError') {
+            throw createTimeoutError(timeoutMs);
+        }
+
+        throw error;
     } finally {
         clearTimeout(timer);
     }
@@ -203,7 +229,6 @@ export const fetchDispatchMeta = async () => {
  * Trigger & Status for Verified Source Sync
  */
 export const triggerScraper = async () => {
-    console.log('Triggering Scraper...');
     let res;
     try {
         res = await fetchFromApiWithFallback(`/api/trigger-sync`, {
@@ -211,7 +236,7 @@ export const triggerScraper = async () => {
             headers: buildAuthHeaders()
         });
     } catch (err) {
-        throw new Error(`Failed to start sync: relay unreachable (${err.message || 'request failed'})`);
+        throw new Error(formatRelayFailure('Failed to start sync', err));
     }
 
     const data = await parseJsonSafe(res);
@@ -253,13 +278,35 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
             body: JSON.stringify({ target_emails, mode, filters })
         });
     } catch (err) {
-        console.error('[Detailed Error Log]:', { message: err.message, url: `${API_BASE_URL}/api/trigger-email` });
-        throw new Error(`Failed to trigger email: relay unreachable (${err.message || 'request failed'})`);
+        throw new Error(formatRelayFailure('Failed to trigger email', err));
     }
 
     const data = await parseJsonSafe(res);
+    if (res.ok) return data;
+
+    if (res.status === 401 || res.status === 403) {
+        throw authError(data.error || 'Session expired. Please sign in again.');
+    }
+
+    throw new Error(data.message || data.error || `Failed to trigger email via relay (${res.status})`);
+};
+
+export const submitFeedback = async ({ feedback, userEmail, timestamp }) => {
+    let res;
+
+    try {
+        res = await fetchFromApiWithFallback(`/api/send-feedback`, {
+            method: 'POST',
+            headers: buildAuthHeaders({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ feedback, userEmail, timestamp })
+        }, FEEDBACK_TIMEOUT_MS);
+    } catch (err) {
+        throw new Error(formatRelayFailure('Suggestion could not be sent', err));
+    }
+
+    const data = await parseJsonSafe(res);
+
     if (res.ok) {
-        console.log('[API] Trigger response received:', data);
         return data;
     }
 
@@ -267,7 +314,7 @@ export const triggerEmail = async (target_emails, mode = 'standard', filters = {
         throw authError(data.error || 'Session expired. Please sign in again.');
     }
 
-    throw new Error(data.message || data.error || `Failed to trigger email via relay (${res.status})`);
+    throw new Error(data.message || data.error || `Suggestion could not be sent via relay (${res.status})`);
 };
 
 export const getEmailStatus = async () => {

@@ -17,6 +17,32 @@ const EMAIL_COMPLETION_TIMEOUT_MS = {
     relay: 8 * 60 * 1000,
 };
 
+const countRecipients = (target_emails = '') => (
+    String(target_emails)
+        .split(',')
+        .map((value) => value.trim())
+        .filter(Boolean)
+        .length
+);
+
+const sanitizeDispatchLabel = (mode, target_emails) => {
+    const recipientCount = countRecipients(target_emails);
+    return `${mode}:${recipientCount}-recipient${recipientCount === 1 ? '' : 's'}`;
+};
+
+const formatDispatchError = (error, fallbackMessage) => {
+    const message = error?.message || '';
+    if (/secure relay is responding slowly/i.test(message)) {
+        return message;
+    }
+
+    if (/relay unreachable/i.test(message)) {
+        return `${fallbackMessage} The secure relay could not be reached just now. Please retry in a few seconds.`;
+    }
+
+    return message || fallbackMessage;
+};
+
 export const useEmailDispatch = (addLog) => {
     const [emailNotification, setEmailNotification] = useState(null);
     const [dispatching, setDispatching] = useState(false);
@@ -162,7 +188,7 @@ export const useEmailDispatch = (addLog) => {
             ReactGA.event({
                 category: "Communication",
                 action: "email_dispatch_github_opened",
-                label: `${mode}:${target_emails}`
+                label: sanitizeDispatchLabel(mode, target_emails)
             });
 
             let baselineRunId;
@@ -208,7 +234,7 @@ export const useEmailDispatch = (addLog) => {
             ReactGA.event({
                 category: "Communication",
                 action: "email_dispatch_triggered",
-                label: `${mode}:${target_emails}`
+                label: sanitizeDispatchLabel(mode, target_emails)
             });
 
             let baselineRunId;
@@ -222,11 +248,12 @@ export const useEmailDispatch = (addLog) => {
             setEmailNotification({ type: 'in_progress', message: 'Preparing briefing...' });
             monitorDispatch(baselineRunId, 'relay');
         } catch (err) {
+            const message = formatDispatchError(err, 'Unable to start briefing.');
             setDispatching(false);
             setLaunchMode(null);
             setEmailCooldown(0);
-            setEmailNotification({ type: 'error', message: err.message || 'Unable to start briefing.' });
-            addLog(`Briefing could not be started: ${err.message || 'unknown error'}`, 'error');
+            setEmailNotification({ type: 'error', message });
+            addLog(`Briefing could not be started: ${message}`, 'error');
             setTimeout(() => setEmailNotification(null), 5000);
         }
     };

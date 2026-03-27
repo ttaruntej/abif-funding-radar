@@ -21,7 +21,7 @@ const PasswordGate = ({ children, isAuthenticated, setIsAuthenticated, theme, to
     useEffect(() => {
         let isMounted = true;
 
-        const fetchWithTimeout = async (url, options = {}, timeoutMs = 5000) => {
+        const fetchWithTimeout = async (url, options = {}, timeoutMs = 12000) => {
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), timeoutMs);
 

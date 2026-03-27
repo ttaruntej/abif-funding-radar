@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageSquare, Send, CheckCircle2 } from 'lucide-react';
+import { submitFeedback } from '../services/api';
 
 const FeedbackSection = ({ addLog }) => {
     const [feedback, setFeedback] = useState('');
@@ -12,48 +13,11 @@ const FeedbackSection = ({ addLog }) => {
 
         try {
             setStatus('sending');
-            const prodApiBase = 'https://abif-funding-radar-api.vercel.app';
-            const configuredApiBase = (import.meta.env.VITE_API_BASE_URL || prodApiBase).replace(/\/$/, '');
-            const apiCandidates = Array.from(new Set([configuredApiBase, prodApiBase]));
-            const accessToken = (() => {
-                try { return sessionStorage.getItem('site_access_token') || ''; } catch (e) { return ''; }
-            })();
-            let response = null;
-
-            for (const apiBase of apiCandidates) {
-                try {
-                    response = await fetch(`${apiBase}/api/send-feedback`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {})
-                        },
-                        body: JSON.stringify({
-                            feedback,
-                            userEmail: email || 'Anonymous',
-                            timestamp: new Date().toISOString()
-                        })
-                    });
-                    if (response.status === 401 || response.status === 403) {
-                        const payload = await response.json().catch(() => ({}));
-                        try {
-                            sessionStorage.removeItem('site_auth');
-                            sessionStorage.removeItem('site_access_token');
-                        } catch (e) { }
-                        if (typeof window !== 'undefined') {
-                            window.dispatchEvent(new CustomEvent('abif-auth-expired', {
-                                detail: { message: payload.error || 'Session expired. Please sign in again.' }
-                            }));
-                        }
-                        throw new Error(payload.error || 'Session expired. Please sign in again.');
-                    }
-                    if (response.ok) break;
-                } catch (err) {
-                    response = null;
-                }
-            }
-
-            if (!response || !response.ok) throw new Error('Failed to send feedback');
+            await submitFeedback({
+                feedback,
+                userEmail: email || 'Anonymous',
+                timestamp: new Date().toISOString()
+            });
 
             setStatus('success');
             addLog('Suggestion shared with the team.', 'success');
@@ -62,7 +26,7 @@ const FeedbackSection = ({ addLog }) => {
             setTimeout(() => setStatus('idle'), 5000);
         } catch (err) {
             setStatus('error');
-            addLog('Suggestion could not be sent.', 'error');
+            addLog(err.message || 'Suggestion could not be sent.', 'error');
             setTimeout(() => setStatus('idle'), 5000);
         }
     };
