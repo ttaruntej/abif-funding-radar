@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-    Plus,
     RefreshCw,
     Download,
     Mail,
@@ -29,104 +28,168 @@ const TacticalSpear = ({
     onSuggestionsClick
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const panelRef = useRef(null);
 
-    const toggleOpen = () => setIsOpen(!isOpen);
+    useEffect(() => {
+        if (!isOpen) return undefined;
+
+        const onGlobalPointerDown = (event) => {
+            if (panelRef.current && panelRef.current.contains(event.target)) return;
+            setIsOpen(false);
+        };
+
+        const onEsc = (event) => {
+            if (event.key === 'Escape') setIsOpen(false);
+        };
+
+        document.addEventListener('pointerdown', onGlobalPointerDown);
+        document.addEventListener('keydown', onEsc);
+        return () => {
+            document.removeEventListener('pointerdown', onGlobalPointerDown);
+            document.removeEventListener('keydown', onEsc);
+        };
+    }, [isOpen]);
 
     const actions = [
         {
             id: 'suggestions',
-            icon: <Lightbulb size={20} />,
-            label: 'ECOSYSTEM SUGGESTIONS',
+            icon: <Lightbulb size={18} />,
+            label: 'Suggestions',
+            subtitle: 'Share Feedback',
             onClick: onSuggestionsClick,
-            color: 'hover:text-amber-400 hover:bg-amber-400/10'
+            color: 'hover:border-amber-400/40 hover:bg-amber-500/10 hover:text-amber-500'
         },
         {
             id: 'sync',
-            icon: refreshCooldown > 0 ? <span className="text-[10px] font-black">{refreshCooldown}s</span> : <RefreshCw size={20} className={isRefreshing ? 'animate-spin' : ''} />,
-            label: refreshCooldown > 0 ? `READY IN: ${refreshCooldown}S` : 'REFRESH OPPORTUNITIES',
+            icon: refreshCooldown > 0
+                ? <span className="text-[10px] font-black">{refreshCooldown}s</span>
+                : <RefreshCw size={18} className={isRefreshing ? 'animate-spin' : ''} />,
+            label: refreshCooldown > 0 ? 'Sync Cooldown' : 'Sync',
+            subtitle: refreshCooldown > 0 ? `Ready in ${refreshCooldown}s` : 'Refresh Opportunities',
             onClick: handleRefresh,
             disabled: isRefreshing || currentView === 'archive' || refreshCooldown > 0,
-            color: refreshCooldown > 0 ? 'text-amber-500' : 'hover:text-blue-500 hover:bg-blue-500/10'
+            color: refreshCooldown > 0
+                ? 'text-amber-500'
+                : 'hover:border-blue-500/40 hover:bg-blue-500/10 hover:text-blue-500'
         },
         {
             id: 'export',
-            icon: <Download size={20} />,
-            label: 'EXPORT DATA',
+            icon: <Download size={18} />,
+            label: 'Export',
+            subtitle: 'Download CSV',
             onClick: handleExportCSV,
-            color: 'hover:text-emerald-500 hover:bg-emerald-500/10'
+            color: 'hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-500'
         },
         {
             id: 'email',
-            icon: emailCooldown > 0 ? <span className="text-[10px] font-black">{emailCooldown}s</span> : <Mail size={20} />,
-            label: emailCooldown > 0 ? `READY IN: ${emailCooldown}S` : 'SEND BRIEFING',
+            icon: emailCooldown > 0
+                ? <span className="text-[10px] font-black">{emailCooldown}s</span>
+                : <Mail size={18} />,
+            label: emailCooldown > 0 ? 'Briefing Cooldown' : 'Briefing',
+            subtitle: emailCooldown > 0 ? `Ready in ${emailCooldown}s` : 'Send Briefing',
             onClick: onEmailClick,
             disabled: emailCooldown > 0,
-            color: emailCooldown > 0 ? 'text-amber-500' : 'hover:text-indigo-500 hover:bg-indigo-500/10'
+            color: emailCooldown > 0
+                ? 'text-amber-500'
+                : 'hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-500'
         },
         {
             id: 'theme',
-            icon: theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />,
-            label: theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE',
+            icon: theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />,
+            label: theme === 'dark' ? 'Light Mode' : 'Dark Mode',
+            subtitle: 'Toggle Theme',
             onClick: toggleTheme,
-            color: 'hover:text-amber-500 hover:bg-amber-500/10'
+            keepOpen: true,
+            color: 'hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-500'
         },
         {
             id: 'view',
-            icon: currentView === 'dashboard' ? <Archive size={20} /> : <LayoutGrid size={20} />,
-            label: currentView === 'dashboard' ? 'VIEW ARCHIVE' : 'CURRENT LIST',
+            icon: currentView === 'dashboard' ? <Archive size={18} /> : <LayoutGrid size={18} />,
+            label: currentView === 'dashboard' ? 'Archive' : 'Dashboard',
+            subtitle: currentView === 'dashboard' ? 'View Archive' : 'Current List',
             onClick: () => setCurrentView(currentView === 'dashboard' ? 'archive' : 'dashboard'),
-            color: 'hover:text-purple-500 hover:bg-purple-500/10'
+            color: 'hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-500'
         },
         {
             id: 'logout',
-            icon: <LogOut size={20} />,
-            label: 'TERMINATE SESSION',
+            icon: <LogOut size={18} />,
+            label: 'Logout',
+            subtitle: 'End Session',
             onClick: handleLogout,
-            color: 'hover:text-red-500 hover:bg-red-500/10'
+            color: 'hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-500'
         }
     ];
 
-    return (
-        <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[150] flex flex-col items-center">
-            {/* Spear Extended Cluster */}
-            <div className={`flex flex-col gap-3 mb-4 transition-all duration-500 transform ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-                {actions.map((action, idx) => (
-                    <div key={action.id} className="group relative flex items-center justify-end">
-                        {/* Hover Metadata */}
-                        <span className="absolute right-16 px-3 py-1 bg-slate-900/90 dark:bg-white/90 backdrop-blur-md text-[10px] font-black text-white dark:text-slate-900 uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl border border-white/10 whitespace-nowrap hidden sm:block">
-                            {action.label}
-                        </span>
+    const handleActionClick = (action) => {
+        action.onClick();
+        if (!action.keepOpen) setIsOpen(false);
+    };
 
+    return (
+        <div ref={panelRef} className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[160]">
+            <div
+                className={`mb-3 origin-bottom-right transition-all duration-300 ${isOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 translate-y-3 pointer-events-none'
+                    }`}
+            >
+                <div className="w-[min(92vw,22rem)] sm:w-[22rem] max-h-[65vh] overflow-y-auto rounded-3xl border border-slate-200/90 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl shadow-2xl p-3">
+                    <div className="px-2 pb-2 pt-1 flex items-center justify-between">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                            Quick Actions
+                        </p>
                         <button
-                            onClick={() => { action.onClick(); if (action.id !== 'theme') setIsOpen(false); }}
-                            disabled={action.disabled}
-                            className={`w-14 h-14 rounded-2xl bg-white dark:bg-slate-900/80 backdrop-blur-3xl border border-slate-200 dark:border-white/5 shadow-2xl flex items-center justify-center text-slate-500 dark:text-slate-400 transition-all duration-500 ${action.color} ${action.disabled ? 'opacity-30 cursor-not-allowed' : 'active:scale-90 hover:scale-110'}`}
-                            style={{ transitionDelay: `${(actions.length - 1 - idx) * 50}ms` }}
+                            type="button"
+                            onClick={() => setIsOpen(false)}
+                            aria-label="Close quick actions"
+                            className="w-8 h-8 rounded-xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-slate-800/70 text-slate-500 dark:text-slate-400 flex items-center justify-center"
                         >
-                            {action.icon}
+                            <X size={14} />
                         </button>
                     </div>
-                ))}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {actions.map((action) => (
+                            <button
+                                key={action.id}
+                                type="button"
+                                onClick={() => handleActionClick(action)}
+                                disabled={action.disabled}
+                                className={`min-h-[56px] px-3 py-2 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 flex items-center gap-3 transition-all ${action.color} ${action.disabled ? 'opacity-45 cursor-not-allowed' : 'active:scale-[0.98]'}`}
+                            >
+                                <div className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-700/70 flex items-center justify-center flex-shrink-0">
+                                    {action.icon}
+                                </div>
+                                <div className="min-w-0 text-left">
+                                    <p className="text-[10px] font-black uppercase tracking-[0.14em] truncate">
+                                        {action.label}
+                                    </p>
+                                    <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.1em] truncate">
+                                        {action.subtitle}
+                                    </p>
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
-            {/* Spear Trigger */}
-            <button
-                onClick={toggleOpen}
-                title="Quick Actions"
-                className={`w-16 h-16 rounded-[24px] shadow-3xl flex items-center justify-center transition-all duration-700 active:scale-90 ${isOpen
-                    ? 'bg-red-500 text-white rotate-180'
-                    : 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:shadow-blue-500/40'}`}
-            >
-                {isOpen ? <X size={24} /> : (
-                    <div className="relative">
-                        <ChevronUp size={24} className="animate-bounce" />
-                        <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full scale-150 animate-pulse" />
-                    </div>
-                )}
-            </button>
+            <div className="flex justify-end">
+                <button
+                    type="button"
+                    onClick={() => setIsOpen((value) => !value)}
+                    title="Quick Actions"
+                    aria-expanded={isOpen}
+                    className={`w-16 h-16 rounded-[24px] shadow-2xl flex items-center justify-center transition-all duration-500 active:scale-95 border ${isOpen
+                        ? 'bg-red-500 border-red-400 text-white'
+                        : 'bg-slate-950 dark:bg-white border-slate-900 dark:border-white text-white dark:text-slate-950'
+                        }`}
+                >
+                    {isOpen ? <X size={22} /> : <ChevronUp size={24} className="animate-bounce" />}
+                </button>
+            </div>
         </div>
     );
 };
 
 export default TacticalSpear;
-
