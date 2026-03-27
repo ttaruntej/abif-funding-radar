@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-27T06:55:12.947Z",
+  "timestamp": "2026-03-27T13:11:40.639Z",
   "recipientCount": 1,
   "recipientsSummary": "1 recipient",
-  "subject": "Ecosystem Intel: Robust Expansion in AgriTech, AI, and Deep Science Funding (March 2026)",
-  "aiIntro": "<div style=\"font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;\">Ecosystem Intelligence Update: This intelligence brief covers the entire Indian Funding and AgriTech Ecosystem for the month of March 2026. The period indicates robust expansion, with 46 new programs identified and no reported closures. Key themes emerging from this scan include a significant emphasis on AgriTech, advanced AI applications, deep science, and sustainable technologies, largely propelled by government schemes and international collaborations.</div>",
-  "opportunityCount": 64,
+  "subject": "Ecosystem Intel: Indian Funding & AgriTech Landscape Sees Program Consolidation (March 2026)",
+  "aiIntro": "<div style=\"font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 24px; font-weight: 500;\">Ecosystem Intelligence Update: This comprehensive intelligence scan covers the entire Indian Funding and AgriTech Ecosystem for the month of March 2026. The landscape continues to demonstrate robust activity across general startup funding, with a particularly strong emphasis on AgriTech and deep technology sectors including AI, biotechnology, and clean energy. While no new programs were identified this month, five existing programs concluded, indicating a net reduction in available opportunities and suggesting a period of programmatic consolidation within the ecosystem.</div>",
+  "opportunityCount": 59,
   "opportunities": [
     "AMRUT 2.0 Water Pitch Challenge",
     "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
@@ -64,12 +64,7 @@
     "MANAGE-CIA Student Orientation Program (SOP)",
     "India Investment Grid (IIG) – CSR Opportunities Portal",
     "DBT-BIRAC Joint Call for Proposals on ‘Bio AI’ for Fostering High Performance Biomanufacturing under BioE3 Policy",
-    "SBI Foundation – Innovators for Bharat",
-    "Startup Odisha – Monthly Sustenance Allowance",
-    "Startup Odisha – Product Development & Marketing Assistance",
-    "Centre of Excellence on Agricultural Innovation and Research.",
-    "Centre of Excellence on Agricultural Processing-An End to End Platform for Value addition to farm produce.",
-    "SID - Deep Science Incubation"
+    "SBI Foundation – Innovators for Bharat"
   ],
   "mode": "standard",
   "filters": {
