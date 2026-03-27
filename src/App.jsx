@@ -113,6 +113,7 @@ const App = () => {
 
     const sectionRefs = useRef({});
     const categoryNavRef = useRef(null);
+    const syncPanelScrollRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -223,6 +224,22 @@ const App = () => {
         event.preventDefault();
         event.stopPropagation();
         action();
+    };
+
+    const handleSyncPanelWheel = (event) => {
+        const panel = syncPanelScrollRef.current;
+        if (!panel) return;
+
+        const { deltaY } = event;
+        const maxScrollTop = panel.scrollHeight - panel.clientHeight;
+        const canScrollDown = deltaY > 0 && panel.scrollTop < maxScrollTop;
+        const canScrollUp = deltaY < 0 && panel.scrollTop > 0;
+
+        if (!canScrollDown && !canScrollUp) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        panel.scrollTop += deltaY;
     };
 
     const visibleSections = currentView === 'archive'
@@ -415,7 +432,11 @@ const App = () => {
                                     </div>
                                 </div>
 
-                                <div className="min-h-0 flex-1 overflow-y-scroll overscroll-contain pr-1 -mr-1 space-y-5">
+                                <div
+                                    ref={syncPanelScrollRef}
+                                    onWheelCapture={handleSyncPanelWheel}
+                                    className="min-h-0 flex-1 overflow-y-scroll overscroll-contain pr-1 -mr-1 space-y-5"
+                                >
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
                                             <span className="block text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">Elapsed</span>
