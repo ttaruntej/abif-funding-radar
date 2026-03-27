@@ -113,7 +113,6 @@ const App = () => {
 
     const sectionRefs = useRef({});
     const categoryNavRef = useRef(null);
-    const syncPanelScrollRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -226,22 +225,6 @@ const App = () => {
         action();
     };
 
-    const handleSyncPanelWheel = (event) => {
-        const panel = syncPanelScrollRef.current;
-        if (!panel) return;
-
-        const { deltaY } = event;
-        const maxScrollTop = panel.scrollHeight - panel.clientHeight;
-        const canScrollDown = deltaY > 0 && panel.scrollTop < maxScrollTop;
-        const canScrollUp = deltaY < 0 && panel.scrollTop > 0;
-
-        if (!canScrollDown && !canScrollUp) return;
-
-        event.preventDefault();
-        event.stopPropagation();
-        panel.scrollTop += deltaY;
-    };
-
     const visibleSections = currentView === 'archive'
         ? [{ key: 'vault', label: 'Saved Records', subtitle: 'Archive', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
@@ -281,7 +264,7 @@ const App = () => {
             <div className={`min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 ${currentView === 'archive' ? 'bg-slate-100 dark:bg-slate-900 arclight-gradient' : 'bg-slate-50 dark:bg-slate-950'}`}>
 
 
-                <div className="fixed top-24 right-4 sm:right-8 z-[130] flex flex-col gap-3 pointer-events-none">
+                <div className="fixed top-24 right-4 sm:right-8 z-[130] flex flex-col gap-3 pointer-events-auto">
                     {shouldShowSyncPanel && (
                         <div className="animate-in scale-95 origin-right pointer-events-auto">
                         {isSyncPanelMinimized ? (
@@ -358,7 +341,7 @@ const App = () => {
                                 </div>
                             </div>
                         ) : (
-                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] h-[min(calc(100dvh-8rem),42rem)] max-h-[calc(100dvh-8rem)] overflow-hidden relative flex flex-col ${syncSummary.tone === 'success'
+                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[28px] p-5 w-[360px] max-w-[calc(100vw-2rem)] h-[min(calc(100dvh-8rem),42rem)] max-h-[calc(100dvh-8rem)] overflow-hidden relative flex flex-col pointer-events-auto ${syncSummary.tone === 'success'
                                 ? 'border-emerald-500/30'
                                 : syncSummary.tone === 'error'
                                     ? 'border-red-500/30'
@@ -433,9 +416,8 @@ const App = () => {
                                 </div>
 
                                 <div
-                                    ref={syncPanelScrollRef}
-                                    onWheelCapture={handleSyncPanelWheel}
-                                    className="min-h-0 flex-1 overflow-y-scroll overscroll-contain pr-1 -mr-1 space-y-5"
+                                    onWheelCapture={(event) => event.stopPropagation()}
+                                    className="min-h-0 flex-1 overflow-y-auto overscroll-contain touch-pan-y pr-1 -mr-1 space-y-5"
                                 >
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-white/5 p-3">
