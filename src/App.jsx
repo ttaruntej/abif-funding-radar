@@ -212,15 +212,6 @@ const App = () => {
         setIsEmailModalOpen(false);
     };
 
-    if (loading) return (
-        <div className={`flex flex-col items-center justify-center min-h-screen ${theme === 'dark' ? 'bg-slate-950 text-blue-500' : 'bg-slate-50 text-blue-600'} font-black tracking-[0.5em] uppercase text-center px-4 transition-colors duration-500`}>
-            <div className="w-12 h-1 bg-blue-500/20 rounded-full mb-4 overflow-hidden relative">
-                <div className="absolute inset-0 bg-blue-500 animate-scan"></div>
-            </div>
-            Preparing Opportunity List...
-        </div>
-    );
-
     const visibleSections = currentView === 'archive'
         ? [{ key: 'vault', label: 'Saved Records', subtitle: 'Archive', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
@@ -240,6 +231,15 @@ const App = () => {
 
         return () => clearTimeout(timer);
     }, [pendingScrollTarget, visibleSections.length]);
+
+    if (loading) return (
+        <div className={`flex flex-col items-center justify-center min-h-screen ${theme === 'dark' ? 'bg-slate-950 text-blue-500' : 'bg-slate-50 text-blue-600'} font-black tracking-[0.5em] uppercase text-center px-4 transition-colors duration-500`}>
+            <div className="w-12 h-1 bg-blue-500/20 rounded-full mb-4 overflow-hidden relative">
+                <div className="absolute inset-0 bg-blue-500 animate-scan"></div>
+            </div>
+            Preparing Opportunity List...
+        </div>
+    );
 
     return (
         <PasswordGate
