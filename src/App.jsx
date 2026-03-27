@@ -212,6 +212,19 @@ const App = () => {
         setIsEmailModalOpen(false);
     };
 
+    const runPanelAction = (action) => (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        action();
+    };
+
+    const runPanelActionByKey = (action) => (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        action();
+    };
+
     const visibleSections = currentView === 'archive'
         ? [{ key: 'vault', label: 'Saved Records', subtitle: 'Archive', borderColor: 'border-slate-400', items: filtered }].filter(s => s.items.length > 0)
         : SECTIONS.map(s => ({ ...s, items: filtered.filter(s.filter) })).filter(s => s.items.length > 0);
@@ -251,10 +264,11 @@ const App = () => {
             <div className={`min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 ${currentView === 'archive' ? 'bg-slate-100 dark:bg-slate-900 arclight-gradient' : 'bg-slate-50 dark:bg-slate-950'}`}>
 
 
-                {shouldShowSyncPanel && (
-                    <div className="fixed top-24 right-4 sm:right-8 z-[110] animate-in scale-95 origin-right">
+                <div className="fixed top-24 right-4 sm:right-8 z-[130] flex flex-col gap-3 pointer-events-none">
+                    {shouldShowSyncPanel && (
+                        <div className="animate-in scale-95 origin-right pointer-events-auto">
                         {isSyncPanelMinimized ? (
-                            <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[24px] px-4 py-3 w-[280px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
+                                <div className={`bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border shadow-2xl rounded-[24px] px-4 py-3 w-[280px] max-w-[calc(100vw-2rem)] overflow-hidden relative ${syncSummary.tone === 'success'
                                 ? 'border-emerald-500/30'
                                 : syncSummary.tone === 'error'
                                     ? 'border-red-500/30'
@@ -307,15 +321,19 @@ const App = () => {
                                 </div>
                                 <div className="absolute top-3 right-3 flex items-center gap-1">
                                     <button
-                                        onClick={restoreSyncPanel}
-                                        className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                        type="button"
+                                        onPointerDown={runPanelAction(restoreSyncPanel)}
+                                        onKeyDown={runPanelActionByKey(restoreSyncPanel)}
+                                        className="relative z-10 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
                                         aria-label="Restore sync panel"
                                     >
                                         <Maximize2 size={14} />
                                     </button>
                                     <button
-                                        onClick={dismissSyncPanel}
-                                        className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                        type="button"
+                                        onPointerDown={runPanelAction(dismissSyncPanel)}
+                                        onKeyDown={runPanelActionByKey(dismissSyncPanel)}
+                                        className="relative z-10 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
                                         aria-label="Close sync panel"
                                     >
                                         <X size={14} />
@@ -343,15 +361,19 @@ const App = () => {
 
                                 <div className="absolute top-3 right-3 flex items-center gap-1">
                                     <button
-                                        onClick={toggleSyncPanelMinimized}
-                                        className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                        type="button"
+                                        onPointerDown={runPanelAction(toggleSyncPanelMinimized)}
+                                        onKeyDown={runPanelActionByKey(toggleSyncPanelMinimized)}
+                                        className="relative z-10 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
                                         aria-label="Minimize sync panel"
                                     >
                                         <Minus size={14} />
                                     </button>
                                     <button
-                                        onClick={dismissSyncPanel}
-                                        className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                                        type="button"
+                                        onPointerDown={runPanelAction(dismissSyncPanel)}
+                                        onKeyDown={runPanelActionByKey(dismissSyncPanel)}
+                                        className="relative z-10 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
                                         aria-label="Close sync panel"
                                     >
                                         <X size={14} />
@@ -556,10 +578,50 @@ const App = () => {
                             </div>
                         )}
                     </div>
-                )}
+                    )}
+                    {emailNotification && (
+                        <div className="hidden sm:block animate-in slide-in-from-right-8 pointer-events-auto">
+                            <div className={`backdrop-blur-2xl border shadow-2xl rounded-2xl p-4 flex items-center gap-4 w-[300px] bg-white/90 dark:bg-slate-900/90 relative ${emailNotification.type === 'success' ? 'border-emerald-500/50' :
+                                emailNotification.type === 'error' ? 'border-red-500/50' : 'border-blue-500/50'
+                                }`}>
+
+                                {/* Status Icon */}
+                                <div className="flex-shrink-0">
+                                    {emailNotification.type === 'success' ? (
+                                        <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center animate-success-check">
+                                            <CheckCircle2 size={18} className="text-white" />
+                                        </div>
+                                    ) : emailNotification.type === 'error' ? (
+                                        <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                                            <X size={18} className="text-white" />
+                                        </div>
+                                    ) : (
+                                        <div className="w-8 h-8 rounded-full border-2 border-t-blue-500 border-transparent animate-spin flex items-center justify-center">
+                                            <Activity size={12} className="text-blue-500" />
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex-1 pr-4">
+                                    <h3 className="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest leading-none">Briefing</h3>
+                                    <p className="text-[8px] text-slate-500 font-bold uppercase mt-2">{emailNotification.message}</p>
+                                </div>
+
+                                {/* Close Button */}
+                                <button
+                                    type="button"
+                                    onClick={() => setEmailNotification(null)}
+                                    className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                                >
+                                    <X size={14} />
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
 
                 {emailNotification && (
-                    <div className="fixed bottom-24 right-4 sm:bottom-28 sm:right-28 z-[110] animate-in slide-in-from-right-8">
+                    <div className="fixed bottom-24 right-4 z-[120] sm:hidden animate-in slide-in-from-right-8">
                         <div className={`backdrop-blur-2xl border shadow-2xl rounded-2xl p-4 flex items-center gap-4 w-[300px] bg-white/90 dark:bg-slate-900/90 relative ${emailNotification.type === 'success' ? 'border-emerald-500/50' :
                             emailNotification.type === 'error' ? 'border-red-500/50' : 'border-blue-500/50'
                             }`}>
