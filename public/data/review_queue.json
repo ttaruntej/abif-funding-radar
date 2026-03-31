@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-30T02:04:00.925Z",
+  "generatedAt": "2026-03-31T01:58:39.551Z",
   "summary": {
     "totalSourceItems": 78,
     "publishableItems": 61,
@@ -14,7 +14,7 @@
       "name": "AI4Good AgriTech Farmer Solutions",
       "body": "AI4Good",
       "link": "https://ai4good.org/",
-      "deadline": "16-02-2026",
+      "deadline": "14-02-2026",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -36,13 +36,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:55.883Z"
+      "lastScraped": "2026-03-31T01:57:37.609Z"
     },
     {
       "name": "Amazon Devices Climate Tech Accelerator 2026",
       "body": "Amazon",
       "link": "https://aws.amazon.com/activate/",
-      "deadline": "13-01-2026",
+      "deadline": "11-01-2026",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -64,13 +64,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:54.460Z"
+      "lastScraped": "2026-03-31T01:57:36.341Z"
     },
     {
       "name": "Aspire Climatetech Program Spring 2026",
       "body": "Aspire",
       "link": "https://aspire.org/",
-      "deadline": "25-02-2026",
+      "deadline": "23-02-2026",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -92,13 +92,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:55.365Z"
+      "lastScraped": "2026-03-31T01:57:37.178Z"
     },
     {
       "name": "Greenovation Agrivoltaics Challenge",
       "body": "Greenovation",
       "link": "https://startupindia.gov.in/",
-      "deadline": "14-01-2026",
+      "deadline": "12-01-2026",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -120,13 +120,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:57.985Z"
+      "lastScraped": "2026-03-31T01:57:40.163Z"
     },
     {
       "name": "India Australia RISE Accelerator (Round 4: Alumni Scale-up)",
       "body": "CSIRO",
       "link": "https://riseaccelerator.org/",
-      "deadline": "08-02-2026",
+      "deadline": "06-02-2026",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -148,13 +148,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:52.174Z"
+      "lastScraped": "2026-03-31T01:57:35.763Z"
     },
     {
       "name": "Keeling Curve Prize 2026",
       "body": "Climate Curve",
       "link": "https://www.climatecurve.org/kcp",
-      "deadline": "04-12-2025",
+      "deadline": "02-12-2025",
       "status": "Open",
       "dataSource": "notebooklm:fast_research",
       "category": "international",
@@ -176,7 +176,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 95,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:50.009Z"
+      "lastScraped": "2026-03-31T01:57:32.508Z"
     },
     {
       "name": "Rev: Ithaca Startup Works 2026 Prototyping Hardware Accelerator",
@@ -204,13 +204,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 86,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:03:30.337Z"
+      "lastScraped": "2026-03-31T01:58:13.045Z"
     },
     {
       "name": "BIRAC Biotechnology Ignition Grant (BIG-25)",
       "body": "BIRAC",
       "link": "https://birac.nic.in/desc_new.php?id=217",
-      "deadline": "04-07-2026",
+      "deadline": "02-07-2026",
       "status": "Open",
       "dataSource": "research:notebooklm",
       "category": "national",
@@ -228,7 +228,7 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 80,
       "artifactReviewRecommended": true,
-      "lastScraped": "2026-03-30T02:02:50.423Z"
+      "lastScraped": "2026-03-31T01:57:33.171Z"
     },
     {
       "name": "AI for ALL: Global Impact Challenge",
@@ -260,13 +260,13 @@
       "recommendedAction": "verify-from-official-source",
       "reviewPriority": 61,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:03:29.068Z"
+      "lastScraped": "2026-03-31T01:58:11.840Z"
     },
     {
       "name": "AFI Agri Cohort 25-26",
       "body": "Action For India",
       "link": "https://actionforindia.org/",
-      "deadline": "04-12-2025",
+      "deadline": "02-12-2025",
       "status": "Open",
       "dataSource": "manual:agritech",
       "category": "national",
@@ -280,13 +280,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:47.416Z"
+      "lastScraped": "2026-03-31T01:57:30.010Z"
     },
     {
       "name": "AMRUT 2.0 Water Pitch Challenge",
       "body": "MoHUA",
       "link": "https://innovateindia.mygov.in/",
-      "deadline": "17-02-2026",
+      "deadline": "15-02-2026",
       "status": "Open",
       "dataSource": "manual:official:mygov",
       "category": "national",
@@ -300,13 +300,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:18.679Z"
+      "lastScraped": "2026-03-31T01:57:03.680Z"
     },
     {
       "name": "D.E.S.I.G.N for BioE3 Challenge",
       "body": "DBT / MyGov",
       "link": "https://innovateindia.mygov.in/bioe3/",
-      "deadline": "06-02-2026",
+      "deadline": "04-02-2026",
       "status": "Open",
       "dataSource": "manual:official:mygov",
       "category": "national",
@@ -320,13 +320,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:17.693Z"
+      "lastScraped": "2026-03-31T01:57:02.822Z"
     },
     {
       "name": "India-France AI Call",
       "body": "DST & ANR",
       "link": "https://onlinedst.gov.in/",
-      "deadline": "09-03-2026",
+      "deadline": "07-03-2026",
       "status": "Open",
       "dataSource": "manual:official:dst",
       "category": "international",
@@ -340,13 +340,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:22.132Z"
+      "lastScraped": "2026-03-31T01:57:07.231Z"
     },
     {
       "name": "India-Pitch-Pilot-Scale-Startup Challenge (AMRUT 2.0)",
       "body": "MoHUA / MyGov",
       "link": "https://innovateindia.mygov.in/ipps-startup/",
-      "deadline": "17-02-2026",
+      "deadline": "15-02-2026",
       "status": "Open",
       "dataSource": "manual:official:mygov",
       "category": "national",
@@ -360,13 +360,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:18.375Z"
+      "lastScraped": "2026-03-31T01:57:03.303Z"
     },
     {
       "name": "Skoll Foundation Awards",
       "body": "Skoll Foundation",
       "link": "https://skoll.org/skoll-award/",
-      "deadline": "18-02-2026",
+      "deadline": "16-02-2026",
       "status": "Open",
       "dataSource": "legacy:unclassified",
       "category": "csr",
@@ -380,13 +380,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:38.130Z"
+      "lastScraped": "2026-03-31T01:57:22.324Z"
     },
     {
       "name": "StartupTN Agri-Tech Grant",
       "body": "StartupTN / Govt of Tamil Nadu",
       "link": "https://startuptn.in/",
-      "deadline": "19-11-2025",
+      "deadline": "17-11-2025",
       "status": "Open",
       "dataSource": "manual:agritech",
       "category": "state",
@@ -400,13 +400,13 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 25,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:48.183Z"
+      "lastScraped": "2026-03-31T01:57:30.745Z"
     },
     {
       "name": "Venture Challenge 9.0 (AIC Shiv Nadar University)",
       "body": "AIC-SNU",
       "link": "https://aic.snu.edu.in/",
-      "deadline": "17-01-2026",
+      "deadline": "15-01-2026",
       "status": "Verify Manually",
       "dataSource": "manual:incubator",
       "category": "national",
@@ -428,7 +428,7 @@
       "recommendedAction": "recompute-status-or-archive",
       "reviewPriority": 6,
       "artifactReviewRecommended": false,
-      "lastScraped": "2026-03-30T02:02:46.739Z"
+      "lastScraped": "2026-03-31T01:57:29.509Z"
     }
   ]
 }
