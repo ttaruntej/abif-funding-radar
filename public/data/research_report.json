@@ -1,8 +1,8 @@
 {
   "incubator": {
     "title": "ABIF Incubator Funding Analysis 2026",
-    "generatedAt": "2026-04-09T01:52:16.883Z",
-    "executiveSummary": "As of Apr 9, 2026, the Indian incubator funding ecosystem shows a robust activity level with 29 open programs directly supporting Section 8 operations. There is a significant tactical focus on Ecosystem Enablers, which accounts for a major portion of current open calls. ",
+    "generatedAt": "2026-04-10T02:05:16.663Z",
+    "executiveSummary": "As of Apr 10, 2026, the Indian incubator funding ecosystem shows a robust activity level with 29 open programs directly supporting Section 8 operations. There is a significant tactical focus on Ecosystem Enablers, which accounts for a major portion of current open calls. ",
     "keyTrends": [
       {
         "trend": "Section 8 Operational Support",
@@ -22,41 +22,31 @@
       "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
       "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
     ],
-    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 01:52 AM"
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 02:04 AM"
   },
   "startup": {
     "title": "ABIF Startup Funding Analysis 2026",
-    "generatedAt": "2024-07-30T01:52:30Z",
-    "executiveSummary": "The current funding landscape for Indian deep-tech and agritech founders is exceptionally vibrant, characterized by a strong emphasis on early-stage seed capital and product development support. Equity-free grants from national bodies like BIRAC and state governments, alongside significant accelerator programs and international collaborations, provide diverse avenues for securing startup runway and facilitating market entry, with numerous opportunities offering substantial awards or comprehensive incubation.",
+    "generatedAt": "2026-04-10T02:05:17.293Z",
+    "executiveSummary": "As of Apr 10, 2026, the Indian startup funding ecosystem maintains a steady pace with 63 active opportunities. A major concentration of capital is directed towards General Tech / Startups. ",
     "keyTrends": [
       {
-        "trend": "Dominance of National & State-level Grants",
-        "detail": "A significant number of funding opportunities originate from national bodies (e.g., BIRAC, DST, MeitY, Startup India, MSME, SIDBI) and various state governments (Karnataka, Tamil Nadu, Gujarat, Kerala). These grants, often non-dilutive, provide crucial seed capital and support for product development, ranging from ₹20 Lakhs to ₹1 Crore, with some loan schemes up to ₹5 Crores (SIDBI SMILE) and even up to ₹100 Lakhs for seed support (NIDHI-SSP). They are essential for early-stage runway."
+        "trend": "Capital Concentration",
+        "detail": "63 active programs provide direct equity free capital or seed support to startups."
       },
       {
-        "trend": "Strong Sector-Specific Focus",
-        "detail": "There is a pronounced push for innovation in Agritech, Deep-Tech, Cleantech, BioE3, and AI. Programs like RKVY-RAFTAAR, Krishi Mangal, NABARD AgriSURE, StartupTN Agri-Tech Grant, AI4Good AgriTech Farmer Solutions, Greenovation Agrivoltaics Challenge, D.E.S.I.G.N for BioE3 Challenge, India-France AI Call, and Karnataka Elevate NXT (Deeptech) demonstrate targeted efforts to fund specialized solutions in these high-growth areas, facilitating product development and market entry within specific verticals."
+        "trend": "Sectoral Focus",
+        "detail": "General Tech / Startups dominates current funding priorities for startups."
       },
       {
-        "trend": "Proliferation of Accelerator & Incubation Support",
-        "detail": "Beyond direct grants, numerous opportunities offer robust incubation and accelerator programs. These include BIRAC BioNEST, Youth Co:Lab, ADB Ventures, StartupWave, CEIIC, AGRI UDAAN, AFI Agri Cohort, India Australia RISE Accelerator, and Amazon Devices Climate Tech Accelerator. Such programs provide not just potential funding but also critical mentorship, infrastructure, market access, and strategic guidance, directly supporting product refinement and market entry strategies."
-      },
-      {
-        "trend": "Strategic International Collaborations & High-Value Awards",
-        "detail": "Several international funding avenues (e.g., India-France AI Call, ADB Ventures, IFC Startup Catalyst, Ford Foundation, Skoll Foundation, Keeling Curve Prize, AI for ALL) present opportunities for substantial capital (ranging from €500,000 to $1.5 Million and even ₹2.5 Crores). These often target global challenges or facilitate international partnerships, offering significant runway, access to global markets, and validation for advanced technologies."
-      },
-      {
-        "trend": "Prevalence of Rolling Deadlines & Continuous Opportunities",
-        "detail": "Many high-value national grants and accelerator programs, such as BIRAC BIG, Startup India SISFS, BIRAC BioNEST, SIDBI SMILE, KSUM Idea Grant, NIDHI-EIR, and NIDHI-SSP, operate with rolling deadlines. This 'always-open' model allows founders to apply strategically when ready, ensuring continuous access to funding for ongoing product development and operational runway without being constrained by specific application windows."
+        "trend": "Ecosystem Velocity",
+        "detail": "Steady state funding; rolling grants provide continuous application windows."
       }
     ],
     "actionableRecommendations": [
-      "Prioritize applications for major national grants with rolling or upcoming deadlines, such as BIRAC Biotechnology Ignition Grant (BIG - ₹50 Lakhs), MSME Incubation Scheme (₹1 Crore), NIDHI Seed Support Program (NIDHI-SSP - up to ₹100 Lakhs), and SIDBI Make in India Soft Loan Fund (SMILE - ₹25 Lakhs to ₹5 Crores), as these provide significant, often non-dilutive capital for startup runway and core product development.",
-      "Target sector-specific grants and accelerators tailored to deep-tech and agritech, leveraging programs like RKVY-RAFTAAR Seed Grants (up to ₹25 Lakhs), StartupTN Agri-Tech Grant (₹10-25 Lakhs), AI4Good AgriTech Farmer Solutions ($360,000), Greenovation Agrivoltaics Challenge (₹15 Lakhs), and Karnataka Elevate NXT (Deeptech - up to ₹1 Crore) for specialized funding and industry-aligned support.",
-      "Actively engage with accelerator and incubation programs that offer comprehensive support beyond just capital, such as BIRAC BioNEST, ADB Ventures, AGRI UDAAN 8.0, India Australia RISE Accelerator, and Amazon Devices Climate Tech Accelerator, as these provide invaluable mentorship, infrastructure, market access, and strategic guidance critical for product validation and effective market entry.",
-      "Explore international funding opportunities, especially those with high award values and upcoming deadlines like the India-France AI Call (€500,000+), Keeling Curve Prize ($50,000), and Skoll Foundation Awards ($1.5 Million), to secure substantial capital and gain global recognition for advanced deep-tech and climate-focused solutions.",
-      "Utilize state-specific grants from Karnataka, Tamil Nadu, Gujarat, and Kerala to secure early-stage seed funding and local ecosystem support, which can be less competitive and more accessible for initial product development and proof-of-concept stages."
+      "Prepare investor readiness dossiers for upcoming state grants.",
+      "Match startup stage with grant requirements carefully to prevent high rejection rates.",
+      "Leverage rolling state grants as a constant baseline for early-stage portfolio companies."
     ],
-    "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 01:52 AM"
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 02:05 AM"
   }
 }
