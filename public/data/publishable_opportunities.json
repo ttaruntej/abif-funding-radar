@@ -9,7 +9,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:03:56.460Z",
+    "lastScraped": "2026-04-11T01:52:33.923Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -33,7 +33,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "ventures.adb.org",
       "canonicalSourceUrl": "https://ventures.adb.org/",
       "inferredDataSource": false,
@@ -64,14 +64,14 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:14.748Z",
+    "lastScraped": "2026-04-11T01:52:48.356Z",
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "aidea.naarm.org.in",
       "canonicalSourceUrl": "https://aidea.naarm.org.in/",
       "inferredDataSource": false,
@@ -90,7 +90,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:05.954Z",
+    "lastScraped": "2026-04-11T01:52:40.996Z",
     "targetAudience": [
       "startup"
     ],
@@ -111,7 +111,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "asme.org",
       "canonicalSourceUrl": "https://www.asme.org/about-asme/media-inquiries/press-releases/social-ventures%2C-hardware-innovators%2C-and-mentors-worldwide-invited-to-apply-for-2025-asme-ishow-accelerator",
       "inferredDataSource": false,
@@ -133,7 +133,7 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:aim",
-    "lastScraped": "2026-04-10T02:02:54.664Z",
+    "lastScraped": "2026-04-11T01:51:51.037Z",
     "deadlineIso": null,
     "status": "Check Website",
     "sectors": [
@@ -151,7 +151,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "aim.gov.in",
       "canonicalSourceUrl": "https://aim.gov.in/aic.php",
       "inferredDataSource": false,
@@ -191,7 +191,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=117&scheme_type=29",
       "inferredDataSource": false,
@@ -210,7 +210,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:03:53.602Z",
+    "lastScraped": "2026-04-11T01:52:30.712Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -228,7 +228,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/bionest.php",
       "inferredDataSource": false,
@@ -241,13 +241,13 @@
     "name": "BIRAC Biotechnology Ignition Grant (BIG)",
     "body": "BIRAC",
     "maxAward": "₹50 Lakhs",
-    "deadline": "28-04-2026",
+    "deadline": "26-04-2026",
     "link": "https://birac.nic.in/big.php",
     "description": "Grant-in-aid to establish and validate proof-of-concept for innovative ideas in BioTech/AgriTech.",
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:03:53.544Z",
+    "lastScraped": "2026-04-11T01:52:30.632Z",
     "targetAudience": [
       "startup"
     ],
@@ -266,32 +266,32 @@
       "Must have functional R&D lab or be physically incubated in a recognized Incubator",
       "Cannot be basic research; must have clear commercial prospects"
     ],
-    "deadlineIso": "2026-04-28T18:30:00.000Z",
+    "deadlineIso": "2026-04-26T18:30:00.000Z",
     "dataSource": "manual:official:birac",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/big.php",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.96,
-    "recordFingerprint": "aaf1e722506f9d54"
+    "recordFingerprint": "f043ebdca20fba36"
   },
   {
     "name": "BIRAC–Social Alpha Assistive Tech Quest",
     "body": "Tata Trusts / BIRAC",
     "maxAward": "₹25 Lakhs",
-    "deadline": "28-07-2026",
+    "deadline": "26-07-2026",
     "link": "https://birac.nic.in/cfp.php",
     "description": "Joint programme to discover and scale innovations in assistive technologies for persons with disabilities.",
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:03:53.628Z",
+    "lastScraped": "2026-04-11T01:52:30.735Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -307,20 +307,20 @@
       "Lead applicant must be a DPIIT-recognized startup",
       "Previous awardees of BIRAC-Social Alpha cannot apply"
     ],
-    "deadlineIso": "2026-07-28T18:30:00.000Z",
+    "deadlineIso": "2026-07-26T18:30:00.000Z",
     "dataSource": "manual:official:birac",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp.php",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.96,
-    "recordFingerprint": "b90d025d14d5723d"
+    "recordFingerprint": "3950079f9d137855"
   },
   {
     "name": "Centre of Excellence on Agricultural Innovation and Research.",
@@ -333,7 +333,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
-    "lastScraped": "2026-04-10T02:03:31.690Z",
+    "lastScraped": "2026-04-11T01:52:12.612Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -353,7 +353,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10038",
       "inferredDataSource": false,
@@ -373,7 +373,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
-    "lastScraped": "2026-04-10T02:03:34.465Z",
+    "lastScraped": "2026-04-11T01:52:14.760Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -392,7 +392,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10037",
       "inferredDataSource": false,
@@ -411,7 +411,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:04.772Z",
+    "lastScraped": "2026-04-11T01:52:39.564Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -435,7 +435,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "ceiic.socialalpha.org",
       "canonicalSourceUrl": "https://ceiic.socialalpha.org/",
       "inferredDataSource": false,
@@ -475,7 +475,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx",
       "inferredDataSource": false,
@@ -514,7 +514,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10037",
       "inferredDataSource": false,
@@ -554,7 +554,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10038",
       "inferredDataSource": false,
@@ -593,7 +593,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10051",
       "inferredDataSource": false,
@@ -613,7 +613,7 @@
     "status": "Open",
     "linkStatus": "probable",
     "dataSource": "scraper:birac",
-    "lastScraped": "2026-04-10T02:02:33.196Z",
+    "lastScraped": "2026-04-11T01:51:31.887Z",
     "targetAudience": [
       "startup"
     ],
@@ -633,7 +633,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
       "inferredDataSource": false,
@@ -674,7 +674,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "birac.nic.in",
       "canonicalSourceUrl": "https://birac.nic.in/cfp_view.php?id=114&scheme_type=46",
       "inferredDataSource": false,
@@ -693,7 +693,7 @@
     "category": "international",
     "status": "Rolling",
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:02:38.901Z",
+    "lastScraped": "2026-04-11T01:51:36.813Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -714,7 +714,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2232",
       "inferredDataSource": false,
@@ -733,7 +733,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:05.514Z",
+    "lastScraped": "2026-04-11T01:52:40.545Z",
     "targetAudience": [
       "startup"
     ],
@@ -750,7 +750,7 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "fordfoundation.org",
       "canonicalSourceUrl": "https://www.fordfoundation.org/work/our-grants/",
       "inferredDataSource": false,
@@ -769,7 +769,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:04:20.371Z",
+    "lastScraped": "2026-04-11T01:52:53.465Z",
     "dataSource": "manual:csr:hdfc",
     "targetAudience": [
       "incubator",
@@ -793,7 +793,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "hdfcbank.com",
       "canonicalSourceUrl": "https://www.hdfcbank.com/personal/about-us/news-room/press-release/2024/hdfc-bank-parivartan-announces-startup-grants-for-30-incubators",
       "inferredDataSource": false,
@@ -812,7 +812,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:02.110Z",
+    "lastScraped": "2026-04-11T01:52:37.099Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -836,7 +836,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "ifc.org",
       "canonicalSourceUrl": "https://www.ifc.org/en/what-we-do/sector-expertise/venture-capital/startup-catalyst",
       "inferredDataSource": false,
@@ -855,7 +855,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:04:02.205Z",
+    "lastScraped": "2026-04-11T01:52:37.426Z",
     "targetAudience": [
       "incubator"
     ],
@@ -872,7 +872,7 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "gatesfoundation.org",
       "canonicalSourceUrl": "https://www.gatesfoundation.org/",
       "inferredDataSource": false,
@@ -905,12 +905,12 @@
     "deadlineIso": null,
     "linkStatus": "verified",
     "criticalEligibility": [],
-    "lastScraped": "2026-04-10T02:03:07.593Z",
+    "lastScraped": "2026-04-11T01:52:03.695Z",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-projects",
       "inferredDataSource": false,
@@ -923,11 +923,11 @@
     "name": "India Netherlands Hydrogen Fellowship Programme",
     "body": "DST (MoST)",
     "maxAward": "Varies",
-    "deadline": "Check website for details",
+    "deadline": "Expired / Removed from source",
     "link": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2380",
     "description": "DST active call for proposals. See the portal for full guidelines and eligibility.",
     "category": "international",
-    "status": "Open",
+    "status": "Closed",
     "linkStatus": "verified",
     "lastScraped": "2026-04-10T02:02:37.896Z",
     "dataSource": "scraper:dst",
@@ -950,14 +950,14 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2380",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.99,
-    "recordFingerprint": "8c19b787cb7c9dc6"
+    "recordFingerprint": "0712316c395ae126"
   },
   {
     "name": "Indo-French call by DST-ANR on Applied Mathematics and Artificial Intelligence",
@@ -969,7 +969,7 @@
     "category": "international",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:02:37.454Z",
+    "lastScraped": "2026-04-11T01:51:35.321Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -990,7 +990,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2381",
       "inferredDataSource": false,
@@ -1003,7 +1003,7 @@
     "name": "Karnataka Elevate NXT 2026 (Deeptech)",
     "body": "KITS / Startup Karnataka",
     "maxAward": "Up to ₹1 Crore",
-    "deadline": "22-12-2025",
+    "deadline": "20-12-2025",
     "link": "https://www.missionstartupkarnataka.org/elevate-karnataka",
     "description": "Grant-in-aid funding for Deeptech startups in AI, ML, IoT, Robotics, and Quantum Technologies. relocate to Karnataka if outside.",
     "category": "state",
@@ -1022,21 +1022,21 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:18.425Z",
-    "deadlineIso": "2025-12-22T18:30:00.000Z",
+    "lastScraped": "2026-04-11T01:52:51.081Z",
+    "deadlineIso": "2025-12-20T18:30:00.000Z",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "missionstartupkarnataka.org",
       "canonicalSourceUrl": "https://www.missionstartupkarnataka.org/elevate-karnataka",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.85,
-    "recordFingerprint": "94ca6e9c8b5963d1"
+    "recordFingerprint": "b74285ca873bb8ed"
   },
   {
     "name": "Kotak BizLabs Accelerator (Velocity & IRP)",
@@ -1048,7 +1048,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:03:44.800Z",
+    "lastScraped": "2026-04-11T01:52:19.172Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1072,7 +1072,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "kotak.com",
       "canonicalSourceUrl": "https://www.kotak.com/en/about-us/corporate-responsibility.html",
       "inferredDataSource": false,
@@ -1091,7 +1091,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:04:09.114Z",
+    "lastScraped": "2026-04-11T01:52:42.640Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -1109,7 +1109,7 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "socialalpha.org",
       "canonicalSourceUrl": "https://socialalpha.org/krishi-mangal/",
       "inferredDataSource": false,
@@ -1139,14 +1139,14 @@
       "Prototype"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:23.526Z",
+    "lastScraped": "2026-04-11T01:52:56.409Z",
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "grants.startupmission.in",
       "canonicalSourceUrl": "https://grants.startupmission.in/",
       "inferredDataSource": false,
@@ -1165,7 +1165,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:03:39.652Z",
+    "lastScraped": "2026-04-11T01:52:19.086Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1188,7 +1188,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "lichousing.com",
       "canonicalSourceUrl": "https://www.lichousing.com/csr",
       "inferredDataSource": false,
@@ -1226,13 +1226,13 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
-    "lastScraped": "2026-04-10T02:03:07.328Z",
+    "lastScraped": "2026-04-11T01:52:03.462Z",
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYAOP.aspx",
       "inferredDataSource": false,
@@ -1264,7 +1264,7 @@
       "Seed"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:03:06.803Z",
+    "lastScraped": "2026-04-11T01:52:03.002Z",
     "deadlineIso": null,
     "criticalEligibility": [
       "Agribusiness innovators should track the active MANAGE-CIA programme track and call details",
@@ -1275,7 +1275,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYProg.aspx",
       "inferredDataSource": false,
@@ -1316,13 +1316,13 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
-    "lastScraped": "2026-04-10T02:03:07.072Z",
+    "lastScraped": "2026-04-11T01:52:03.233Z",
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYSAIP.aspx",
       "inferredDataSource": false,
@@ -1360,13 +1360,13 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:manage",
-    "lastScraped": "2026-04-10T02:03:07.591Z",
+    "lastScraped": "2026-04-11T01:52:03.693Z",
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "manage.gov.in",
       "canonicalSourceUrl": "https://www.manage.gov.in/managecia/RKVYSOP.aspx",
       "inferredDataSource": false,
@@ -1386,7 +1386,7 @@
     "status": "Check Website",
     "dataSource": "manual:official:meity-startuphub",
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:09.591Z",
+    "lastScraped": "2026-04-11T01:52:43.307Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -1403,7 +1403,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "msh.meity.gov.in",
       "canonicalSourceUrl": "https://msh.meity.gov.in/assets/Administrative%20Approval_TIDE%202.0.pdf",
       "inferredDataSource": false,
@@ -1422,7 +1422,7 @@
     "category": "national",
     "status": "Open",
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:02:37.440Z",
+    "lastScraped": "2026-04-11T01:51:35.801Z",
     "dataSource": "scraper:dst",
     "targetAudience": [
       "startup"
@@ -1443,7 +1443,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2373",
       "inferredDataSource": false,
@@ -1462,7 +1462,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:03:59.273Z",
+    "lastScraped": "2026-04-11T01:52:36.338Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -1480,7 +1480,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "msme.gov.in",
       "canonicalSourceUrl": "https://msme.gov.in/incubation",
       "inferredDataSource": false,
@@ -1512,14 +1512,14 @@
       "Scale-up"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:10.080Z",
+    "lastScraped": "2026-04-11T01:52:44.633Z",
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "nabventures.in",
       "canonicalSourceUrl": "https://nabventures.in/agrisure.aspx",
       "inferredDataSource": false,
@@ -1538,7 +1538,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:04:01.022Z",
+    "lastScraped": "2026-04-11T01:52:34.515Z",
     "targetAudience": [
       "startup"
     ],
@@ -1555,7 +1555,7 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "neat.aicte-india.org",
       "canonicalSourceUrl": "https://neat.aicte-india.org/",
       "inferredDataSource": false,
@@ -1594,13 +1594,13 @@
     "category": "national",
     "linkStatus": "verified",
     "dataSource": "scraper:nidhi",
-    "lastScraped": "2026-04-10T02:02:52.803Z",
+    "lastScraped": "2026-04-11T01:51:48.887Z",
     "deadlineIso": null,
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhissp/",
       "inferredDataSource": false,
@@ -1619,7 +1619,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:02:52.493Z",
+    "lastScraped": "2026-04-11T01:51:48.619Z",
     "targetAudience": [
       "startup"
     ],
@@ -1641,7 +1641,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhieir/",
       "inferredDataSource": false,
@@ -1662,7 +1662,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:02:52.176Z",
+    "lastScraped": "2026-04-11T01:51:48.351Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1684,7 +1684,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "nidhi.dst.gov.in",
       "canonicalSourceUrl": "https://nidhi.dst.gov.in/nidhitbi/",
       "inferredDataSource": false,
@@ -1716,14 +1716,14 @@
       "Seed"
     ],
     "linkStatus": "probable",
-    "lastScraped": "2026-04-10T02:04:16.610Z",
+    "lastScraped": "2026-04-11T01:52:49.785Z",
     "deadlineIso": null,
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "rkvy.nic.in",
       "canonicalSourceUrl": "https://rkvy.nic.in/",
       "inferredDataSource": false,
@@ -1742,7 +1742,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:03:50.059Z",
+    "lastScraped": "2026-04-11T01:52:27.297Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -1762,7 +1762,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "msh.meity.gov.in",
       "canonicalSourceUrl": "https://msh.meity.gov.in/assets/SAMRIDH%20guidelines.pdf",
       "inferredDataSource": false,
@@ -1781,7 +1781,7 @@
     "status": "Rolling",
     "linkStatus": "probable",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:02:49.600Z",
+    "lastScraped": "2026-04-11T01:51:46.031Z",
     "dataSource": "scraper:sbif",
     "targetAudience": [
       "incubator",
@@ -1802,7 +1802,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "sbifoundation.in",
       "canonicalSourceUrl": "https://sbifoundation.in/",
       "inferredDataSource": false,
@@ -1822,7 +1822,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "dataSource": "scraper:iig",
-    "lastScraped": "2026-04-10T02:03:37.063Z",
+    "lastScraped": "2026-04-11T01:52:16.916Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -1841,7 +1841,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "indiainvestmentgrid.gov.in",
       "canonicalSourceUrl": "https://indiainvestmentgrid.gov.in/opportunities/csr-project/10051",
       "inferredDataSource": false,
@@ -1859,7 +1859,7 @@
     "category": "national",
     "status": "Rolling",
     "linkStatus": "unknown",
-    "lastScraped": "2026-04-10T02:03:37.074Z",
+    "lastScraped": "2026-04-11T01:52:16.926Z",
     "description": "Soft loan fund for MSMEs seeking to expand or modernize under the Make in India initiative.",
     "dataSource": "scraper:sidbi",
     "targetAudience": [
@@ -1879,7 +1879,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/smile",
       "inferredDataSource": false,
@@ -1913,12 +1913,12 @@
     "deadlineIso": null,
     "linkStatus": "unknown",
     "criticalEligibility": [],
-    "lastScraped": "2026-04-10T02:03:37.074Z",
+    "lastScraped": "2026-04-11T01:52:16.926Z",
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/srijan",
       "inferredDataSource": false,
@@ -1957,7 +1957,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "sidbi.in",
       "canonicalSourceUrl": "https://www.sidbi.in/en/srijan",
       "inferredDataSource": false,
@@ -1977,7 +1977,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:sisfs:incubator",
-    "lastScraped": "2026-04-10T02:02:44.946Z",
+    "lastScraped": "2026-04-11T01:51:42.072Z",
     "targetAudience": [
       "incubator"
     ],
@@ -1993,7 +1993,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2006,7 +2006,7 @@
     "name": "Startup Gujarat – Srujan Seed Support (S4)",
     "body": "i-Hub Gujarat",
     "maxAward": "₹2.5 Lakhs - ₹10 Lakhs",
-    "deadline": "28-10-2026",
+    "deadline": "26-10-2026",
     "link": "https://ihubgujarat.in/srujan",
     "description": "Financial assistance for innovators and startups to progress from PoC to product/market stage.",
     "category": "state",
@@ -2023,21 +2023,21 @@
       "MVP"
     ],
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:19.454Z",
-    "deadlineIso": "2026-10-28T18:30:00.000Z",
+    "lastScraped": "2026-04-11T01:52:52.498Z",
+    "deadlineIso": "2026-10-26T18:30:00.000Z",
     "criticalEligibility": [],
     "sourceMeta": {
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "ihubgujarat.in",
       "canonicalSourceUrl": "https://ihubgujarat.in/srujan",
       "inferredDataSource": false,
       "inferenceReason": null
     },
     "confidence": 0.93,
-    "recordFingerprint": "69d1412a63a15934"
+    "recordFingerprint": "cce451083c96e47d"
   },
   {
     "status": "Closed",
@@ -2068,7 +2068,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2088,7 +2088,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "dataSource": "scraper:sisfs",
-    "lastScraped": "2026-04-10T02:02:44.946Z",
+    "lastScraped": "2026-04-11T01:51:42.072Z",
     "targetAudience": [
       "startup"
     ],
@@ -2106,7 +2106,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "seedfund.startupindia.gov.in",
       "canonicalSourceUrl": "https://seedfund.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2125,7 +2125,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "national",
-    "lastScraped": "2026-04-10T02:03:57.647Z",
+    "lastScraped": "2026-04-11T01:52:34.736Z",
     "targetAudience": [
       "startup"
     ],
@@ -2142,7 +2142,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "startupindia.gov.in",
       "canonicalSourceUrl": "https://www.startupindia.gov.in/",
       "inferredDataSource": false,
@@ -2183,7 +2183,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "startupodisha.gov.in",
       "canonicalSourceUrl": "https://startupodisha.gov.in/startup-incentives/",
       "inferredDataSource": false,
@@ -2224,7 +2224,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "startupodisha.gov.in",
       "canonicalSourceUrl": "https://startupodisha.gov.in/startup-incentives/",
       "inferredDataSource": false,
@@ -2243,7 +2243,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:04.967Z",
+    "lastScraped": "2026-04-11T01:52:40.093Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -2265,7 +2265,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "startupwave.co",
       "canonicalSourceUrl": "https://startupwave.co/",
       "inferredDataSource": false,
@@ -2285,7 +2285,7 @@
     "status": "Open",
     "linkStatus": "verified",
     "dataSource": "scraper:dst",
-    "lastScraped": "2026-04-10T02:02:38.379Z",
+    "lastScraped": "2026-04-11T01:51:36.298Z",
     "targetAudience": [
       "startup"
     ],
@@ -2305,7 +2305,7 @@
       "sourceId": "dataset:final",
       "sourceType": "live",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "onlinedst.gov.in",
       "canonicalSourceUrl": "https://onlinedst.gov.in/Projectproposalformat.aspx?Id=2133",
       "inferredDataSource": false,
@@ -2325,7 +2325,7 @@
     "status": "Check Website",
     "dataSource": "manual:official:stpi",
     "linkStatus": "verified",
-    "lastScraped": "2026-04-10T02:04:14.156Z",
+    "lastScraped": "2026-04-11T01:52:47.062Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -2342,7 +2342,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "stpi.in",
       "canonicalSourceUrl": "https://stpi.in/index.php/en/schemes/ngis-scheme",
       "inferredDataSource": false,
@@ -2361,7 +2361,7 @@
     "status": "Rolling",
     "linkStatus": "verified",
     "category": "csr",
-    "lastScraped": "2026-04-10T02:04:06.516Z",
+    "lastScraped": "2026-04-11T01:52:41.842Z",
     "targetAudience": [
       "incubator",
       "startup"
@@ -2379,7 +2379,7 @@
       "sourceId": "dataset:final",
       "sourceType": "legacy",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "nasscomfoundation.org",
       "canonicalSourceUrl": "https://nasscomfoundation.org/thingqbator/",
       "inferredDataSource": false,
@@ -2398,7 +2398,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:04:02.030Z",
+    "lastScraped": "2026-04-11T01:52:37.039Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -2422,7 +2422,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "unido.org",
       "canonicalSourceUrl": "https://www.unido.org/sites/default/files/unido-publications/2024-10/UNIDO%20GCIP%20Cleantech%20Innovation%20Cluster%20Development%20Framework.pdf",
       "inferredDataSource": false,
@@ -2441,7 +2441,7 @@
     "status": "Check Website",
     "linkStatus": "verified",
     "category": "international",
-    "lastScraped": "2026-04-10T02:03:56.257Z",
+    "lastScraped": "2026-04-11T01:52:31.398Z",
     "targetAudience": [
       "startup",
       "incubator"
@@ -2464,7 +2464,7 @@
       "sourceId": "dataset:final",
       "sourceType": "manual",
       "collectionMode": "merged_dataset",
-      "collectedAt": "2026-04-10T02:04:55.415Z",
+      "collectedAt": "2026-04-11T01:53:31.558Z",
       "sourceDomain": "youthcolab.org",
       "canonicalSourceUrl": "https://www.youthcolab.org/",
       "inferredDataSource": false,
