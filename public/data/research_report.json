@@ -1,63 +1,52 @@
 {
   "incubator": {
     "title": "ABIF Incubator Funding Analysis 2026",
-    "generatedAt": "2024-05-15T10:35:00Z",
-    "executiveSummary": "The funding landscape for Indian incubators is robust, heavily driven by national government initiatives from DST, MeitY, AIM, and BIRAC. These programs primarily offer direct grants for infrastructure development, operational support, and the establishment of specialized incubation centers, significantly increasing incubator efficiency and ecosystem impact.",
+    "generatedAt": "2026-04-14T02:06:27.701Z",
+    "executiveSummary": "As of Apr 14, 2026, the Indian incubator funding ecosystem shows a robust activity level with 26 open programs directly supporting Section 8 operations. There is a significant tactical focus on Ecosystem Enablers, which accounts for a major portion of current open calls. ",
     "keyTrends": [
       {
-        "trend": "Government-Led Incubator Capacity Building",
-        "detail": "National bodies like DST (NIDHI-TBI, AIC Grant), MeitY (TIDE 2.0, NGIS), BIRAC (BioNEST), and MSME are providing substantial grants ranging from ₹25 Lakhs to ₹10 Crores specifically for establishing, upgrading, and operating incubation infrastructure, alongside direct programmatic support."
+        "trend": "Section 8 Operational Support",
+        "detail": "26 active programs currently offer direct support for incubator operations, HR, or cohort management."
       },
       {
-        "trend": "Strategic Financial Empowerment of Incubators",
-        "detail": "The SISFS Incubator Grant stands out by enabling incubators to act as seed fund partners, providing up to ₹5 Crores to manage and deploy capital. This strengthens their financial reliability and long-term ecosystem impact beyond basic operational grants."
+        "trend": "Sectoral Dominance",
+        "detail": "Ecosystem Enablers remains a primary driver of new capital calls in this current cycle."
       },
       {
-        "trend": "Thematic Specialization and Ecosystem Niche Development",
-        "detail": "A growing trend, particularly observed in CSR and international collaborations (e.g., India Agritech Incubation Network, thingQbator, IIG CoEs, SID - Deep Science Incubation), focuses on funding specialized incubation hubs and Centers of Excellence. This allows incubators to develop deep expertise and targeted impact in sectors like AgriTech, Deep Science, and Clean Energy."
+        "trend": "Strategic Shifts",
+        "detail": "Expansion noted in central government calls (BIRAC/DST/MeitY) for deep-science R&D infrastructure."
       }
     ],
     "actionableRecommendations": [
-      "Prioritize applications for core operational and infrastructure grants from national government bodies, specifically targeting NIDHI-TBI (DST), AIC Grant (AIM), MeitY TIDE 2.0 (Incubator Support), BIRAC BioNEST, and MSME Incubation Schemes to secure foundational support for Section 8 infrastructure.",
-      "Actively pursue the SISFS Incubator Grant to become an approved seed fund partner, establishing a sustainable mechanism for direct startup investment and enhancing the incubator's financial leverage and ecosystem influence.",
-      "Strategically develop or expand specialized incubation verticals by aligning with thematic opportunities such as the India Agritech Incubation Network, IIG CSR CoEs (Agricultural Innovation, Processing), and SID - Deep Science Incubation to build unique capabilities and attract targeted startups, thereby increasing ecosystem impact and operational reliability."
+      "Begin drafting concept notes for the upcoming summer Q2 capability expansion cycles.",
+      "Review MeitY TIDE 2.0 / SAMRIDH eligibility for institutional setup and matched funding access.",
+      "Conduct technical readiness and impact audits for impending CSR matchmaking calls."
     ],
-    "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 10:35 AM"
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 02:06 AM"
   },
   "startup": {
     "title": "ABIF Startup Funding Analysis 2026",
-    "generatedAt": "2024-07-29T02:12:00Z",
-    "executiveSummary": "The Indian deep-tech and agritech landscape is ripe with diverse funding avenues for early-stage founders, offering a strategic mix of national and state-level equity-free grants. Significant seed capital programs and specialized accelerators are readily available to support critical product development milestones, extend operational runway, and facilitate effective market entry. Founders should strategically align their applications with sector-specific calls and leverage the continuous application windows offered by many government schemes and international programs.",
+    "generatedAt": "2026-04-14T02:06:29.930Z",
+    "executiveSummary": "As of Apr 14, 2026, the Indian startup funding ecosystem maintains a steady pace with 60 active opportunities. A major concentration of capital is directed towards General Tech / Startups. ",
     "keyTrends": [
       {
-        "trend": "Robust National & State Support for Early-Stage Innovation",
-        "detail": "Indian government initiatives, including those from BIRAC, MeitY, DST, and state startup missions (e.g., Karnataka, Tamil Nadu, Gujarat, Kerala), provide foundational grants and seed funds ranging from ₹2.5 Lakhs to ₹1 Crore. Schemes like BIRAC Biotechnology Ignition Grant (₹50 Lakhs), Startup India Seed Fund Scheme (up to ₹50 Lakhs), and state-specific grants are critical for initial product development and sustaining early operations."
+        "trend": "Capital Concentration",
+        "detail": "60 active programs provide direct equity free capital or seed support to startups."
       },
       {
-        "trend": "Pronounced Sector-Specific Capital Inflow",
-        "detail": "There's a clear focus on specific deep-tech and agritech sub-sectors, with dedicated grants for Agri-tech (RKVY-RAFTAAR Seed Grants - up to ₹25 Lakhs, StartupTN Agri-Tech Grant - ₹10-25 Lakhs, AI4Good AgriTech Farmer Solutions - $360,000), Biotechnology (BIRAC BIG - ₹50 Lakhs), Cleantech/Climate Tech (Keeling Curve Prize - $50,000, Amazon Climate Tech Accelerator - $100,000 in AWS credits), AI (India-France AI Call - €500,000+, AI for ALL Global Impact Challenge - ₹2.5 Crores), and Water solutions (AMRUT 2.0 Water Pitch Challenge - ₹20 Lakhs)."
+        "trend": "Sectoral Focus",
+        "detail": "General Tech / Startups dominates current funding priorities for startups."
       },
       {
-        "trend": "Abundance of Equity-Free Grants for Product Development",
-        "detail": "Numerous opportunities, particularly from national providers like BIRAC, Startup India (SISFS), and NIDHI, offer equity-free grants crucial for founders developing proof-of-concept and initial prototypes. These grants significantly de-risk early-stage innovation and directly support product development without diluting equity."
-      },
-      {
-        "trend": "Strategic International Funding & Accelerator Pathways",
-        "detail": "Substantial international grants (e.g., India-France AI, Ford Foundation, Skoll Foundation, AI4Good AgriTech) and accelerator programs (India Australia RISE, Amazon Devices Climate Tech Accelerator, Aspire Climatetech) provide not just capital but also global market access, mentorship, and often larger award sizes ranging from $15,000 to $1.5 Million USD or more."
-      },
-      {
-        "trend": "Continuous Application Cycles Offer Flexibility",
-        "detail": "A significant portion of funding, including major schemes like BIRAC BIG, Startup India Seed Fund Scheme, NIDHI programs (NIDHI-EIR, NIDHI-SSP), RKVY-RAFTAAR Seed Grants, and SIDBI Make in India Soft Loan Fund, operate on rolling deadlines or have extended application windows into 2026. This offers founders continuous opportunities to apply without being constrained by narrow annual cycles."
+        "trend": "Ecosystem Velocity",
+        "detail": "Steady state funding; rolling grants provide continuous application windows."
       }
     ],
     "actionableRecommendations": [
-      "Prioritize applications for rolling and open national grants such as BIRAC Biotechnology Ignition Grant (₹50 Lakhs), Startup India Seed Fund Scheme (up to ₹50 Lakhs), and NIDHI Seed Support Program (up to ₹1 Crore) to secure essential early-stage runway and product development funds.",
-      "Target sector-specific opportunities if your solution aligns with Agri-tech (e.g., RKVY-RAFTAAR, StartupTN Agri-Tech Grant, AI4Good AgriTech Farmer Solutions) or Deep-tech/Biotech (e.g., BIRAC BIG, MeitY TIDE, Karnataka Elevate NXT), as these offer tailored support and often larger, more focused awards.",
-      "Leverage state-level grants (e.g., Karnataka Elevate NXT, StartupTN Agri-Tech Grant, Startup Gujarat – Srujan Seed Support, KSUM Idea Grant) for localized support, which can be less competitive and provide crucial initial seed capital and productization grants.",
-      "Explore high-value international grants and accelerator programs (e.g., India-France AI, AI4Good AgriTech, Keeling Curve Prize, Amazon Devices Climate Tech Accelerator) for larger funding amounts and global market exposure, aligning with their specific tech focus and often longer lead times.",
-      "Actively engage with incubation and accelerator programs like BIRAC BioNEST, AGRI UDAAN, and India Australia RISE Accelerator, as they provide critical mentorship, infrastructure, and networking opportunities in addition to potential funding access.",
-      "Prepare compelling proposals that clearly articulate how the requested funds will directly support specific product development milestones, accelerate market entry strategies, and demonstrably extend the startup's operational runway."
+      "Prepare investor readiness dossiers for upcoming state grants.",
+      "Match startup stage with grant requirements carefully to prevent high rejection rates.",
+      "Leverage rolling state grants as a constant baseline for early-stage portfolio companies."
     ],
-    "briefingFooter": "Synthesized by ABIF Neural Engine (Powered by Gemini 2.5 Flash) • Verified 02:12 AM"
+    "briefingFooter": "Synthesized by ABIF Research Engine v2.1 • Logic Fallback Mode • Verified 02:06 AM"
   }
 }
